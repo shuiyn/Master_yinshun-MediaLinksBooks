@@ -16,17 +16,11 @@
 
 <!--<button id="try" onclick="alert('Hi');">Clicked</button>-->
 
-<a href="http://yinshun-edu.org.tw/Master_yinshun/books" target="_blank">印順文教基金會推廣教育中心</a><br/>
 
-<a href="http://video.lwdh.org.tw/index.html" target="_blank">慧日講堂影音下載</a><br/>
-<a href="http://www.fuyan.org.tw/" target="_blank">福嚴佛學院</a><br/>
-<a href="http://www.kyba.org.tw/index.asp" target="_blank">高雄市正信佛教青年會</a><br/>
-<a href="https://www.youtube.com/user/chuefeng1/playlists" target="_blank">覺風佛教藝術文化基金會（YouTube）</a>
-
-<hr/>
 
 佛法概論
-開仁法師，六龜「般若精舍」課程講義與錄音
+開仁法師授課於六龜「般若精舍」
+課程講義與錄音
 <a href="http://www.kyba.org.tw/board/showcontent.asp?bd=11&id=687&totable=1">104年第8期</a>
 
 <a href="http://www.kyba.org.tw/board/showcontent.asp?bd=11&id=694&totable=1">105年第9期</a>
@@ -37,15 +31,24 @@
 
 <hr/>
 <div id="dvAudio" style="width:100%">
+<div style="text-align:center;">
+<button onclick="cusTime(1);">設為起點</button>
+<button onclick="cusTime(0);">設為終點</button></div>
+
 <audio  id="myAudio" style="width:100%" controls>
   <source src="http://220.130.244.41:8080/prajna/20150321-1.mp3" type="audio/mpeg">
 </audio>
 <br/>
-起播時間<input id="palyStart" type="text" value="500"></input>
-結束時間<input id="playEnd" type="text"></input>
-播放時長<input id="playLength" type="number" value="0" onchange="onPlayDurationChange(this);"></input>
+起播<input id="palyStartH" type="number" value="0" onblur="" style="width:2em;"></input>時
+<input id="palyStartM" type="number" value="0" onblur="" style="width:2.5em;"></input>分
+<input id="palyStartS" type="number" value="0" onblur="" style="width:2.5em;"></input>秒
+
+<!--結束時間<input id="playEnd" type="text"  style="width:2em;"></input>-->
+播放時長<input id="playLengthH" type="number" value="0" onblur="" style="width:2em;"></input>時
+<input id="playLengthM" type="number" value="0" style="width:2.5em;"></input>分
+<input id="playLengthS" type="number" value="0" style="width:2.5em;"></input>秒
 <!-- <input type="number" name="quantity" min="1" max="5">-->
-<button onclick="cusPlay();">指定起播</button>
+<button onclick="cusPlay();">重播</button>
 從頭播起、反複期間
 段落選單
 </div>
@@ -55,6 +58,15 @@
 摩訶般若波羅蜜經
 第十二期（龍樹說譬喻、摩訶般若波羅蜜經、雜阿含經論會編）
 <a href="http://www.kyba.org.tw/board/showcontent.asp?bd=11&id=731&totable=1">107年第12期</a>
+
+<hr/>
+
+<a href="http://yinshun-edu.org.tw/Master_yinshun/books" target="_blank">印順文教基金會推廣教育中心</a><br/>
+
+<a href="http://video.lwdh.org.tw/index.html" target="_blank">慧日講堂影音下載</a><br/>
+<a href="http://www.fuyan.org.tw/" target="_blank">福嚴佛學院</a><br/>
+<a href="http://www.kyba.org.tw/index.asp" target="_blank">高雄市正信佛教青年會</a><br/>
+<a href="https://www.youtube.com/user/chuefeng1/playlists" target="_blank">覺風佛教藝術文化基金會（YouTube）</a>
 
 </body>
 </html>
