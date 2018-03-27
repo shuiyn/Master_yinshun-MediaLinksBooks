@@ -6,6 +6,7 @@
 	<meta name="viewport" content="width=device-width">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
+	<script src="js/dataSrc.js"></script>
 	<script src="js/audio.js"></script>
 	
 </head>
@@ -20,6 +21,7 @@
 
 佛法概論
 開仁法師授課於六龜「般若精舍」
+<!--
 課程講義與錄音
 <a href="http://www.kyba.org.tw/board/showcontent.asp?bd=11&id=687&totable=1">104年第8期</a>
 
@@ -28,17 +30,29 @@
 <a href="http://www.kyba.org.tw/board/showcontent.asp?bd=11&id=710&totable=1">106年第10期</a>
 
 <a href="http://www.kyba.org.tw/board/showcontent.asp?bd=11&id=725&totable=1">106年第11期</a>
+-->
+<table border="0" style="padding:5px;background-color:#EEFFFF;">
+<tr>
+<td><a id="goSite" href="" target="_blank">到此頁</a>
+<td id="dvPeriod">
+</td>
+<td id="dvClass">
+</td>
+</tr>
+</table>
 
-<hr/>
-<div id="dvAudio" style="width:100%">
-<div style="text-align:center;">
-<button onclick="cusTime(1);">設為起點</button>
-<button onclick="cusTime(0);">設為終點</button></div>
+<div id="dvAudio" style="width:100%; border:1px solid black">
 
 <audio  id="myAudio" style="width:100%" controls>
   <source src="http://220.130.244.41:8080/prajna/20150321-1.mp3" type="audio/mpeg">
 </audio>
 <br/>
+<!-- style="text-align:center;"-->
+<div style="padding:5px;background-color:#EEFFFF;">將目前時點：
+<button onclick="cusTime(1);">設為起點</button>
+<button onclick="cusTime(0);">設為終點</button></div>
+
+<div style="padding:5px;background-color:#F8EACE;">
 起播<input id="palyStartH" type="number" value="0" onblur="" style="width:2em;"></input>時
 <input id="palyStartM" type="number" value="0" onblur="" style="width:2.5em;"></input>分
 <input id="palyStartS" type="number" value="0" onblur="" style="width:2.5em;"></input>秒
@@ -49,6 +63,8 @@
 <input id="playLengthS" type="number" value="0" style="width:2.5em;"></input>秒
 <!-- <input type="number" name="quantity" min="1" max="5">-->
 <button onclick="cusPlay();">重播</button>
+</div>
+
 從頭播起、反複期間
 段落選單
 </div>

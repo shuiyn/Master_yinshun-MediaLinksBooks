@@ -3,12 +3,56 @@ var aud;
 var nPlayStart = 0;
 var nPlayDuration = 0;
 
+
+function onClassClick(e) {
+	//alert(e.value + ', ' + e.selectedIndex);
+	aud.src=e.value;
+	nPlayStart = 0;
+	nPlayDuration = 0;
+}
+
+function onPeriodClick(e) {
+	document.getElementById('goSite').href=e.value;
+	var p=e.options[e.selectedIndex].text.match(/\d+/g)[1];
+	fillClass(p);
+}
+
+
+function fillPeriod(){
+	var s='<select id="selPeriod" onchange="onPeriodClick(this);"> ';
+	for(var i=0; i< kzpn_ffgl_period.length; i++) {
+		s+= ' <option value="' + kzpn_ffgl_period[i].url + '">' + kzpn_ffgl_period[i].p + '</option>'
+	}
+	
+	s+=" </select>";
+	document.getElementById("dvPeriod").innerHTML = s;
+}
+
+function fillClass(period){
+	var s='<select id="selClass" onchange="onClassClick(this);"> ';
+	for(var i=0; i< ffgl_kr_pn.length; i++) {
+		if(ffgl_kr_pn[i].p == period) {
+			s+= ' <option value="' + ffgl_kr_pn[i].url + '">' + ffgl_kr_pn[i].d + '</option>';
+		}
+	}
+	
+	s+=" </select>";
+	document.getElementById("dvClass").innerHTML = s;
+}
+
+
+
 function onLoad() {
 	aud = document.getElementById("myAudio");
 //	aud.ontimeupdate = onTimeUpdate;
 	aud.addEventListener("timeupdate", onTimeUpdate);
+	
+	fillPeriod();
+	onPeriodClick(document.getElementById('selPeriod'));
+	
+//	document.getElementById('goSite').href=document.getElementById('selPeriod').value;
+//	fillClass();
 }
-
 
 
 function onTimeUpdate() {
