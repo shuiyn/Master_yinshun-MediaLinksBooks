@@ -4,22 +4,13 @@
 	<title>印順導師的相關影音鏈結及著作</title>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width">
-	
-	<script>
-	
-	function cusPlay() {
-	var aud = document.getElementById("myAudio");
-//	alert(aud.currentTime);
-		aud.currentTime = document.getElementById("palyStart").value;
-		aud.play();
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
-//	alert(aud.currentTime);
+	<script src="js/audio.js"></script>
 	
-	}
-	</script>
 </head>
 
-<body>
+<body onload="onLoad();">
 
 <h3>印順導師的相關影音鏈結及著作</h3>
 
@@ -52,7 +43,8 @@
 <br/>
 起播時間<input id="palyStart" type="text" value="500"></input>
 結束時間<input id="playEnd" type="text"></input>
-播放時長<input id="playEnd" type="text"></input>
+播放時長<input id="playLength" type="number" value="0" onchange="onPlayDurationChange(this);"></input>
+<!-- <input type="number" name="quantity" min="1" max="5">-->
 <button onclick="cusPlay();">指定起播</button>
 從頭播起、反複期間
 段落選單
