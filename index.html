@@ -4,6 +4,19 @@
 	<title>印順導師的相關影音鏈結及著作</title>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width">
+	
+	<script>
+	
+	function cusPlay() {
+	var aud = document.getElementById("myAudio");
+//	alert(aud.currentTime);
+		aud.currentTime = document.getElementById("palyStart").value;
+		aud.play();
+
+//	alert(aud.currentTime);
+	
+	}
+	</script>
 </head>
 
 <body>
@@ -12,12 +25,12 @@
 
 <!--<button id="try" onclick="alert('Hi');">Clicked</button>-->
 
-<a href="http://yinshun-edu.org.tw/Master_yinshun/books">印順文教基金會推廣教育中心</a><br/>
+<a href="http://yinshun-edu.org.tw/Master_yinshun/books" target="_blank">印順文教基金會推廣教育中心</a><br/>
 
-<a href="http://video.lwdh.org.tw/index.html">慧日講堂影音下載</a><br/>
-<a href="http://www.fuyan.org.tw/">福嚴佛學院</a><br/>
-<a href="http://www.kyba.org.tw/index.asp">高雄市正信佛教青年會</a>
-<a href="https://www.youtube.com/user/chuefeng1/playlists">覺風佛教藝術文化基金會（YouTube）</a><br/>
+<a href="http://video.lwdh.org.tw/index.html" target="_blank">慧日講堂影音下載</a><br/>
+<a href="http://www.fuyan.org.tw/" target="_blank">福嚴佛學院</a><br/>
+<a href="http://www.kyba.org.tw/index.asp" target="_blank">高雄市正信佛教青年會</a><br/>
+<a href="https://www.youtube.com/user/chuefeng1/playlists" target="_blank">覺風佛教藝術文化基金會（YouTube）</a>
 
 <hr/>
 
@@ -32,6 +45,20 @@
 <a href="http://www.kyba.org.tw/board/showcontent.asp?bd=11&id=725&totable=1">106年第11期</a>
 
 <hr/>
+<div id="dvAudio" style="width:100%">
+<audio  id="myAudio" style="width:100%" controls>
+  <source src="http://220.130.244.41:8080/prajna/20150321-1.mp3" type="audio/mpeg">
+</audio>
+<br/>
+起播時間<input id="palyStart" type="text" value="500"></input>
+結束時間<input id="playEnd" type="text"></input>
+播放時長<input id="playEnd" type="text"></input>
+<button onclick="cusPlay();">指定起播</button>
+從頭播起、反複期間
+段落選單
+</div>
+
+<br/>
 
 摩訶般若波羅蜜經
 第十二期（龍樹說譬喻、摩訶般若波羅蜜經、雜阿含經論會編）
