@@ -4,54 +4,110 @@ var nPlayStart = 0;
 var nPlayDuration = 0;
 
 
-function onClassClick(e) {
-	//alert(e.value + ', ' + e.selectedIndex);
+function fillBook(){
+	var arr=initUsedBook(); //傳回 類別
+	var s='<select id="selBook" onchange="onBookChange(this);"> ';
+	
+	for(var b in arr){
+		s+= ' <option value="' + b + '">' + arr[b] + '</option>'
+	}
+//	for(var i=0; i< arr.length; i++) {
+//		s+= ' <option value="' + arr[i].id + '">' + arr[i].name + '</option>'
+//	}
+	
+	s+=" </select>";
+	document.getElementById("dvBook").innerHTML = s;
+
+	onBookChange(document.getElementById('selBook'));
+}
+
+
+function onBookChange(e){
+	fillMasterCourse(e.value);
+}
+
+function fillMasterCourse(bookId){
+	var arr=initMasterCourses(bookId);
+
+	var s='<select id="selMaster" onchange="onMasterCourseChange(this);"> ';
+	for(var i=0; i< arr.length; i++) {
+		s+= ' <option value="' + arr[i].id + '">' + arr[i].title + '</option>'
+	}
+	
+	s+=" </select>";
+	document.getElementById("dvMaster").innerHTML = s;
+	
+	onMasterCourseChange(document.getElementById('selMaster'));
+}
+
+
+function onMasterCourseChange(e){
+	fillPhase(e.value);
+}
+
+function fillPhase(courseId){
+	var arr=grabPhaseById(courseId);
+	var s='<select id="selPhase" onchange="onPhaseChange(this);"> ';
+	
+	if(arr){
+		for(var i=0; i< arr.length; i++) {
+			s+= ' <option value="' + arr[i].url + '">' + arr[i].p + '</option>'
+		}
+	}
+	s+=" </select>";
+	document.getElementById("dvPhase").innerHTML = s;
+
+	onPhaseChange(document.getElementById('selPhase'));
+}
+
+function onPhaseChange(e) {
+//{"item":"ffgl", "master":"kr", "croom":"pn", "period":"9"}
+	document.getElementById('goSite').href=e.value;
+	var courseId=document.getElementById('selMaster').value;
+	
+	var pa=e.options[e.selectedIndex].text.match(/\d+/g);
+	var p=pa[pa.length-1];
+	
+//var tofind = {"item":"ffgl", "master":"kr", "croom":"pn"};//, "period":"9"};
+//	tofind.period = p;
+	var out = grabCourse(courseId, p);//search(tofind);
+
+	fillClass(out);
+}
+
+
+
+
+function onClassChange(e) {
+	if(!e.value){
+		aud.src="";
+		return;
+	}
+	
 	aud.src=e.value;
 	nPlayStart = 0;
 	nPlayDuration = 0;
 }
 
-function onPeriodClick(e) {
-	document.getElementById('goSite').href=e.value;
-	var p=e.options[e.selectedIndex].text.match(/\d+/g)[1];
-	fillClass(p);
-}
 
-
-function fillPeriod(){
-	var s='<select id="selPeriod" onchange="onPeriodClick(this);"> ';
-	for(var i=0; i< kzpn_ffgl_period.length; i++) {
-		s+= ' <option value="' + kzpn_ffgl_period[i].url + '">' + kzpn_ffgl_period[i].p + '</option>'
-	}
-	
-	s+=" </select>";
-	document.getElementById("dvPeriod").innerHTML = s;
-}
-
-function fillClass(period){
-	var s='<select id="selClass" onchange="onClassClick(this);"> ';
-	for(var i=0; i< ffgl_kr_pn.length; i++) {
-		if(ffgl_kr_pn[i].p == period) {
-			s+= ' <option value="' + ffgl_kr_pn[i].url + '">' + ffgl_kr_pn[i].d + '</option>';
-		}
+function fillClass(out){
+	var s='<select id="selClass" onchange="onClassChange(this);"> ';
+	for(var i=0; i< out.length; i++) {
+		s+= ' <option value="' + out[i].url + '">' + out[i].d + '</option>';
 	}
 	
 	s+=" </select>";
 	document.getElementById("dvClass").innerHTML = s;
-}
 
+	onClassChange(document.getElementById('selClass'));
+}
 
 
 function onLoad() {
 	aud = document.getElementById("myAudio");
-//	aud.ontimeupdate = onTimeUpdate;
 	aud.addEventListener("timeupdate", onTimeUpdate);
 	
-	fillPeriod();
-	onPeriodClick(document.getElementById('selPeriod'));
-	
-//	document.getElementById('goSite').href=document.getElementById('selPeriod').value;
-//	fillClass();
+	fillBook();
 }
 
 

@@ -7,13 +7,17 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
 	<script src="js/dataSrc.js"></script>
+	<script src="js/search.js"></script>
 	<script src="js/audio.js"></script>
 	
+	<style>
+	select {padding:3px;font-size:100%;}
+	</style>
 </head>
 
 <body onload="onLoad();">
 
-<h3>印順導師的相關影音鏈結及著作</h3>
+<h2 style="font-family:標楷體;">印順導師的相關影音鏈結及著作</h2>
 
 <!--<button id="try" onclick="alert('Hi');">Clicked</button>-->
 
@@ -33,13 +37,20 @@
 -->
 <table border="0" style="padding:5px;background-color:#EEFFFF;">
 <tr>
-<td><a id="goSite" href="" target="_blank">到此頁</a>
-<td id="dvPeriod">
-</td>
-<td id="dvClass">
-</td>
+<td id="dvBook"></td>
+<td id="dvMaster"></td>
+<tr>
+
+<tr>
+<td colspan="2" style="text-align:right;"><a id="goSite" href="" target="_blank">到源網頁</a>
+<span id="dvPhase"></span>
+<span id="dvClass"></span>
 </tr>
-</table>
+<!--<td style="text-align:right;"><a id="goSite" href="" target="_blank">到此頁</a>
+<td id="dvPhase"></td>
+<td id="dvClass"></td>
+</tr>
+--></table>
 
 <div id="dvAudio" style="width:100%; border:1px solid black">
 
@@ -55,18 +66,17 @@
 <div style="padding:5px;background-color:#F8EACE;">
 起播<input id="palyStartH" type="number" value="0" onblur="" style="width:2em;"></input>時
 <input id="palyStartM" type="number" value="0" onblur="" style="width:2.5em;"></input>分
-<input id="palyStartS" type="number" value="0" onblur="" style="width:2.5em;"></input>秒
+<input id="palyStartS" type="number" value="0" onblur="" style="width:2.5em;"></input>秒<br/>
 
 <!--結束時間<input id="playEnd" type="text"  style="width:2em;"></input>-->
-播放時長<input id="playLengthH" type="number" value="0" onblur="" style="width:2em;"></input>時
+長度<input id="playLengthH" type="number" value="0" onblur="" style="width:2em;"></input>時
 <input id="playLengthM" type="number" value="0" style="width:2.5em;"></input>分
 <input id="playLengthS" type="number" value="0" style="width:2.5em;"></input>秒
 <!-- <input type="number" name="quantity" min="1" max="5">-->
 <button onclick="cusPlay();">重播</button>
 </div>
 
-從頭播起、反複期間
-段落選單
+<!--反複、段落選單-->
 </div>
 
 <br/>
