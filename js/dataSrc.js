@@ -2,9 +2,9 @@
 //以此 data 為中心出發點，往上、下組織相關資料集 phase、course
 //各書的授課法師、地點、[初授日]
 var book_master_croom=[
+{"id":"0003", "book":"jkjjj", "master":"zh", "byear":"104", "croom":"pn"},
 {"id":"0001", "book":"ffgl", "master":"kr", "byear":"104", "croom":"pn"},
-{"id":"0002", "book":"ffgl", "master":"kr", "byear":"098", "croom":"wl"},
-{"id":"0003", "book":"jkjjj", "master":"zh", "byear":"104", "croom":"pn"}
+{"id":"0002", "book":"ffgl", "master":"kr", "byear":"098", "croom":"wl"}
 ];
 
 

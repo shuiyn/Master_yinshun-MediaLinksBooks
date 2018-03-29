@@ -85,6 +85,7 @@ function onClassChange(e) {
 
 	if(!e.value){
 		aud.src="";
+//		alert(aud.src);為本站址
 		ctl.innerHTML="";
 		return;
 	}
@@ -116,7 +117,6 @@ function fillClass(out){
 function onLoad() {
 	aud = document.getElementById("myAudio");
 	aud.addEventListener("timeupdate", onTimeUpdate);
-	
 	fillBook();
 }
 
@@ -198,4 +198,31 @@ function forbakward(mode){
 		aud.currentTime-=10;
 	else
 		aud.currentTime+=10;
+}
+
+
+/*
+aud.networkState：Number, Represents the current network state of the audio/video element:
+	0 = NETWORK_EMPTY - audio/video has not yet been initialized
+	1 = NETWORK_IDLE - audio/video is active and has selected a resource, but is not using the network
+	2 = NETWORK_LOADING - browser is downloading data
+	3 = NETWORK_NO_SOURCE - no audio/video source found
+*/
+
+function cuePointPlay(){
+	if(aud.networkState==3){
+		alert("沒有指定音檔");
+		return;
+	}
+	var ctl=document.getElementById("cueList");
+	if(ctl.options.length==0) return;
+	var aHms=ctl.options[ctl.selectedIndex].text.split(" ")[0].split(":");
+	if(aHms.length<3) aHms.unshift("0");
+
+	var ct=0;
+	for(var i=0; i<aHms.length; i++){
+		ct+=parseInt(aHms[i])*[3600,60,1][i];
+	}
+	aud.currentTime=ct;//parseInt(aHms[0])*60+parseInt(aHms[1]);
+	aud.play();
 }
