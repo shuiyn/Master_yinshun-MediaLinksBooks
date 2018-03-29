@@ -6,6 +6,7 @@
 	<meta name="viewport" content="width=device-width">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
+	<script src="js/diamond.js"></script>
 	<script src="js/dataSrc.js"></script>
 	<script src="js/search.js"></script>
 	<script src="js/audio.js"></script>
@@ -58,11 +59,16 @@
 <!--結束時間<input id="playEnd" type="text"  style="width:2em;"></input>-->
 長度<input id="playLengthH" type="number" value="0" onblur="" style="width:2em;"></input>時
 <input id="playLengthM" type="number" value="0" style="width:2.5em;"></input>分
-<input id="playLengthS" type="number" value="0" style="width:2.5em;"></input>秒<button onclick="alert('高= ' +document.getElementById('ctlArea').style.height);">test</button><a id="bookURL" href="" target="iframe_a">本文</a>
+<input id="playLengthS" type="number" value="0" style="width:2.5em;"></input>秒<button onclick="alert('高= ' +document.getElementById('ctlArea').style.height);">test</button>
 
 </div>
 
 <!--佛法概論自序：
+Mixed Content: The page at 'https://shuiyn.github.io/Master_yinshun-MediaLinksBooks/' was loaded over HTTPS, but requested an insecure resource 'http://www.mahabodhi.org/files/yinshun/21/yinshun21-01.html'. This request has been blocked; the content must be served over HTTPS.
+
+Mixed Content: The page at 'https://shuiyn.github.io/Master_yinshun-MediaLinksBooks/' was loaded over HTTPS, but requested an insecure audio file 'http://220.130.244.41:8080/prajna/20150321-1.mp3'. This content should also be served over HTTPS.
+
+
 http://www.mahabodhi.org/files/yinshun/21/yinshun21-01.html
 http://www.mahabodhi.org/files/yinshun/00/yinshun00-02.html
 -->
@@ -71,13 +77,17 @@ http://www.mahabodhi.org/files/yinshun/00/yinshun00-02.html
 </div>
 
 <!--12em=12*16 = 192px-->
-
+<!--<a id="bookURL" href="" target="iframe_a">本文</a>
 <iframe height="192" width="100%" src="" name="iframe_a"></iframe>
+-->
 
-<!--<div id="content" style="margin-top:1px;width:100%;height:10em; border:1px solid black"> backgroundAttachment-->
+<!--<div id="content" style="margin-top:1px;width:100%;height:10em; border:1px solid black"> 
+
+display:none;
+-->
 
 
-<div id="content" style="display:none;color:darkblack;overflow-Y:scroll;padding:5px;line-height:1.3;font-size:100%;width:100%;height:12em; border-width:0 1px 1px 1px;border-style:solid;">
+<div id="content" style="color:darkblue;overflow-Y:scroll;padding:5px;line-height:1.4;font-size:105%;width:100%;height:12em; border-width:0 1px 1px 1px;border-style:solid;">
 <!--<span onclick="dotPlay('03:50');">◆</span>摩訶般若波羅蜜經<br/>
 <span onclick="dotPlay('22:10');">◆</span>第十二期（龍樹說譬喻-->
 <p>42:37二示宗要</p>

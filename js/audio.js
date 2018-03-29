@@ -23,7 +23,7 @@ function fillBook(){
 
 
 function onBookChange(e){
-	document.getElementById("bookURL").href = e.options[e.selectedIndex].getAttribute("data-url");
+//	document.getElementById("bookURL").href = e.options[e.selectedIndex].getAttribute("data-url");
 
 	fillMasterCourse(e.value);
 }
@@ -81,21 +81,29 @@ function onPhaseChange(e) {
 
 
 function onClassChange(e) {
+	var ctl=document.getElementById("content");
+
 	if(!e.value){
 		aud.src="";
+		ctl.innerHTML="";
 		return;
 	}
 	
 	aud.src=e.value;
 	nPlayStart = 0;
 	nPlayDuration = 0;
+	
+	var bkid=e.options[e.selectedIndex].getAttribute("data-ybk");
+	if(!bkid) ctl.innerHTML="";
+	else ctl.innerHTML=grabYbkCont(null,bkid);
 }
 
 
 function fillClass(out){
 	var s='<select id="selClass" onchange="onClassChange(this);"> ';
 	for(var i=0; i< out.length; i++) {
-		s+= ' <option value="' + out[i].url + '">' + out[i].d + '</option>';
+		var bkid=(out[i].ybk ? out[i].ybk : "");
+		s+= ' <option value="' + out[i].url + '" data-ybk="' +bkid+ '">' + out[i].d + '</option>';
 	}
 	
 	s+=" </select>";

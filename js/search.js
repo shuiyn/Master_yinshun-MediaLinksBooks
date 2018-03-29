@@ -94,3 +94,10 @@ var grabCourse=function(courseId, phaseId){
 	return out;
 }
 
+var grabYbkCont=function(bk, id){
+	var ybk=ybk_Diamond;
+	for(var i=0; i<ybk.length;i++){
+		if(ybk[i].id==id) return ybk[i].cnt;
+	}
+	return "";
+}
