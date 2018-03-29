@@ -92,19 +92,3 @@ var grabCourse=function(courseId, phaseId){
 	return out;
 }
 
-////授課堂別
-////{"item":"ffgl", "master":"kr", "croom":"pn", "period":"9"}
-//var search=function(tf){
-//	var arr=eval(tf.item+"_"+tf.master+"_"+tf.croom);
-//	
-//	var out=[];
-//	
-//	for(var i=0; i<arr.length; i++){
-//		if(arr[i].p==tf.period){
-//			out.push(arr[i]);
-//		}
-//	}
-//	
-//	return out;
-//}
-//

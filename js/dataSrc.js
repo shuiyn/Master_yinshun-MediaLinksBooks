@@ -32,8 +32,8 @@ var crooms=[
 
 //宗恒 金剛經講記 期別 title、phase、url
 var phase_0003=[
-{"p":"104~106 年第 1 期", "url":"http://www.kyba.org.tw/board/showcontent.asp?bd=11&id=690&totable=1"},
-{"p":"106~107 年第 2 期", "url":"http://www.kyba.org.tw/board/showcontent.asp?bd=11&id=724&totable=1"}
+{"p":"104 年第 1 期", "url":"http://www.kyba.org.tw/board/showcontent.asp?bd=11&id=690&totable=1"},
+{"p":"106 年第 2 期", "url":"http://www.kyba.org.tw/board/showcontent.asp?bd=11&id=724&totable=1"}
 ];
 
 

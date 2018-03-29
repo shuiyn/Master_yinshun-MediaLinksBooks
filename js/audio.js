@@ -156,7 +156,7 @@ function cusPlay() {
 //	var aud = document.getElementById("myAudio");
 	nPlayStart = getMS("palyStart");
 	nPlayDuration = getMS("playDuration");
-	aud.currentTime = nPlayStart;//document.getElementById("palyStart").value;
+	aud.currentTime = nPlayStart;
 	aud.play();
 }
 
@@ -168,4 +168,24 @@ function cusPlay_JQ() {
 	aud.currentTime = 500; //$("#palyStart").value;
 //	aud.currentTime = document.getElementById("palyStart").value;
 //	aud.play();
+}
+
+function dotPlay(hms){
+	var a=hms.split(":");
+	var h=0,m=0;
+	var s=parseInt(a[a.length-1]);
+	if(a.length>2) h=parseInt(a[a.length-3]);
+	if(a.length>1) m=parseInt(a[a.length-2]);
+//	nPlayStart = getMS("palyStart");
+
+	aud.currentTime = (h*3600)+(m*60)+s;//nPlayStart;
+	aud.play();
+}
+
+
+function forbakward(mode){
+	if(mode==1)//後退
+		aud.currentTime-=10;
+	else
+		aud.currentTime+=10;
 }
