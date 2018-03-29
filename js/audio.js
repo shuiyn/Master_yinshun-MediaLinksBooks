@@ -8,12 +8,12 @@ function fillBook(){
 	var arr=initUsedBook(); //傳回 類別
 	var s='<select id="selBook" onchange="onBookChange(this);"> ';
 	
-	for(var b in arr){
-		s+= ' <option value="' + b + '">' + arr[b] + '</option>'
-	}
-//	for(var i=0; i< arr.length; i++) {
-//		s+= ' <option value="' + arr[i].id + '">' + arr[i].name + '</option>'
+//	for(var b in arr){
+//		s+= ' <option value="' + b + '">' + arr[b] + '</option>'
 //	}
+	for(var i=0; i< arr.length; i++) {
+		s+= ' <option value="' + arr[i].id + '" data-url="' + arr[i].url + '">' + arr[i].name + '</option>'
+	}
 	
 	s+=" </select>";
 	document.getElementById("dvBook").innerHTML = s;
@@ -23,6 +23,8 @@ function fillBook(){
 
 
 function onBookChange(e){
+	document.getElementById("bookURL").href = e.options[e.selectedIndex].getAttribute("data-url");
+
 	fillMasterCourse(e.value);
 }
 
@@ -36,7 +38,7 @@ function fillMasterCourse(bookId){
 	
 	s+=" </select>";
 	document.getElementById("dvMaster").innerHTML = s;
-	
+		
 	onMasterCourseChange(document.getElementById('selMaster'));
 }
 

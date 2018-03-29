@@ -10,9 +10,9 @@ var book_master_croom=[
 
 
 var books=[
-{"name":"佛法概論", "id":"ffgl"},
-{"name":"金剛經講記", "id":"jkjjj"},
-{"name":"成佛之道", "id":"cfzd"}
+{"name":"佛法概論", "id":"ffgl", "url":"http://www.mahabodhi.org/files/yinshun/21/yinshun21-01.html"},
+{"name":"金剛經講記", "id":"jkjjj", "url":"http://www.mahabodhi.org/files/yinshun/00/yinshun00-02.html"},
+{"name":"成佛之道", "id":"cfzd", "url":"http://www.mahabodhi.org/files/yinshun/10/yinshun10-01.html"}
 ];
 
 

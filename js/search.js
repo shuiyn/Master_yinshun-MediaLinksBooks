@@ -3,6 +3,7 @@
 var initUsedBook=function(){
 	var arr=book_master_croom;
 	var bk={}; //類別，書名 id
+	var out=[];
 	
 	for(var i=0; i<arr.length; i++){
 		var sutra=arr[i].book;
@@ -19,12 +20,13 @@ var initUsedBook=function(){
 			books.map(function(m){
 				if(m.id==sutra){
 					bk[sutra]=m.name;
+					out.push(m);
 					return; //map()內不可使用 break
 				}
 			});
 		}
 	}
-	return bk;
+	return out;//bk;
 }
 
 //目前已建有 課程 的書目
