@@ -95,9 +95,27 @@ var grabCourse=function(courseId, phaseId){
 }
 
 var grabYbkCont=function(bk, id){
-	var ybk=ybk_Diamond;
-	for(var i=0; i<ybk.length;i++){
-		if(ybk[i].id==id) return ybk[i].cnt;
+//	var ybk=ybk_Diamond;
+//	for(var i=0; i<ybk.length;i++){
+//		if(ybk[i].id==id) return ybk[i].cnt;
+//	}
+//grabYbkCont(null,"1.31~1.36")
+	var ybk=book_jkjjj;
+	var be=id.split("~");
+	if (!be[1]) be[1]="~~toEndOfFile";
+	
+	var bStart=false;
+	var out={};
+	for(var lineId in ybk){
+		if (!bStart) {
+			if (lineId==be[0]) bStart=true;
+		}
+
+		if (bStart) {
+			if (lineId==be[1]) break;
+			out[lineId]=ybk[lineId];
+		}
 	}
-	return "";
+	
+	return out;
 }

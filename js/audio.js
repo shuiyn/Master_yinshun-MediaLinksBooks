@@ -2,7 +2,7 @@
 var aud;
 var nPlayStart = 0;
 var nPlayDuration = 0;
-
+var mbIsPC = false;
 
 function fillBook(){
 	var arr=initUsedBook(); //傳回 類別
@@ -96,9 +96,76 @@ function onClassChange(e) {
 	
 	var bkid=e.options[e.selectedIndex].getAttribute("data-ybk");
 	if(!bkid) ctl.innerHTML="";
-	else ctl.innerHTML=grabYbkCont(null,bkid);
+	else {
+		var ct=grabYbkCont(null,bkid);
+		ctl.innerHTML = parseCont(ct);
+		/*var out=[];
+		for (var b in ct) {
+			out.push("<p>" + ct[b][0] + "</p>");
+		}
+		ctl.innerHTML=out.join("");//parseCont(ct);
+		*/
+	}
 }
 
+function parseCont(ct){
+	var out=[];
+	var swClass = (mbIsPC ? '<span class="srcwords_PC">' : '<span class="srcwords">');
+
+	for(var lineId in ct){
+		var aLine = ct[lineId];
+		var pg = aLine[0];
+		var fmt = aLine[1];
+		var stl=book_jkjjj_fmt[lineId];
+		var aHtmB={};//{"66":["<span...>",""]
+		var aHtmE={};
+
+		if (stl){
+			for (var i=0; i < stl.length; i++) {
+				var aSet = stl[i].split(/[~:]/);
+				if (aSet[2] == "sw") {
+					if (!aHtmB[aSet[0]]) aHtmB[aSet[0]]=[];
+					aHtmB[aSet[0]].push(swClass);
+					if (!aHtmE[aSet[1]]) aHtmE[aSet[1]]=[];
+					aHtmE[aSet[1]].push('</span>');
+				}
+			}
+		}
+		
+		var sNew = "";
+		
+		pg.replace(/./g, function(x,idx){
+			var bHtml = false;
+
+			if(aHtmE[idx]) {
+				bHtml = true;
+				sNew += x + aHtmE[idx].join("");
+			}
+			if(aHtmB[idx]) {
+				bHtml = true;
+				sNew += aHtmB[idx].join("") + x;
+			}
+			
+			if (!bHtml) sNew += x;
+		});
+
+		pg = sNew;
+		
+		if(fmt) {
+			if(fmt.search(/\d/)==0){
+				pg='<h3 style="color:blue;font-weight:bold">' + pg + "</h3>";
+			}
+		} else {
+			pg="<p>" + pg + "</p>";
+		}
+		
+		out.push(pg);
+	}
+	
+	return out.join("");
+}
+
+//<a href="http://yinshun-edu.org.tw/showimg.php?imgsrc=images/y01-18.png" target="_blank">【圖片】</a>
 
 function fillClass(out){
 	var s='<select id="selClass" onchange="onClassChange(this);"> ';
@@ -115,6 +182,13 @@ function fillClass(out){
 
 
 function onLoad() {
+	if ( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
+		mbIsPC = false;
+	} else {
+		mbIsPC = true;
+	}
+
+	document.getElementById("userAgentContent").innerHTML = navigator.userAgent;
 	aud = document.getElementById("myAudio");
 	aud.addEventListener("timeupdate", onTimeUpdate);
 	fillBook();
