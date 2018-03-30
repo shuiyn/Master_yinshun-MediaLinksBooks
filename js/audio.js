@@ -116,16 +116,28 @@ function parseCont(ct){
 		var aLine = ct[lineId];
 		var pg = aLine[0];
 		var fmt = aLine[1];
-		var stl=book_jkjjj_fmt[lineId];
+		var stl=book_fmt[lineId];
 		var aHtmB={};//{"66":["<span...>",""]
 		var aHtmE={};
 
 		if (stl){
 			for (var i=0; i < stl.length; i++) {
-				var aSet = stl[i].split(/[~:]/);
+				var aSet = stl[i].split(/[~,]/);
 				if (aSet[2] == "sw") {
 					if (!aHtmB[aSet[0]]) aHtmB[aSet[0]]=[];
 					aHtmB[aSet[0]].push(swClass);
+					if (!aHtmE[aSet[1]]) aHtmE[aSet[1]]=[];
+					aHtmE[aSet[1]].push('</span>');
+				}
+				else if (aSet[2] == "a") {
+					if (!aHtmB[aSet[0]]) aHtmB[aSet[0]]=[];
+					aHtmB[aSet[0]].push('<a href="'+ aSet[3] + '" target="_blank">');
+					if (!aHtmE[aSet[1]]) aHtmE[aSet[1]]=[];
+					aHtmE[aSet[1]].push('</a>');
+				}
+				else if (aSet[2] == "tbr") {
+					if (!aHtmB[aSet[0]]) aHtmB[aSet[0]]=[];
+					aHtmB[aSet[0]].push('<span class="textborder">');
 					if (!aHtmE[aSet[1]]) aHtmE[aSet[1]]=[];
 					aHtmE[aSet[1]].push('</span>');
 				}
@@ -153,7 +165,7 @@ function parseCont(ct){
 		
 		if(fmt) {
 			if(fmt.search(/\d/)==0){
-				pg='<h3 style="color:blue;font-weight:bold">' + pg + "</h3>";
+				pg='<h3 style="color:darkblue;font-weight:bold">' + pg + "</h3>";
 			}
 		} else {
 			pg="<p>" + pg + "</p>";
@@ -188,7 +200,11 @@ function onLoad() {
 		mbIsPC = true;
 	}
 
-	document.getElementById("userAgentContent").innerHTML = navigator.userAgent;
+	document.getElementById("forTest").value = navigator.userAgent;
+
+//	document.getElementById("content").height=document.body.scrollHeight/3*2;
+//		alert(document.body.scrollHeight + ", " + document.getElementById("content").height + ", " + document.getElementById("content").scrollHeight);
+	
 	aud = document.getElementById("myAudio");
 	aud.addEventListener("timeupdate", onTimeUpdate);
 	fillBook();
