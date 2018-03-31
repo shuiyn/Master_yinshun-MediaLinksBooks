@@ -32,5 +32,5 @@ for (var i=0; i<aLine.length; i++) {
 }
 
 //console.log("var course_list=\n" + JSON.stringify(out,""," "));
-fs.writeFileSync("cue_list.js", "var cue_list=\n" + JSON.stringify(out,""," "), "utf8");
+fs.writeFileSync("cue_List.js", "var cue_List=\n" + JSON.stringify(out,""," "), "utf8");
 

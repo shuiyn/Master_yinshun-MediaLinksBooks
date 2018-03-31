@@ -4,15 +4,13 @@ var nPlayStart = 0;
 var nPlayDuration = 0;
 var mbIsPC = false;
 
+//selBook: <value:bookId>bookName
 function fillBook(){
-	var arr=initUsedBook(); //傳回 類別
-	var s='<select id="selBook" onchange="onBookChange(this);"> ';
+	var arr = initUsedBook(); //傳回 類別
+	var s = '<select id="selBook" onchange="onBookChange(this);"> ';
 	
-//	for(var b in arr){
-//		s+= ' <option value="' + b + '">' + arr[b] + '</option>'
-//	}
-	for(var i=0; i< arr.length; i++) {
-		s+= ' <option value="' + arr[i].id + '" data-url="' + arr[i].url + '">' + arr[i].name + '</option>'
+	for(var b in arr){
+		s+= ' <option value="' + b + '">' + arr[b] + '</option>'
 	}
 	
 	s+=" </select>";
@@ -24,36 +22,42 @@ function fillBook(){
 
 function onBookChange(e){
 //	document.getElementById("bookURL").href = e.options[e.selectedIndex].getAttribute("data-url");
-
-	fillMasterCourse(e.value);
+	fillLecture(e.value);
 }
 
-function fillMasterCourse(bookId){
-	var arr=initMasterCourses(bookId);
 
-	var s='<select id="selMaster" onchange="onMasterCourseChange(this);"> ';
-	for(var i=0; i< arr.length; i++) {
-		s+= ' <option value="' + arr[i].id + '">' + arr[i].title + '</option>'
+//selLecture: <value:lectureId>master_byear_croom
+function fillLecture(bkid){
+	var lecs=grabLecture(bkid);
+
+	var s='<select id="selLecture" onchange="onLectureChange(this);"> ';
+	for(var lecId in lecs) {
+		s+= ' <option value="' + lecId + '">' + lecs[lecId] + '</option>'
 	}
 	
 	s+=" </select>";
-	document.getElementById("dvMaster").innerHTML = s;
+	document.getElementById("dvLecture").innerHTML = s;
 		
-	onMasterCourseChange(document.getElementById('selMaster'));
+	onLectureChange(document.getElementById('selLecture'));
 }
 
 
-function onMasterCourseChange(e){
+
+function onLectureChange(e){
 	fillPhase(e.value);
 }
 
-function fillPhase(courseId){
-	var arr=grabPhaseById(courseId);
-	var s='<select id="selPhase" onchange="onPhaseChange(this);"> ';
+
+
+function fillPhase(lecId){
+	var phs=grabPhase(lecId);
+	var masterId=phs[0];
+	var arr=phs[1];
+	var s='<select id="selPhase" onchange="onPhaseChange(this)" ' + '" data-masterId="' + masterId + '"> ';
 	
-	if(arr){
+	if (arr) {
 		for(var i=0; i< arr.length; i++) {
-			s+= ' <option value="' + arr[i].url + '">' + arr[i].p + '</option>'
+			s+= ' <option value="' + arr[i].url + '" data-phid="' + arr[i].id+ '">' + arr[i].t + '</option>'
 		}
 	}
 	s+=" </select>";
@@ -62,25 +66,47 @@ function fillPhase(courseId){
 	onPhaseChange(document.getElementById('selPhase'));
 }
 
+
 function onPhaseChange(e) {
 //{"item":"ffgl", "master":"kr", "croom":"pn", "period":"9"}
-	document.getElementById('goSite').href=e.value;
-	var courseId=document.getElementById('selMaster').value;
-	
-	var pa=e.options[e.selectedIndex].text.match(/\d+/g);
-	var p=pa[pa.length-1];
-	
-//var tofind = {"item":"ffgl", "master":"kr", "croom":"pn"};//, "period":"9"};
-//	tofind.period = p;
-	var out = grabCourse(courseId, p);//search(tofind);
+	document.getElementById('goSite').href = e.value;
+	var phId=e.options[e.selectedIndex].getAttribute("data-phid");
+	var bkId = document.getElementById('selBook').value;
+	var masterId = e.getAttribute("data-masterId");
+//	console.log("bkId", bkId,"phId",phId,"masterId",masterId);
 
-	fillClass(out);
+	var out = grabLesson(masterId, bkId, phId);
+	
+	fillLesson(out, masterId, bkId, phId);
 }
 
 
 
+function fillLesson(out, masterId, bkId, phId){
+ 	var bGroup = false;
 
-function onClassChange(e) {
+	var s='<select id="selLesson" onchange="onLessonChange(this)" '+ 'data-mbpId="' + [masterId, bkId, phId].join(",") + '"> ';
+	for(var i=0; i< out.length; i++) {
+		var bkid=(out[i].ybk ? out[i].ybk : "");
+		if (out[i].url) {
+		s+= '<option value="' + out[i].url + '" data-ybk="' +bkid+ '">' + out[i].d + '</option>';
+		} else {
+			if (bGroup) s+= '</optgroup>';
+			
+			s += '<optgroup label="' + out[i].d + '">';
+			bGroup = true;
+		}
+	}
+	if (bGroup) s+= '</optgroup>';
+	s+=" </select>";
+	document.getElementById("dvLesson").innerHTML = s;
+
+	onLessonChange(document.getElementById('selLesson'));
+}
+
+
+
+function onLessonChange(e) {
 	var ctl=document.getElementById("content");
 
 	if(!e.value){
@@ -93,20 +119,38 @@ function onClassChange(e) {
 	aud.src=e.value;
 	nPlayStart = 0;
 	nPlayDuration = 0;
+
+	var mbpId=e.getAttribute("data-mbpId");
+	fillCue(mbpId, e.value); // e.value == url
 	
 	var bkid=e.options[e.selectedIndex].getAttribute("data-ybk");
 	if(!bkid) ctl.innerHTML="";
 	else {
 		var ct=grabYbkCont(null,bkid);
 		ctl.innerHTML = parseCont(ct);
-		/*var out=[];
-		for (var b in ct) {
-			out.push("<p>" + ct[b][0] + "</p>");
-		}
-		ctl.innerHTML=out.join("");//parseCont(ct);
-		*/
 	}
 }
+
+
+
+function fillCue(mbpId, url){
+	var eCue=document.getElementById("cueList");
+	var mp3Main = url.slice(url.lastIndexOf("/")+1, url.lastIndexOf("."));
+	var mbp = mbpId.split(",");
+	var aCuePoint = grabCue(mbp[0], mbp[1], mbp[2], mp3Main);
+	
+	if (aCuePoint) {
+		aCuePoint.map(function(x){
+			var opt = document.createElement("option");
+			opt.text = x;
+			eCue.add(opt);
+		});
+	} else {
+		while (eCue.length > 0) eCue.remove(0);
+	}
+}
+
+
 
 function parseCont(ct){
 	var out=[];
@@ -177,33 +221,10 @@ function parseCont(ct){
 	return out.join("");
 }
 
-//<a href="http://yinshun-edu.org.tw/showimg.php?imgsrc=images/y01-18.png" target="_blank">【圖片】</a>
-
-function fillClass(out){
- 	var bGroup = false;
- 	
-	var s='<select id="selClass" onchange="onClassChange(this);"> ';
-	for(var i=0; i< out.length; i++) {
-		var bkid=(out[i].ybk ? out[i].ybk : "");
-		if (out[i].url) {
-		s+= '<option value="' + out[i].url + '" data-ybk="' +bkid+ '">' + out[i].d + '</option>';
-		} else {
-			if (bGroup) s+= '</optgroup>';
-			
-			s += '<optgroup label="' + out[i].d + '">';
-			bGroup = true;
-		}
-	}
-	if (bGroup) s+= '</optgroup>';
-	s+=" </select>";
-	document.getElementById("dvClass").innerHTML = s;
-
-	onClassChange(document.getElementById('selClass'));
-}
 
 
 function onLoad() {
-	if ( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
+	if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
 		mbIsPC = false;
 	} else {
 		mbIsPC = true;
@@ -225,7 +246,6 @@ function onTimeUpdate() {
 //	document.getElementById("palyLength").value = aud.currentTime;
 	if(aud.currentTime > (nPlayStart+nPlayDuration)) {
 		aud.pause();
-//		alert("End");
 	}
 }
 

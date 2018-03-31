@@ -8,10 +8,11 @@
 
 	<script src="js/book.js"></script>
 	<script src="js/book_fmt.js"></script>
+	<script src="js/base_List.js"></script>
 	<script src="js/lesson_List.js"></script>
-	<script src="js/cue_list.js"></script>
+	<script src="js/cue_List.js"></script>
+	<script src="js/lecture_List.js"></script>
 	<script src="js/diamond.js"></script>
-	<script src="js/dataSrc.js"></script>
 	<script src="js/search.js"></script>
 	<script src="js/audio.js"></script>
 	
@@ -33,17 +34,17 @@
 <table border="0" style="padding:5px;background-color:#EEFFFF;">
 <tr>
 <td id="dvBook"></td>
-<td id="dvMaster"></td>
+<td id="dvLecture"></td>
 <tr>
 
 <tr>
 <td colspan="2" style="text-align:right;"><a id="goSite" href="" target="_blank">到源網頁</a>
 <span id="dvPhase"></span>
-<span id="dvClass"></span>
+<span id="dvLesson"></span>
 </tr>
 <!--<td style="text-align:right;"><a id="goSite" href="" target="_blank">到此頁</a>
 <td id="dvPhase"></td>
-<td id="dvClass"></td>
+<td id="dvLesson"></td>
 </tr>
 --></table>
 
@@ -76,13 +77,6 @@
 <br/>
 <button onclick="confirm('del cue?')">✖</button>
 <select id="cueList" style="width:12em;">
-<option>03:02 懸論</option>
-<option>18:38 一 釋 經 題</option>
-<option>23:17 一／二、般若</option>
-<option>25:55 一／二／(一)、何者般若</option>
-<option>28:35 白板：一切種智</option>
-<option>33:44 三種示現：教誡、他心、神足示現</option>
-<option>36:05  一／二／(一)／(1)實相般若</option>
 </select>
 <button onclick="cuePointPlay();">↖</button>
 <button onclick="prompt('cue');">cue</button>

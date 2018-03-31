@@ -1,4 +1,4 @@
-var cue_list=
+var cue_List=
 {
  "zh": {
   "jkjjj": {

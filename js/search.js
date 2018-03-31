@@ -1,62 +1,28 @@
 
 //目前已建有 課程 的書目，非整個 books
 var initUsedBook=function(){
-	var arr=book_master_croom;
-	var bk={}; //類別，書名 id
-	var out=[];
+	var out={}; //{bkid:bkName, ...}
 	
-	for(var i=0; i<arr.length; i++){
-		var sutra=arr[i].book;
+	for(var id in lecture_List){
+		var bkid = lecture_List[id].bkid;
+		
+		if (!out[bkid]) {
 		//取得中文書名
-		if(!bk[sutra]){
-			/*
-			for(var j=0; j<books.length; j++){
-				if(books[j].id==sutra){
-					bk[sutra]=books[j].name;
-					break;
-				}
-			}*/
-			
-			books.map(function(m){
-				if(m.id==sutra){
-					bk[sutra]=m.name;
-					out.push(m);
-					return; //map()內不可使用 break
-				}
-			});
+			out[bkid] = base_List.books[bkid];
 		}
 	}
-	return out;//bk;
+	
+	return out;
 }
 
-//目前已建有 課程 的書目
-var initMasterCourses=function(bk){
-	var arr=book_master_croom;
-	var lst=[]; //id:0001, 開仁法師 104 般若精舍
-	var item={};
-	
-	for(var i=0; i<arr.length; i++){
-		if(arr[i].book==bk){
-			item={};
-			item.id=arr[i].id;
 
-			masters.map(function(m){
-				if(m.id==arr[i].master){
-					item.title=m.name;
-					return; //map()內不可使用 break
-				}
-			});
-			
-			item.title+=" " + arr[i].byear + "年 ";
 
-			crooms.map(function(m){
-				if(m.id==arr[i].croom){
-					item.title+=m.name;
-					return; //map()內不可使用 break
-				}
-			});
-			
-			lst.push(item);
+var grabLecture=function(bkid){
+	var lst={}; //id:0001, 開仁法師 104 般若精舍
+	for (var id in lecture_List) {
+		var lec=lecture_List[id];
+		if (lec.bkid == bkid) {
+			lst[id] = [base_List.masters[lec.master], lec.byear, base_List.crooms[lec.croom]].join(" ");
 		}
 	}
 	return lst;
@@ -64,35 +30,17 @@ var initMasterCourses=function(bk){
 
 
 
-var grabPhaseById=function(courseId){
-	var arr=null;
-	try{
-		arr= eval("phase_"+courseId);
-	}
-	catch(e){
-	}
-	return arr;
+var grabPhase=function(lecId){
+	return [lecture_List[lecId].master, lecture_List[lecId].phase];
 }
 
-var grabCourse=function(courseId, phaseId){
-	var arr=null;
-	try{
-		arr= eval("course_"+courseId);
-	}
-	catch(e){
-		return;
-	}
-	
-	var out=[];
-	
-	for(var i=0; i<arr.length; i++){
-		if(arr[i].p==phaseId){
-			out.push(arr[i]);
-		}
-	}
-	
-	return out;
+
+
+var grabLesson=function(masterId, bkId, phId){
+	return lesson_List[masterId][bkId][phId];
 }
+
+
 
 var grabYbkCont=function(bk, id){
 //	var ybk=ybk_Diamond;
@@ -118,4 +66,14 @@ var grabYbkCont=function(bk, id){
 	}
 	
 	return out;
+}
+
+
+
+var grabCue=function(masterId, bkId, phId, mp3Id){
+	console.log(masterId, bkId, phId, mp3Id);
+	if (cue_List[masterId])
+		if (cue_List[masterId][bkId])
+			if (cue_List[masterId][bkId][phId])
+				return cue_List[masterId][bkId][phId][mp3Id];
 }
