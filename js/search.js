@@ -71,7 +71,7 @@ var grabYbkCont=function(bk, id){
 
 
 var grabCue=function(masterId, bkId, phId, mp3Id){
-	console.log(masterId, bkId, phId, mp3Id);
+//	console.log(masterId, bkId, phId, mp3Id);
 	if (cue_List[masterId])
 		if (cue_List[masterId][bkId])
 			if (cue_List[masterId][bkId][phId])
