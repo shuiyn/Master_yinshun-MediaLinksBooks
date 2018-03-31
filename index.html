@@ -8,6 +8,8 @@
 
 	<script src="js/book.js"></script>
 	<script src="js/book_fmt.js"></script>
+	<script src="js/lesson_List.js"></script>
+	<script src="js/cue_list.js"></script>
 	<script src="js/diamond.js"></script>
 	<script src="js/dataSrc.js"></script>
 	<script src="js/search.js"></script>
@@ -16,7 +18,7 @@
 	<style>
 	select {padding:3px;font-size:100%;}
 	.srcwords_PC { font-family:標楷體; font-size:110%; font-weight:bold;}
-	.srcwords { font-family:標楷體; font-size:110%; font-weight:bold; color:MidnightBlue}
+	.srcwords { font-family:標楷體; font-size:110%; font-weight:bold; color:Sienna;} /* MidnightBlue*/
 /* 文字框線，行動裝置無法顯示 */
 	.textborder { border-style: solid;border-width: 1px;padding: 1px;}
 	.textborder_PC { border-style: solid;border-width: 1px;padding: 1px;}
@@ -60,17 +62,17 @@
 </div>
 
 <div style="padding:5px;background-color:#F8EACE;">
-起播<input id="palyStartH" type="number" value="0" onblur="" style="width:2em;"></input>時
-<input id="palyStartM" type="number" value="0" style="width:2.5em;"></input>分
-<input id="palyStartS" type="number" value="0" style="width:2.5em;"></input>秒<button onclick="cusPlay();">重播</button>
-<button id="forTest" onclick="alert(this.value);">裝置</button>
+起播<input id="palyStartH" type="number" value="0"  min="0" max="23" style="width:2em;"></input>時
+<input id="palyStartM" type="number" value="0" min="0" max="59" style="width:2.5em;"></input>分
+<input id="palyStartS" type="number" value="0" min="0" max="59" style="width:2.5em;"></input>秒<button onclick="cusPlay();">重播</button>
+<button id="forTest" onclick="alert(document.all.palyStartS.value);">裝置</button>
 <br/>
 
-<!--結束時間<input id="playEnd" type="text"  style="width:2em;"></input>-->
-<input type="time" id="myTime" step="1" value="00:00:00">
-長度<input id="playLengthH" type="number" value="0" onblur="" style="width:2em;"></input>時
-<input id="playLengthM" type="number" value="0" style="width:2.5em;"></input>分
-<input id="playLengthS" type="number" value="0" style="width:2.5em;"></input>秒
+<!--<input type="time" id="myTime" step="1" value="00:00:00">-->
+
+長度<input id="playLengthH" type="number" value="0" min="0" max="23" style="width:2em;"></input>時
+<input id="playLengthM" type="number" value="0" min="0" max="59" style="width:2.5em;"></input>分
+<input id="playLengthS" type="number" value="0" min="0" max="59" style="width:2.5em;"></input>秒
 <br/>
 <button onclick="confirm('del cue?')">✖</button>
 <select id="cueList" style="width:12em;">

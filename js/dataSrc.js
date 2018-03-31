@@ -1,4 +1,54 @@
 
+
+//lecture 為陣列，餘為 類別
+var lecture_List = [
+//宗恒 金剛經 教授班
+	{"book":"jkjjj", "master":"zh", "croom":"pn", "phase":[
+{"id":"pn1041223", "t":"104 年第 1 期", "url":"http://www.kyba.org.tw/board/showcontent.asp?bd=11&id=690&totable=1"},
+{"id":"pn1060913", "t":"106 年第 2 期", "url":"http://www.kyba.org.tw/board/showcontent.asp?bd=11&id=724&totable=1"}
+		]
+	},
+	
+//開仁 佛法概論 般若精舍	
+	{"book":"ffgl", "master":"kr", "croom":"pn", "phase":[
+{"id":"pn1040321", "t":"104 年第 8 期", "url":"http://www.kyba.org.tw/board/showcontent.asp?bd=11&id=687&totable=1"},
+{"id":"pn1050910", "t":"105 年第 9 期", "url":"http://www.kyba.org.tw/board/showcontent.asp?bd=11&id=694&totable=1"},
+{"id":"pn1060318", "t":"106 年第 10 期", "url":"http://www.kyba.org.tw/board/showcontent.asp?bd=11&id=710&totable=1"},
+{"id":"pn1060916", "t":"106 年第 11 期","url":"http://www.kyba.org.tw/board/showcontent.asp?bd=11&id=725&totable=1"}
+		]
+	},
+
+//開仁 佛法概論 慧日講堂	
+	{"book":"ffgl", "master":"kr", "croom":"wl", "phase":[
+{"id":"wl20090918", "t":"98 年第 1 期", "url":"http://video.lwdh.org.tw/html/ffgl/ffgl01.html"},
+{"id":"wl20100305", "t":"99 年第 2 期", "url":"http://video.lwdh.org.tw/html/ffgl/ffgl02.html"}
+		]
+	}
+]
+
+
+//{"books":[], "master":[], "croom":[]}
+//base_List.book[1].id
+
+var base_List = {
+"book":[
+	{"name":"佛法概論", "id":"ffgl"},
+	{"name":"金剛經講記", "id":"jkjjj"},
+	{"name":"成佛之道", "id":"cfzd"}
+],
+
+"master":[
+{"name":"開仁法師", "id":"kr"},
+{"name":"宗恒法師", "id":"zh"}
+],
+
+"croom":[
+{"name":"慧日講堂", "id":"wl"},
+{"name":"福嚴佛學院", "id":"fy"},
+{"name":"般若精舍", "id":"pn"}
+]
+}
+	
 //以此 data 為中心出發點，往上、下組織相關資料集 phase、course
 //各書的授課法師、地點、[初授日]
 var book_master_croom=[
@@ -31,7 +81,7 @@ var crooms=[
 
 
 //宗恒 金剛經講記 期別 title、phase、url
-var phase_0003=[
+var 0003=[
 {"p":"104 年第 1 期", "url":"http://www.kyba.org.tw/board/showcontent.asp?bd=11&id=690&totable=1"},
 {"p":"106 年第 2 期", "url":"http://www.kyba.org.tw/board/showcontent.asp?bd=11&id=724&totable=1"}
 ];
@@ -40,9 +90,9 @@ var phase_0003=[
 //宗恒 金剛經講記 課堂別
 //url=="" 者，只供顯示、點選之 handler 不回應處理
 var course_0003=[
-{"p":"1", "d":"　104 年", "url":""},
+{"p":"1", "d":"104 年", "url":""},
 {"p":"1", "d":"12-23", "ybk-o":"01-01-01", "ybk":"1.1~1.31", "url":"http://220.130.244.41:8080/Study/DiamondSutra/1041223.mp3"},
-{"p":"1", "d":"　105 年", "url":""},
+{"p":"1", "d":"105 年", "url":""},
 {"p":"1", "d":"01-13: 1　", "ybk-o":"01-01-02", "ybk":"1.1~1.31", "url":"http://220.130.244.41:8080/Study/DiamondSutra/1050113-1.mp3"},
 {"p":"1", "d":"01-13: 2", "ybk":"1.31~1.36", "url":"http://220.130.244.41:8080/Study/DiamondSutra/1050113-2.mp3"},
 {"p":"1", "d":"01-27: 1", "url":"http://220.130.244.41:8080/Study/DiamondSutra/1050127-1.mp3"},
@@ -75,7 +125,7 @@ var course_0003=[
 {"p":"1", "d":"12-14: 2", "url":"http://220.130.244.41:8080/Study/DiamondSutra/1051214-2.mp3"},
 {"p":"1", "d":"12-28: 1", "url":"http://220.130.244.41:8080/Study/DiamondSutra/1051228-1.mp3"},
 {"p":"1", "d":"12-28: 2", "url":"http://220.130.244.41:8080/Study/DiamondSutra/1051228-2.mp3"},
-{"p":"1", "d":"　106 年", "url":""},
+{"p":"1", "d":"106 年", "url":""},
 {"p":"1", "d":"01-11: 1", "url":"http://220.130.244.41:8080/Study/DiamondSutra/1060111-1.mp3"},
 {"p":"1", "d":"01-11: 2", "url":"http://220.130.244.41:8080/Study/DiamondSutra/1060111-2.mp3"},
 {"p":"1", "d":"03-01: 1", "url":"http://220.130.244.41:8080/Study/DiamondSutra/1060301-1.mp3"},
@@ -95,7 +145,7 @@ var course_0003=[
 {"p":"1", "d":"06-28: 1", "url":"http://220.130.244.41:8080/Study/DiamondSutra/1060628-1.mp3"},
 {"p":"1", "d":"06-28: 2", "url":"http://220.130.244.41:8080/Study/DiamondSutra/1060628-2.mp3"},
 
-{"p":"2", "d":"　106 年", "url":""},
+{"p":"2", "d":"106 年", "url":""},
 {"p":"2", "d":"09-13: 1　", "url":"http://220.130.244.41:8080/Study/DiamondSutra/1060913-1.mp3"},
 {"p":"2", "d":"09-13: 2", "url":"http://220.130.244.41:8080/Study/DiamondSutra/1060913-2.mp3"},
 {"p":"2", "d":"09-27: 1", "url":"http://220.130.244.41:8080/Study/DiamondSutra/1060927-1.mp3"},
@@ -113,7 +163,7 @@ var course_0003=[
 {"p":"2", "d":"12-27: 1", "url":"http://220.130.244.41:8080/Study/DiamondSutra/1061227-1.mp3"},
 {"p":"2", "d":"12-27: 2", "url":"http://220.130.244.41:8080/Study/DiamondSutra/1061227-2.mp3"},
 
-{"p":"2", "d":"　107 年", "url":""},
+{"p":"2", "d":"107 年", "url":""},
 {"p":"2", "d":"01-10: 1", "url":"http://220.130.244.41:8080/Study/DiamondSutra/1070110-1.mp3"},
 {"p":"2", "d":"01-10: 2", "url":"http://220.130.244.41:8080/Study/DiamondSutra/1070110-2.mp3"},
 {"p":"2", "d":"01-24: 1", "url":"http://220.130.244.41:8080/Study/DiamondSutra/1070124-1.mp3"},
@@ -131,7 +181,7 @@ var course_0003=[
 
 
 //開仁 佛法概論 期別
-var phase_0001=[
+var 0001=[
 {"p":"104 年第 8 期", "url":"http://www.kyba.org.tw/board/showcontent.asp?bd=11&id=687&totable=1"},
 {"p":"105 年第 9 期", "url":"http://www.kyba.org.tw/board/showcontent.asp?bd=11&id=694&totable=1"},
 {"p":"106 年第 10 期", "url":"http://www.kyba.org.tw/board/showcontent.asp?bd=11&id=710&totable=1"},
@@ -267,4 +317,5 @@ var course_0002=[
 {"p":"2", "d":"025A", "url":"http://media.lwdh.org.tw/mp3/lwdh/ffgl/ffgl2/ffgl025A(20100611).mp3"},
 {"p":"2", "d":"025B", "url":"http://media.lwdh.org.tw/mp3/lwdh/ffgl/ffgl2/ffgl025B(20100611).mp3"}
 ];
+
 

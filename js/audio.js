@@ -180,12 +180,21 @@ function parseCont(ct){
 //<a href="http://yinshun-edu.org.tw/showimg.php?imgsrc=images/y01-18.png" target="_blank">【圖片】</a>
 
 function fillClass(out){
+ 	var bGroup = false;
+ 	
 	var s='<select id="selClass" onchange="onClassChange(this);"> ';
 	for(var i=0; i< out.length; i++) {
 		var bkid=(out[i].ybk ? out[i].ybk : "");
-		s+= ' <option value="' + out[i].url + '" data-ybk="' +bkid+ '">' + out[i].d + '</option>';
+		if (out[i].url) {
+		s+= '<option value="' + out[i].url + '" data-ybk="' +bkid+ '">' + out[i].d + '</option>';
+		} else {
+			if (bGroup) s+= '</optgroup>';
+			
+			s += '<optgroup label="' + out[i].d + '">';
+			bGroup = true;
+		}
 	}
-	
+	if (bGroup) s+= '</optgroup>';
 	s+=" </select>";
 	document.getElementById("dvClass").innerHTML = s;
 
