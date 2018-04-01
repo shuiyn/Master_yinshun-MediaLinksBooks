@@ -1,5 +1,5 @@
 
-var aud;
+var aud, tblShowYin, ctlShowYin, tblShowAux, ctlShowAux;
 var nPlayStart = 0;
 var nPlayDuration = 0;
 var mbIsPC = false;
@@ -235,6 +235,10 @@ function onLoad() {
 //	document.getElementById("content").height=document.body.scrollHeight/3*2;
 //		alert(document.body.scrollHeight + ", " + document.getElementById("content").height + ", " + document.getElementById("content").scrollHeight);
 	
+	tblShowYin = document.getElementById("tblShowYin");
+	tblShowAux = document.getElementById("tblShowAux");
+	ctlShowYin = document.getElementById("content");
+	ctlShowAux = document.getElementById("auxPanel");
 	aud = document.getElementById("myAudio");
 	aud.addEventListener("timeupdate", onTimeUpdate);
 	fillBook();
@@ -288,6 +292,8 @@ function cusPlay() {
 	aud.currentTime = nPlayStart;
 	aud.play();
 }
+
+
 
 function cusPlay_JQ() {
 //	var aud = document.getElementById("myAudio");
@@ -345,3 +351,89 @@ function cuePointPlay(){
 	aud.currentTime=ct;//parseInt(aHms[0])*60+parseInt(aHms[1]);
 	aud.play();
 }
+
+
+function OpenBook() {
+	var fn = "真常大我_真常妙有";
+	//var fs=require("fs");
+	//var aLine = fs.readFileSync("data/" + fn + "_pure.txt", "utf8").split(/\r?\n/);
+	//var lstParaLine = JSON.parse(fs.readFileSync("data/" + fn + ".json", "utf8"));
+
+	var aLine = auxData_List[fn];
+	var lstParaLine = auxJSON_List[fn];
+
+	var doParseBR=function(sPara, nParaIdx){
+	var aBrIdx = lstParaLine[nParaIdx];
+//	var aBrIdx = lstParaLine.P[nParaIdx];
+	
+	var sRet = "";
+	
+	if (!aBrIdx || ((aBrIdx.length == 1) && (aBrIdx[0].startsWith("F")))) {
+		sRet = sPara;
+	} else {
+		//從倒數第 2 個往前找，最後 1 個是該段末，不加換列符
+		var nLastFrom = aBrIdx.length - 2;
+		
+		sPara.replace(/./g, function(x, nCharIdx){
+			var nIdx = aBrIdx.findIndex(function(s){return (s=="F" + nCharIdx) || (s=="T" + nCharIdx)});
+//			if (aBrIdx.lastIndexOf(nCharIdx, nLastFrom) > -1) {
+			if (nIdx > -1) {
+				if (aBrIdx[nIdx].startsWith("T")) {
+					sRet += "<br/>" + x; //定位於 line.length
+					//如定位於字本身的 index，應 += x + "<br/>"
+				} else {
+					if (nIdx < aBrIdx.length - 1)
+						sRet += '<br class="falseBR" />' + x;
+					else
+						sRet += x;
+				}
+			} else {
+				sRet += x;
+			}
+		});
+	}
+	
+	return "<p>" + sRet + "</p>";
+	}
+
+	var out = aLine.map(doParseBR);
+
+//	ctlShowAux.innerHTML = out.join("").replace(/\[p\d+\]/g,"<hr/>");
+	ctlShowAux.innerHTML = out.join("").replace(/\[p\d+\]/g,function(x){
+		return '<hr/><p style="color:blue;">' + x + "</p>";
+	});
+	toggleAux();
+	toggleBR();
+}
+
+
+
+function toggleAux(){
+	var btn = document.getElementById("toggleAux");
+
+	if (btn.innerHTML == "輔") {
+		btn.innerHTML = "文";
+		tblShowYin.style.visibility = "visible";
+		ctlShowYin.style.visibility = "visible";
+			//visibility:collapse,visibility:visible,visibility:hidden
+		tblShowAux.style.visibility = "collapse";
+		ctlShowAux.style.visibility = "hidden";
+	} else {
+		if (!ctlShowAux.innerHTML) OpenBook();
+
+		btn.innerHTML = "輔";
+		ctlShowYin.style.visibility = "hidden";
+		tblShowYin.style.visibility = "collapse";
+		ctlShowAux.style.visibility = "visible";
+		tblShowAux.style.visibility = "visible";
+	}
+}
+
+function toggleBR(){
+	var a = ctlShowAux.getElementsByClassName("falseBR");
+	var sDisp = ctlShowAux.getAttribute("brMode");
+	sDisp = (sDisp=="none" ? "block" : "none");
+	ctlShowAux.setAttribute("brMode", sDisp);
+	for(var i=0; i < a.length; i++) a[i].style.display = sDisp;
+}
+
