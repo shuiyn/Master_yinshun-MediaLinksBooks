@@ -74,9 +74,9 @@ var auxJSON_List = {
   "F574"
  ],
  "5": [
-  null,
-  null,
-  null,
+  "T9",
+  "T33",
+  "T57",
   "F90"
  ],
  "6": [

@@ -139,15 +139,17 @@ function fillCue(mbpId, url){
 	var mbp = mbpId.split(",");
 	var aCuePoint = grabCue(mbp[0], mbp[1], mbp[2], mp3Main);
 	
+	while (eCue.length > 0) eCue.remove(0);
+	
 	if (aCuePoint) {
 		aCuePoint.map(function(x){
 			var opt = document.createElement("option");
 			opt.text = x;
 			eCue.add(opt);
 		});
-	} else {
+	}/* else {
 		while (eCue.length > 0) eCue.remove(0);
-	}
+	}*/
 }
 
 
@@ -218,7 +220,10 @@ function parseCont(ct){
 		out.push(pg);
 	}
 	
-	return out.join("");
+//	return out.join("");
+	return out.join("").replace(/\[p\d+\]/g,function(x){
+		return '<hr/><p style="color:blue;">' + x + "</p>";
+	});
 }
 
 
@@ -372,7 +377,7 @@ function OpenBook() {
 		sRet = sPara;
 	} else {
 		//從倒數第 2 個往前找，最後 1 個是該段末，不加換列符
-		var nLastFrom = aBrIdx.length - 2;
+//		var nLastFrom = aBrIdx.length - 2;
 		
 		sPara.replace(/./g, function(x, nCharIdx){
 			var nIdx = aBrIdx.findIndex(function(s){return (s=="F" + nCharIdx) || (s=="T" + nCharIdx)});
@@ -430,10 +435,20 @@ function toggleAux(){
 }
 
 function toggleBR(){
+	var btn = document.getElementById("toggleBR");
+
 	var a = ctlShowAux.getElementsByClassName("falseBR");
-	var sDisp = ctlShowAux.getAttribute("brMode");
-	sDisp = (sDisp=="none" ? "block" : "none");
-	ctlShowAux.setAttribute("brMode", sDisp);
+	var sDisp;// = ctlShowAux.getAttribute("brMode");
+//	sDisp = (sDisp=="none" ? "block" : "none");
+	if (btn.innerHTML == "段") {
+		btn.innerHTML = "行";
+		sDisp = "block";
+	} else {
+		btn.innerHTML = "段";
+		sDisp = "none";
+	}
+	
+//	ctlShowAux.setAttribute("brMode", sDisp);
 	for(var i=0; i < a.length; i++) a[i].style.display = sDisp;
 }
 

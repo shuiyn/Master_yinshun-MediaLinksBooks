@@ -77,7 +77,7 @@
 <input id="playLengthM" type="number" value="0" min="0" max="59" style="width:2.5em;"></input>分
 <input id="playLengthS" type="number" value="0" min="0" max="59" style="width:2.5em;"></input>秒
 <br/>
-<button onclick="toggleBR()">段</button>
+<button id="toggleBR" onclick="toggleBR()">行</button>
 <!--<button onclick="confirm('del cue?')">✖</button>-->
 <select id="cueList" style="width:12em;">
 </select>
@@ -109,13 +109,20 @@ http://www.mahabodhi.org/files/yinshun/00/yinshun00-02.html
 
 display:none;
 -->
+<!--
+<div id="YA" style="position:relative;">
+<div id="content" style="position:relative;top:0px;z-index:1;visibility:visible;letter-spacing:1.5pt;overflow-Y:scroll;padding:5px;line-height:1.4;font-size:medium;width:100%;height:12em; border-width:0 1px 1px 1px;border-style:solid;"></div>
 
+<div id="auxPanel" brMode="block" style="position:relative;top:0px;z-index:0;visibility:hidden;letter-spacing:1.5pt;overflow-Y:scroll;padding:5px;line-height:1.4;font-size:medium;width:100%;height:12em; border-width:0 1px 1px 1px;border-style:solid;"></div>
+</div>
+-->
 <table id="tblShowYin" width="100%" border="0" style="visibility:visible;"><tr><td>
-<div id="content" style="visibility:visible;letter-spacing:1.5pt;overflow-Y:scroll;padding:5px;line-height:1.4;font-size:medium;width:100%;height:12em; border-width:0 1px 1px 1px;border-style:solid;"></div>
+<div id="content" style="visibility:visible;letter-spacing:1.5pt;overflow-Y:scroll;padding:5px;line-height:1.8;font-size:medium;width:100%;height:14em; border-width:0 1px 1px 1px;border-style:solid;"></div>
 </td></tr></table>
 
 <table id="tblShowAux" width="100%" border="0" style="visibility:collapse;"><tr><td>
-<div id="auxPanel" brMode="block" style="visibility:hidden;letter-spacing:1.5pt;overflow-Y:scroll;padding:5px;line-height:1.4;font-size:medium;width:100%;height:12em; border-width:0 1px 1px 1px;border-style:solid;"></div>
+<div id="auxPanel" style="visibility:hidden;letter-spacing:1.5pt;overflow-Y:scroll;padding:5px;line-height:1.4;font-size:medium;width:100%;height:14em; border-width:0 1px 1px 1px;border-style:solid;"></div>
+</div>
 </td></tr></table>
 
 <!--<span onclick="dotPlay('03:50');">◆</span>摩訶般若波羅蜜經<br/>
@@ -126,15 +133,17 @@ display:none;
 <!--摩訶般若波羅蜜經
 第十二期（龍樹說譬喻、摩訶般若波羅蜜經、雜阿含經論會編）
 <a href="http://www.kyba.org.tw/board/showcontent.asp?bd=11&id=731&totable=1">107年第12期</a>
--->
 <hr/>
+-->
 
+<div>
 <a href="http://yinshun-edu.org.tw/Master_yinshun/books" target="_blank">印順文教基金會推廣教育中心</a><br/>
 
 <a href="http://video.lwdh.org.tw/index.html" target="_blank">慧日講堂影音下載</a><br/>
 <a href="http://www.fuyan.org.tw/" target="_blank">福嚴佛學院</a><br/>
 <a href="http://www.kyba.org.tw/index.asp" target="_blank">高雄市正信佛教青年會</a><br/>
 <a href="https://www.youtube.com/user/chuefeng1/playlists" target="_blank">覺風佛教藝術文化基金會（YouTube）</a>
+</div>
 
 </body>
 </html>
