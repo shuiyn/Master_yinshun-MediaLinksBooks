@@ -14,7 +14,7 @@
 	<script src="js/lesson_List.js"></script>
 	<script src="js/cuePoint_List.js"></script>
 	<script src="js/lecture_List.js"></script>
-	<script src="js/diamond.js"></script>
+<!--	<script src="js/diamond.js"></script>-->
 	<script src="js/search.js"></script>
 	<script src="js/audio.js"></script>
 	
@@ -35,20 +35,49 @@
 
 <table border="0" style="padding:5px;background-color:#EEFFFF;">
 <tr>
-<td id="dvBook"></td>
-<td id="dvLecture"></td>
-<tr>
+<td colspan="2">
+	<table>
+		<tr>
+		<td id="dvBook"></td>
+		<td id="dvLecture"></td>
+		</tr>
+	</table>
+</td>
+</tr>
 
 <tr>
-<td colspan="2" style="text-align:right;"><a id="goSite" href="" target="_blank">到源網頁</a>
-<span id="dvPhase"></span>
-<span id="dvLesson"></span>
+<td>
+	<table id="tblShowPhrase" style="visibility:visible;background-color:lightGray;">
+		<tr>
+		<td><a id="goSite" href="" target="_blank">到</a></td>
+		<td>
+		<span id="dvPhase"><span>
+		</td>
+		<td id="tdPhrase">
+<button id="toggleHandout" onclick="toggleHandout()">期別</button>
+		</td>
+		</tr>
+	</table>
+	<table id="tblShowHandout" style="visibility:collapse;background-color:lightgreen;">
+		<tr>
+		<td><a id="openHandout" href="" target="_blank">到</a></td>
+		<td id="pnlHandout"></td>
+		<td id="tdHandout"></td>
+		</tr>
+	</table>
+</td>
+
+
+<td id="dvLesson"></td>
+
+
 </tr>
 <!--<td style="text-align:right;"><a id="goSite" href="" target="_blank">到此頁</a>
 <td id="dvPhase"></td>
 <td id="dvLesson"></td>
 </tr>
---></table>
+-->
+</table>
 
 <div id="dvAudio" style="width:100%; border:1px solid black">
 
@@ -82,7 +111,8 @@
 <select id="cueList" style="width:12em;">
 </select>
 <button onclick="cuePointPlay();">↖</button>
-<button onclick="prompt('cue');">cue</button>
+<button onclick="document.getElementById('handout').style.zIndex=2">cue</button>
+<!--<button onclick="window.open('http://220.130.244.41:8080/prajna/2014PDF/55.pdf');">cue</button>-->
 <button id="toggleAux" onclick="toggleAux()" >文</button>
 
 </div>

@@ -42,25 +42,25 @@ var grabLesson=function(masterId, bkId, phId){
 
 
 
-var grabYbkCont=function(bk, id){
-//	var ybk=ybk_Diamond;
-//	for(var i=0; i<ybk.length;i++){
-//		if(ybk[i].id==id) return ybk[i].cnt;
-//	}
-//grabYbkCont(null,"1.31~1.36")
+//old: grabYbkCont("jkjjj","1.31~1.36") 同 slice：不含 36
+//grabYbkCont("jkjjj","31~36") 同 slice：不含 36
+var grabYbkCont=function(bkid, lineScope){
 	var ybk=book_jkjjj;
-	var be=id.split("~");
-	if (!be[1]) be[1]="~~toEndOfFile";
+	var se=lineScope.split("~"); //Start & End Line
+	if (!se[1]) se[1]="~~toEndOfFile";
 	
 	var bStart=false;
 	var out={};
+	//列號必為連續，且從 1 （程式從 0）計起
+	//是否改為 for(var i=se[0]; i < se[1]; i++)
+	//	out[lineId]=ybk[i];
 	for(var lineId in ybk){
 		if (!bStart) {
-			if (lineId==be[0]) bStart=true;
+			if (lineId==se[0]) bStart=true;
 		}
 
 		if (bStart) {
-			if (lineId==be[1]) break;
+			if (lineId==se[1]) break;
 			out[lineId]=ybk[lineId];
 		}
 	}

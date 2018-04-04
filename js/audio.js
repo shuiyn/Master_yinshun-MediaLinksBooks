@@ -45,6 +45,34 @@ function fillLecture(bkid){
 
 function onLectureChange(e){
 	fillPhase(e.value);
+	fillHandout(e.value);
+}
+
+
+
+function fillHandout(lecId){
+	var ht = lecture_List[lecId].handout;
+	var pnl = document.getElementById("pnlHandout");
+	var s='<select style="width:8em;" id="selHandout" onchange="onHandoutChange(this)">';
+	if (ht) {
+		for (var i=0; i < ht.length; i++) {
+			s += '<option value="' + ht[i].url + '">' + ht[i].t + "</ooption>"
+		}
+	} else {
+		document.getElementById("openHandout").href = "javascript:void(0);";
+	}
+	s+=" </select>";
+	pnl.innerHTML = s;
+	
+	if (ht)
+		onHandoutChange(document.getElementById("selHandout"));
+}
+
+
+
+function onHandoutChange(e){
+	var url = e.options[e.selectedIndex].value;
+	document.getElementById("openHandout").href = url;
 }
 
 
@@ -451,4 +479,32 @@ function toggleBR(){
 //	ctlShowAux.setAttribute("brMode", sDisp);
 	for(var i=0; i < a.length; i++) a[i].style.display = sDisp;
 }
+
+function doToggle(btnId, aInner, aTbl, aOwner) {
+	var btn = document.getElementById(btnId);
+	var tbl_0 = document.getElementById(aTbl[0]);
+	var tbl_1 = document.getElementById(aTbl[1]);
+	
+	if (btn.innerHTML == aInner[0]) {
+		btn.innerHTML = aInner[1];
+		document.getElementById(aOwner[0]).removeChild(btn);
+		document.getElementById(aOwner[1]).appendChild(btn);
+
+		tbl_0.style.visibility = "collapse";
+		tbl_1.style.visibility = "visible";
+//		ctlShowYin.style.visibility = "visible";
+//		tblShowAux.style.visibility = "collapse";
+	} else {
+		btn.innerHTML = aInner[0];
+		document.getElementById(aOwner[1]).removeChild(btn);
+		document.getElementById(aOwner[0]).appendChild(btn);
+		tbl_0.style.visibility = "visible";
+		tbl_1.style.visibility = "collapse";
+	}
+}
+
+function toggleHandout(){
+	doToggle("toggleHandout", ["期別", "講義"], ["tblShowPhrase", "tblShowHandout"], ["tdPhrase", "tdHandout"]);
+}
+
 
