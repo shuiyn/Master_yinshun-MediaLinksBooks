@@ -161,29 +161,32 @@ function onLessonChange(e) {
 	nPlayStart = 0;
 	nPlayDuration = 0;
 
-	var mbpId=e.getAttribute("data-mbpId");
-	fillCue(mbpId, e.value); // e.value == url
+	var mbp = e.getAttribute("data-mbpId").split(",");
+	fillCue(mbp, e.value); // e.value == url
 	
-	var bkid=e.options[e.selectedIndex].getAttribute("data-ybk");
-	if(!bkid)
+	var lineScope = e.options[e.selectedIndex].getAttribute("data-ybk");
+	if(!lineScope)
 		ctl.innerHTML="";
 	else {
-		var ct=grabYbkCont(null,bkid);
-		ctl.innerHTML = parseCont(ct);
+		var ct = grabYbkCont(mbp[1], lineScope);
+		ctl.innerHTML = parseCont(mbp[1], ct);
 	}
 }
 
 
 
-function parseCont(ct){
+function parseCont(bkId, ct){
 	var out=[];
 	var swClass = (mbIsPC ? '<span class="srcwords_PC">' : '<span class="srcwords">');
 
 	for(var lineId in ct){
-		var aLine = ct[lineId];
-		var pg = aLine[0];
-		var fmt = aLine[1];
-		var stl=book_fmt[lineId];
+//		var aLine = ct[lineId];
+//		var pg = aLine[0];
+//		var fmt = aLine[1];
+		var pg = ct[lineId].c;
+		var fmt = ct[lineId].bs;
+		var stl=bookFmt_List[bkId][lineId];
+//		var stl=book_fmt[lineId];
 		var aHtmB={};//{"66":["<span...>",""]
 		var aHtmE={};
 
@@ -249,10 +252,9 @@ function parseCont(ct){
 
 
 
-function fillCue(mbpId, url){
+function fillCue(mbp, url){
 	var eCue=document.getElementById("cueList");
 	var mp3Main = url.slice(url.lastIndexOf("/")+1, url.lastIndexOf("."));
-	var mbp = mbpId.split(",");
 	var aCuePoint = grabCue(mbp[0], mbp[1], mbp[2], mp3Main);
 	
 	while (eCue.length > 0) eCue.remove(0);
@@ -292,12 +294,10 @@ function onLoad() {
 
 	if (!mbIsPC && /PLE-7/i.test(ua)) { //華為 7 吋
 		mbIs7inch = true;
-		ctlShowYin.style.height = "21em";
-		ctlShowAux.style.height = "21em";
+		ctlShowYin.style.height = "23em";
+		ctlShowAux.style.height = "23em";
 		ctlShowYin.style.fontSize = "90%";
 		ctlShowAux.style.fontSize = "90%";
-//		document.getElementById("forTest").value = ctlShowYin.style.height + ", " + ua;
-//		alert(ctlShowYin.style.height);
 	} else {
 		mbIs7inch = false;
 	}

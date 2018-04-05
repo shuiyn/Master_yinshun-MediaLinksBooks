@@ -44,7 +44,7 @@ var grabLesson=function(masterId, bkId, phId){
 
 //old: grabYbkCont("jkjjj","1.31~1.36") 同 slice：不含 36
 //grabYbkCont("jkjjj","31~36") 同 slice：不含 36
-var grabYbkCont=function(bkid, lineScope){
+var grabYbkCont_Old=function(bkid, lineScope){
 	var ybk=book_jkjjj;
 	var se=lineScope.split("~"); //Start & End Line
 	if (!se[1]) se[1]="~~toEndOfFile";
@@ -63,6 +63,24 @@ var grabYbkCont=function(bkid, lineScope){
 			if (lineId==se[1]) break;
 			out[lineId]=ybk[lineId];
 		}
+	}
+	
+	return out;
+}
+
+var grabYbkCont=function(bkId, lineScope){
+	var ybk=book_List[bkId];
+	var se=lineScope.split("~"); //Start & End Line
+	
+	se[0] = Number(se[0]);
+	if (!se[1])
+		se[1] = ybk.length;
+	else
+		se[1] = Number(se[1]);
+	
+	var out={};
+	for(var i = se[0]; i < se[1]; i++){
+		out[i]=ybk[i]; //out 另加入 列號
 	}
 	
 	return out;
