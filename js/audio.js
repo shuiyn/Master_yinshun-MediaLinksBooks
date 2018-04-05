@@ -152,32 +152,12 @@ function onLessonChange(e) {
 	fillCue(mbpId, e.value); // e.value == url
 	
 	var bkid=e.options[e.selectedIndex].getAttribute("data-ybk");
-	if(!bkid) ctl.innerHTML="";
+	if(!bkid)
+		ctl.innerHTML="";
 	else {
 		var ct=grabYbkCont(null,bkid);
 		ctl.innerHTML = parseCont(ct);
 	}
-}
-
-
-
-function fillCue(mbpId, url){
-	var eCue=document.getElementById("cueList");
-	var mp3Main = url.slice(url.lastIndexOf("/")+1, url.lastIndexOf("."));
-	var mbp = mbpId.split(",");
-	var aCuePoint = grabCue(mbp[0], mbp[1], mbp[2], mp3Main);
-	
-	while (eCue.length > 0) eCue.remove(0);
-	
-	if (aCuePoint) {
-		aCuePoint.map(function(x){
-			var opt = document.createElement("option");
-			opt.text = x;
-			eCue.add(opt);
-		});
-	}/* else {
-		while (eCue.length > 0) eCue.remove(0);
-	}*/
 }
 
 
@@ -252,6 +232,27 @@ function parseCont(ct){
 	return out.join("").replace(/\[p\d+\]/g,function(x){
 		return '<hr/><p style="color:blue;">' + x + "</p>";
 	});
+}
+
+
+
+function fillCue(mbpId, url){
+	var eCue=document.getElementById("cueList");
+	var mp3Main = url.slice(url.lastIndexOf("/")+1, url.lastIndexOf("."));
+	var mbp = mbpId.split(",");
+	var aCuePoint = grabCue(mbp[0], mbp[1], mbp[2], mp3Main);
+	
+	while (eCue.length > 0) eCue.remove(0);
+	
+	if (aCuePoint) {
+		aCuePoint.map(function(x){
+			var opt = document.createElement("option");
+			opt.text = x;
+			eCue.add(opt);
+		});
+	}/* else {
+		while (eCue.length > 0) eCue.remove(0);
+	}*/
 }
 
 
@@ -487,8 +488,10 @@ function doToggle(btnId, aInner, aTbl, aOwner) {
 	
 	if (btn.innerHTML == aInner[0]) {
 		btn.innerHTML = aInner[1];
-		document.getElementById(aOwner[0]).removeChild(btn);
-		document.getElementById(aOwner[1]).appendChild(btn);
+		if (aOwner) {
+			document.getElementById(aOwner[0]).removeChild(btn);
+			document.getElementById(aOwner[1]).appendChild(btn);
+		}
 
 		tbl_0.style.visibility = "collapse";
 		tbl_1.style.visibility = "visible";
@@ -496,15 +499,33 @@ function doToggle(btnId, aInner, aTbl, aOwner) {
 //		tblShowAux.style.visibility = "collapse";
 	} else {
 		btn.innerHTML = aInner[0];
-		document.getElementById(aOwner[1]).removeChild(btn);
-		document.getElementById(aOwner[0]).appendChild(btn);
+		if (aOwner) {
+			document.getElementById(aOwner[1]).removeChild(btn);
+			document.getElementById(aOwner[0]).appendChild(btn);
+		}
 		tbl_0.style.visibility = "visible";
 		tbl_1.style.visibility = "collapse";
 	}
 }
 
+
+
 function toggleHandout(){
 	doToggle("toggleHandout", ["期別", "講義"], ["tblShowPhrase", "tblShowHandout"], ["tdPhrase", "tdHandout"]);
 }
 
+
+
+function toggleStartLen(){
+	doToggle("toggleStartLen", ["於", "長"], ["tblPlayStart", "tblPlayLen"]);
+}
+
+
+
+function showCue(){
+	document.getElementById("myDialog").showModal();
+//var win = window.open("htm/cueSelect.htm", "", "width=200,height=100");
+//alert(localStorage.getItem("cue"));
+//myWindow.document.write("<p>This is 'MsgWindow'. I am 200px wide and 100px tall!</p>");
+}
 

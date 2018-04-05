@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+	<title>法師授課主題時點表</title>
+	<script>
+function saveSelected() {
+	document.getElementById("demo").innerHTML = new Date();
+	
+	if (typeof(Storage) !== "undefined") {
+		localStorage.setItem("cue", "Smith2");
+//		alert(localStorage.getItem("cue"));
+	} else {
+		alert("Sorry! No Web Storage support..");
+	}
+}
+	</script>
+</head>
+
+<body> <!--onload="alert(window.opener.document.all.length)"> onblur="alert('Ok');window.close();">-->
+
+<select id="cueList" style="width:12em;">
+<option>03:02 懸論</option><option>18:38 一 釋 經 題</option><option>23:17 一／二、般若</option><option>25:55 一／二／(一)、何者般若</option><option>28:35 白板：一切種智</option><option>33:44 阿含經提的三種示現：教誡、他心、神足示現</option><option>36:05  一／二／(一)／(1)實相般若</option></select>
+
+<button onclick="saveSelected()">Ok</button>
+<span id="demo">emp</span>
+</body>
+</html>
