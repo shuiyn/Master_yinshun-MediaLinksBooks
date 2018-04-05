@@ -7,7 +7,7 @@ var mbIsPC = false;
 //selBook: <value:bookId>bookName
 function fillBook(){
 	var arr = initUsedBook(); //傳回 類別
-	var s = '<select id="selBook" onchange="onBookChange(this);"> ';
+	var s = '<select id="selBook" onchange="onBookChange(this);" style="width:7em;"> ';
 	
 	for(var b in arr){
 		s+= ' <option value="' + b + '">' + arr[b] + '</option>'
@@ -30,7 +30,7 @@ function onBookChange(e){
 function fillLecture(bkid){
 	var lecs=grabLecture(bkid);
 
-	var s='<select id="selLecture" onchange="onLectureChange(this);"> ';
+	var s='<select id="selLecture" onchange="onLectureChange(this);" style="width:10em;"> ';
 	for(var lecId in lecs) {
 		s+= ' <option value="' + lecId + '">' + lecs[lecId] + '</option>'
 	}
@@ -53,7 +53,7 @@ function onLectureChange(e){
 function fillHandout(lecId){
 	var ht = lecture_List[lecId].handout;
 	var pnl = document.getElementById("pnlHandout");
-	var s='<select style="width:8em;" id="selHandout" onchange="onHandoutChange(this)">';
+	var s='<select style="width:7em;" id="selHandout" onchange="onHandoutChange(this)">';
 	if (ht) {
 		for (var i=0; i < ht.length; i++) {
 			s += '<option value="' + ht[i].url + '">' + ht[i].t + "</ooption>"
@@ -81,7 +81,7 @@ function fillPhase(lecId){
 	var phs=grabPhase(lecId);
 	var masterId=phs[0];
 	var arr=phs[1];
-	var s='<select id="selPhase" onchange="onPhaseChange(this)" ' + '" data-masterId="' + masterId + '"> ';
+	var s='<select id="selPhase" onchange="onPhaseChange(this)" style="width:7em;"' + '" data-masterId="' + masterId + '"> ';
 	
 	if (arr) {
 		for(var i=0; i< arr.length; i++) {
@@ -113,7 +113,7 @@ function onPhaseChange(e) {
 function fillLesson(out, masterId, bkId, phId){
  	var bGroup = false;
 
-	var s='<select id="selLesson" onchange="onLessonChange(this)" '+ 'data-mbpId="' + [masterId, bkId, phId].join(",") + '"> ';
+	var s='<select id="selLesson" onchange="onLessonChange(this)" style="width:5em;"'+ 'data-mbpId="' + [masterId, bkId, phId].join(",") + '"> ';
 	for(var i=0; i< out.length; i++) {
 		var bkid=(out[i].ybk ? out[i].ybk : "");
 		if (out[i].url) {
