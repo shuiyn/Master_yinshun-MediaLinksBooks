@@ -3,6 +3,7 @@ var aud, tblShowYin, ctlShowYin, tblShowAux, ctlShowAux;
 var nPlayStart = 0;
 var nPlayDuration = 0;
 var mbIsPC = false;
+var mbIs7inch = false;
 
 //selBook: <value:bookId>bookName
 function fillBook(){
@@ -258,12 +259,20 @@ function fillCue(mbpId, url){
 
 
 function onLoad() {
-	if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
+	var ua = navigator.userAgent;
+	if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(ua) ) {
 		mbIsPC = false;
 	} else {
 		mbIsPC = true;
 	}
-
+	
+	if (!mbIsPC && /PLE-7/i.test(ua)) { //華為 7 吋
+		mbIs7inch = true;
+		ctlShowYin.style.hieght="20em";
+		ctlShowAux.style.hieght="20em";
+	} else {
+		mbIs7inch = false;
+	}
 	document.getElementById("forTest").value = navigator.userAgent;
 
 //	document.getElementById("content").height=document.body.scrollHeight/3*2;
