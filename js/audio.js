@@ -266,7 +266,7 @@ function onLoad() {
 		mbIsPC = true;
 	}
 	
-	document.getElementById("forTest").value = navigator.userAgent;
+	document.getElementById("forTest").value = ua;
 
 //	document.getElementById("content").height=document.body.scrollHeight/3*2;
 //		alert(document.body.scrollHeight + ", " + document.getElementById("content").height + ", " + document.getElementById("content").scrollHeight);
@@ -282,6 +282,8 @@ function onLoad() {
 		mbIs7inch = true;
 		ctlShowYin.style.height = "20em";
 		ctlShowAux.style.height = "20em";
+		document.getElementById("forTest").value = ctlShowYin.style.height + ", " + ua;
+		alert(ctlShowYin.style.height);
 	} else {
 		mbIs7inch = false;
 	}
