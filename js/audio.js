@@ -436,13 +436,18 @@ function OpenBook() {
 	ctlShowAux.innerHTML = out.join("").replace(/\[p\d+\]/g,function(x){
 		return '<hr/><p style="color:blue;">' + x + "</p>";
 	});
-	toggleAux();
+//	toggleAux();
 	toggleBR();
 }
 
 
 
 function toggleAux(){
+	if (!ctlShowAux.innerHTML) OpenBook();
+	
+	doToggle("toggleAux", ["文", "輔"], ["tblShowYin", "tblShowAux"],null,["content", "auxPanel"]);
+	return;
+	
 	var btn = document.getElementById("toggleAux");
 
 	if (btn.innerHTML == "輔") {
@@ -481,7 +486,7 @@ function toggleBR(){
 	for(var i=0; i < a.length; i++) a[i].style.display = sDisp;
 }
 
-function doToggle(btnId, aInner, aTbl, aOwner) {
+function doToggle(btnId, aInner, aTbl, aOwner, aDvText) {
 	var btn = document.getElementById(btnId);
 	var tbl_0 = document.getElementById(aTbl[0]);
 	var tbl_1 = document.getElementById(aTbl[1]);
@@ -495,6 +500,11 @@ function doToggle(btnId, aInner, aTbl, aOwner) {
 
 		tbl_0.style.visibility = "collapse";
 		tbl_1.style.visibility = "visible";
+		
+		if (aDvText) {
+			document.getElementById(aDvText[0]).style.visibility = "hidden";
+			document.getElementById(aDvText[1]).style.visibility = "visible";
+		}
 //		ctlShowYin.style.visibility = "visible";
 //		tblShowAux.style.visibility = "collapse";
 	} else {
@@ -505,6 +515,10 @@ function doToggle(btnId, aInner, aTbl, aOwner) {
 		}
 		tbl_0.style.visibility = "visible";
 		tbl_1.style.visibility = "collapse";
+		if (aDvText) {
+			document.getElementById(aDvText[1]).style.visibility = "hidden";
+			document.getElementById(aDvText[0]).style.visibility = "visible";
+		}
 	}
 }
 
@@ -522,10 +536,14 @@ function toggleStartLen(){
 
 
 
-function showCue(){
-	document.getElementById("myDialog").showModal();
-//var win = window.open("htm/cueSelect.htm", "", "width=200,height=100");
-//alert(localStorage.getItem("cue"));
-//myWindow.document.write("<p>This is 'MsgWindow'. I am 200px wide and 100px tall!</p>");
+function copyDeviceUA(value){
+	var x = document.createElement("INPUT");
+	x.setAttribute("type", "text");
+	document.body.appendChild(x);
+	x.value = value;
+	x.select();
+	document.execCommand("Copy");
+	document.body.removeChild(x);
 }
+
 

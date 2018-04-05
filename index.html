@@ -39,7 +39,7 @@
 	<table>
 		<tr>
 		<td id="dvBook"></td>
-		<td id="dvLecture"></td>
+		<td><span id="dvLecture"></span><button id="toggleBR" onclick="toggleBR()">行</button></td>
 		</tr>
 	</table>
 </td>
@@ -68,7 +68,9 @@
 </td>
 
 
-<td id="dvLesson"></td>
+<td><span id="dvLesson"></span>
+<button id="toggleAux" onclick="toggleAux()" >文</button>
+</td>
 
 
 </tr>
@@ -87,7 +89,9 @@
 <!--<br/>-->
 <!-- style="text-align:center;"-->
 <div style="padding:3px;background-color:#EEFFFF;">
-<button id="forTest" onclick="alert(document.all.palyStartS.value);">D</button>
+<button id="forTest" onclick="copyDeviceUA(this.value);">D</button>
+<button onclick="document.all.myDialog.showModal();">cue</button>
+
 <button onclick="forbakward(1);">後退</button>
 <button onclick="forbakward(0);">前進</button>設
 <button onclick="cusTime(0);">終點</button>
@@ -129,22 +133,12 @@
 <!--<input type="time" id="myTime" step="1" value="00:00:00">-->
 
 <!--長度 #4CAF50 #ccc-->
-<div style="padding:3px;background-color:#f1f5ff;">
+<!--<div style="padding:3px;background-color:#f1f5ff;">
 <button id="toggleBR" onclick="toggleBR()">行</button>
-<!--<button onclick="confirm('del cue?')">✖</button>-->
-<select id="cueList" style="width:12em;">
-</select>
-<button onclick="cuePointPlay();">↖</button>
-<button onclick="showCue()">cue</button>
-<!--<button onclick="window.open('http://220.130.244.41:8080/prajna/2014PDF/55.pdf');">cue</button>-->
 <button id="toggleAux" onclick="toggleAux()" >文</button>
 
 </div>
-
-<dialog id="myDialog">
-<select id="cueList" style="width:12em;">
-<option>03:02 懸論</option><option>18:38 一 釋 經 題</option><option>23:17 一／二、般若</option><option>25:55 一／二／(一)、何者般若</option><option>28:35 白板：一切種智</option><option>33:44 阿含經提的三種示現：教誡、他心、神足示現</option><option>36:05  一／二／(一)／(1)實相般若</option></select>
-</dialog>
+-->
 <!--佛法概論自序：
 Mixed Content: The page at 'https://shuiyn.github.io/Master_yinshun-MediaLinksBooks/' was loaded over HTTPS, but requested an insecure resource 'http://www.mahabodhi.org/files/yinshun/21/yinshun21-01.html'. This request has been blocked; the content must be served over HTTPS.
 
@@ -175,11 +169,11 @@ display:none;
 </div>
 -->
 <table id="tblShowYin" width="100%" border="0" style="visibility:visible;"><tr><td>
-<div id="content" style="visibility:visible;letter-spacing:1.5pt;overflow-Y:scroll;padding:5px;line-height:1.8;font-size:medium;width:100%;height:14em; border-width:0 1px 1px 1px;border-style:solid;"></div>
+<div id="content" style="visibility:visible;letter-spacing:1.5pt;overflow-Y:scroll;padding:5px;line-height:1.8;font-size:medium;width:100%;height:16em; border-width:0 1px 1px 1px;border-style:solid;"></div>
 </td></tr></table>
 
 <table id="tblShowAux" width="100%" border="0" style="visibility:collapse;"><tr><td>
-<div id="auxPanel" style="visibility:hidden;letter-spacing:1.5pt;overflow-Y:scroll;padding:5px;line-height:1.4;font-size:medium;width:100%;height:14em; border-width:0 1px 1px 1px;border-style:solid;"></div>
+<div id="auxPanel" style="visibility:hidden;letter-spacing:1.5pt;overflow-Y:scroll;padding:5px;line-height:1.4;font-size:medium;width:100%;height:16em; border-width:0 1px 1px 1px;border-style:solid;"></div>
 </div>
 </td></tr></table>
 
@@ -202,6 +196,22 @@ display:none;
 <a href="http://www.kyba.org.tw/index.asp" target="_blank">高雄市正信佛教青年會</a><br/>
 <a href="https://www.youtube.com/user/chuefeng1/playlists" target="_blank">覺風佛教藝術文化基金會（YouTube）</a>
 </div>
+
+
+<dialog id="myDialog">
+<label>法師授課主題時點表</label>
+<br/>
+<select id="cueList">
+</select>
+
+<br/>
+<br/>
+<br/>
+<div style="text-align:right;">
+	<button onclick="document.all.myDialog.close()">取消</button>
+	<button onclick="cuePointPlay();document.all.myDialog.close()">播放</button>
+</div>
+</dialog>
 
 </body>
 </html>
