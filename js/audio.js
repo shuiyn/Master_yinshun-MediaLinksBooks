@@ -56,9 +56,21 @@ function fillHandout(lecId){
 	var pnl = document.getElementById("pnlHandout");
 	var s='<select style="width:7em;" id="selHandout" onchange="onHandoutChange(this)">';
 	if (ht) {
+		var bGroup = false;
+		
 		for (var i=0; i < ht.length; i++) {
-			s += '<option value="' + ht[i].url + '">' + ht[i].t + "</ooption>"
+			if (ht[i].url) {
+				s += '<option value="' + ht[i].url + '">' + ht[i].t + "</ooption>";
+			} else {
+				if (bGroup) s+= '</optgroup>';
+				
+				s += '<optgroup label="' + ht[i].t + '">';
+				bGroup = true;
+			}
 		}
+		
+		if (bGroup) s+= '</optgroup>';
+		
 	} else {
 		document.getElementById("openHandout").href = "javascript:void(0);";
 	}
@@ -280,10 +292,12 @@ function onLoad() {
 
 	if (!mbIsPC && /PLE-7/i.test(ua)) { //華為 7 吋
 		mbIs7inch = true;
-		ctlShowYin.style.height = "20em";
-		ctlShowAux.style.height = "20em";
-		document.getElementById("forTest").value = ctlShowYin.style.height + ", " + ua;
-		alert(ctlShowYin.style.height);
+		ctlShowYin.style.height = "21em";
+		ctlShowAux.style.height = "21em";
+		ctlShowYin.style.fontSize = "90%";
+		ctlShowAux.style.fontSize = "90%";
+//		document.getElementById("forTest").value = ctlShowYin.style.height + ", " + ua;
+//		alert(ctlShowYin.style.height);
 	} else {
 		mbIs7inch = false;
 	}

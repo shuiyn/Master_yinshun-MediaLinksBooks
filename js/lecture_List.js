@@ -3,9 +3,104 @@
 var lecture_List = {
 //宗恒 金剛經 教授班
 	"0001": {
+	"handout":[
+{"t":"104-12-23", "url":null},
+{"t":"白板", "url":"http://www.kyba.org.tw/board/upload/2015122414222269033-14817.jpg"},
+{"t":"105-01-03", "url":null},
+{"t":"白板 1", "url":"http://www.kyba.org.tw/board/upload/2016011416412536662-14817.jpg"},
+{"t":"白板 2", "url":"http://www.kyba.org.tw/board/upload/2016011416413895274-14817.jpg"},
+{"t":"105-01-27", "url":null},
+{"t":"講義(doc)", "url":"http://www.kyba.org.tw/board/upload/2016012616351746625-14817.doc"},
+{"t":"105-03-09", "url":null},
+{"t":"講義：十波羅蜜(doc)", "url":"http://www.kyba.org.tw/board/upload/2016032410003594597-14817.doc"},
+{"t":"白板 1", "url":"http://www.kyba.org.tw/board/upload/2016031008574838126-14817.jpg"},
+{"t":"白板 2", "url":"http://www.kyba.org.tw/board/upload/2016031008575846849-14817.jpg"},
+{"t":"105-03-23", "url":null},
+{"t":"講義：三解脫門(doc)", "url":"http://www.kyba.org.tw/board/upload/2016032410005240308-14817.doc"},
+{"t":"白板", "url":"http://www.kyba.org.tw/board/upload/2016032410062087362-14817.jpg"},
+{"t":"105-04-13", "url":null},
+{"t":"白板 1", "url":"http://www.kyba.org.tw/board/upload/1050413_1.jpg"},
+{"t":"白板 2", "url":"http://www.kyba.org.tw/board/upload/1050413_2.jpg"},
+{"t":"105-04-27", "url":null},
+{"t":"白板 1", "url":"http://www.kyba.org.tw/board/upload/2016042815163112386-14817.jpg"},
+{"t":"白板 2", "url":"http://www.kyba.org.tw/board/upload/2016042816182399845-14817.jpg"},
+{"t":"105-05-11", "url":null},
+{"t":"白板 1", "url":"http://www.kyba.org.tw/board/upload/2016051214112124154-14817.jpg"},
+{"t":"白板 2", "url":"http://www.kyba.org.tw/board/upload/2016051214112775350-14817.jpg"},
+{"t":"105-05-25", "url":null},
+{"t":"白板 1", "url":"http://www.kyba.org.tw/board/upload/2016052708531385227-14817.jpg"},
+{"t":"白板 2", "url":"http://www.kyba.org.tw/board/upload/2016052708532269011-14817.jpg"},
+{"t":"105-06-01", "url":null},
+{"t":"雜阿含13255經", "url":"http://www.kyba.org.tw/board/upload/2016060216125789856-14817.doc"},
+{"t":"白板 1", "url":"http://www.kyba.org.tw/board/upload/2016060216092758401-14817.jpg"},
+{"t":"白板 2", "url":"http://www.kyba.org.tw/board/upload/2016060216093998869-14817.jpg"},
+{"t":"白板 3", "url":"http://www.kyba.org.tw/board/upload/2016060216094873456-14817.jpg"},
+{"t":"105-06-22", "url":null},
+{"t":"無想天_無想定(doc)", "url":"http://www.kyba.org.tw/board/upload/2016062317560336152-14817.doc"},
+{"t":"白板", "url":"http://www.kyba.org.tw/board/upload/2016062317555224864-14817.jpg"},
+{"t":"105-10-12", "url":null},
+{"t":"白板", "url":"http://220.130.244.41:8080/Study/DiamondSutra/1051012.jpg"},
+{"t":"105-10-26", "url":null},
+{"t":"白板 1", "url":"http://220.130.244.41:8080/Study/DiamondSutra/1051026-1.jpg"},
+{"t":"白板 2", "url":"http://220.130.244.41:8080/Study/DiamondSutra/1051026-2.jpg"},
+{"t":"白板 3", "url":"http://220.130.244.41:8080/Study/DiamondSutra/1051026-3.jpg"},
+{"t":"白板 4", "url":"http://220.130.244.41:8080/Study/DiamondSutra/1051026-4.jpg"},
+{"t":"白板 5", "url":"http://220.130.244.41:8080/Study/DiamondSutra/1051026-5.jpg"},
+{"t":"105-11-09", "url":null},
+{"t":"補充講義：雜阿含1646經(doc)", "url":"http://220.130.244.41:8080/Study/DiamondSutra/1051109.doc"},
+{"t":"白板 1", "url":"http://220.130.244.41:8080/Study/DiamondSutra/1051110-1.jpg"},
+{"t":"白板 2", "url":"http://220.130.244.41:8080/Study/DiamondSutra/1051110-2.jpg"},
+{"t":"105-11-23", "url":null},
+{"t":"白板 1", "url":"http://220.130.244.41:8080/Study/DiamondSutra/1051123.jpg"},
+{"t":"105-12-14", "url":null},
+{"t":"白板 1", "url":"http://220.130.244.41:8080/Study/DiamondSutra/1051214-1.jpg"},
+{"t":"白板 2", "url":"http://220.130.244.41:8080/Study/DiamondSutra/1051214-2.jpg"},
+{"t":"白板 3", "url":"http://220.130.244.41:8080/Study/DiamondSutra/1051214-3.jpg"},
+{"t":"白板 4", "url":"http://220.130.244.41:8080/Study/DiamondSutra/1051214-4.jpg"},
+{"t":"105-12-18", "url":null},
+{"t":"補充講義：十法行的成立", "url":"http://220.130.244.41:8080/Study/DiamondSutra/1051228.pdf"},
+{"t":"白板 1", "url":"http://220.130.244.41:8080/Study/DiamondSutra/1051228-1.jpg"},
+{"t":"白板 2", "url":"http://220.130.244.41:8080/Study/DiamondSutra/1051228-2.jpg"},
+{"t":"106-01-11", "url":null},
+{"t":"白板", "url":"http://220.130.244.41:8080/Study/DiamondSutra/1060111.jpg"},
+{"t":"106-04-12", "url":null},
+{"t":"白板 1", "url":"http://220.130.244.41:8080/Study/DiamondSutra/1060412-1.jpg"},
+{"t":"白板 2", "url":"http://220.130.244.41:8080/Study/DiamondSutra/1060412-2.jpg"},
+{"t":"106-04-26", "url":null},
+{"t":"白板", "url":"http://www.kyba.org.tw/download/1060426.jpg"},
+{"t":"106-05-10", "url":null},
+{"t":"白板", "url":"http://220.130.244.41:8080/Study/DiamondSutra/1060510.jpg"},
+{"t":"106-06-14", "url":null},
+{"t":"白板", "url":"http://220.130.244.41:8080/Study/DiamondSutra/1060614.jpg"},
+{"t":"106-06-28", "url":null},
+{"t":"白板", "url":"http://220.130.244.41:8080/Study/DiamondSutra/1060628.jpg"},
+{"t":"106-09-13", "url":null},
+{"t":"講義：業的種種", "url":"http://220.130.244.41:8080/Study/DiamondSutra/%E6%A5%AD%E7%9A%84%E7%A8%AE%E7%A8%AE.pdf"},
+{"t":"雜1335經", "url":"http://220.130.244.41:8080/Study/DiamondSutra/%E9%9B%9C1335%E7%B6%93.pdf"},
+{"t":"白板 1", "url":"http://220.130.244.41:8080/Study/DiamondSutra/1060913-1.jpg"},
+{"t":"白板 2", "url":"http://220.130.244.41:8080/Study/DiamondSutra/1060913-2.jpg"},
+{"t":"106-09-27", "url":null},
+{"t":"講議：補特伽羅我VS薩迦耶我", "url":"http://220.130.244.41:8080/Study/DiamondSutra/%E8%A3%9C%E7%89%B9%E4%BC%BD%E7%BE%85%E6%88%91VS%E8%96%A9%E8%BF%A6%E8%80%B6%E6%88%91.pdf"},
+{"t":"白板", "url":"http://220.130.244.41:8080/Study/DiamondSutra/1060927.jpg"},
+{"t":"106-10-11", "url":null},
+{"t":"講義：佛性", "url":"http://220.130.244.41:8080/Study/DiamondSutra/1061011.pdf"},
+{"t":"106-10-25", "url":null},
+{"t":"講義：雜阿含1250經", "url":"http://220.130.244.41:8080/Study/DiamondSutra/1061025.pdf"},
+{"t":"白板", "url":"http://220.130.244.41:8080/Study/DiamondSutra/1061025.jpg"},
+{"t":"106-11-01", "url":null},
+{"t":"講義：一切業都是不決定的", "url":"http://220.130.244.41:8080/Study/DiamondSutra/1061101.pdf"},
+{"t":"白板 1", "url":"http://220.130.244.41:8080/Study/DiamondSutra/1061101-1.jpg"},
+{"t":"白板 2", "url":"http://220.130.244.41:8080/Study/DiamondSutra/1061101-2.jpg"},
+{"t":"106-11-22", "url":null},
+{"t":"講義：真常大我_真常妙我", "url":"http://220.130.244.41:8080/Study/DiamondSutra/1061122.pdf"},
+{"t":"106-12-13", "url":null},
+{"t":"講義：觸證VS悟得", "url":"http://220.130.244.41:8080/Study/DiamondSutra/1061213.pdf"},
+{"t":"106-12-27", "url":null},
+{"t":"白板", "url":"http://www.kyba.org.tw/board/upload/2017122809342193216-14817.jpg"}
+],
 	"bkid":"jkjjj", "master":"zh", "byear":"104", "croom":"pn", "phase":[
-{"id":"pn1041223", "t":"104 年第 1 期", "url":"http://www.kyba.org.tw/board/showcontent.asp?bd=11&id=690&totable=1"},
-{"id":"pn1060913", "t":"106 年第 2 期", "url":"http://www.kyba.org.tw/board/showcontent.asp?bd=11&id=724&totable=1"}
+{"id":"pn1041223", "t":"第 1 期 104 年", "url":"http://www.kyba.org.tw/board/showcontent.asp?bd=11&id=690&totable=1"},
+{"id":"pn1060913", "t":"第 2 期 106 年", "url":"http://www.kyba.org.tw/board/showcontent.asp?bd=11&id=724&totable=1"}
 		]
 	},
 	
@@ -57,10 +152,10 @@ var lecture_List = {
 {"t":"　補充講義", "url":"http://220.130.244.41:8080/prajna/2017PDF/82.pdf"}
 ],
 	"bkid":"ffgl", "master":"kr", "byear":"104", "croom":"pn", "phase":[
-{"id":"pn1040321", "t":"104 年第 8 期", "url":"http://www.kyba.org.tw/board/showcontent.asp?bd=11&id=687&totable=1"},
-{"id":"pn1050910", "t":"105 年第 9 期", "url":"http://www.kyba.org.tw/board/showcontent.asp?bd=11&id=694&totable=1"},
-{"id":"pn1060318", "t":"106 年第 10 期", "url":"http://www.kyba.org.tw/board/showcontent.asp?bd=11&id=710&totable=1"},
-{"id":"pn1060916", "t":"106 年第 11 期","url":"http://www.kyba.org.tw/board/showcontent.asp?bd=11&id=725&totable=1"}
+{"id":"pn1040321", "t":"第 8 期 104 年", "url":"http://www.kyba.org.tw/board/showcontent.asp?bd=11&id=687&totable=1"},
+{"id":"pn1050910", "t":"第 9 期 105 年", "url":"http://www.kyba.org.tw/board/showcontent.asp?bd=11&id=694&totable=1"},
+{"id":"pn1060318", "t":"第 10 期 106 年", "url":"http://www.kyba.org.tw/board/showcontent.asp?bd=11&id=710&totable=1"},
+{"id":"pn1060916", "t":"第 11 期 106 年","url":"http://www.kyba.org.tw/board/showcontent.asp?bd=11&id=725&totable=1"}
 		]
 	},
 
@@ -103,8 +198,8 @@ var lecture_List = {
 {"t":"第20章 正覺與解脫", "url":"http://video.lwdh.org.tw/download/lwdh/pdf/ffgl/ffgl20.pdf"}
 ],
 	"bkid":"ffgl", "master":"kr", "byear":"098", "croom":"wl", "phase":[
-{"id":"wl20090918", "t":"98 年第 1 期", "url":"http://video.lwdh.org.tw/html/ffgl/ffgl01.html"},
-{"id":"wl20100305", "t":"99 年第 2 期", "url":"http://video.lwdh.org.tw/html/ffgl/ffgl02.html"}
+{"id":"wl20090918", "t":"第 1 期 98 年", "url":"http://video.lwdh.org.tw/html/ffgl/ffgl01.html"},
+{"id":"wl20100305", "t":"第 2 期 99 年", "url":"http://video.lwdh.org.tw/html/ffgl/ffgl02.html"}
 		]
 	}
 }
