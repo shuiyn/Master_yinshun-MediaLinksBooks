@@ -266,13 +266,6 @@ function onLoad() {
 		mbIsPC = true;
 	}
 	
-	if (!mbIsPC && /PLE-7/i.test(ua)) { //華為 7 吋
-		mbIs7inch = true;
-		ctlShowYin.style.hieght="20em";
-		ctlShowAux.style.hieght="20em";
-	} else {
-		mbIs7inch = false;
-	}
 	document.getElementById("forTest").value = navigator.userAgent;
 
 //	document.getElementById("content").height=document.body.scrollHeight/3*2;
@@ -284,6 +277,15 @@ function onLoad() {
 	ctlShowAux = document.getElementById("auxPanel");
 	aud = document.getElementById("myAudio");
 	aud.addEventListener("timeupdate", onTimeUpdate);
+
+	if (!mbIsPC && /PLE-7/i.test(ua)) { //華為 7 吋
+		mbIs7inch = true;
+		ctlShowYin.style.height = "20em";
+		ctlShowAux.style.height = "20em";
+	} else {
+		mbIs7inch = false;
+	}
+
 	fillBook();
 }
 
