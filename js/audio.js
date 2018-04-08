@@ -244,7 +244,7 @@ function parseCont(bkId){
 		
 		if(fmt) {
 			if(fmt.search(/\d/)==0){
-				pg='<h3 style="color:darkblue;font-weight:bold" id="' + ct[lineId].a + '">' + pg + "</h3>";
+				pg='<h4 style="color:darkblue;font-weight:bold" id="' + ct[lineId].a + '">' + pg + "</h4>";
 			}
 		} else {
 			pg="<p>" + pg + "</p>";
@@ -377,14 +377,15 @@ function onLoad() {
 	aud = document.getElementById("myAudio");
 	aud.addEventListener("timeupdate", onTimeUpdate);
 
-	if (!mbIsPC && /PLE-7/i.test(ua)) { //華為 7 吋
-		mbIs7inch = true;
-		ctlShowYin.style.height = "23em";
-		ctlShowAux.style.height = "23em";
+	mbIs7inch = false;
+	if (!mbIsPC) { //華為 7 吋
+		if (/PLE-7/i.test(ua)) {
+			mbIs7inch = true;
+			ctlShowYin.style.height = "23em";
+			ctlShowAux.style.height = "23em";
+		}
 		ctlShowYin.style.fontSize = "90%";
 		ctlShowAux.style.fontSize = "90%";
-	} else {
-		mbIs7inch = false;
 	}
 
 	fillBook();

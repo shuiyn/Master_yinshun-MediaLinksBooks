@@ -1,6 +1,12 @@
 
 //function createMenu(rootId) {
 function createMenu(bkId) {
+	var rtUL = document.getElementById("mnuRoot");
+	
+	while (rtUL.childNodes.length > 0){
+		rtUL.removeChild(rtUL.childNodes[0]);
+	}
+
 	var aItem = book_List[bkId]; //"jkjjj"];
 	var aIdx = [];
 	var nHrefIndex = 0;
@@ -13,7 +19,6 @@ function createMenu(bkId) {
 		}
 	});
 	
-	var rtUL = document.getElementById("mnuRoot");
 //	var rtUL = document.getElementById(rootId);
 	var ndUL;
 	

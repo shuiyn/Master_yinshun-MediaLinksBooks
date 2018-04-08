@@ -232,7 +232,8 @@ display:none;
 </div>
 </dialog>
 
-<dialog id="dlgMenuTree" style="height:16em;overflow-Y:scroll">
+<dialog id="dlgMenuTree" style="height:70%;overflow-Y:scroll;padding:0;">
+<button onclick="document.all.dlgMenuTree.close()" style="position:fixed;top:10;left:10;margin:0;padding:0;">✖</button><br/>
 <ul id="mnuRoot" class="menutree" onclick="onMenuClicked(event)"></ul>
 </dialog>
 
