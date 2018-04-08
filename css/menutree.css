@@ -1,0 +1,19 @@
+
+.menutree ul {
+	padding-left: 20px; /*等於 png.width + 4*/
+	margin-top: 5px;
+}
+
+.menutree li {
+	list-style-type: none;
+	margin-bottom: 5px;
+}
+
+.menutree a {
+	text-decoration: none;
+}
+
+/*.menutree li.span {
+	cursor: hand !important;
+*/}
+

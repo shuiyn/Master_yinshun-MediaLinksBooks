@@ -11,7 +11,7 @@ var lesson_List=
     {
      "d": "12-23",
      "url": "http://220.130.244.41:8080/Study/DiamondSutra/1041223.mp3",
-     "ybk": "0~29"
+     "ybk": "0~"
     },
     {
      "d": "105 年",
