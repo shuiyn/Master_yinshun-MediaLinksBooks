@@ -25,8 +25,9 @@ function onBookChange(e){
 //	document.getElementById("bookURL").href = e.options[e.selectedIndex].getAttribute("data-url");
 	fillLecture(e.value);
 //		var ct = grabYbkCont(e.value, "0~");
-	ctlShowYin.innerHTML = parseCont(e.value); //, ct);
 	rstElementWidth();
+	ctlShowYin.innerHTML = parseCont(e.value); //, ct);
+//	rstElementWidth();
 }
 
 
@@ -715,5 +716,6 @@ function showPageTocSelect(e){
 
 function onPageListChange(e){
 	location.href = "#" + base_List.htmlIdPrefix.page + "p" + e.options[e.selectedIndex].innerText;
+	document.getElementById("dlgPagToc").close();
 }
 
