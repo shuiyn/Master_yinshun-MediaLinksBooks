@@ -424,6 +424,9 @@ function onLoad() {
 function rstElementWidth() {
 	if (mbIsPC) return;
 	
+	tblShowYin.style.width = "99%";
+	tblShowAux.style.width = "99%";
+
 	ctlShowYin.style.fontSize = "90%";
 	ctlShowAux.style.fontSize = "90%";
 	ctlShowYin.style.width = "99%";
