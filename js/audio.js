@@ -25,7 +25,8 @@ function onBookChange(e){
 //	document.getElementById("bookURL").href = e.options[e.selectedIndex].getAttribute("data-url");
 	fillLecture(e.value);
 //		var ct = grabYbkCont(e.value, "0~");
-		ctlShowYin.innerHTML = parseCont(e.value); //, ct);
+	ctlShowYin.innerHTML = parseCont(e.value); //, ct);
+	rstElementWidth();
 }
 
 
@@ -419,6 +420,22 @@ function onLoad() {
 	fillBook();
 }
 
+function rstElementWidth() {
+	if (mbIsPC) return;
+	
+	ctlShowYin.style.fontSize = "90%";
+	ctlShowAux.style.fontSize = "90%";
+	ctlShowYin.style.width = "99%";
+	ctlShowAux.style.width = "99%";
+
+	if (mbIs7inch) { //華為 7 吋
+		ctlShowYin.style.height = "23em";
+		ctlShowAux.style.height = "23em";
+	}
+
+}
+
+
 
 function onTimeUpdate() {
 	if(nPlayDuration<1) return;
@@ -691,6 +708,11 @@ function copyDeviceUA(value){
 
 
 //pageList.onchange
+function showPageTocSelect(e){
+	document.getElementById("dlgPagToc").showModal();
+}
+
+
 function onPageListChange(e){
 	location.href = "#" + base_List.htmlIdPrefix.page + "p" + e.options[e.selectedIndex].innerText;
 }
