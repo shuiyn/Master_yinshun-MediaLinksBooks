@@ -24,6 +24,8 @@ function fillBook(){
 function onBookChange(e){
 //	document.getElementById("bookURL").href = e.options[e.selectedIndex].getAttribute("data-url");
 	fillLecture(e.value);
+//		var ct = grabYbkCont(e.value, "0~");
+		ctlShowYin.innerHTML = parseCont(e.value); //, ct);
 }
 
 
@@ -165,12 +167,12 @@ function onLessonChange(e) {
 	fillCue(mbp, e.value); // e.value == url
 	
 	var lineScope = e.options[e.selectedIndex].getAttribute("data-ybk");
-	if(!lineScope)
-		ctl.innerHTML="";
-	else {
-		var ct = grabYbkCont(mbp[1], lineScope);
-		ctl.innerHTML = parseCont(mbp[1], ct);
-	}
+//	if(!lineScope)
+//		ctl.innerHTML="";
+//	else {
+//		var ct = grabYbkCont(mbp[1], lineScope);
+//		ctl.innerHTML = parseCont(mbp[1], ct);
+//	}
 }
 
 function TryScroll(ev) {
@@ -182,7 +184,13 @@ function TryScroll(ev) {
 
 function parseCont(bkId){
 	createMenu(bkId);
+	var pgList = document.getElementById("pageList");
+	while (pgList.length > 0) pgList.remove(0);
+		
 	var ct = book_List[bkId];
+	var pgIdPfx = base_List.htmlIdPrefix.page;
+	var tocIdPfx = base_List.htmlIdPrefix.toc;
+	var paraIdPfx = base_List.htmlIdPrefix.para;
 	
 	var out=[];
 	var swClass = (mbIsPC ? '<span class="srcwords_PC">' : '<span class="srcwords">');
@@ -194,7 +202,11 @@ function parseCont(bkId){
 		var pg = ct[lineId].c;
 		var fmt = ct[lineId].lev;
 //		var fmt = ct[lineId].bs;
-		var stl=bookFmt_List[bkId][lineId];
+		var stl; //=bookFmt_List[bkId][lineId];
+		var sTocSty = "";
+		
+		if (bookFmt_List[bkId])
+			stl=bookFmt_List[bkId][lineId];
 //		var stl=book_fmt[lineId];
 		var aHtmB={};//{"66":["<span...>",""]
 		var aHtmE={};
@@ -244,20 +256,34 @@ function parseCont(bkId){
 		
 		if(fmt) {
 			if(fmt.search(/\d/)==0){
-				pg='<h4 style="color:darkblue;font-weight:bold" id="' + ct[lineId].a + '">' + pg + "</h4>";
+				sTocSty = "margin-left:" + (Number(ct[lineId].lev) * 0.5) + "em;";
+				if (lineId > 0 && ct[lineId-1].lev) {
+					sTocSty += "margin-top:0;";
+				}
+				if (lineId < ct.length-1 && ct[lineId+1].lev) {
+					sTocSty += "margin-bottom:0;";
+				}
+
+				pg='<h4 style="color:darkblue;font-weight:bold;' + sTocSty + '" id="' + tocIdPfx + ct[lineId].a + '">' + pg + "</h4>";
 			}
 		} else {
 			pg="<p>" + pg + "</p>";
 		}
 		
-		out.push(pg);
+		out.push('<span style="display:none;" id="' + paraIdPfx + lineId + '">' + (lineId+1) + '</span>' + pg);
 	}
 	
 //	return out.join("");
-	return out.join("").replace(/\[p\d+\]/g,function(x){
-		return '<hr/><p style="color:blue;">' + x + "</p>";
+	//頁次 Id、selectPage-Option
+	return out.join("").replace(/\[p[a-z]?\d+\]/g,function(x){
+		var ma = x.match(/\[(p[a-z]?\d+)\]/);
+		var opt = document.createElement("option");
+		opt.text = ma[1].substr(1);
+		pgList.add(opt);
+		return '<hr/><p id="' + pgIdPfx + ma[1] + '" style="color:blue;">' + x + "</p>";
 	});
 }
+
 
 function parseCont_Old(bkId, ct){
 	var out=[];
@@ -386,6 +412,8 @@ function onLoad() {
 		}
 		ctlShowYin.style.fontSize = "90%";
 		ctlShowAux.style.fontSize = "90%";
+		ctlShowYin.style.width = "99%";
+		ctlShowAux.style.width = "99%";
 	}
 
 	fillBook();
@@ -659,4 +687,11 @@ function copyDeviceUA(value){
 	document.body.removeChild(x);
 }
 
+
+
+
+//pageList.onchange
+function onPageListChange(e){
+	location.href = "#" + base_List.htmlIdPrefix.page + "p" + e.options[e.selectedIndex].innerText;
+}
 

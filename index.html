@@ -131,8 +131,9 @@
 
 </td>
 
-<td><button onclick="cusPlay();">播放</button></td><td style="text-align:right;" >　<button onclick="document.all.dlgMenuTree.showModal();">menu</button>
-</td>
+<td><button onclick="cusPlay();">播放</button></td>
+<td><div style="margin:0;padding:0">　<select style="width:4em;" id="pageList" onchange="onPageListChange(this)"></select><button onclick="document.all.dlgMenuTree.showModal();">menu</button>
+</div></td>
 
 </tr>
 </table>
@@ -182,9 +183,10 @@ display:none;
 <!--<tr><td>
 <button onclick="document.all.dlgMenuTree.showModal();">menu</button>
 </td></tr>
+overflow-Y:scroll
 -->
 <tr><td>
-<div id="content"  onscroll="TryScroll(event);" style="visibility:visible;letter-spacing:1.5pt;overflow-Y:scroll;padding:5px;line-height:1.8;font-size:medium;width:100%;height:16em; border-width:0 1px 1px 1px;border-style:solid;"></div>
+<div id="content"  onscroll="TryScroll(event);" style="visibility:visible;letter-spacing:1.5pt;overflow:auto;padding:5px;line-height:1.8;font-size:medium;width:100%;height:16em; border-width:0 1px 1px 1px;border-style:solid;"></div>
 </td></tr></table>
 
 <table id="tblShowAux" width="100%" border="0" style="visibility:collapse;"><tr><td>
@@ -227,13 +229,14 @@ display:none;
 <br/>
 <br/>
 <div style="text-align:right;">
+	<input type="checkbox" id="bookTo" checked>書本定位</input>　
 	<button onclick="document.all.myDialog.close()">取消</button>
 	<button onclick="cuePointPlay();document.all.myDialog.close()">播放</button>
 </div>
 </dialog>
 
 <dialog id="dlgMenuTree" style="height:70%;overflow-Y:scroll;padding:0;">
-<button onclick="document.all.dlgMenuTree.close()" style="position:fixed;top:10;left:10;margin:0;padding:0;">✖</button><br/>
+<button onclick="document.all.dlgMenuTree.close()" style="position:fixed;top:10;left:10;margin:0;padding:2px;">✖</button><br/>
 <ul id="mnuRoot" class="menutree" onclick="onMenuClicked(event)"></ul>
 </dialog>
 

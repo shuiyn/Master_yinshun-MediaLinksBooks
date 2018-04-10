@@ -17,6 +17,13 @@ var base_List = {
 	"wl":"慧日講堂",
 	"fy":"福嚴佛學院",
 	"pn":"般若精舍"
-	}
+	},
+		
+"htmlIdPrefix": {
+	"toc":"Toc_",
+	"page":"Pg_",
+	"para":"pr_"
+}
+
 }
 

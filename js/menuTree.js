@@ -1,6 +1,8 @@
 
 //function createMenu(rootId) {
 function createMenu(bkId) {
+	var tocIdPfx = base_List.htmlIdPrefix.toc;
+	
 	var rtUL = document.getElementById("mnuRoot");
 	
 	while (rtUL.childNodes.length > 0){
@@ -30,7 +32,7 @@ function createMenu(bkId) {
 		var nOffset = -1;
 
 	    ndAnchor.appendChild(textnode);
-	    ndAnchor.setAttribute("href", "#" + i);
+	    ndAnchor.setAttribute("href", "#" + tocIdPfx + i);
 //	    ndSpan.appendChild(textnode);
 
 		if (aIdx[i].lev == 0) {
