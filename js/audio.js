@@ -25,7 +25,7 @@ function onBookChange(e){
 //	document.getElementById("bookURL").href = e.options[e.selectedIndex].getAttribute("data-url");
 	fillLecture(e.value);
 //		var ct = grabYbkCont(e.value, "0~");
-	rstElementWidth();
+//	rstElementWidth();
 	ctlShowYin.innerHTML = parseCont(e.value); //, ct);
 //	rstElementWidth();
 }
@@ -414,13 +414,16 @@ function onLoad() {
 		}
 		ctlShowYin.style.fontSize = "90%";
 		ctlShowAux.style.fontSize = "90%";
-		ctlShowYin.style.width = "99%";
-		ctlShowAux.style.width = "99%";
+		
+		document.getElementById("dlgPagToc").style.width = "90%";
+//		ctlShowYin.style.width = "99%";
+//		ctlShowAux.style.width = "99%";
 	}
 
 	fillBook();
 }
 
+	/*
 function rstElementWidth() {
 	if (mbIsPC) return;
 	
@@ -438,7 +441,7 @@ function rstElementWidth() {
 	}
 
 }
-
+*/
 
 
 function onTimeUpdate() {
