@@ -42,6 +42,11 @@ function createMenu(bkId) {
 		else
 			nOffset = (aIdx[i-1].lev - aIdx[i].lev);
 		
+		if (nOffset < -1) {
+			alert("Toc.level 錯誤；請檢視 console.log。");
+			console.log("Err of Toc.level: prev= ",aIdx[i-1].lev,", curr= ", aIdx[i].lev);
+		}
+			
     	if (i==aIdx.length-1 || aIdx[i+1].lev <= aIdx[i].lev) {
 	    	nd.style.listStyleImage = 'none';
     	} else

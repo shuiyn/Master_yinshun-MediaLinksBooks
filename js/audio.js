@@ -26,6 +26,7 @@ function onBookChange(e){
 	fillLecture(e.value);
 //		var ct = grabYbkCont(e.value, "0~");
 //	rstElementWidth();
+	ctlShowYin.innerHTML = "";
 	ctlShowYin.innerHTML = parseCont(e.value); //, ct);
 //	rstElementWidth();
 }
