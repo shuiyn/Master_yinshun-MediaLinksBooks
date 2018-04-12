@@ -97,8 +97,8 @@ var grabYbkCont=function(bkId, lineScope){
 
 var grabCue=function(masterId, bkId, phId, mp3Id){
 //	console.log(masterId, bkId, phId, mp3Id);
-	if (cue_List[masterId])
-		if (cue_List[masterId][bkId])
-			if (cue_List[masterId][bkId][phId])
-				return cue_List[masterId][bkId][phId][mp3Id];
+	if (cuePoint_List[masterId])
+		if (cuePoint_List[masterId][bkId])
+			if (cuePoint_List[masterId][bkId][phId])
+				return cuePoint_List[masterId][bkId][phId][mp3Id];
 }

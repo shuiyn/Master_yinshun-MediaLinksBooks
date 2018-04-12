@@ -192,11 +192,12 @@ function TryScroll(ev) {
 }
 
 function parseCont(bkId){
-	createMenu(bkId);
+	var ct = book_List[bkId];
+	createMenu(ct);
+//	createMenu(bkId);
 	var pgList = document.getElementById("pageList");
 	while (pgList.length > 0) pgList.remove(0);
 		
-	var ct = book_List[bkId];
 	var pgIdPfx = base_List.htmlIdPrefix.page;
 	var tocIdPfx = base_List.htmlIdPrefix.toc;
 	var paraIdPfx = base_List.htmlIdPrefix.para;

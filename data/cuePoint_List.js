@@ -1,4 +1,4 @@
-var cue_List=
+var cuePoint_List=
 {
  "zh": {
   "pnj": {

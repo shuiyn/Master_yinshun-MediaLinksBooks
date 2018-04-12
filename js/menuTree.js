@@ -1,6 +1,9 @@
 
-//function createMenu(rootId) {
-function createMenu(bkId) {
+//function createMenu(bkId) {
+function createMenu(aItem, sPath) {
+	if (sPath) sPath += "./img/";
+	else sPath = "./img/";
+	
 	var tocIdPfx = base_List.htmlIdPrefix.toc;
 	
 	var rtUL = document.getElementById("mnuRoot");
@@ -9,7 +12,7 @@ function createMenu(bkId) {
 		rtUL.removeChild(rtUL.childNodes[0]);
 	}
 
-	var aItem = book_List[bkId]; //"jkjjj"];
+//	var aItem = book_List[bkId]; //"jkjjj"];
 	var aIdx = [];
 	var nHrefIndex = 0;
 	
@@ -50,7 +53,7 @@ function createMenu(bkId) {
     	if (i==aIdx.length-1 || aIdx[i+1].lev <= aIdx[i].lev) {
 	    	nd.style.listStyleImage = 'none';
     	} else
-	    	nd.style.listStyleImage = 'url("./img/open_brk.png")';
+	    	nd.style.listStyleImage = 'url("' + sPath + 'open_brk.png")';
 
 	    nd.appendChild(ndAnchor);
 //	    nd.appendChild(ndSpan);
@@ -87,7 +90,10 @@ function createMenu(bkId) {
 }
 
 
-function onMenuClicked(ev) {
+function onMenuClicked(ev, sPath) {
+	if (sPath) sPath += "./img/";
+	else sPath = "./img/";
+
 	var eTrigger = ev.target;
 //	document.getElementById("demo").innerHTML = eTrigger.nodeName
 
@@ -104,7 +110,7 @@ function onMenuClicked(ev) {
 		var bOpened = url.includes("open");
 		var disp = (bOpened ? "none" : "block");
 		
-		eTrigger.style.listStyleImage = 'url("./img/' + (bOpened ? "close_brk.png" : "open_brk.png") + '")';
+		eTrigger.style.listStyleImage = 'url("' + sPath + (bOpened ? "close_brk.png" : "open_brk.png") + '")';
 
 		for (var i=0; i<eTrigger.children.length; i++) {
 			if (eTrigger.children[i].nodeName == "UL") {

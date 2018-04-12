@@ -22,19 +22,38 @@ var mysBooks = function(bkId, lecId) {
 }
 
 
+mysBooks.prototype.showPageTocSelect=function(){
+	document.getElementById("dlgPagToc").showModal();
+}
+
+
+mysBooks.prototype.onPageListChange=function(){
+	location.href = "#" + base_List.htmlIdPrefix.page + "p" + e.options[e.selectedIndex].innerText;
+	document.getElementById("dlgPagToc").close();
+}
+
+
+mysBooks.prototype.TryScroll=function(ev) {
+	window.scrollTo(0, 0);
+//	ev.preventDefault();
+//	document.getElementById("demobody").innerHTML = ev.type + ", " + ev.target.id;
+//	ev.cancelBubble = true;
+}
+
+
 mysBooks.prototype.rstCtrlStyle=function() {
 //	alert(this.mbIsPC);
 	if (!this.mbIsPC) { //華為 7 吋
 		if (this.mbIs7inch) {
 			this.ctlShowYin.style.fontSize = "90%";
 			this.ctlShowAux.style.fontSize = "90%";
-			this.ctlShowYin.style.height = "40em";
+			this.ctlShowYin.style.height = "37em";
 			this.ctlShowAux.style.height = "40em";
 		} else {
 		this.ctlShowYin.style.fontSize = "105%";
 		this.ctlShowAux.style.fontSize = "105%";
-			this.ctlShowYin.style.height = "35em";
-			this.ctlShowAux.style.height = "35em";
+			this.ctlShowYin.style.height = "32em";
+			this.ctlShowAux.style.height = "32em";
 		}
 		
 		this.tblShowYin.style.width = "99%";
@@ -124,7 +143,7 @@ mysBooks.prototype.onLessonChange=function(e) {
 	theAud.playDuration = 0;
 
 	var mbp = e.getAttribute("data-mbpId").split(",");
-//	fillCue(mbp, e.value); // e.value == url
+	theAud.fillCue(mbp, e.value); // e.value == url
 	
 //	var lineScope = e.options[e.selectedIndex].getAttribute("data-ybk");
 //	if(!lineScope)
@@ -138,9 +157,9 @@ mysBooks.prototype.onLessonChange=function(e) {
 
 
 mysBooks.prototype.parseCont = function(){
-//	createMenu(this.bkId);
-//	var pgList = document.getElementById("pageList");
-//	while (pgList.length > 0) pgList.remove(0);
+	createMenu(this.book, ".");
+	var pgList = document.getElementById("pageList");
+	while (pgList.length > 0) pgList.remove(0);
 		
 	var ct = this.book;
 	var styBook = this.bookStyle;
@@ -235,7 +254,7 @@ mysBooks.prototype.parseCont = function(){
 		var ma = x.match(/\[(p[a-z]?\d+)\]/);
 		var opt = document.createElement("option");
 		opt.text = ma[1].substr(1);
-//		pgList.add(opt);
+		pgList.add(opt);
 		return '<hr/><p id="' + pgIdPfx + ma[1] + '" style="color:blue;">' + x + "</p>";
 	});
 }
@@ -295,6 +314,73 @@ mysAud.prototype.cusPlay=function() {
 	this.playDuration = this.getMS("playDuration");
 	this.aud.currentTime = this.playStart;
 	this.aud.play();
+}
+
+mysAud.prototype.showCue=function() {
+	document.getElementById("dlgCue").showModal();
+}
+mysAud.prototype.closeCue=function() {
+	document.getElementById("dlgCue").close();
+}
+
+mysAud.prototype.fillCue=function(mbp, url){
+	var eCue=document.getElementById("cueList");
+	var mp3Main = url.slice(url.lastIndexOf("/")+1, url.lastIndexOf("."));
+	var aCuePoint = grabCue(mbp[0], mbp[1], mbp[2], mp3Main);
+	
+	while (eCue.length > 0) eCue.remove(0);
+	
+	if (aCuePoint) {
+		aCuePoint.map(function(x){
+			var opt = document.createElement("option");
+			opt.text = x;
+			eCue.add(opt);
+		});
+	}/* else {
+		while (eCue.length > 0) eCue.remove(0);
+	}*/
+}
+
+
+mysAud.prototype.cuePointPlay=function(){
+	if(this.aud.networkState == 3){
+		alert("沒有指定音檔");
+		return;
+	}
+	var ctl = document.getElementById("cueList");
+	if(ctl.options.length == 0) return;
+	
+	var aHms = ctl.options[ctl.selectedIndex].text.split(" ")[0].split(":");
+	if(aHms.length < 3) aHms.unshift("0");
+
+	var ct = 0;
+	for(var i=0; i<aHms.length; i++){
+		ct += parseInt(aHms[i])*[3600,60,1][i];
+	}
+	this.aud.currentTime = ct;
+	this.aud.play();
+	
+	this.closeCue();
+}
+
+
+mysAud.prototype.dotPlay=function(hms) {
+	var a = hms.split(":");
+	var h = 0,m = 0;
+	var s = parseInt(a[a.length-1]);
+	if(a.length>2) h = parseInt(a[a.length-3]);
+	if(a.length>1) m = parseInt(a[a.length-2]);
+
+	this.aud.currentTime = (h*3600)+(m*60)+s;
+	this.aud.play();
+}
+
+
+mysAud.prototype.forbakward=function(mode) {
+	if(mode == 1)//後退
+		this.aud.currentTime -= 10;
+	else
+		this.aud.currentTime += 10;
 }
 
 
