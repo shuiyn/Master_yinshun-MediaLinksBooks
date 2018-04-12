@@ -1,2 +1,2 @@
 # Master_yinshun-MediaLinksBooks
-印順導師的相關影音鏈結及著作
+印順導師著作的相關影音文鏈結
