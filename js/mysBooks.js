@@ -25,15 +25,14 @@ var mysBooks = function(bkId, lecId) {
 mysBooks.prototype.rstCtrlStyle=function() {
 //	alert(this.mbIsPC);
 	if (!this.mbIsPC) { //華為 7 吋
-		this.ctlShowYin.style.fontSize = "90%";
-		this.ctlShowAux.style.fontSize = "90%";
-
 		if (this.mbIs7inch) {
-			this.ctlShowYin.style.height = "30em";
-			this.ctlShowAux.style.height = "30em";
+			this.ctlShowYin.style.fontSize = "90%";
+			this.ctlShowAux.style.fontSize = "90%";
+			this.ctlShowYin.style.height = "50em";
+			this.ctlShowAux.style.height = "50em";
 		} else {
-			this.ctlShowYin.style.height = "25em";
-			this.ctlShowAux.style.height = "25em";
+			this.ctlShowYin.style.height = "45em";
+			this.ctlShowAux.style.height = "45em";
 		}
 		
 		this.tblShowYin.style.width = "99%";
@@ -47,7 +46,7 @@ mysBooks.prototype.rstCtrlStyle=function() {
 		this.ctlShowYin.style.fontSize = "110%";
 		this.ctlShowAux.style.fontSize = "110%";
 	}
-	alert(this.mbIs7inch);
+//	alert(this.mbIs7inch);
 }
 
 

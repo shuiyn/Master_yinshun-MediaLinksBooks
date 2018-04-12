@@ -33,8 +33,7 @@
 		var q = JSON.parse(decodeURIComponent(location.search).substr(6));
 		
 //		document.getElementById("try").innerHTML = JSON.stringify(q);
-		document.getElementById("tit_bookName").innerHTML = q.bkName
-		document.getElementById("tit_lecName").innerHTML = q.lecName
+		document.getElementById("tit_booklecName").innerHTML = q.bkName + "：" + q.lecName;
 		
 		theAud = new mysAud();
 		theBook = new mysBooks(q.bkId, q.lecId); //localStorage.getItem("mys_BookId"));
@@ -51,8 +50,8 @@
 </head>
 
 <body onload="onLoad()">
-<span id="tit_bookName"></span>：
-<span id="tit_lecName"></span><br/>
+<!--<span id="tit_booklecName"></span>-->
+<span id="tit_booklecName" style="font-family:標楷體;font-weight:bold;"></span><br/>
 <span id="try" style="width:80%;"></span>
 
 	<table id="tblShowPhrase" style="visibility:visible;background-color:lightGray;">
