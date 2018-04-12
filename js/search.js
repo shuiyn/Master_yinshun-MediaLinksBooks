@@ -1,4 +1,11 @@
 
+//var loadBook=function(bkid) {
+//	var fs = require("fs");
+//	var ct = fs.readFileSync("../data/book_List.js", "utf-8");
+//	console.log(ct);
+//}
+
+
 //目前已建有 課程 的書目，非整個 books
 var initUsedBook=function(){
 	var out={}; //{bkid:bkName, ...}

@@ -7,6 +7,11 @@ var mbIs7inch = false;
 
 //selBook: <value:bookId>bookName
 function fillBook(){
+//	loadBook("jkjjj");
+//	window.open("file:///D:/gooSync/__20170809/PrgCode/GitHub/Master_yinshun-MediaLinksBooks/htm/cueSelect.htm");//"htm/cueSelect.htm");
+//	return;
+//	location.href = "htm/cueSelect.htm";
+	
 	var arr = initUsedBook(); //傳回 類別
 	var s = '<select id="selBook" onchange="onBookChange(this);" style="width:7em;"> ';
 	
@@ -419,6 +424,9 @@ function onLoad() {
 		document.getElementById("dlgPagToc").style.width = "90%";
 //		ctlShowYin.style.width = "99%";
 //		ctlShowAux.style.width = "99%";
+	} else {
+		ctlShowYin.style.fontSize = "110%";
+		ctlShowAux.style.fontSize = "110%";
 	}
 
 	fillBook();
@@ -553,7 +561,7 @@ function cuePointPlay(){
 }
 
 
-function OpenBook() {
+function openAuxBook() {
 	var fn = "真常大我_真常妙有";
 	//var fs=require("fs");
 	//var aLine = fs.readFileSync("data/" + fn + "_pure.txt", "utf8").split(/\r?\n/);
@@ -609,7 +617,7 @@ function OpenBook() {
 
 
 function toggleAux(){
-	if (!ctlShowAux.innerHTML) OpenBook();
+	if (!ctlShowAux.innerHTML) openAuxBook();
 	
 	doToggle("toggleAux", ["文", "輔"], ["tblShowYin", "tblShowAux"],null,["content", "auxPanel"]);
 	return;
@@ -624,7 +632,7 @@ function toggleAux(){
 		tblShowAux.style.visibility = "collapse";
 		ctlShowAux.style.visibility = "hidden";
 	} else {
-		if (!ctlShowAux.innerHTML) OpenBook();
+		if (!ctlShowAux.innerHTML) openAuxBook();
 
 		btn.innerHTML = "輔";
 		ctlShowYin.style.visibility = "hidden";
@@ -726,3 +734,7 @@ function onPageListChange(e){
 	document.getElementById("dlgPagToc").close();
 }
 
+function openBookWin(bkId) {
+	window.open("./htm/" + bkId + ".html");
+	localStorage.setItem("mys_BookId", bkId);
+}

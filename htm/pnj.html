@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>般若經講記</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width">
+	<link rel="stylesheet" type="text/css" href="../css/common.css" />
+	<link rel="stylesheet" type="text/css" href="../css/menutree.css" />
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+<!--	<script src="../data/auxData_List.js"></script>-->
+	<script src="../data/pnj_style.js"></script>
+	<script src="../data/pnj_book.js"></script>
+	<script src="../js/search.js"></script>
+	
+	<script src="../js/base_List.js"></script>
+<!--	<script src="../js/audio.js"></script>-->
+	<script src="../js/menuTree.js"></script>
+	<script src="../js/mysBooks.js"></script>
+	
+	
+	<script>
+	
+	var theBook = null;
+	
+var onLoad = function() {
+//	window.title = "New"; //invalid
+//	alert(localStorage.getItem("mys_BookId"));
+	theBook = new mysBooks(localStorage.getItem("mys_BookId"));
+	theBook.ctlShowYin.innerHTML = theBook.parseCont();
+}
+
+	</script>
+</head>
+
+<body onload="onLoad()">
+<span>般若經講記：宗恒法師 104 年般若精舍</span>
+
+	<table id="tblShowPhrase" style="visibility:visible;background-color:lightGray;">
+		<tr>
+		<td><a id="goSite" href="" target="_blank">到</a></td>
+		<td>
+		<span id="dvPhase"><select><option>第 1 期 104 年</option><select><span>
+		</td>
+		<td id="tdPhrase">
+<button id="toggleHandout" onclick="toggleHandout()">期別</button>
+		</td>
+		</tr>
+	</table>
+	<table id="tblShowHandout" style="visibility:collapse;background-color:lightgreen;">
+		<tr>
+		<td><a id="openHandout" href="" target="_blank">到</a></td>
+		<td id="pnlHandout"></td>
+		<td id="tdHandout"></td>
+		</tr>
+	</table>
+
+
+<div id="dvAudio" style="width:100%; border:1px solid black">
+
+<audio  id="myAudio" style="margin:0;padding:0;" controls>
+  <source src="http://220.130.244.41:8080/Study/DiamondSutra/1041223.mp3" type="audio/mpeg">
+</audio>
+<span id="dvLesson"><select><option>第 1 期 104 年</option><select></span>
+</div>
+
+<table id="tblShowYin" width="100%" border="0" style="visibility:visible;border-collapse:collapse;">
+<!--<tr><td>第 1 期 104 年
+<button onclick="document.all.dlgMenuTree.showModal();">menu</button>
+</td></tr>
+overflow-Y:scroll
+-->
+<tr><td>
+<div id="content"  onscroll="TryScroll(event);" style="visibility:visible;letter-spacing:1.5pt;overflow:auto;padding:5px;line-height:1.8;font-size:medium;width:100%;height:16em; border-width:0 1px 1px 1px;border-style:solid;"></div>
+</td></tr></table>
+
+<table id="tblShowAux" width="100%" border="0" style="visibility:collapse;;border-collapse:collapse;"><tr><td>
+<div id="auxPanel" style="visibility:hidden;letter-spacing:1.5pt;overflow-Y:scroll;padding:5px;line-height:1.4;font-size:medium;width:100%;height:16em; border-width:0 1px 1px 1px;border-style:solid;"></div>
+</div>
+</td></tr></table>
+
+</body>
+</html>
