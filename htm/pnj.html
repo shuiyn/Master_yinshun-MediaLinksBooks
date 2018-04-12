@@ -27,7 +27,12 @@
 var onLoad = function() {
 //	window.title = "New"; //invalid
 //	alert(localStorage.getItem("mys_BookId"));
-	theBook = new mysBooks(localStorage.getItem("mys_BookId"));
+//var bkId = "pnj";
+var s = JSON.parse(decodeURIComponent(location.search).substr(6));
+var bkId = s.bkId;
+//document.getElementById("try").innerHTML = location.search;
+// + ", " + location.hash; //localStorage.getItem("mys_BookId")
+	theBook = new mysBooks(bkId); //localStorage.getItem("mys_BookId"));
 	theBook.ctlShowYin.innerHTML = theBook.parseCont();
 }
 
@@ -35,7 +40,8 @@ var onLoad = function() {
 </head>
 
 <body onload="onLoad()">
-<span>般若經講記：宗恒法師 104 年般若精舍</span>
+<span>般若經講記：宗恒法師 104 年般若精舍</span><br/>
+<span id="try"></span>
 
 	<table id="tblShowPhrase" style="visibility:visible;background-color:lightGray;">
 		<tr>

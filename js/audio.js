@@ -735,6 +735,8 @@ function onPageListChange(e){
 }
 
 function openBookWin(bkId) {
-	window.open("./htm/" + bkId + ".html");
+var s = {'bkId':'pnj','croom':'pn'};
+	var jsn = JSON.stringify(s);
+	window.open("./htm/" + bkId + ".html?info=" + jsn);
 	localStorage.setItem("mys_BookId", bkId);
 }
