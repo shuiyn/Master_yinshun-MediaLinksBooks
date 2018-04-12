@@ -14,6 +14,8 @@ var mysBooks = function(bkId) {
 
 	this.mbIsPC = false;
 	this.mbIs7inch = false;
+	document.getElementById("try").innerHTML = ",pc= " + this.mbIsPC + ", 7in= " + this.mbIs7inch;
+
 	var ua = navigator.userAgent;
 	if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(ua) ) {
 		this.mbIsPC = false;
@@ -21,6 +23,7 @@ var mysBooks = function(bkId) {
 		this.mbIsPC = true;
 	}
 	
+	document.getElementById("content").value = "two";
 //	document.getElementById("forTest").value = ua;
 
 	
@@ -42,7 +45,6 @@ var mysBooks = function(bkId) {
 		ctlShowAux.style.fontSize = "110%";
 	}
 	
-	document.getElementById("try").innerHTML = ",pc= " + this.mbIsPC + ", 7in= " + this.mbIs7inch
 }
 
 
