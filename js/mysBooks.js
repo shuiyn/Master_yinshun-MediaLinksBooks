@@ -24,10 +24,11 @@ var mysBooks = function(bkId) {
 
 
 mysBooks.prototype.rstCtrlStyle=function() {
+	alert(this.mbIsPC);
 	if (!this.mbIsPC) { //華為 7 吋
 		this.ctlShowYin.style.fontSize = "90%";
 		this.ctlShowAux.style.fontSize = "90%";
-		if (mbIs7inch) {
+		if (this.mbIs7inch) {
 			this.ctlShowYin.style.height = "23em";
 			this.ctlShowAux.style.height = "23em";
 		}
@@ -40,6 +41,7 @@ mysBooks.prototype.rstCtrlStyle=function() {
 		this.ctlShowYin.style.fontSize = "110%";
 		this.ctlShowAux.style.fontSize = "110%";
 	}
+	alert(this.mbIs7inch);
 }
 
 
