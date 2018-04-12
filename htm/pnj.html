@@ -24,24 +24,15 @@
 	
 	var theBook = null;
 	
-var onLoad = function() {
-//	window.title = "New"; //invalid
-//	alert(localStorage.getItem("mys_BookId"));
-//var bkId = "pnj";
-var sh = decodeURIComponent(location.search);
-var s = JSON.parse(decodeURIComponent(location.search).substr(6));
-var bkId = s.bkId;
-document.getElementById("try").innerHTML = sh + ", bkId= " + s.bkId;
-// + ", " + location.hash; //localStorage.getItem("mys_BookId")
-	theBook = new mysBooks(bkId); //localStorage.getItem("mys_BookId"));
-//var ctl = document.getElementById("content");
-//	ctl.innerHTML = sh;
-//	alert(sh);
-//	sh = theBook.parseCont();
-//	ctl.innerHTML = theBook.parseCont();
-	
-	theBook.ctlShowYin.innerHTML = theBook.parseCont();
-}
+	var onLoad = function() {
+		var sh = decodeURIComponent(location.search);
+		var s = JSON.parse(decodeURIComponent(location.search).substr(6));
+		var bkId = s.bkId;
+//		document.getElementById("try").innerHTML = sh + ", bkId= " + s.bkId;
+
+		theBook = new mysBooks(bkId); //localStorage.getItem("mys_BookId"));
+		theBook.ctlShowYin.innerHTML = theBook.parseCont();
+	}
 
 	</script>
 </head>

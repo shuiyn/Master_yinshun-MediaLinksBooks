@@ -41,7 +41,8 @@ var mysBooks = function(bkId) {
 		this.
 		ctlShowAux.style.fontSize = "110%";
 	}
-
+	
+	document.getElementById("try").innerHTML = ",pc= " + this.mbIsPC + ", 7in= " + this.mbIs7inch
 }
 
 
