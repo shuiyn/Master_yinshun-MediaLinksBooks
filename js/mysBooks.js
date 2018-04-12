@@ -4,6 +4,8 @@ var mysBooks = function(bkId) {
 	this.book = eval(this.bkId + "_book");
 	this.bookStyle = eval(this.bkId + "_style");
 //	this.handout = eval(this.bkId + "_handout");
+	this.mbIsPC = false;
+	this.mbIs7inch = false;
 
 	this.tblShowYin = document.getElementById("tblShowYin");
 	this.tblShowAux = document.getElementById("tblShowAux");
@@ -12,29 +14,23 @@ var mysBooks = function(bkId) {
 //	this.aud = document.getElementById("myAudio");
 //	this.aud.addEventListener("timeupdate", onTimeUpdate);
 
-	this.mbIsPC = false;
-	this.mbIs7inch = false;
 //	document.getElementById("try").innerHTML = ",pc= " + this.mbIsPC + ", 7in= " + this.mbIs7inch;
 
-	var ua = navigator.userAgent;
-	if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(ua) ) {
-		this.mbIsPC = false;
-	} else {
-		this.mbIsPC = true;
-	}
-	
-	document.getElementById("content").value = "two";
+//	document.getElementById("content").value = "two";
 //	document.getElementById("forTest").value = ua;
 
 	
+}
+
+
+mysBooks.prototype.rstCtrlStyle=function() {
 	if (!this.mbIsPC) { //華為 7 吋
-		if (/PLE-7/i.test(ua)) {
-			this.mbIs7inch = true;
+		this.ctlShowYin.style.fontSize = "90%";
+		this.ctlShowAux.style.fontSize = "90%";
+		if (mbIs7inch) {
 			this.ctlShowYin.style.height = "23em";
 			this.ctlShowAux.style.height = "23em";
 		}
-		this.ctlShowYin.style.fontSize = "90%";
-		this.ctlShowAux.style.fontSize = "90%";
 		
 		//document.getElementById("dlgPagToc").style.width = "90%";
 		
@@ -42,10 +38,8 @@ var mysBooks = function(bkId) {
 //		ctlShowAux.style.width = "99%";
 	} else {
 		this.ctlShowYin.style.fontSize = "110%";
-		this.
-		ctlShowAux.style.fontSize = "110%";
+		this.ctlShowAux.style.fontSize = "110%";
 	}
-	
 }
 
 
