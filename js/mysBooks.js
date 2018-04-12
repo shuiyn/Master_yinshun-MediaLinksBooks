@@ -14,7 +14,8 @@ var mysBooks = function(bkId) {
 
 	this.mbIsPC = false;
 	this.mbIs7inch = false;
-	document.getElementById("content").innerHTML = "one";
+//	document.getElementById("content").innerHTML = "one";
+	document.getElementById("content").innerHTML = this.parseCont();
 return;
 	var ua = navigator.userAgent;
 	if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(ua) ) {
