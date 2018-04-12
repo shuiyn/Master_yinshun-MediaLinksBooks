@@ -33,14 +33,14 @@ var s = JSON.parse(decodeURIComponent(location.search).substr(6));
 var bkId = s.bkId;
 document.getElementById("try").innerHTML = sh + ", bkId= " + s.bkId;
 // + ", " + location.hash; //localStorage.getItem("mys_BookId")
-	theBook = new mysBooks("pnj"); //localStorage.getItem("mys_BookId"));
+	theBook = new mysBooks(bkId); //localStorage.getItem("mys_BookId"));
 //var ctl = document.getElementById("content");
 //	ctl.innerHTML = sh;
 //	alert(sh);
 //	sh = theBook.parseCont();
 //	ctl.innerHTML = theBook.parseCont();
 	
-//	theBook.ctlShowYin.innerHTML = theBook.parseCont();
+	theBook.ctlShowYin.innerHTML = theBook.parseCont();
 }
 
 	</script>
