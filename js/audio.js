@@ -736,8 +736,10 @@ function onPageListChange(e){
 }
 
 function openBookWin(bkId) {
-var s = {'bkId':'pnj','croom':'pn'};
-	var jsn = JSON.stringify(s);
+//var mbIsPC = false;
+//var mbIs7inch = false;
+var sQry = {'bkId':bkId,'croom':'pn', 'isPC':mbIsPC, 'is7inch':mbIs7inch};
+	var jsn = JSON.stringify(sQry);
 	window.open("./htm/" + bkId + ".html?info=" + jsn);
-	localStorage.setItem("mys_BookId", bkId);
+//	localStorage.setItem("mys_BookId", bkId);
 }

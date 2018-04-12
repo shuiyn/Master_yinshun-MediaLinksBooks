@@ -28,7 +28,7 @@
 		var sh = decodeURIComponent(location.search);
 		var s = JSON.parse(decodeURIComponent(location.search).substr(6));
 		var bkId = s.bkId;
-//		document.getElementById("try").innerHTML = sh + ", bkId= " + s.bkId;
+		document.getElementById("try").innerHTML = sh;
 
 		theBook = new mysBooks(bkId); //localStorage.getItem("mys_BookId"));
 		theBook.ctlShowYin.innerHTML = theBook.parseCont();

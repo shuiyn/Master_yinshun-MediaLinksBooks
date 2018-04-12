@@ -14,7 +14,7 @@ var mysBooks = function(bkId) {
 
 	this.mbIsPC = false;
 	this.mbIs7inch = false;
-	document.getElementById("try").innerHTML = ",pc= " + this.mbIsPC + ", 7in= " + this.mbIs7inch;
+//	document.getElementById("try").innerHTML = ",pc= " + this.mbIsPC + ", 7in= " + this.mbIs7inch;
 
 	var ua = navigator.userAgent;
 	if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(ua) ) {
@@ -36,7 +36,8 @@ var mysBooks = function(bkId) {
 		this.ctlShowYin.style.fontSize = "90%";
 		this.ctlShowAux.style.fontSize = "90%";
 		
-		document.getElementById("dlgPagToc").style.width = "90%";
+		//document.getElementById("dlgPagToc").style.width = "90%";
+		
 //		ctlShowYin.style.width = "99%";
 //		ctlShowAux.style.width = "99%";
 	} else {
