@@ -1,8 +1,13 @@
 
-var mysBooks = function(bkId) {
+var mysBooks = function(bkId, lecId) {
 	this.bkId = bkId;
+	this.lecId = lecId;
 	this.book = eval(this.bkId + "_book");
-	this.bookStyle = eval(this.bkId + "_style");
+	this.bookStyle;// = eval(this.bkId + "_style");
+	try {
+		this.bookStyle = eval(this.bkId + "_style");
+	} catch(e) {
+	}
 //	this.handout = eval(this.bkId + "_handout");
 	this.mbIsPC = false;
 	this.mbIs7inch = false;
@@ -11,27 +16,28 @@ var mysBooks = function(bkId) {
 	this.tblShowAux = document.getElementById("tblShowAux");
 	this.ctlShowYin = document.getElementById("content");
 	this.ctlShowAux = document.getElementById("auxPanel");
-//	this.aud = document.getElementById("myAudio");
-//	this.aud.addEventListener("timeupdate", onTimeUpdate);
 
 //	document.getElementById("try").innerHTML = ",pc= " + this.mbIsPC + ", 7in= " + this.mbIs7inch;
 
-//	document.getElementById("content").value = "two";
-//	document.getElementById("forTest").value = ua;
-
-	
 }
 
 
 mysBooks.prototype.rstCtrlStyle=function() {
-	alert(this.mbIsPC);
+//	alert(this.mbIsPC);
 	if (!this.mbIsPC) { //華為 7 吋
 		this.ctlShowYin.style.fontSize = "90%";
 		this.ctlShowAux.style.fontSize = "90%";
+
 		if (this.mbIs7inch) {
-			this.ctlShowYin.style.height = "23em";
-			this.ctlShowAux.style.height = "23em";
+			this.ctlShowYin.style.height = "30em";
+			this.ctlShowAux.style.height = "30em";
+		} else {
+			this.ctlShowYin.style.height = "25em";
+			this.ctlShowAux.style.height = "25em";
 		}
+		
+		this.tblShowYin.style.width = "99%";
+		this.tblShowAux.style.width = "99%";
 		
 		//document.getElementById("dlgPagToc").style.width = "90%";
 		
@@ -42,6 +48,88 @@ mysBooks.prototype.rstCtrlStyle=function() {
 		this.ctlShowAux.style.fontSize = "110%";
 	}
 	alert(this.mbIs7inch);
+}
+
+
+mysBooks.prototype.fillPhase=function() {
+	var phs=grabPhase(this.lecId);
+	var masterId=phs[0];
+	var arr=phs[1];
+	var s='<select id="selPhase" onchange="theBook.onPhaseChange(this)" style="width:7em;"' + '" data-masterId="' + masterId + '"> ';
+	
+	if (arr) {
+		for(var i=0; i< arr.length; i++) {
+			s+= ' <option value="' + arr[i].url + '" data-phid="' + arr[i].id+ '">' + arr[i].t + '</option>'
+		}
+	}
+	s+=" </select>";
+	document.getElementById("dvPhase").innerHTML = s;
+
+	this.onPhaseChange(document.getElementById('selPhase'));
+}
+
+
+mysBooks.prototype.onPhaseChange=function(e) {
+//{"item":"ffgl", "master":"kr", "croom":"pn", "period":"9"}
+	document.getElementById('goSite').href = e.value;
+	var phId=e.options[e.selectedIndex].getAttribute("data-phid");
+//	var bkId = document.getElementById('selBook').value;
+	var masterId = e.getAttribute("data-masterId");
+//	console.log("bkId", bkId,"phId",phId,"masterId",masterId);
+
+	var out = grabLesson(masterId, this.bkId, phId);
+	
+	this.fillLesson(out, masterId, phId);
+}
+
+
+
+mysBooks.prototype.fillLesson=function(out, masterId, phId){
+ 	var bGroup = false;
+
+	var s='<select id="selLesson" onchange="theBook.onLessonChange(this)" style="width:6em;"'+ 'data-mbpId="' + [masterId, this.bkId, phId].join(",") + '"> ';
+	for(var i=0; i< out.length; i++) {
+		var bkid=(out[i].ybk ? out[i].ybk : "");
+		if (out[i].url) {
+		s+= '<option value="' + out[i].url + '" data-ybk="' +bkid+ '">' + out[i].d + '</option>';
+		} else {
+			if (bGroup) s+= '</optgroup>';
+			
+			s += '<optgroup label="' + out[i].d + '">';
+			bGroup = true;
+		}
+	}
+	if (bGroup) s+= '</optgroup>';
+	s+=" </select>";
+	document.getElementById("dvLesson").innerHTML = s;
+
+	this.onLessonChange(document.getElementById('selLesson'));
+}
+
+
+
+mysBooks.prototype.onLessonChange=function(e) {
+	if(!e.value){
+		theAud.aud.src = "";
+//		alert(aud.src);為本站址
+		this.ctlShowYin.innerHTML = "";
+		return;
+	}
+	
+	theAud.aud.src = e.value;
+	theAud.playStart = 0;
+	theAud.playDuration = 0;
+
+	var mbp = e.getAttribute("data-mbpId").split(",");
+//	fillCue(mbp, e.value); // e.value == url
+	
+//	var lineScope = e.options[e.selectedIndex].getAttribute("data-ybk");
+//	if(!lineScope)
+//		ctl.innerHTML="";
+//	else {
+//		var ct = grabYbkCont(mbp[1], lineScope);
+//		ctl.innerHTML = parseCont(mbp[1], ct);
+//	}
 }
 
 
@@ -147,6 +235,63 @@ mysBooks.prototype.parseCont = function(){
 //		pgList.add(opt);
 		return '<hr/><p id="' + pgIdPfx + ma[1] + '" style="color:blue;">' + x + "</p>";
 	});
+}
+
+
+var mysAud=function() {
+	this.playStart = 0;
+	this.playDuration = 0;
+	
+	this.aud = document.getElementById("myAudio");
+	this.aud.addEventListener("timeupdate", this.onTimeUpdate);
+}
+
+mysAud.prototype.onTimeUpdate=function() {
+	if(this.playDuration < 1) return;
+
+	if (!this.aud) return;
+
+	if(this.aud.currentTime > (this.playStart + this.playDuration))
+		this.aud.pause();
+}
+
+mysAud.prototype.getMS=function(sId) {
+	var m=0, s=0;
+	if(sId=="palyStart") {
+		m=parseInt(document.getElementById("palyStartM").value);
+		s=parseInt(document.getElementById("palyStartS").value);
+	} else {
+		m=parseInt(document.getElementById("playLengthM").value);
+		s=parseInt(document.getElementById("playLengthS").value);
+	}
+	return (m*60)+s;
+}
+
+mysAud.prototype.cusTime=function(nType) {
+	var t = this.aud.currentTime;
+	var h = Math.floor(t/3600);
+	var m = Math.floor((t % 3600)/60);
+	var s = Math.floor(t % 60);
+
+	if(nType == 1){ //start
+		this.playStart = t;
+		document.getElementById("palyStartH").value = h;
+		document.getElementById("palyStartM").value = m;
+		document.getElementById("palyStartS").value = s;
+	}else{
+		this.playDuration = this.aud.currentTime - this.playStart;
+		t = this.playDuration;
+		document.getElementById("playLengthH").value = Math.floor(t/3600);
+		document.getElementById("playLengthM").value = Math.floor((t % 3600)/60);
+		document.getElementById("playLengthS").value = Math.floor(t % 60);
+	}
+}
+
+mysAud.prototype.cusPlay=function() {
+	this.playStart = this.getMS("palyStart");
+	this.playDuration = this.getMS("playDuration");
+	this.aud.currentTime = this.playStart;
+	this.aud.play();
 }
 
 

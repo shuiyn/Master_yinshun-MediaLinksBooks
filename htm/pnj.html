@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>般若經講記</title>
+	<title>印順導師著作聞思</title>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width">
 	<link rel="stylesheet" type="text/css" href="../css/common.css" />
@@ -12,9 +12,13 @@
 <!--	<script src="../data/auxData_List.js"></script>-->
 	<script src="../data/pnj_style.js"></script>
 	<script src="../data/pnj_book.js"></script>
-	<script src="../js/search.js"></script>
+	<script src="../data/ffgl_book.js"></script>
 	
-	<script src="../js/base_List.js"></script>
+	<script src="../data/base_List.js"></script>
+	<script src="../data/lecture_List.js"></script>
+	<script src="../data/lesson_List.js"></script>
+	
+	<script src="../js/search.js"></script>
 <!--	<script src="../js/audio.js"></script>-->
 	<script src="../js/menuTree.js"></script>
 	<script src="../js/mysBooks.js"></script>
@@ -23,25 +27,33 @@
 	<script>
 	
 	var theBook = null;
+	var theAud = null;
 	
 	var onLoad = function() {
 		var q = JSON.parse(decodeURIComponent(location.search).substr(6));
-		document.getElementById("try").innerHTML = JSON.stringify(q);
-
-		theBook = new mysBooks(q.bkId); //localStorage.getItem("mys_BookId"));
+		
+//		document.getElementById("try").innerHTML = JSON.stringify(q);
+		document.getElementById("tit_bookName").innerHTML = q.bkName
+		document.getElementById("tit_lecName").innerHTML = q.lecName
+		
+		theAud = new mysAud();
+		theBook = new mysBooks(q.bkId, q.lecId); //localStorage.getItem("mys_BookId"));
 		theBook.mbIsPC = q.isPC;
 		theBook.mbIs7inch = q.is7inch;
 		
-//		theBook.rstCtrlStyle();
 		theBook.ctlShowYin.innerHTML = theBook.parseCont();
+		theBook.fillPhase();
+		
+		theBook.rstCtrlStyle();
 	}
 
 	</script>
 </head>
 
 <body onload="onLoad()">
-<span>般若經講記：宗恒法師 104 年般若精舍</span><br/>
-<span id="try"></span>
+<span id="tit_bookName"></span>：
+<span id="tit_lecName"></span><br/>
+<span id="try" style="width:80%;"></span>
 
 	<table id="tblShowPhrase" style="visibility:visible;background-color:lightGray;">
 		<tr>
@@ -63,26 +75,34 @@
 	</table>
 
 
-<div id="dvAudio" style="width:100%; border:1px solid black">
-
-<audio  id="myAudio" style="margin:0;padding:0;" controls>
+<!--<div id="dvAudio" style="width:100%; border:1px solid black">-->
+<table id="dvAudio"><tr>
+<td>
+<audio id="myAudio" style="margin:0;padding:0;" controls>
   <source src="http://220.130.244.41:8080/Study/DiamondSutra/1041223.mp3" type="audio/mpeg">
 </audio>
-<span id="dvLesson"><select><option>104 年 02-13</option><select></span>
-</div>
+</td>
+<td style="vertical-align: middle;">
 
-<table id="tblShowYin" width="100%" border="0" style="visibility:visible;border-collapse:collapse;">
+<span id="dvLesson"><select><option>104 年 02-13</option><select></span>
+</td>
+
+</tr></table>
+<!--</div>-->
+
+<table id="tblShowYin" width="100%" border="0" style="visibility:visible;">
 <!--<tr><td>第 1 期 104 年
 <button onclick="document.all.dlgMenuTree.showModal();">menu</button>
 </td></tr>
 overflow-Y:scroll
 -->
 <tr><td>
-<div id="content"  onscroll="TryScroll(event);" style="visibility:visible;letter-spacing:1.5pt;overflow:auto;padding:5px;line-height:1.8;font-size:medium;width:100%;height:16em; border-width:0 1px 1px 1px;border-style:solid;"></div>
+<div id="content"  onscroll="TryScroll(event);" style="visibility:visible;letter-spacing:1.5pt;overflow:auto;padding:5px;line-height:1.8;font-size:medium;width:100%;height:24em; border-width:0 1px 1px 1px;border-style:solid;"></div>
 </td></tr></table>
 
-<table id="tblShowAux" width="100%" border="0" style="visibility:collapse;;border-collapse:collapse;"><tr><td>
-<div id="auxPanel" style="visibility:hidden;letter-spacing:1.5pt;overflow-Y:scroll;padding:5px;line-height:1.4;font-size:medium;width:100%;height:16em; border-width:0 1px 1px 1px;border-style:solid;"></div>
+<table id="tblShowAux" width="100%" border="0" style="visibility:collapse;">
+<tr><td>
+<div id="auxPanel" style="visibility:hidden;letter-spacing:1.5pt;overflow-Y:scroll;padding:5px;line-height:1.4;font-size:medium;width:100%;height:24em; border-width:0 1px 1px 1px;border-style:solid;"></div>
 </div>
 </td></tr></table>
 

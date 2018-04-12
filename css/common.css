@@ -1,4 +1,8 @@
     
+    table {
+    	border-collapse:collapse;
+    }
+    
     pre {
     	font-family:新細明體;
     	line-height:0em;

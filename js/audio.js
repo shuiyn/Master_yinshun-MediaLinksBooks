@@ -7,7 +7,7 @@ var mbIs7inch = false;
 
 //selBook: <value:bookId>bookName
 function fillBook(){
-	return;
+//	return;
 //	loadBook("jkjjj");
 //	window.open("file:///D:/gooSync/__20170809/PrgCode/GitHub/Master_yinshun-MediaLinksBooks/htm/cueSelect.htm");//"htm/cueSelect.htm");
 //	return;
@@ -137,7 +137,7 @@ function onPhaseChange(e) {
 function fillLesson(out, masterId, bkId, phId){
  	var bGroup = false;
 
-	var s='<select id="selLesson" onchange="onLessonChange(this)" style="width:5em;"'+ 'data-mbpId="' + [masterId, bkId, phId].join(",") + '"> ';
+	var s='<select id="selLesson" onchange="onLessonChange(this)" style="width:6em;"'+ 'data-mbpId="' + [masterId, bkId, phId].join(",") + '"> ';
 	for(var i=0; i< out.length; i++) {
 		var bkid=(out[i].ybk ? out[i].ybk : "");
 		if (out[i].url) {
@@ -735,11 +735,18 @@ function onPageListChange(e){
 	document.getElementById("dlgPagToc").close();
 }
 
-function openBookWin(bkId) {
+function openBookWin() {
 //var mbIsPC = false;
 //var mbIs7inch = false;
-var sQry = {'bkId':bkId,'croom':'pn', 'isPC':mbIsPC, 'is7inch':mbIs7inch};
+	var ctlBook = document.getElementById('selBook');
+	var bkId = ctlBook.value;
+	var bkName = ctlBook.options[ctlBook.selectedIndex].text;
+	var ctlLec = document.getElementById('selLecture');
+	var lecName = ctlLec.options[ctlLec.selectedIndex].text;
+	var lecId = ctlLec.value;
+var sQry = {'bkName':bkName, 'bkId':bkId, 'lecName':lecName, 'lecId':lecId, 'isPC':mbIsPC, 'is7inch':mbIs7inch, 'croom':'pn'};
+
 	var jsn = JSON.stringify(sQry);
-	window.open("./htm/" + bkId + ".html?info=" + jsn);
-//	localStorage.setItem("mys_BookId", bkId);
+	window.open("./htm/pnj.html?info=" + jsn);
+//	window.open("./htm/" + bkId + ".html?info=" + jsn);
 }
