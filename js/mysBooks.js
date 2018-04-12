@@ -28,11 +28,13 @@ mysBooks.prototype.rstCtrlStyle=function() {
 		if (this.mbIs7inch) {
 			this.ctlShowYin.style.fontSize = "90%";
 			this.ctlShowAux.style.fontSize = "90%";
-			this.ctlShowYin.style.height = "50em";
-			this.ctlShowAux.style.height = "50em";
+			this.ctlShowYin.style.height = "40em";
+			this.ctlShowAux.style.height = "40em";
 		} else {
-			this.ctlShowYin.style.height = "45em";
-			this.ctlShowAux.style.height = "45em";
+		this.ctlShowYin.style.fontSize = "110%";
+		this.ctlShowAux.style.fontSize = "110%";
+			this.ctlShowYin.style.height = "35em";
+			this.ctlShowAux.style.height = "35em";
 		}
 		
 		this.tblShowYin.style.width = "99%";
