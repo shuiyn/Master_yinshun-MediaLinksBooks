@@ -31,14 +31,16 @@ mysBooks.prototype.rstCtrlStyle=function() {
 			this.ctlShowYin.style.height = "40em";
 			this.ctlShowAux.style.height = "40em";
 		} else {
-		this.ctlShowYin.style.fontSize = "110%";
-		this.ctlShowAux.style.fontSize = "110%";
+		this.ctlShowYin.style.fontSize = "105%";
+		this.ctlShowAux.style.fontSize = "105%";
 			this.ctlShowYin.style.height = "35em";
 			this.ctlShowAux.style.height = "35em";
 		}
 		
 		this.tblShowYin.style.width = "99%";
 		this.tblShowAux.style.width = "99%";
+			this.ctlShowYin.style.width = "99%";
+			this.ctlShowAux.style.width = "99%";
 		
 		//document.getElementById("dlgPagToc").style.width = "90%";
 		
