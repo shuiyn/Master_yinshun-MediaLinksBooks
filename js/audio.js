@@ -7,6 +7,7 @@ var mbIs7inch = false;
 
 //selBook: <value:bookId>bookName
 function fillBook(){
+	return;
 //	loadBook("jkjjj");
 //	window.open("file:///D:/gooSync/__20170809/PrgCode/GitHub/Master_yinshun-MediaLinksBooks/htm/cueSelect.htm");//"htm/cueSelect.htm");
 //	return;
