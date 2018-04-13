@@ -28,13 +28,9 @@ function fillBook(){
 
 
 function onBookChange(e){
-//	document.getElementById("bookURL").href = e.options[e.selectedIndex].getAttribute("data-url");
 	fillLecture(e.value);
-//		var ct = grabYbkCont(e.value, "0~");
-//	rstElementWidth();
-	ctlShowYin.innerHTML = "";
-	ctlShowYin.innerHTML = parseCont(e.value); //, ct);
-//	rstElementWidth();
+//	ctlShowYin.innerHTML = "";
+//	ctlShowYin.innerHTML = parseCont(e.value); //, ct);
 }
 
 
@@ -42,7 +38,7 @@ function onBookChange(e){
 function fillLecture(bkid){
 	var lecs=grabLecture(bkid);
 
-	var s='<select id="selLecture" onchange="onLectureChange(this);" style="width:10em;"> ';
+	var s='<select id="selLecture" style="width:10em;"> ';
 	for(var lecId in lecs) {
 		s+= ' <option value="' + lecId + '">' + lecs[lecId] + '</option>'
 	}
@@ -50,7 +46,6 @@ function fillLecture(bkid){
 	s+=" </select>";
 	document.getElementById("dvLecture").innerHTML = s;
 		
-	onLectureChange(document.getElementById('selLecture'));
 }
 
 
@@ -401,7 +396,7 @@ function onLoad() {
 		mbIsPC = true;
 	}
 	
-	document.getElementById("forTest").value = ua;
+//	document.getElementById("forTest").value = ua;
 
 //	document.getElementById("content").height=document.body.scrollHeight/3*2;
 //		alert(document.body.scrollHeight + ", " + document.getElementById("content").height + ", " + document.getElementById("content").scrollHeight);
@@ -410,8 +405,6 @@ function onLoad() {
 	tblShowAux = document.getElementById("tblShowAux");
 	ctlShowYin = document.getElementById("content");
 	ctlShowAux = document.getElementById("auxPanel");
-	aud = document.getElementById("myAudio");
-	aud.addEventListener("timeupdate", onTimeUpdate);
 
 	mbIs7inch = false;
 	if (!mbIsPC)  //華為 7 吋
@@ -435,11 +428,6 @@ function onLoad() {
 		ctlShowAux.style.fontSize = "110%";
 	}*/
 
-	if (window.addEventListener) {              
-	    window.addEventListener("resize", rstCtrlStyle);
-	} else if (window.attachEvent) {                 
-	    window.attachEvent("onresize", rstCtrlStyle);
-	}
 
 	fillBook();
 }

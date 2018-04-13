@@ -431,8 +431,11 @@ return;
 function rstPosition() {
 	if (!theBook.mbIsPC) {
 		document.body.style.fontSize = "115%";
+		document.body.style.width = "100%";
 		document.getElementById("tblAudio").style.width = "100%";
 		document.getElementById("tblToggleContHand").style.width = "100%";
+		theBook.ctlShowYin.style.fontSize = "110%";
+		theBook.ctlShowAux.style.fontSize = "110%";
 	}
 	
 	var wInnerH = window.innerHeight;
@@ -489,7 +492,7 @@ function doToggle(btnId, aInner, aTbl, aOwner, aDvText) {
 function toggleAux(){
   if (!theBook.ctlShowAux.innerHTML) openAuxBook();
 	
-  doToggle("toggleAux", ["原文", "輔文"], ["tblShowYin", "tblShowAux"], null,["content", "auxPanel"]);
+  doToggle("toggleAux", ["文", "輔"], ["tblShowYin", "tblShowAux"], null,["content", "auxPanel"]);
 }
 
 function toggleHandout(){
@@ -546,7 +549,25 @@ function openAuxBook() {
 		return '<hr/><p style="color:blue;">' + x + "</p>";
 	});
 //	toggleAux();
-//	toggleBR();
+	toggleBR();
+}
+
+function toggleBR(){
+	var btn = document.getElementById("toggleBR");
+
+	var a = theBook.ctlShowAux.getElementsByClassName("falseBR");
+	var sDisp;// = ctlShowAux.getAttribute("brMode");
+//	sDisp = (sDisp=="none" ? "block" : "none");
+	if (btn.innerHTML == "段") {
+		btn.innerHTML = "行";
+		sDisp = "block";
+	} else {
+		btn.innerHTML = "段";
+		sDisp = "none";
+	}
+	
+//	ctlShowAux.setAttribute("brMode", sDisp);
+	for(var i=0; i < a.length; i++) a[i].style.display = sDisp;
 }
 
 

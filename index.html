@@ -40,196 +40,21 @@
 <body onload="onLoad();">
 <!--text-align:center;-->
 <h3 style="font-family:標楷體;">印順導師著作的相關影音文鏈結</h3>
-
 <!--<span id="demobody">body</span>-->
 
-<table border="0" style="padding:5px;background-color:#EEFFFF;">
-<tr>
-<td colspan="2">
 	<table>
 		<tr>
 		<td id="dvBook"></td>
-		<td><span id="dvLecture"></span><button id="toggleBR" onclick='openBookWin()'>行</button></td>
-<!--		<td><span id="dvLecture"></span><button id="toggleBR" onclick="toggleBR()">行</button></td>-->
+		<td><span id="dvLecture"></span>
+		<td><button onclick='openBookWin()'>開啟</button></span>
 		</tr>
 	</table>
-</td>
-</tr>
-
-<tr>
-<td>
-	<table id="tblShowPhrase" style="visibility:visible;background-color:lightGray;">
-		<tr>
-		<td><a id="goSite" href="" target="_blank">到</a></td>
-		<td>
-		<span id="dvPhase"><span>
-		</td>
-		<td id="tdPhrase">
-<button id="toggleHandout" onclick="toggleHandout()">期別</button>
-		</td>
-		</tr>
-	</table>
-	<table id="tblShowHandout" style="visibility:collapse;background-color:lightgreen;">
-		<tr>
-		<td><a id="openHandout" href="" target="_blank">到</a></td>
-		<td id="pnlHandout"></td>
-		<td id="tdHandout"></td>
-		</tr>
-	</table>
-</td>
 
 
-<td><span id="dvLesson"></span>
-<button id="toggleAux" onclick="toggleAux()" >文</button>
-</td>
-
-
-</tr>
-<!--<td style="text-align:right;"><a id="goSite" href="" target="_blank">到此頁</a>
-<td id="dvPhase"></td>
-<td id="dvLesson"></td>
-</tr>
--->
-</table>
-
-<div id="dvAudio" style="width:100%; border:1px solid black">
-
-<audio  id="myAudio" style="width:100%" controls>
-  <source src="" type="audio/mpeg">
-</audio>
-<!--<br/>-->
-<!-- style="text-align:center;"-->
-<div style="padding:3px;background-color:#EEFFFF;">
-<button id="forTest" onclick="copyDeviceUA(this.value);">D</button>
-<button onclick="document.all.myDialog.showModal();">cue</button>
-
-<button onclick="forbakward(1);">後退</button>
-<button onclick="forbakward(0);">前進</button>設
-<button onclick="cusTime(0);">終點</button>
-<button onclick="cusTime(1);">起點</button>
-</div>
-
-<div style="padding:3px;background-color:#F8EACE;">
-<table style="border:0pdx;border-collapse: collapse;"><tr>
-<td><button id="toggleStartLen" onclick="toggleStartLen()">於</button></td>
-
-<td>
-
-<table id="tblPlayStart" style="visibility:visible;visible:0pdx;border-collapse: collapse;">
-<tr><td>
-<input id="palyStartH" type="number" value="0"  min="0" max="23" style="width:2em;"></input>時
-<input id="palyStartM" type="number" value="0" min="0" max="59" style="width:2.5em;"></input>分
-<input id="palyStartS" type="number" value="0" min="0" max="59" style="width:2.5em;"></input>秒
-</td></tr>
-</table>
-
-<table id="tblPlayLen" style="visibility:collapse;border:0pdx;border-collapse: collapse;">
-<tr><td>
-<input id="playLengthH" type="number" value="0" min="0" max="23" style="width:2em;"></input>時
-<input id="playLengthM" type="number" value="0" min="0" max="59" style="width:2.5em;"></input>分
-<input id="playLengthS" type="number" value="0" min="0" max="59" style="width:2.5em;"></input>秒
-</td></tr>
-</table>
-
-</td>
-
-<td><button onclick="cusPlay();">播放</button></td>
-
-<td>
-<span style="position:relative;">
-<button  style="position:relative;z-index:0" onclick="showPageTocSelect(this)">頁目</button>
-</span></td>
-
-<dialog id="dlgPagToc" style="height:70%;width:50%;">
-<button onclick="document.all.dlgPagToc.close()" style="position:absolute;top:1px;left:1px;margin:0;padding:2px;">✖</button>
 <br/>
-<span>頁次選單</span><br/>
-<select style="width:6em;" id="pageList" onchange="onPageListChange(this)"></select><br/><br/>
-<span>目錄選單</span>
-<hr/>
-<div style="height:21em;width:100%;padding:0;margin:0;padding:0">
-<ul id="mnuRoot" class="menutree" onclick="onMenuClicked(event)" style="height:16em;overflow-y:scroll;margin-left:0;margin-top:0;padding-left:20px;padding-top:0"></ul>
-</div>
-
-<!--<button padding:0
-onclick="document.all.dlgMenuTree.showModal();">menu</button>-->
-</dialog>
-
-
-
-<!--
-<td><div style="margin:0;padding:0">　<select style="width:4em;" id="pageList" onchange="onPageListChange(this)"></select><button onclick="document.all.dlgMenuTree.showModal();">menu</button>
-</div></td>-->
-
-</tr>
-</table>
-</div>
-
-<!--<br/>-->
-
-<!--<input type="time" id="myTime" step="1" value="00:00:00">-->
-
-<!--長度 #4CAF50 #ccc-->
-<!--<div style="padding:3px;background-color:#f1f5ff;">
-<button id="toggleBR" onclick="toggleBR()">行</button>
-<button id="toggleAux" onclick="toggleAux()" >文</button>
-
-</div>
--->
-<!--佛法概論自序：
-Mixed Content: The page at 'https://shuiyn.github.io/Master_yinshun-MediaLinksBooks/' was loaded over HTTPS, but requested an insecure resource 'http://www.mahabodhi.org/files/yinshun/21/yinshun21-01.html'. This request has been blocked; the content must be served over HTTPS.
-
-Mixed Content: The page at 'https://shuiyn.github.io/Master_yinshun-MediaLinksBooks/' was loaded over HTTPS, but requested an insecure audio file 'http://220.130.244.41:8080/prajna/20150321-1.mp3'. This content should also be served over HTTPS.
-
-
-http://www.mahabodhi.org/files/yinshun/21/yinshun21-01.html
-http://www.mahabodhi.org/files/yinshun/00/yinshun00-02.html
--->
-
-<!--反複、段落選單-->
-</div>
-
-<!--12em=12*16 = 192px-->
-<!--<a id="bookURL" href="" target="iframe_a">本文</a>
-<iframe height="192" width="100%" src="" name="iframe_a"></iframe>
--->
-
-<!--<div id="content" style="margin-top:1px;width:100%;height:10em; border:1px solid black"> 
-
-display:none;
--->
-<!--
-<div id="YA" style="position:relative;">
-<div id="content" style="position:relative;top:0px;z-index:1;visibility:visible;letter-spacing:1.5pt;overflow-Y:scroll;padding:5px;line-height:1.4;font-size:medium;width:100%;height:12em; border-width:0 1px 1px 1px;border-style:solid;"></div>
-
-<div id="auxPanel" brMode="block" style="position:relative;top:0px;z-index:0;visibility:hidden;letter-spacing:1.5pt;overflow-Y:scroll;padding:5px;line-height:1.4;font-size:medium;width:100%;height:12em; border-width:0 1px 1px 1px;border-style:solid;"></div>
-</div>
--->
-<table id="tblShowYin" width="100%" border="0" style="visibility:visible;border-collapse:collapse;">
-<!--<tr><td>
-<button onclick="document.all.dlgMenuTree.showModal();">menu</button>
-</td></tr>
-overflow-Y:scroll
--->
-<tr><td>
-<div id="content"  onscroll="TryScroll(event);" style="visibility:visible;letter-spacing:1.5pt;overflow:auto;padding:5px;line-height:1.8;font-size:medium;width:100%;height:16em; border-width:0 1px 1px 1px;border-style:solid;"></div>
-</td></tr></table>
-
-<table id="tblShowAux" width="100%" border="0" style="visibility:collapse;;border-collapse:collapse;"><tr><td>
-<div id="auxPanel" style="visibility:hidden;letter-spacing:1.5pt;overflow-Y:scroll;padding:5px;line-height:1.4;font-size:medium;width:100%;height:16em; border-width:0 1px 1px 1px;border-style:solid;"></div>
-</td></tr></table>
-
-<!--<span onclick="dotPlay('03:50');">◆</span>摩訶般若波羅蜜經<br/>
-<span onclick="dotPlay('22:10');">◆</span>第十二期（龍樹說譬喻-->
-
-<!--<br/>-->
-
-<!--摩訶般若波羅蜜經
-第十二期（龍樹說譬喻、摩訶般若波羅蜜經、雜阿含經論會編）
-<a href="http://www.kyba.org.tw/board/showcontent.asp?bd=11&id=731&totable=1">107年第12期</a>
-<hr/>
--->
-
+<br/>
+<br/>
+<br/>
 <br/>
 <div>
 <span style="padding:2px;background-color:#5f5f5f;color:#ffffff;"> 本站引用的影音文資料來源： </span><br/>
