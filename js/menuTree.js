@@ -1,8 +1,7 @@
 
 //function createMenu(bkId) {
-function createMenu(aItem, sPath) {
-	if (sPath) sPath += "./img/";
-	else sPath = "./img/";
+function createMenu(aItem) {
+	var sPath = hostImgURL();
 	
 	var tocIdPfx = base_List.htmlIdPrefix.toc;
 	
@@ -90,9 +89,8 @@ function createMenu(aItem, sPath) {
 }
 
 
-function onMenuClicked(ev, sPath) {
-	if (sPath) sPath += "./img/";
-	else sPath = "./img/";
+function onMenuClicked(ev) {
+	var sPath = hostImgURL();
 
 	var eTrigger = ev.target;
 //	document.getElementById("demo").innerHTML = eTrigger.nodeName

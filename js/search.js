@@ -1,4 +1,10 @@
 
+//img 網站資料夾的路徑，供 menuTree 使用
+var hostImgURL=function() {
+	var sImgPath = location.pathname;
+	return ".".repeat(sImgPath.substr(sImgPath.lastIndexOf("Books/")).split("/").length-1) + "/img/";
+}
+
 //var loadBook=function(bkid) {
 //	var fs = require("fs");
 //	var ct = fs.readFileSync("../data/book_List.js", "utf-8");

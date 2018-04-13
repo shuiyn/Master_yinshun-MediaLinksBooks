@@ -32,6 +32,8 @@
 	
 	var onLoad = function() {
 		var q = JSON.parse(decodeURIComponent(location.search).substr(6));
+
+		document.getElementById("try").innerHTML = screen.width + "*" + screen.height + ", av= " + screen.availWidth + "*" + screen.availHeight + ", " + hostImgURL();//location.host;//.replace(location.hostname, "");
 		
 //		document.getElementById("try").innerHTML = "kk" + location.pathname;// JSON.stringify(q);
 		document.getElementById("tit_booklecName").innerHTML = q.bkName + "：" + q.lecName;
@@ -41,10 +43,15 @@
 		theBook.mbIsPC = q.isPC;
 		theBook.mbIs7inch = q.is7inch;
 		
+		if (window.addEventListener) {              
+		    window.addEventListener("resize", theBook.rstCtrlStyle);
+		} else if (window.attachEvent) {                 
+		    window.attachEvent("onresize", theBook.rstCtrlStyle);
+		}
+		
 		theBook.ctlShowYin.innerHTML = theBook.parseCont();
 		theBook.fillPhase();
 		
-		theBook.rstCtrlStyle();
 	}
 
 	</script>
@@ -142,7 +149,7 @@
 <span>目錄選單</span>
 <hr/>
 <div style="height:21em;width:100%;padding:0;margin:0;padding:0">
-<ul id="mnuRoot" class="menutree" onclick="onMenuClicked(event, '.')" style="height:16em;overflow-y:scroll;margin-left:0;margin-top:0;padding-left:20px;padding-top:0"></ul>
+<ul id="mnuRoot" class="menutree" onclick="onMenuClicked(event)" style="height:16em;overflow-y:scroll;margin-left:0;margin-top:0;padding-left:20px;padding-top:0"></ul>
 </div>
 
 </dialog>

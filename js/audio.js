@@ -414,7 +414,11 @@ function onLoad() {
 	aud.addEventListener("timeupdate", onTimeUpdate);
 
 	mbIs7inch = false;
-	if (!mbIsPC) { //華為 7 吋
+	if (!mbIsPC)  //華為 7 吋
+		if (/PLE-7/i.test(ua))
+			mbIs7inch = true;
+
+	/*if (!mbIsPC) { //華為 7 吋
 		if (/PLE-7/i.test(ua)) {
 			mbIs7inch = true;
 			ctlShowYin.style.height = "23em";
@@ -429,10 +433,48 @@ function onLoad() {
 	} else {
 		ctlShowYin.style.fontSize = "110%";
 		ctlShowAux.style.fontSize = "110%";
+	}*/
+
+	if (window.addEventListener) {              
+	    window.addEventListener("resize", rstCtrlStyle);
+	} else if (window.attachEvent) {                 
+	    window.attachEvent("onresize", rstCtrlStyle);
 	}
 
 	fillBook();
 }
+
+function rstCtrlStyle() {
+//	alert(mbIsPC);
+	if (!mbIsPC) { //華為 7 吋
+		if (mbIs7inch) {
+			ctlShowYin.style.fontSize = "90%";
+			ctlShowAux.style.fontSize = "90%";
+			ctlShowYin.style.height = "37em";
+			ctlShowAux.style.height = "40em";
+		} else {
+		ctlShowYin.style.fontSize = "105%";
+		ctlShowAux.style.fontSize = "105%";
+			ctlShowYin.style.height = "32em";
+			ctlShowAux.style.height = "32em";
+		}
+		
+		tblShowYin.style.width = "99%";
+		tblShowAux.style.width = "99%";
+			ctlShowYin.style.width = "99%";
+			ctlShowAux.style.width = "99%";
+		
+		//document.getElementById("dlgPagToc").style.width = "90%";
+		
+//		ctlShowYin.style.width = "99%";
+//		ctlShowAux.style.width = "99%";
+	} else {
+		ctlShowYin.style.fontSize = "110%";
+		ctlShowAux.style.fontSize = "110%";
+	}
+//	alert(mbIs7inch);
+}
+
 
 	/*
 function rstElementWidth() {

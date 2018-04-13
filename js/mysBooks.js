@@ -157,7 +157,7 @@ mysBooks.prototype.onLessonChange=function(e) {
 
 
 mysBooks.prototype.parseCont = function(){
-	createMenu(this.book, ".");
+	createMenu(this.book);
 	var pgList = document.getElementById("pageList");
 	while (pgList.length > 0) pgList.remove(0);
 		
