@@ -431,8 +431,8 @@ return;
 function rstPosition() {
 	if (!theBook.mbIsPC) {
 		document.body.style.fontSize = "115%";
-		document.getElementById("tblAudio").width = "100%";
-		document.getElementById("tblToggleContHand").width = "100%";
+		document.getElementById("tblAudio").style.width = "100%";
+		document.getElementById("tblToggleContHand").style.width = "100%";
 	}
 	
 	var wInnerH = window.innerHeight;
