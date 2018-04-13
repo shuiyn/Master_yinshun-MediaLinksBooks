@@ -429,6 +429,12 @@ return;
 //非物件函式 ---------------------------------------
 //重設文章、講義顯示區的高度
 function rstPosition() {
+	if (!theBook.mbIsPC) {
+		document.body.style.fontSize = "115%";
+		document.getElementById("tblAudio").width = "100%";
+		document.getElementById("tblToggleContHand").width = "100%";
+	}
+	
 	var wInnerH = window.innerHeight;
 	var nTop = document.getElementById("dvContHand").offsetTop;
 
