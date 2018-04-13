@@ -765,6 +765,11 @@ function onPageListChange(e){
 function openBookWin() {
 //var mbIsPC = false;
 //var mbIs7inch = false;
+	var fn = "ys_cell";
+	
+	if (mbIsPC)
+		fn = "pnj";
+	
 	var ctlBook = document.getElementById('selBook');
 	var bkId = ctlBook.value;
 	var bkName = ctlBook.options[ctlBook.selectedIndex].text;
@@ -774,6 +779,6 @@ function openBookWin() {
 var sQry = {'bkName':bkName, 'bkId':bkId, 'lecName':lecName, 'lecId':lecId, 'isPC':mbIsPC, 'is7inch':mbIs7inch, 'croom':'pn'};
 
 	var jsn = JSON.stringify(sQry);
-	window.open("./htm/pnj.html?info=" + jsn);
+	window.open("./htm/" + fn + ".html?info=" + jsn);
 //	window.open("./htm/" + bkId + ".html?info=" + jsn);
 }
