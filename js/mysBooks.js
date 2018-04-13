@@ -555,9 +555,6 @@ function openAuxBook() {
 }
 
 function toggleBR(){
-	var ps = parseInt(theBook.ctlShowYin.style.fontSize);
-	theBook.ctlShowYin.style.fontSize = (ps-2)+"%";
-	return;
 	var btn = document.getElementById("toggleBR");
 
 	var a = theBook.ctlShowAux.getElementsByClassName("falseBR");
@@ -575,4 +572,14 @@ function toggleBR(){
 	for(var i=0; i < a.length; i++) a[i].style.display = sDisp;
 }
 
-
+function rstContHandFontSize(sType){
+	var ps = parseInt(theBook.ctlShowYin.style.fontSize);
+	if (sType == "+")
+		ps += 2;
+	else
+		ps -= 2;
+	
+	theBook.ctlShowYin.style.fontSize = ps+"%";
+	
+	document.getElementById("psCont").innerHTML = ps;
+}

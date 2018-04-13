@@ -54,7 +54,7 @@
 
 <body onload="onLoad()">
 <!--<span id="tit_booklecName"></span>-->
-<span id="tit_booklecName" style="font-size:90%;font-family:標楷體;font-weight:bold;"></span><br/>
+<span id="tit_booklecName" style="font-size:85%;font-family:標楷體;font-weight:bold;"></span><br/>
 <span id="try" style="width:80%;"></span>
 
 <!--期別、著文、講義切換-->
@@ -82,7 +82,7 @@
 
 
 <div id="dvAudioLesson" style="width:100%; border:1px solid black">
-  <audio id="myAudio" style="margin:0;padding:1px;" controls>
+  <audio id="myAudio" style="margin:0;padding:1px;width:99%" controls>
   <source src="" type="audio/mpeg">
   </audio>
 
@@ -98,6 +98,8 @@
 <button onclick="theAud.forbakward(0);">前進</button>設
 <button onclick="theAud.cusTime(0);">終點</button>
 <button onclick="theAud.cusTime(1);">起點</button>
+<button id="toggleAux" onclick="toggleAux()" style="margin-left:2em;">文</button>
+	<button id="toggleBR" onclick='toggleBR()'>行</button>
 </div>
 
 <div style="width:99%;padding:3px;background-color:#F8EACE;">
@@ -109,8 +111,8 @@
 <table id="tblPlayStart" style="visibility:visible;visible:0pdx;">
 <tr><td>
 <input id="palyStartH" type="number" value="0"  min="0" max="23" style="width:2em;"></input>時
-<input id="palyStartM" type="number" value="0" min="0" max="59" style="width:2.5em;"></input>分
-<input id="palyStartS" type="number" value="0" min="0" max="59" style="width:2.5em;"></input>秒
+<input id="palyStartM" type="number" value="0" min="0" max="59" style="width:2em;"></input>分
+<input id="palyStartS" type="number" value="0" min="0" max="59" style="width:2em;"></input>秒
 </td></tr>
 </table>
 
@@ -126,9 +128,10 @@
 
 <td><button onclick="theAud.cusPlay();">播放</button></td>
 <td>
-	<button id="toggleAux" onclick="toggleAux()" >文</button>
-	<button id="toggleBR" onclick='toggleBR()'>行</button>
 	<button onclick="theBook.showPageTocSelect()">頁</button>
+	<button onclick="rstContHandFontSize('-')">─</button>
+	<span id="psCont" >96</span>
+	<button onclick="rstContHandFontSize('+')">✚</button>
 </td>
 
 </tr>
