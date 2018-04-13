@@ -429,13 +429,14 @@ return;
 //非物件函式 ---------------------------------------
 //重設文章、講義顯示區的高度
 function rstPosition() {
+//	return;
 	if (!theBook.mbIsPC) {
 		document.body.style.fontSize = "115%";
-		document.body.style.width = "100%";
-		document.getElementById("tblAudio").style.width = "100%";
-		document.getElementById("tblToggleContHand").style.width = "100%";
+		document.body.style.width = "99%";
+		document.getElementById("tblAudio").style.width = "99%";
+		document.getElementById("tblToggleContHand").style.width = "99%";
 		theBook.ctlShowYin.style.fontSize = "110%";
-		theBook.ctlShowAux.style.fontSize = "110%";
+//		theBook.ctlShowAux.style.fontSize = "110%";
 	}
 	
 	var wInnerH = window.innerHeight;
@@ -445,8 +446,8 @@ function rstPosition() {
 	var nDiffH = (wInnerH - nTop - 10);
 	theBook.tblShowYin.style.height = nDiffH  + "px";
 	theBook.ctlShowYin.style.height = (nDiffH-10)  + "px";
-	theBook.tblShowAux.style.height = nDiffH  + "px";
-	theBook.ctlShowAux.style.height = (nDiffH-10)  + "px";
+//	theBook.tblShowAux.style.height = nDiffH  + "px";
+//	theBook.ctlShowAux.style.height = (nDiffH-10)  + "px";
 }
 
 
