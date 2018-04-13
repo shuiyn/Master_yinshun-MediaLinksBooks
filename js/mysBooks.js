@@ -442,8 +442,9 @@ function rstPosition() {
 	var wInnerH = window.innerHeight;
 	var nTop = document.getElementById("dvContHand").offsetTop;
 
-//document.getElementById("try").innerHTML = wInnerH + ", t=" + nTop + ", h= " + nHei;
 	var nDiffH = (wInnerH - nTop - 10);
+document.getElementById("try").innerHTML = wInnerH + ", t=" + nTop + ", h= " + nDiffH;
+
 	theBook.tblShowYin.style.height = nDiffH  + "px";
 	theBook.ctlShowYin.style.height = (nDiffH-10)  + "px";
 //	theBook.tblShowAux.style.height = nDiffH  + "px";
