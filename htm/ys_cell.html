@@ -52,9 +52,9 @@
 	</script>
 </head>
 
-<body onload="onLoad()">
+<body onload="onLoad()"  style="width:98%">
 <!--<span id="tit_booklecName"></span>-->
-<span id="tit_booklecName" style="font-size:medium;font-family:標楷體;font-weight:bold;"></span><br/>
+<span id="tit_booklecName" style="font-family:標楷體;font-weight:bold;"></span><br/>
 <span id="try" style="width:80%;"></span>
 
 <!--期別、著文、講義切換-->
@@ -65,6 +65,11 @@
 	</td>
 	<td id="tdPhrase">
 <button id="toggleHandout" onclick="toggleHandout()">期別</button>
+	</td>
+	<td>
+	<button id="toggleAux" onclick="toggleAux()" >文</button>
+	<button id="toggleBR" onclick='toggleBR()'>行</button>
+	<button onclick="theBook.showPageTocSelect()">頁</button>
 	</td>
 </tr></table>
 
@@ -105,7 +110,7 @@
 <button onclick="theAud.cusTime(1);">起點</button>
 </div>
 
-<div style="width:100%;padding:3px;background-color:#F8EACE;">
+<div style="width:99%;padding:3px;background-color:#F8EACE;">
 <table id="tblToggleContHand" wdth="99%" style="border:0pdx;"><tr>
 <td><button id="toggleStartLen" onclick="toggleStartLen()">於</button></td>
 
@@ -131,11 +136,6 @@
 
 <td><button onclick="theAud.cusPlay();">播放</button></td>
 
-<td>
-　<button id="toggleAux" onclick="toggleAux()" >文</button>
-<button id="toggleBR" onclick='toggleBR()'>行</button>
-<button onclick="theBook.showPageTocSelect()">頁</button>
-</td>
 </tr>
 </table>
 </div>
@@ -149,7 +149,7 @@
 position:absolute; top:0;
  onscroll="theBook.TryScroll(event);"
 -->
-<div id="content" style="visibility:visible;letter-spacing:1.5pt;overflow:auto;padding:5px;line-height:1.8;width:99%;height:300px; border-width:0 1px 1px 1px;border-style:solid;font-size:110%;"></div>
+<div id="content" style="visibility:visible;letter-spacing:1.5pt;overflow:hidden;padding:5px;line-height:1.8;width:99%;height:330px; border-width:0 1px 1px 1px;border-style:solid;font-size:110%;"></div>
 
 <div id="dvContHand" style="width:100%;">
 

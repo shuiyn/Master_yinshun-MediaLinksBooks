@@ -763,12 +763,10 @@ function onPageListChange(e){
 }
 
 function openBookWin() {
-//var mbIsPC = false;
-//var mbIs7inch = false;
 	var fn = "ys_cell";
 	
-	if (mbIsPC)
-		fn = "pnj";
+//	if (mbIsPC)
+//		fn = "pnj";
 	
 	var ctlBook = document.getElementById('selBook');
 	var bkId = ctlBook.value;

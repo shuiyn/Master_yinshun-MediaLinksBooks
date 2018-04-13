@@ -443,7 +443,7 @@ function rstPosition() {
 	var nTop = document.getElementById("dvContHand").offsetTop;
 
 	var nDiffH = (wInnerH - nTop - 10);
-document.getElementById("try").innerHTML = wInnerH + ", t=" + nTop + ", h= " + nDiffH;
+//document.getElementById("try").innerHTML = wInnerH + ", t=" + nTop + ", h= " + nDiffH;
 
 	theBook.tblShowYin.style.height = nDiffH  + "px";
 	theBook.ctlShowYin.style.height = (nDiffH-10)  + "px";
