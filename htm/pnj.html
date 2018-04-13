@@ -37,21 +37,23 @@
 		
 //		document.getElementById("try").innerHTML = "kk" + location.pathname;// JSON.stringify(q);
 		document.getElementById("tit_booklecName").innerHTML = q.bkName + "：" + q.lecName;
-		
+
+				
 		theAud = new mysAud();
 		theBook = new mysBooks(q.bkId, q.lecId); //localStorage.getItem("mys_BookId"));
 		theBook.mbIsPC = q.isPC;
 		theBook.mbIs7inch = q.is7inch;
-		
-		if (window.addEventListener) {              
-		    window.addEventListener("resize", theBook.rstCtrlStyle);
-		} else if (window.attachEvent) {                 
-		    window.attachEvent("onresize", theBook.rstCtrlStyle);
-		}
-		
+
 		theBook.ctlShowYin.innerHTML = theBook.parseCont();
 		theBook.fillPhase();
 		
+		if (window.addEventListener) {              
+		    window.addEventListener("resize", rstCtrlStyle);
+		} else if (window.attachEvent) {                 
+		    window.attachEvent("onresize", rstCtrlStyle);
+		}
+		
+		rstCtrlStyle();
 	}
 
 	</script>
@@ -166,12 +168,12 @@
 
 <table id="tblShowYin" width="100%" border="0" style="visibility:visible;">
 <tr><td>
-<div id="content"  onscroll="theBook.TryScroll(event);" style="visibility:visible;letter-spacing:1.5pt;overflow:auto;padding:5px;line-height:1.8;font-size:medium;width:99%;height:20em; border-width:0 1px 1px 1px;border-style:solid;"></div>
+<div id="content"  onscroll="theBook.TryScroll(event);" style="visibility:visible;letter-spacing:1.5pt;overflow:auto;padding:5px;line-height:1.8;font-size:medium;width:99%;height:10em; border-width:0 1px 1px 1px;border-style:solid;"></div>
 </td></tr></table>
 
 <table id="tblShowAux" width="100%" border="0" style="visibility:collapse;">
 <tr><td>
-<div id="auxPanel" style="visibility:hidden;letter-spacing:1.5pt;overflow-Y:scroll;padding:5px;line-height:1.4;font-size:medium;width:99%;height:20em; border-width:0 1px 1px 1px;border-style:solid;"></div>
+<div id="auxPanel" style="visibility:hidden;letter-spacing:1.5pt;overflow-Y:scroll;padding:5px;line-height:1.4;font-size:medium;width:99%;height:10em; border-width:0 1px 1px 1px;border-style:solid;"></div>
 </div>
 </td></tr></table>
 

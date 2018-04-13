@@ -40,9 +40,8 @@ mysBooks.prototype.TryScroll=function(ev) {
 //	ev.cancelBubble = true;
 }
 
-
-mysBooks.prototype.rstCtrlStyle=function() {
-//	alert(this.mbIsPC);
+mysBooks.prototype.rstCtrlStyle1=function() {
+	alert(this.ctlShowYin);
 	if (!this.mbIsPC) { //華為 7 吋
 		if (this.mbIs7inch) {
 			this.ctlShowYin.style.fontSize = "90%";
@@ -70,6 +69,55 @@ mysBooks.prototype.rstCtrlStyle=function() {
 		this.ctlShowAux.style.fontSize = "110%";
 	}
 //	alert(this.mbIs7inch);
+}
+
+
+
+function tryShow() {
+	var wInnerH = window.innerHeight;
+	var nTop = theBook.tblShowYin.offsetTop;
+	var nHei = theBook.tblShowYin.offsetHeight;
+	document.getElementById("try").innerHTML = nTop + ", " + nHei + ",wh " + wInnerH + ", sh= " + screen.availHeight;
+	
+	var nDiffH = (wInnerH - nTop - 10);// + "px"
+	theBook.tblShowYin.style.height = nDiffH  + "px";
+	theBook.ctlShowYin.style.height = (nDiffH-10)  + "px";
+	theBook.tblShowAux.style.height = nDiffH  + "px";
+	theBook.ctlShowAux.style.height = (nDiffH-10)  + "px";
+}
+
+
+function rstCtrlStyle() {
+//	alert(theBook.ctlShowYin);
+tryShow();
+return;
+	if (!theBook.mbIsPC) { //華為 7 吋
+		if (theBook.mbIs7inch) {
+			theBook.ctlShowYin.style.fontSize = "90%";
+			theBook.ctlShowAux.style.fontSize = "90%";
+			theBook.ctlShowYin.style.height = "37em";
+			theBook.ctlShowAux.style.height = "40em";
+		} else {
+		theBook.ctlShowYin.style.fontSize = "105%";
+		theBook.ctlShowAux.style.fontSize = "105%";
+			theBook.ctlShowYin.style.height = "32em";
+			theBook.ctlShowAux.style.height = "32em";
+		}
+		
+		theBook.tblShowYin.style.width = "99%";
+		theBook.tblShowAux.style.width = "99%";
+			theBook.ctlShowYin.style.width = "99%";
+			theBook.ctlShowAux.style.width = "99%";
+		
+		//document.getElementById("dlgPagToc").style.width = "90%";
+		
+//		ctlShowYin.style.width = "99%";
+//		ctlShowAux.style.width = "99%";
+	} else {
+		theBook.ctlShowYin.style.fontSize = "110%";
+		theBook.ctlShowAux.style.fontSize = "110%";
+	}
+//	alert(theBook.mbIs7inch);
 }
 
 
