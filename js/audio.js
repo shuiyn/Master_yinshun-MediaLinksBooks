@@ -607,10 +607,6 @@ function cuePointPlay(){
 
 function openAuxBook() {
 	var fn = "真常大我_真常妙有";
-	//var fs=require("fs");
-	//var aLine = fs.readFileSync("data/" + fn + "_pure.txt", "utf8").split(/\r?\n/);
-	//var lstParaLine = JSON.parse(fs.readFileSync("data/" + fn + ".json", "utf8"));
-
 	var aLine = auxData_List[fn];
 	var lstParaLine = auxJSON_List[fn];
 

@@ -16,9 +16,6 @@ var mysBooks = function(bkId, lecId) {
 	this.tblShowAux = document.getElementById("tblShowAux");
 	this.ctlShowYin = document.getElementById("content");
 	this.ctlShowAux = document.getElementById("auxPanel");
-
-//	document.getElementById("try").innerHTML = ",pc= " + this.mbIsPC + ", 7in= " + this.mbIs7inch;
-
 }
 
 
@@ -27,7 +24,7 @@ mysBooks.prototype.showPageTocSelect=function(){
 }
 
 
-mysBooks.prototype.onPageListChange=function(){
+mysBooks.prototype.onPageListChange=function(e){
 	location.href = "#" + base_List.htmlIdPrefix.page + "p" + e.options[e.selectedIndex].innerText;
 	document.getElementById("dlgPagToc").close();
 }
@@ -35,90 +32,51 @@ mysBooks.prototype.onPageListChange=function(){
 
 mysBooks.prototype.TryScroll=function(ev) {
 	window.scrollTo(0, 0);
-//	ev.preventDefault();
-//	document.getElementById("demobody").innerHTML = ev.type + ", " + ev.target.id;
-//	ev.cancelBubble = true;
 }
 
-mysBooks.prototype.rstCtrlStyle1=function() {
-	alert(this.ctlShowYin);
-	if (!this.mbIsPC) { //華為 7 吋
-		if (this.mbIs7inch) {
-			this.ctlShowYin.style.fontSize = "90%";
-			this.ctlShowAux.style.fontSize = "90%";
-			this.ctlShowYin.style.height = "37em";
-			this.ctlShowAux.style.height = "40em";
-		} else {
-		this.ctlShowYin.style.fontSize = "105%";
-		this.ctlShowAux.style.fontSize = "105%";
-			this.ctlShowYin.style.height = "32em";
-			this.ctlShowAux.style.height = "32em";
+
+
+mysBooks.prototype.fillBook=function() {
+  this.ctlShowYin.innerHTML = this.parseCont();
+  this.fillHandout();
+  this.fillPhase();
+}
+
+mysBooks.prototype.fillHandout=function() {
+	var ht = lecture_List[this.lecId].handout;
+	var pnl = document.getElementById("pnlHandout");
+	var s='<select style="width:7em;" id="selHandout" onchange="theBook.onHandoutChange(this)">';
+	if (ht) {
+		var bGroup = false;
+		
+		for (var i=0; i < ht.length; i++) {
+			if (ht[i].url) {
+				s += '<option value="' + ht[i].url + '">' + ht[i].t + "</ooption>";
+			} else {
+				if (bGroup) s+= '</optgroup>';
+				
+				s += '<optgroup label="' + ht[i].t + '">';
+				bGroup = true;
+			}
 		}
 		
-		this.tblShowYin.style.width = "99%";
-		this.tblShowAux.style.width = "99%";
-			this.ctlShowYin.style.width = "99%";
-			this.ctlShowAux.style.width = "99%";
+		if (bGroup) s+= '</optgroup>';
 		
-		//document.getElementById("dlgPagToc").style.width = "90%";
-		
-//		ctlShowYin.style.width = "99%";
-//		ctlShowAux.style.width = "99%";
 	} else {
-		this.ctlShowYin.style.fontSize = "110%";
-		this.ctlShowAux.style.fontSize = "110%";
+		document.getElementById("openHandout").href = "javascript:void(0);";
 	}
-//	alert(this.mbIs7inch);
-}
-
-
-
-function tryShow() {
-	var wInnerH = window.innerHeight;
-	var nTop = theBook.tblShowYin.offsetTop;
-	var nHei = theBook.tblShowYin.offsetHeight;
-	document.getElementById("try").innerHTML = nTop + ", " + nHei + ",wh " + wInnerH + ", sh= " + screen.availHeight;
+	s+=" </select>";
+	pnl.innerHTML = s;
 	
-	var nDiffH = (wInnerH - nTop - 10);// + "px"
-	theBook.tblShowYin.style.height = nDiffH  + "px";
-	theBook.ctlShowYin.style.height = (nDiffH-10)  + "px";
-	theBook.tblShowAux.style.height = nDiffH  + "px";
-	theBook.ctlShowAux.style.height = (nDiffH-10)  + "px";
+	if (ht)
+		this.onHandoutChange(document.getElementById("selHandout"));
 }
 
-
-function rstCtrlStyle() {
-//	alert(theBook.ctlShowYin);
-tryShow();
-return;
-	if (!theBook.mbIsPC) { //華為 7 吋
-		if (theBook.mbIs7inch) {
-			theBook.ctlShowYin.style.fontSize = "90%";
-			theBook.ctlShowAux.style.fontSize = "90%";
-			theBook.ctlShowYin.style.height = "37em";
-			theBook.ctlShowAux.style.height = "40em";
-		} else {
-		theBook.ctlShowYin.style.fontSize = "105%";
-		theBook.ctlShowAux.style.fontSize = "105%";
-			theBook.ctlShowYin.style.height = "32em";
-			theBook.ctlShowAux.style.height = "32em";
-		}
-		
-		theBook.tblShowYin.style.width = "99%";
-		theBook.tblShowAux.style.width = "99%";
-			theBook.ctlShowYin.style.width = "99%";
-			theBook.ctlShowAux.style.width = "99%";
-		
-		//document.getElementById("dlgPagToc").style.width = "90%";
-		
-//		ctlShowYin.style.width = "99%";
-//		ctlShowAux.style.width = "99%";
-	} else {
-		theBook.ctlShowYin.style.fontSize = "110%";
-		theBook.ctlShowAux.style.fontSize = "110%";
-	}
-//	alert(theBook.mbIs7inch);
+mysBooks.prototype.onHandoutChange=function(e) {
+	var url = e.options[e.selectedIndex].value;
+	document.getElementById("openHandout").href = url;
 }
+
 
 
 mysBooks.prototype.fillPhase=function() {
@@ -431,5 +389,158 @@ mysAud.prototype.forbakward=function(mode) {
 		this.aud.currentTime += 10;
 }
 
+
+
+ /*
+function rstCtrlStyle() {
+//	alert(theBook.ctlShowYin);
+tryShow();
+return;
+	if (!theBook.mbIsPC) { //華為 7 吋
+		if (theBook.mbIs7inch) {
+			theBook.ctlShowYin.style.fontSize = "90%";
+			theBook.ctlShowAux.style.fontSize = "90%";
+			theBook.ctlShowYin.style.height = "37em";
+			theBook.ctlShowAux.style.height = "40em";
+		} else {
+		theBook.ctlShowYin.style.fontSize = "105%";
+		theBook.ctlShowAux.style.fontSize = "105%";
+			theBook.ctlShowYin.style.height = "32em";
+			theBook.ctlShowAux.style.height = "32em";
+		}
+		
+		theBook.tblShowYin.style.width = "99%";
+		theBook.tblShowAux.style.width = "99%";
+			theBook.ctlShowYin.style.width = "99%";
+			theBook.ctlShowAux.style.width = "99%";
+		
+		//document.getElementById("dlgPagToc").style.width = "90%";
+		
+//		ctlShowYin.style.width = "99%";
+//		ctlShowAux.style.width = "99%";
+	} else {
+		theBook.ctlShowYin.style.fontSize = "110%";
+		theBook.ctlShowAux.style.fontSize = "110%";
+	}
+//	alert(theBook.mbIs7inch);
+}
+*/
+
+//非物件函式 ---------------------------------------
+//重設文章、講義顯示區的高度
+function rstPosition() {
+	var wInnerH = window.innerHeight;
+	var nTop = document.getElementById("dvContHand").offsetTop;
+
+//document.getElementById("try").innerHTML = wInnerH + ", t=" + nTop + ", h= " + nHei;
+	var nDiffH = (wInnerH - nTop - 10);
+	theBook.tblShowYin.style.height = nDiffH  + "px";
+	theBook.ctlShowYin.style.height = (nDiffH-10)  + "px";
+	theBook.tblShowAux.style.height = nDiffH  + "px";
+	theBook.ctlShowAux.style.height = (nDiffH-10)  + "px";
+}
+
+
+//重疊 table 切換顯示
+function doToggle(btnId, aInner, aTbl, aOwner, aDvText) {
+	var btn = document.getElementById(btnId);
+	var tbl_0 = document.getElementById(aTbl[0]);
+	var tbl_1 = document.getElementById(aTbl[1]);
+	
+	if (btn.innerHTML == aInner[0]) {
+		btn.innerHTML = aInner[1];
+		if (aOwner) {
+			document.getElementById(aOwner[0]).removeChild(btn);
+			document.getElementById(aOwner[1]).appendChild(btn);
+		}
+
+		tbl_0.style.visibility = "collapse";
+		tbl_1.style.visibility = "visible";
+		
+		if (aDvText) {
+			document.getElementById(aDvText[0]).style.visibility = "hidden";
+			document.getElementById(aDvText[1]).style.visibility = "visible";
+		}
+//		ctlShowYin.style.visibility = "visible";
+//		tblShowAux.style.visibility = "collapse";
+	} else {
+		btn.innerHTML = aInner[0];
+		if (aOwner) {
+			document.getElementById(aOwner[1]).removeChild(btn);
+			document.getElementById(aOwner[0]).appendChild(btn);
+		}
+		tbl_0.style.visibility = "visible";
+		tbl_1.style.visibility = "collapse";
+		if (aDvText) {
+			document.getElementById(aDvText[1]).style.visibility = "hidden";
+			document.getElementById(aDvText[0]).style.visibility = "visible";
+		}
+	}
+}
+
+
+
+function toggleAux(){
+  if (!theBook.ctlShowAux.innerHTML) openAuxBook();
+	
+  doToggle("toggleAux", ["原文", "輔文"], ["tblShowYin", "tblShowAux"], null,["content", "auxPanel"]);
+}
+
+function toggleHandout(){
+  doToggle("toggleHandout", ["期別", "講義"], ["tblShowPhrase", "tblShowHandout"], ["tdPhrase", "tdHandout"]);
+}
+
+function toggleStartLen(){
+  doToggle("toggleStartLen", ["於", "長"], ["tblPlayStart", "tblPlayLen"]);
+}
+
+
+function openAuxBook() {
+	var fn = "真常大我_真常妙有";
+	var aLine = auxData_List[fn];
+	var lstParaLine = auxJSON_List[fn];
+
+	var doParseBR=function(sPara, nParaIdx){
+	var aBrIdx = lstParaLine[nParaIdx];
+	
+	var sRet = "";
+	
+	if (!aBrIdx || ((aBrIdx.length == 1) && (aBrIdx[0].startsWith("F")))) {
+		sRet = sPara;
+	} else {
+		//從倒數第 2 個往前找，最後 1 個是該段末，不加換列符
+//		var nLastFrom = aBrIdx.length - 2;
+		
+		sPara.replace(/./g, function(x, nCharIdx){
+			var nIdx = aBrIdx.findIndex(function(s){return (s=="F" + nCharIdx) || (s=="T" + nCharIdx)});
+//			if (aBrIdx.lastIndexOf(nCharIdx, nLastFrom) > -1) {
+			if (nIdx > -1) {
+				if (aBrIdx[nIdx].startsWith("T")) {
+					sRet += "<br/>" + x; //定位於 line.length
+					//如定位於字本身的 index，應 += x + "<br/>"
+				} else {
+					if (nIdx < aBrIdx.length - 1)
+						sRet += '<br class="falseBR" />' + x;
+					else
+						sRet += x;
+				}
+			} else {
+				sRet += x;
+			}
+		});
+	}
+	
+	return "<p>" + sRet + "</p>";
+	}
+
+	var out = aLine.map(doParseBR);
+
+//	ctlShowAux.innerHTML = out.join("").replace(/\[p\d+\]/g,"<hr/>");
+	theBook.ctlShowAux.innerHTML = out.join("").replace(/\[p\d+\]/g,function(x){
+		return '<hr/><p style="color:blue;">' + x + "</p>";
+	});
+//	toggleAux();
+//	toggleBR();
+}
 
 
