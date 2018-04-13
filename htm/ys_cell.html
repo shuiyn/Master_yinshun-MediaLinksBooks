@@ -54,7 +54,7 @@
 
 <body onload="onLoad()">
 <!--<span id="tit_booklecName"></span>-->
-<span id="tit_booklecName" style="font-family:標楷體;font-weight:bold;"></span><br/>
+<span id="tit_booklecName" style="overflow:hidden;font-family:標楷體;font-weight:bold;"></span><br/>
 <span id="try" style="width:80%;"></span>
 
 <!--期別、著文、講義切換-->
@@ -90,7 +90,7 @@
 
 <!--Audio 面板操作區-->
 
-<div style="padding:3px;background-color:#EEFFFF;padding-top:0">
+<div style="padding:3px;background-color:#EEFFFF;padding-top:0;margin-top:0;">
 <!--<button id="forTest" onclick="copyDeviceUA(this.value);">D</button>-->
 <button onclick="theAud.showCue()">cue</button>
 
@@ -102,7 +102,7 @@
 
 <div style="width:99%;padding:3px;background-color:#F8EACE;">
 <table id="tblToggleContHand" wdth="99%" style="border:0pdx;"><tr>
-<td><button id="toggleStartLen" onclick="toggleStartLen()">於</button></td>
+<td><button id="toggleStartLen" style="display:none" onclick="toggleStartLen()">於</button></td>
 
 <td>
 
@@ -125,17 +125,17 @@
 </td>
 
 <td><button onclick="theAud.cusPlay();">播放</button></td>
+<td>
+	<button id="toggleAux" onclick="toggleAux()" >文</button>
+	<button id="toggleBR" onclick='toggleBR()'>行</button>
+	<button onclick="theBook.showPageTocSelect()">頁</button>
+</td>
 
 </tr>
 </table>
 </div>
 
 
-<div>
-	<button id="toggleAux" onclick="toggleAux()" >文</button>
-	<button id="toggleBR" onclick='toggleBR()'>行</button>
-	<button onclick="theBook.showPageTocSelect()">頁</button>
-</div>
 
 </div> <!--id="dvAudio"-->
 
