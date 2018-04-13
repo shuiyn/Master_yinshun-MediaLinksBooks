@@ -38,7 +38,7 @@ mysBooks.prototype.TryScroll=function(ev) {
 
 mysBooks.prototype.fillBook=function() {
   this.ctlShowYin.innerHTML = this.parseCont();
-  this.fillHandout();
+//  this.fillHandout();
   this.fillPhase();
 }
 
