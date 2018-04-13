@@ -46,7 +46,7 @@
 		theBook.mbIs7inch = q.is7inch;
 
 		theBook.fillBook();
-		
+		rstPosition();
 	}
 
 	</script>
@@ -82,7 +82,7 @@
 
 
 <div id="dvAudioLesson" style="width:100%; border:1px solid black">
-  <audio id="myAudio" style="margin:0;padding:1px;height:29px;" controls>
+  <audio id="myAudio" style="margin:0;padding:1px;" controls>
   <source src="" type="audio/mpeg">
   </audio>
 
@@ -144,7 +144,7 @@
 position:absolute; top:0;
  onscroll="theBook.TryScroll(event);"
 -->
-<div id="content" style="visibility:visible;letter-spacing:1.5pt;overflow-y:scroll;padding:5px;line-height:1.8;width:99%;height:330px; border-width:0 1px 1px 1px;border-style:solid;font-size:100%;"></div>
+<div id="content" style="visibility:visible;letter-spacing:1.5pt;overflow-y:scroll;padding:5px;line-height:1.8;width:99%;height:330px; border-width:0 1px 1px 1px;border-style:solid;font-size:96%;"></div>
 
 <div id="dvContHand" style="width:100%;">
 
@@ -175,7 +175,7 @@ position:absolute; top:0;
 </div>
 </dialog>
 
-<dialog id="dlgPagToc" style="height:70%;width:50%;">
+<dialog id="dlgPagToc" style="height:70%;width:99%;">
 <button onclick="document.all.dlgPagToc.close()" style="position:absolute;top:1px;left:1px;margin:0;padding:2px;">✖</button>
 <br/>
 <span>頁次選單</span><br/>

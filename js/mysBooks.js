@@ -430,22 +430,22 @@ return;
 //重設文章、講義顯示區的高度
 function rstPosition() {
 //	return;
-	if (!theBook.mbIsPC) {
-		document.body.style.fontSize = "115%";
-		document.body.style.width = "99%";
-		document.getElementById("tblAudio").style.width = "99%";
-		document.getElementById("tblToggleContHand").style.width = "99%";
-		theBook.ctlShowYin.style.fontSize = "110%";
-//		theBook.ctlShowAux.style.fontSize = "110%";
-	}
+//	if (!theBook.mbIsPC) {
+//		document.body.style.fontSize = "115%";
+//		document.body.style.width = "99%";
+//		document.getElementById("tblAudio").style.width = "99%";
+//		document.getElementById("tblToggleContHand").style.width = "99%";
+//		theBook.ctlShowYin.style.fontSize = "110%";
+////		theBook.ctlShowAux.style.fontSize = "110%";
+//	}
 	
 	var wInnerH = window.innerHeight;
-	var nTop = document.getElementById("dvContHand").offsetTop;
+	var nTop = document.getElementById("content").offsetTop;
 
 	var nDiffH = (wInnerH - nTop - 10);
 //document.getElementById("try").innerHTML = wInnerH + ", t=" + nTop + ", h= " + nDiffH;
 
-	theBook.tblShowYin.style.height = nDiffH  + "px";
+//	theBook.tblShowYin.style.height = nDiffH  + "px";
 	theBook.ctlShowYin.style.height = (nDiffH-10)  + "px";
 //	theBook.tblShowAux.style.height = nDiffH  + "px";
 //	theBook.ctlShowAux.style.height = (nDiffH-10)  + "px";
