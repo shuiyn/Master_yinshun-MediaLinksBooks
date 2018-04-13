@@ -52,7 +52,7 @@
 	</script>
 </head>
 
-<body onload="onLoad()"  style="width:98%">
+<body onload="onLoad()">
 <!--<span id="tit_booklecName"></span>-->
 <span id="tit_booklecName" style="font-family:標楷體;font-weight:bold;"></span><br/>
 <span id="try" style="width:80%;"></span>
@@ -66,10 +66,8 @@
 	<td id="tdPhrase">
 <button id="toggleHandout" onclick="toggleHandout()">期別</button>
 	</td>
-	<td>
-	<button id="toggleAux" onclick="toggleAux()" >文</button>
-	<button id="toggleBR" onclick='toggleBR()'>行</button>
-	<button onclick="theBook.showPageTocSelect()">頁</button>
+	<td id="dvLesson" style="vertical-align: middle;">
+		<select><option>104 年</option><select>
 	</td>
 </tr></table>
 
@@ -84,23 +82,15 @@
 
 
 <div id="dvAudioLesson" style="width:100%; border:1px solid black">
-<table id="tblAudio" width=99%><tr>
-<td>
-  <audio id="myAudio" style="margin:0;padding:0;" controls>
+  <audio id="myAudio" style="margin:0;padding:1px;" controls>
   <source src="" type="audio/mpeg">
   </audio>
-</td>
-<td id="dvLesson" style="vertical-align: middle;">
-  <select><option>104 年</option><select>
-</td>
-
-</tr></table> <!--dvAudio Lesson-->
 
 
 
 <!--Audio 面板操作區-->
 
-<div style="padding:3px;background-color:#EEFFFF;">
+<div style="padding:3px;background-color:#EEFFFF;padding-top:0">
 <!--<button id="forTest" onclick="copyDeviceUA(this.value);">D</button>-->
 <button onclick="theAud.showCue()">cue</button>
 
@@ -141,6 +131,11 @@
 </div>
 
 
+<div>
+	<button id="toggleAux" onclick="toggleAux()" >文</button>
+	<button id="toggleBR" onclick='toggleBR()'>行</button>
+	<button onclick="theBook.showPageTocSelect()">頁</button>
+</div>
 
 </div> <!--id="dvAudio"-->
 
@@ -149,7 +144,7 @@
 position:absolute; top:0;
  onscroll="theBook.TryScroll(event);"
 -->
-<div id="content" style="visibility:visible;letter-spacing:1.5pt;overflow:hidden;padding:5px;line-height:1.8;width:99%;height:330px; border-width:0 1px 1px 1px;border-style:solid;font-size:110%;"></div>
+<div id="content" style="visibility:visible;letter-spacing:1.5pt;overflow-y:scroll;padding:5px;line-height:1.8;width:99%;height:330px; border-width:0 1px 1px 1px;border-style:solid;font-size:110%;"></div>
 
 <div id="dvContHand" style="width:100%;">
 
