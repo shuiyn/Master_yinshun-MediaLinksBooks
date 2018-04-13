@@ -555,6 +555,9 @@ function openAuxBook() {
 }
 
 function toggleBR(){
+	var ps = parseInt(theBook.ctlShowYin.style.fontSize);
+	theBook.ctlShowYin.style.fontSize = (ps-2)+"%";
+	return;
 	var btn = document.getElementById("toggleBR");
 
 	var a = theBook.ctlShowAux.getElementsByClassName("falseBR");
