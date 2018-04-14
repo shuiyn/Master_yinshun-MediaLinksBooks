@@ -11,7 +11,6 @@ var mysBooks = function(bkId, lecId) {
 //	this.handout = eval(this.bkId + "_handout");
 	this.mbJumpAnchor = false;
 	this.mbIsPC = false;
-	this.mbIs7inch = false;
 
 	this.tblShowYin = document.getElementById("tblShowYin");
 	this.tblShowAux = document.getElementById("tblShowAux");
@@ -21,7 +20,7 @@ var mysBooks = function(bkId, lecId) {
 
 
 mysBooks.prototype.showPageTocSelect=function(){
-	document.getElementById("dlgPagToc").showModal();
+	document.getElementById("dlgPageToc").showModal();
 }
 
 
@@ -29,9 +28,9 @@ mysBooks.prototype.onPageListChange=function(e){
 	this.mbJumpAnchor = true;
 
 	location.href = "#" + base_List.htmlIdPrefix.page + "p" + e.options[e.selectedIndex].innerText;
-//	console.log(document.getElementById("dlgPagToc").offsetHeight);
-//dlgLoad(document.getElementById("dlgPagToc"));
-	document.getElementById("dlgPagToc").close();
+//	console.log(document.getElementById("dlgPageToc").offsetHeight);
+//dlgLoad(document.getElementById("dlgPageToc"));
+	document.getElementById("dlgPageToc").close();
 }
 
 
@@ -412,8 +411,6 @@ mysAud.prototype.forbackward=function(mode) {
 //非物件函式 ---------------------------------------
 //重設文章、講義顯示區的高度
 function fitDevice() {
-	var dlgJump = document.getElementById("dlgPagToc");
-	
 	if (theBook.mbIsPC) {
 		document.getElementById("tit_booklecName").style.fontSize = "110%";
 		document.getElementById("content").style.fontSize = "110%";
@@ -424,25 +421,17 @@ function fitDevice() {
 		document.getElementById("palyStartM").style.width = "2.2em";
 		document.getElementById("palyStartS").style.width = "2.2em";
 		
-		dlgJump.style.width = "50%";
-//		dlgJump.style.height = "80%";
-//		document.getElementById("mnuRoot").style.height = "19em";
+		document.getElementById("dlgPageToc").style.width = "50%";
 	}
 	
-//	var mnuArea = document.getElementById("mnuArea");
-//	mnuArea.style.height = dlgJump.offsetHeight - mnuArea.offsetTop;
-
-//document.getElementById("try").innerHTML = dlgJump.offsetHeight + ", t=" + document.getElementById("mnuArea").height;
-
 }
 
 
 function dlgFocusIn(e) {
-	var dlg = document.getElementById("dlgPagToc");
+	var dlg = document.getElementById("dlgPageToc");
 	var mnuRoot = document.getElementById("mnuRoot");
 	mnuRoot.style.height = (dlg.offsetHeight - mnuRoot.offsetTop -20) + "px";
 
-//	console.log(dlg.offsetHeight, mnuR.offsetTop, mnuR.style.height, mnuR.offsetHeight);
 	dlg.removeEventListener("dlgFocusIn", dlgLoad);
 
 }
