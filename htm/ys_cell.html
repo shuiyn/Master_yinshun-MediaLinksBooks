@@ -51,6 +51,13 @@ var onLoad = function() {
 		    window.attachEvent("onresize", rstPosition);
 		}
 	}
+	
+	var dlg = document.getElementById("dlgPagToc");
+		if (window.addEventListener) {              
+		    dlg.addEventListener("focusin", dlgFocusIn);
+		} else if (window.attachEvent) {                 
+		    dlg.attachEvent("onfocusin", dlgFocusIn);
+		}
 
 	rstPosition();
 }
@@ -61,7 +68,7 @@ var onLoad = function() {
 <body onload="onLoad()">
 <!--<span id="tit_booklecName"></span>- style="overflow:hidden;"-->
 
-<span id="tit_booklecName" style="font-size:90%;font-family:標楷體;font-weight:bold;"></span><br/>
+<span id="tit_booklecName" style="font-size:100%;font-family:標楷體;font-weight:bold;"></span><br/>
 <span id="try" style="width:80%;"></span>
 
 <!--期別、著文、講義切換-->
@@ -172,12 +179,12 @@ var onLoad = function() {
 </div>
 </dialog>
 
-<dialog id="dlgPagToc" style="height:80%;width:90%;">
+<dialog id="dlgPagToc" style="height:80%;width:90%;" onfocus="dlgLoad(this)">
 <button onclick="document.all.dlgPagToc.close()" style="position:absolute;top:1px;left:1px;margin:0;padding:2px;">✖</button>
 <br/>
-<span style="font-weight:bold;color:blue;">頁次選單</span><br/>
+<span style="font-weight:bold;color:DodgerBlue;">頁次選單</span><br/>
 <select style="width:6em;" id="pageList" onchange="theBook.onPageListChange(this)"></select><br/><br/>
-<span style="font-weight:bold;color:blue;">目次選單</span>
+<span style="font-weight:bold;color:DodgerBlue;">目次選單</span>
 <hr/>
 <!--height:21em;	-->
 <div id="mnuArea" style="width:100%;padding:0;margin:0;padding:0">

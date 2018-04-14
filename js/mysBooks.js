@@ -29,6 +29,8 @@ mysBooks.prototype.onPageListChange=function(e){
 	this.mbJumpAnchor = true;
 
 	location.href = "#" + base_List.htmlIdPrefix.page + "p" + e.options[e.selectedIndex].innerText;
+//	console.log(document.getElementById("dlgPagToc").offsetHeight);
+//dlgLoad(document.getElementById("dlgPagToc"));
 	document.getElementById("dlgPagToc").close();
 }
 
@@ -424,13 +426,28 @@ function fitDevice() {
 		
 		dlgJump.style.width = "50%";
 //		dlgJump.style.height = "80%";
-		document.getElementById("mnuRoot").style.height = "17em";
+//		document.getElementById("mnuRoot").style.height = "19em";
 	}
 	
-	var mnuArea = document.getElementById("mnuArea");
-	mnuArea.style.height = dlgJump.offsetHeight - mnuArea.offsetTop;
+//	var mnuArea = document.getElementById("mnuArea");
+//	mnuArea.style.height = dlgJump.offsetHeight - mnuArea.offsetTop;
+
+//document.getElementById("try").innerHTML = dlgJump.offsetHeight + ", t=" + document.getElementById("mnuArea").height;
+
 }
-	
+
+
+function dlgFocusIn(e) {
+	var dlg = document.getElementById("dlgPagToc");
+	var mnuRoot = document.getElementById("mnuRoot");
+	mnuRoot.style.height = (dlg.offsetHeight - mnuRoot.offsetTop -20) + "px";
+
+//	console.log(dlg.offsetHeight, mnuR.offsetTop, mnuR.style.height, mnuR.offsetHeight);
+	dlg.removeEventListener("dlgFocusIn", dlgLoad);
+
+}
+
+
 function rstPosition() {
 	var wInnerH = window.innerHeight;
 	var nTop = document.getElementById("content").offsetTop;
