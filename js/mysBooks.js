@@ -410,6 +410,8 @@ mysAud.prototype.forbackward=function(mode) {
 //非物件函式 ---------------------------------------
 //重設文章、講義顯示區的高度
 function fitDevice() {
+	var dlgJump = document.getElementById("dlgPagToc");
+	
 	if (theBook.mbIsPC) {
 		document.getElementById("tit_booklecName").style.fontSize = "110%";
 		document.getElementById("content").style.fontSize = "110%";
@@ -420,14 +422,13 @@ function fitDevice() {
 		document.getElementById("palyStartM").style.width = "2.2em";
 		document.getElementById("palyStartS").style.width = "2.2em";
 		
-	}
-	
-		var dlgJump = document.getElementById("dlgPagToc")
 		dlgJump.style.width = "50%";
 //		dlgJump.style.height = "80%";
-		var mnuArea = document.getElementById("mnuArea")
-		mnuArea.style.height = dlgJump.offsetHeight - mnuArea.offsetTop
-//		document.getElementById("mnuRoot").style.height = mnuArea.style.height
+	}
+	
+	var mnuArea = document.getElementById("mnuArea");
+	mnuArea.style.height = dlgJump.offsetHeight - mnuArea.offsetTop;
+//	document.getElementById("mnuRoot").style.height = mnuArea.style.height
 }
 	
 function rstPosition() {
