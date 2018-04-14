@@ -405,7 +405,12 @@ function fitDevice() {
 		document.getElementById("tit_booklecName").style.fontSize = "110%";
 		document.getElementById("dlgPagToc").style.width = "50%";
 		document.getElementById("dlgPagToc").style.height = "70%";
+	} else {
+		document.getElementById("palyStartH").style.width = "0.8em";
+		document.getElementById("palyStartM").style.width = "1.2em";
+		document.getElementById("palyStartS").style.width = "1.2em";
 	}
+	
 }
 	
 function rstPosition() {
