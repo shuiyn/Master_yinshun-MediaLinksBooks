@@ -174,7 +174,8 @@ mysBooks.prototype.parseCont = function(){
 	var paraIdPfx = base_List.htmlIdPrefix.para;
 	
 	var out=[];
-	var swClass = (this.mbIsPC ? '<span class="srcwords_PC">' : '<span class="srcwords">');
+	var swClass = '<span class="srcwords">';
+//	var swClass = (this.mbIsPC ? '<span class="srcwords_PC">' : '<span class="srcwords">');
 
 	for(var lineId=0; lineId < ct.length; lineId++){
 //		var aLine = ct[lineId];
@@ -434,7 +435,6 @@ function rstPosition() {
 //		document.body.style.fontSize = "115%";
 //		document.body.style.width = "99%";
 //		document.getElementById("tblAudio").style.width = "99%";
-//		document.getElementById("tblToggleContHand").style.width = "99%";
 //		theBook.ctlShowYin.style.fontSize = "110%";
 ////		theBook.ctlShowAux.style.fontSize = "110%";
 //	}

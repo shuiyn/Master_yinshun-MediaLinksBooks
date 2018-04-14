@@ -52,7 +52,7 @@
 	</script>
 </head>
 
-<body onload="onLoad()">
+<body onload="onLoad()" style="overflow:hidden;">
 <!--<span id="tit_booklecName"></span>-->
 <span id="tit_booklecName" style="font-size:85%;font-family:標楷體;font-weight:bold;"></span><br/>
 <span id="try" style="width:80%;"></span>
@@ -87,67 +87,78 @@
   </audio>
 
 
-
-<!--Audio 面板操作區-->
-
-<div style="padding:3px;background-color:#EEFFFF;padding-top:0;margin-top:0;">
-<!--<button id="forTest" onclick="copyDeviceUA(this.value);">D</button>-->
+<!--Audio 面板操作區 width="99%" -->
+<table style="padding-top:0;margin-top:-5px;">
+<tr>
+<td>
+	<div style="padding:3px 1em 3px 3px;background-color:#EEFFFF;">
 <button onclick="theAud.showCue()">cue</button>
-
 <button onclick="theAud.forbakward(1);">後退</button>
 <button onclick="theAud.forbakward(0);">前進</button>設
 <button onclick="theAud.cusTime(0);">終點</button>
 <button onclick="theAud.cusTime(1);">起點</button>
-<button id="toggleAux" onclick="toggleAux()" style="margin-left:2em;">文</button>
-	<button id="toggleBR" onclick='toggleBR()'>行</button>
-</div>
-
-<div style="width:99%;padding:3px;background-color:#F8EACE;">
-<table id="tblToggleContHand" wdth="99%" style="border:0pdx;"><tr>
-<td><button id="toggleStartLen" style="display:none" onclick="toggleStartLen()">於</button></td>
-
-<td>
-
-<table id="tblPlayStart" style="visibility:visible;visible:0pdx;">
-<tr><td>
-<input id="palyStartH" type="number" value="0"  min="0" max="23" style="width:2em;"></input>時
-<input id="palyStartM" type="number" value="0" min="0" max="59" style="width:2em;"></input>分
-<input id="palyStartS" type="number" value="0" min="0" max="59" style="width:2em;"></input>秒
-</td></tr>
-</table>
-
-<table id="tblPlayLen" style="visibility:collapse;border:0pdx;">
-<tr><td>
-<input id="playLengthH" type="number" value="0" min="0" max="23" style="width:2em;"></input>時
-<input id="playLengthM" type="number" value="0" min="0" max="59" style="width:2.5em;"></input>分
-<input id="playLengthS" type="number" value="0" min="0" max="59" style="width:2.5em;"></input>秒
-</td></tr>
-</table>
-
+	</div>
 </td>
-
-<td><button onclick="theAud.cusPlay();">播放</button></td>
 <td>
-	<button onclick="theBook.showPageTocSelect()">頁</button>
-	<button onclick="rstContHandFontSize('-')">─</button>
-	<span id="psCont" >96</span>
-	<button onclick="rstContHandFontSize('+')">✚</button>
-</td>
-
-</tr>
-</table>
-</div>
+	<div style="padding:3px 5px;background-color:yellow;">
+<button id="toggleAux" onclick="toggleAux()" >文</button>
+<button id="toggleBR" onclick='toggleBR()'>行</button>
+	</div>
+</td></tr></table><!--Audio 面板操作區-->
 
 
+<!-- td1=起播 時分秒, td2=<!--文檔操作區-->
+<table><tr>
+<td style="padding:3px;background-color:#F8EACE;"><!--td1=起播 時分秒-->
+ <table style="border:0pdx;"><tr>
+  <td><!--於、長-->
+	<button id="toggleStartLen" style="display:none" onclick="toggleStartLen()">於</button>
+  </td>
+  
+  <td><!--起播、時長 時分秒-->
+	  <table id="tblPlayStart" style="visibility:visible;visible:0pdx;">
+	  <tr><td>
+	<input id="palyStartH" type="number" value="0"  min="0" max="5" style="width:1.7em;"></input>時
+	<input id="palyStartM" type="number" value="0" min="0" max="59" style="width:2.2em;"></input>分
+	<input id="palyStartS" type="number" value="0" min="0" max="59" style="width:2.2em;"></input>秒
+	</td></tr></table>
+	
+	<table id="tblPlayLen" style="visibility:collapse;border:0pdx;">
+	<tr><td>
+	<input id="playLengthH" type="number" value="0" min="0" max="5" style="width:1.7em;"></input>時
+	<input id="playLengthM" type="number" value="0" min="0" max="59" style="width:2.2em;"></input>分
+	<input id="playLengthS" type="number" value="0" min="0" max="59" style="width:2.2em;"></input>秒
+	</td></tr>	</table>
 
-</div> <!--id="dvAudio"-->
+	</td><!--起播、時長 時分秒-->
+	
+	<td>
+	<button onclick="theAud.cusPlay();">播放</button>
+	</td>
+ </tr></table><!--起播 時分秒-->
+</td><!--起播 時分秒-->
+
+
+<td><!--文檔操作區-->
+	<div style="padding:3px 5px;background-color:yellow;">
+		<button onclick="theBook.showPageTocSelect()" >頁</button>
+		<button onclick="rstContHandFontSize('-')" style="padding-left:4px;padding-right:4px;">─</button>
+		<span id="psCont" style="background-color:white;padding-left:3px;padding-right:3px;border:1px black solid;">96</span>
+		<button onclick="rstContHandFontSize('+')">✚</button>
+	</div>
+</td><!--文檔操作區-->
+</tr></table><!--起播 時分秒-->
+
+</div><!-- id="dvAudioLesson"-->
+
+
 
 <!--文章顯示區-->
 <!--<div id="dvContHand" style="width:100%;position:relative;">
 position:absolute; top:0;
  onscroll="theBook.TryScroll(event);"
 -->
-<div id="content" style="visibility:visible;letter-spacing:1.5pt;overflow-y:scroll;padding:5px;line-height:1.8;width:99%;height:330px; border-width:0 1px 1px 1px;border-style:solid;font-size:96%;"></div>
+<div id="content" onscroll="theBook.TryScroll(event);" style="visibility:visible;letter-spacing:1.5pt;overflow-y:scroll;padding:5px;line-height:1.8;width:99%;height:330px; border-width:0 1px 1px 1px;border-style:solid;font-size:96%;"></div>
 
 <div id="dvContHand" style="width:100%;">
 
@@ -178,7 +189,7 @@ position:absolute; top:0;
 </div>
 </dialog>
 
-<dialog id="dlgPagToc" style="height:70%;width:99%;">
+<dialog id="dlgPagToc" style="height:70%;width:90%;">
 <button onclick="document.all.dlgPagToc.close()" style="position:absolute;top:1px;left:1px;margin:0;padding:2px;">✖</button>
 <br/>
 <span>頁次選單</span><br/>

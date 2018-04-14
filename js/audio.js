@@ -38,7 +38,7 @@ function onBookChange(e){
 function fillLecture(bkid){
 	var lecs=grabLecture(bkid);
 
-	var s='<select id="selLecture" style="width:10em;"> ';
+	var s='<select id="selLecture" style="width:14em;"> ';
 	for(var lecId in lecs) {
 		s+= ' <option value="' + lecId + '">' + lecs[lecId] + '</option>'
 	}
