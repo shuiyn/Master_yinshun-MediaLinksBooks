@@ -424,11 +424,11 @@ function fitDevice() {
 		
 		dlgJump.style.width = "50%";
 //		dlgJump.style.height = "80%";
+		document.getElementById("mnuRoot").style.height = "17em";
 	}
 	
 	var mnuArea = document.getElementById("mnuArea");
 	mnuArea.style.height = dlgJump.offsetHeight - mnuArea.offsetTop;
-//	document.getElementById("mnuRoot").style.height = mnuArea.style.height
 }
 	
 function rstPosition() {

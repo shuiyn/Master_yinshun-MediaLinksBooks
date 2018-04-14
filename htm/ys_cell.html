@@ -61,7 +61,7 @@ var onLoad = function() {
 <body onload="onLoad()">
 <!--<span id="tit_booklecName"></span>- style="overflow:hidden;"-->
 
-<span id="tit_booklecName" style="font-size:80%;font-family:標楷體;font-weight:bold;"></span><br/>
+<span id="tit_booklecName" style="font-size:90%;font-family:標楷體;font-weight:bold;"></span><br/>
 <span id="try" style="width:80%;"></span>
 
 <!--期別、著文、講義切換-->
@@ -111,9 +111,9 @@ var onLoad = function() {
 
 <td>
 	<button onclick="theAud.cusTime(1);">設起點</button>
-	<button onclick="theAud.forbackward(1);" style="color:blue;font-weight:bold;">&#8810;</button>
+	<button onclick="theAud.forbackward(1);" style="color:DodgerBlue;font-weight:bold;">&lt;&lt;</button>
 
-	<button onclick="theAud.forbackward(0);" style="color:blue;font-weight:bold;">&#8811;</button>
+	<button onclick="theAud.forbackward(0);" style="color:DodgerBlue;font-weight:bold;">&gt;&gt;</button>
 </td>
 
 
@@ -134,9 +134,9 @@ var onLoad = function() {
 
 <td>
 	<div style="padding:2px 5px;background-color:yellow;">
-		<button onclick="rstContHandFontSize('-')" style="padding-left:4px;padding-right:4px;">─</button>
+		<button onclick="rstContHandFontSize('-')" style="padding-left:4px;padding-right:4px;color:DodgerBlue;">─</button>
 		<span id="contFontSize" style="background-color:white;padding-left:3px;padding-right:3px;border:1px black solid;">96</span>
-		<button onclick="rstContHandFontSize('+')">✚</button>
+		<button style="color:DodgerBlue;" onclick="rstContHandFontSize('+')">✚</button>
 		<button onclick="theBook.showPageTocSelect()">頁目</button>
 	</div>
 </td><!--文檔操作區-->
@@ -181,7 +181,7 @@ var onLoad = function() {
 <hr/>
 <!--height:21em;	-->
 <div id="mnuArea" style="width:100%;padding:0;margin:0;padding:0">
-<ul id="mnuRoot" class="menutree" onclick="onMenuClicked(event)" style="height:17em;overflow-y:scroll;margin-left:0;margin-top:0;padding-left:20px;padding-top:0"></ul>
+<ul id="mnuRoot" class="menutree" onclick="onMenuClicked(event)" style="height:18em;overflow-y:scroll;margin-left:0;margin-top:0;padding-left:20px;padding-top:0"></ul>
 </div>
 
 </dialog>
