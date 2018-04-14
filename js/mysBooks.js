@@ -9,6 +9,7 @@ var mysBooks = function(bkId, lecId) {
 	} catch(e) {
 	}
 //	this.handout = eval(this.bkId + "_handout");
+	this.mbJumpAnchor = false;
 	this.mbIsPC = false;
 	this.mbIs7inch = false;
 
@@ -25,20 +26,25 @@ mysBooks.prototype.showPageTocSelect=function(){
 
 
 mysBooks.prototype.onPageListChange=function(e){
+	this.mbJumpAnchor = true;
+
 	location.href = "#" + base_List.htmlIdPrefix.page + "p" + e.options[e.selectedIndex].innerText;
 	document.getElementById("dlgPagToc").close();
 }
 
 
 mysBooks.prototype.TryScroll=function(ev) {
-	window.scrollTo(0, 0);
+	if (this.mbJumpAnchor) {
+		window.scrollTo(0, 0);
+		this.mbJumpAnchor = false;
+	}
 }
 
 
 
 mysBooks.prototype.fillBook=function() {
   this.ctlShowYin.innerHTML = this.parseCont();
-//  this.fillHandout();
+  this.fillHandout();
   this.fillPhase();
 }
 
@@ -392,71 +398,38 @@ mysAud.prototype.forbakward=function(mode) {
 
 
 
- /*
-function rstCtrlStyle() {
-//	alert(theBook.ctlShowYin);
-tryShow();
-return;
-	if (!theBook.mbIsPC) { //華為 7 吋
-		if (theBook.mbIs7inch) {
-			theBook.ctlShowYin.style.fontSize = "90%";
-			theBook.ctlShowAux.style.fontSize = "90%";
-			theBook.ctlShowYin.style.height = "37em";
-			theBook.ctlShowAux.style.height = "40em";
-		} else {
-		theBook.ctlShowYin.style.fontSize = "105%";
-		theBook.ctlShowAux.style.fontSize = "105%";
-			theBook.ctlShowYin.style.height = "32em";
-			theBook.ctlShowAux.style.height = "32em";
-		}
-		
-		theBook.tblShowYin.style.width = "99%";
-		theBook.tblShowAux.style.width = "99%";
-			theBook.ctlShowYin.style.width = "99%";
-			theBook.ctlShowAux.style.width = "99%";
-		
-		//document.getElementById("dlgPagToc").style.width = "90%";
-		
-//		ctlShowYin.style.width = "99%";
-//		ctlShowAux.style.width = "99%";
-	} else {
-		theBook.ctlShowYin.style.fontSize = "110%";
-		theBook.ctlShowAux.style.fontSize = "110%";
-	}
-//	alert(theBook.mbIs7inch);
-}
-*/
-
 //非物件函式 ---------------------------------------
 //重設文章、講義顯示區的高度
-function rstPosition() {
-//	return;
-//	if (!theBook.mbIsPC) {
-//		document.body.style.fontSize = "115%";
-//		document.body.style.width = "99%";
-//		document.getElementById("tblAudio").style.width = "99%";
-//		theBook.ctlShowYin.style.fontSize = "110%";
-////		theBook.ctlShowAux.style.fontSize = "110%";
-//	}
+function fitDevice() {
+	if (theBook.mbIsPC) {
+		document.getElementById("tit_booklecName").style.fontSize = "110%";
+		document.getElementById("dlgPagToc").style.width = "50%";
+		document.getElementById("dlgPagToc").style.height = "70%";
+	}
+}
 	
+function rstPosition() {
 	var wInnerH = window.innerHeight;
 	var nTop = document.getElementById("content").offsetTop;
 
 	var nDiffH = (wInnerH - nTop - 10);
 //document.getElementById("try").innerHTML = wInnerH + ", t=" + nTop + ", h= " + nDiffH;
 
-//	theBook.tblShowYin.style.height = nDiffH  + "px";
 	theBook.ctlShowYin.style.height = (nDiffH-10)  + "px";
-//	theBook.tblShowAux.style.height = nDiffH  + "px";
-//	theBook.ctlShowAux.style.height = (nDiffH-10)  + "px";
+	theBook.ctlShowAux.style.height = (nDiffH-10)  + "px";
 }
 
 
+
 //重疊 table 切換顯示
-function doToggle(btnId, aInner, aTbl, aOwner, aDvText) {
-	var btn = document.getElementById(btnId);
-	var tbl_0 = document.getElementById(aTbl[0]);
-	var tbl_1 = document.getElementById(aTbl[1]);
+function doToggle(btn, aInner, aTbl, aOwner, aDvText) {
+//	var btn = document.getElementById(btnId);
+	var tbl_0,tbl_1;
+
+	if (aTbl) {
+		tbl_0 = document.getElementById(aTbl[0]);
+		tbl_1 = document.getElementById(aTbl[1]);
+	}
 	
 	if (btn.innerHTML == aInner[0]) {
 		btn.innerHTML = aInner[1];
@@ -465,44 +438,50 @@ function doToggle(btnId, aInner, aTbl, aOwner, aDvText) {
 			document.getElementById(aOwner[1]).appendChild(btn);
 		}
 
-		tbl_0.style.visibility = "collapse";
-		tbl_1.style.visibility = "visible";
-		
-		if (aDvText) {
-			document.getElementById(aDvText[0]).style.visibility = "hidden";
-			document.getElementById(aDvText[1]).style.visibility = "visible";
+		if (aTbl) {
+			tbl_0.style.visibility = "collapse";
+			tbl_1.style.visibility = "visible";
 		}
-//		ctlShowYin.style.visibility = "visible";
-//		tblShowAux.style.visibility = "collapse";
+
+		if (aDvText) {
+			document.getElementById(aDvText[0]).style.display = "none";
+			document.getElementById(aDvText[1]).style.display = "block";
+		}
 	} else {
 		btn.innerHTML = aInner[0];
 		if (aOwner) {
 			document.getElementById(aOwner[1]).removeChild(btn);
 			document.getElementById(aOwner[0]).appendChild(btn);
 		}
-		tbl_0.style.visibility = "visible";
-		tbl_1.style.visibility = "collapse";
+
+		if (aTbl) {
+			tbl_0.style.visibility = "visible";
+			tbl_1.style.visibility = "collapse";
+		}
+
 		if (aDvText) {
-			document.getElementById(aDvText[1]).style.visibility = "hidden";
-			document.getElementById(aDvText[0]).style.visibility = "visible";
+			document.getElementById(aDvText[1]).style.display = "none";
+			document.getElementById(aDvText[0]).style.display = "block";
 		}
 	}
 }
 
 
 
-function toggleAux(){
-  if (!theBook.ctlShowAux.innerHTML) openAuxBook();
-	
-  doToggle("toggleAux", ["文", "輔"], ["tblShowYin", "tblShowAux"], null,["content", "auxPanel"]);
+function toggleAux(btn){
+	if (!theBook.ctlShowAux.innerHTML) openAuxBook();
+  
+	doToggle(btn, ["文", "輔"], null, null,["content", "auxPanel"]);
+
+	document.getElementById("toggleBR").disabled = (btn.innerHTML == "文");
 }
 
-function toggleHandout(){
-  doToggle("toggleHandout", ["期別", "講義"], ["tblShowPhrase", "tblShowHandout"], ["tdPhrase", "tdHandout"]);
+function toggleHandout(btn){
+  doToggle(btn, ["期別", "講義"], ["tblShowPhrase", "tblShowHandout"], ["tdPhrase", "tdHandout"]);
 }
 
-function toggleStartLen(){
-  doToggle("toggleStartLen", ["於", "長"], ["tblPlayStart", "tblPlayLen"]);
+function toggleStartLen(btn){
+  doToggle(btn, ["於", "長"], ["tblPlayStart", "tblPlayLen"]);
 }
 
 
@@ -574,12 +553,9 @@ function toggleBR(){
 
 function rstContHandFontSize(sType){
 	var ps = parseInt(theBook.ctlShowYin.style.fontSize);
-	if (sType == "+")
-		ps += 2;
-	else
-		ps -= 2;
-	
-	theBook.ctlShowYin.style.fontSize = ps+"%";
+	if (sType == "+") ps += 2;
+	else ps -= 2;
 	
 	document.getElementById("psCont").innerHTML = ps;
+	theBook.ctlShowYin.style.fontSize = ps+"%";
 }

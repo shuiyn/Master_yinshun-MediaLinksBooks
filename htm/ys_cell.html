@@ -21,40 +21,47 @@
 	<script src="../data/cuePoint_List.js"></script>
 	
 	<script src="../js/search.js"></script>
-<!--	<script src="../js/audio.js"></script>-->
 	<script src="../js/menuTree.js"></script>
 	<script src="../js/mysBooks.js"></script>
 	
-	
 	<script>
-	
-	var theBook = null;
-	var theAud = null;
-	
-	var onLoad = function() {
-		var q = JSON.parse(decodeURIComponent(location.search).substr(6));
+var theBook = null;
+var theAud = null;
 
-//		document.getElementById("try").innerHTML = screen.width + "*" + screen.height + ", av= " + screen.availWidth + "*" + screen.availHeight + ", " + hostImgURL();//location.host;//.replace(location.hostname, "");
+var onLoad = function() {
+	var q = JSON.parse(decodeURIComponent(location.search).substr(6));
+
+//document.getElementById("try").innerHTML = screen.width + "*" + screen.height + ", av= " + screen.availWidth + "*" + screen.availHeight + ", " + hostImgURL();//location.host;//.replace(location.hostname, "");
 		
-//		document.getElementById("try").innerHTML = "kk" + location.pathname;// JSON.stringify(q);
-		document.getElementById("tit_booklecName").innerHTML = q.bkName + "：" + q.lecName;
+//document.getElementById("try").innerHTML = "kk" + location.pathname;// JSON.stringify(q);
+	
+	document.getElementById("tit_booklecName").innerHTML = q.bkName + "：" + q.lecName;
 
-				
-		theAud = new mysAud();
-		theBook = new mysBooks(q.bkId, q.lecId); //localStorage.getItem("mys_BookId"));
-		theBook.mbIsPC = q.isPC;
-		theBook.mbIs7inch = q.is7inch;
-
-		theBook.fillBook();
-		rstPosition();
+	theAud = new mysAud();
+	theBook = new mysBooks(q.bkId, q.lecId);
+	theBook.mbIsPC = q.isPC;
+	theBook.mbIs7inch = q.is7inch;
+	fitDevice();
+	theBook.fillBook();
+	
+	if (theBook.mbIsPC) {
+		if (window.addEventListener) {              
+		    window.addEventListener("resize", rstPosition);
+		} else if (window.attachEvent) {                 
+		    window.attachEvent("onresize", rstPosition);
+		}
 	}
+
+	rstPosition();
+}
 
 	</script>
 </head>
 
-<body onload="onLoad()" style="overflow:hidden;">
-<!--<span id="tit_booklecName"></span>-->
-<span id="tit_booklecName" style="font-size:85%;font-family:標楷體;font-weight:bold;"></span><br/>
+<body onload="onLoad()">
+<!--<span id="tit_booklecName"></span>- style="overflow:hidden;"-->
+
+<span id="tit_booklecName" style="font-size:80%;font-family:標楷體;font-weight:bold;"></span><br/>
 <span id="try" style="width:80%;"></span>
 
 <!--期別、著文、講義切換-->
@@ -64,7 +71,7 @@
 	<span id="dvPhase"><select><option>第 1 期 104 年</option><select><span>
 	</td>
 	<td id="tdPhrase">
-<button id="toggleHandout" onclick="toggleHandout()">期別</button>
+<button id="toggleHandout" onclick="toggleHandout(this)">期別</button>
 	</td>
 	<td id="dvLesson" style="vertical-align: middle;">
 		<select><option>104 年</option><select>
@@ -90,31 +97,10 @@
 <!--Audio 面板操作區 width="99%" -->
 <table style="padding-top:0;margin-top:-5px;">
 <tr>
-<td>
-	<div style="padding:3px 1em 3px 3px;background-color:#EEFFFF;">
-<button onclick="theAud.showCue()">cue</button>
-<button onclick="theAud.forbakward(1);">後退</button>
-<button onclick="theAud.forbakward(0);">前進</button>設
-<button onclick="theAud.cusTime(0);">終點</button>
-<button onclick="theAud.cusTime(1);">起點</button>
-	</div>
-</td>
-<td>
-	<div style="padding:3px 5px;background-color:yellow;">
-<button id="toggleAux" onclick="toggleAux()" >文</button>
-<button id="toggleBR" onclick='toggleBR()'>行</button>
-	</div>
-</td></tr></table><!--Audio 面板操作區-->
+	<td>
+	<button onclick="theAud.cusPlay();">播於</button>
+	</td>
 
-
-<!-- td1=起播 時分秒, td2=<!--文檔操作區-->
-<table><tr>
-<td style="padding:3px;background-color:#F8EACE;"><!--td1=起播 時分秒-->
- <table style="border:0pdx;"><tr>
-  <td><!--於、長-->
-	<button id="toggleStartLen" style="display:none" onclick="toggleStartLen()">於</button>
-  </td>
-  
   <td><!--起播、時長 時分秒-->
 	  <table id="tblPlayStart" style="visibility:visible;visible:0pdx;">
 	  <tr><td>
@@ -131,22 +117,50 @@
 	</td></tr>	</table>
 
 	</td><!--起播、時長 時分秒-->
+
+<td style="padding:2px">
+	<div style="padding:3px 1em 3px 3px;background-color:#EEFFFF;">
+<button onclick="theAud.forbakward(1);">後退</button>
+<button onclick="theAud.forbakward(0);">前進</button>
+<!--<button onclick="theAud.cusTime(0);">終點</button>-->
+<button onclick="theAud.cusTime(1);">設起點</button>
+	</div>
+</td>
+
+
+</tr></table><!--Audio 面板操作區-->
+
+
+<!-- td1=起播 時分秒, td2=<!--文檔操作區-->
+<table><tr>
+<td><button onclick="theAud.showCue()">cue</button></td>
+
+<td style="padding:2px;background-color:#F8EACE;"><!--td1=起播 時分秒-->
+ <table style="border:0pdx;"><tr>
+  <td><!--於、長-->
+	<button id="toggleStartLen" style="display:none" onclick="toggleStartLen(this)">於</button>
+  </td>
+  
 	
-	<td>
-	<button onclick="theAud.cusPlay();">播放</button>
-	</td>
  </tr></table><!--起播 時分秒-->
 </td><!--起播 時分秒-->
 
 
 <td><!--文檔操作區-->
-	<div style="padding:3px 5px;background-color:yellow;">
+	<div style="padding:2px 5px;background-color:yellow;">
 		<button onclick="theBook.showPageTocSelect()" >頁</button>
 		<button onclick="rstContHandFontSize('-')" style="padding-left:4px;padding-right:4px;">─</button>
 		<span id="psCont" style="background-color:white;padding-left:3px;padding-right:3px;border:1px black solid;">96</span>
 		<button onclick="rstContHandFontSize('+')">✚</button>
 	</div>
 </td><!--文檔操作區-->
+<td>
+	<div style="padding:3px 5px;background-color:yellow;">
+<button id="toggleAux" onclick="toggleAux(this)" >文</button>
+<button id="toggleBR" disabled="true" onclick='toggleBR()'>行</button>
+	</div>
+</td>
+
 </tr></table><!--起播 時分秒-->
 
 </div><!-- id="dvAudioLesson"-->
@@ -158,20 +172,12 @@
 position:absolute; top:0;
  onscroll="theBook.TryScroll(event);"
 -->
-<div id="content" onscroll="theBook.TryScroll(event);" style="visibility:visible;letter-spacing:1.5pt;overflow-y:scroll;padding:5px;line-height:1.8;width:99%;height:330px; border-width:0 1px 1px 1px;border-style:solid;font-size:96%;"></div>
+<div id="content" onscroll="theBook.TryScroll(event);" style="display:block;letter-spacing:1.5pt;overflow-y:scroll;padding:5px;line-height:1.8;width:99%;height:330px; border-width:0 1px 1px 1px;border-style:solid;font-size:96%;"></div>
 
-<div id="dvContHand" style="width:100%;">
 
-<table id="tblShowYin" width="99%" height="310px" border="0" style="visibility:visible;">
-<tr><td>
+<div id="auxPanel" style="display:none;letter-spacing:1.5pt;overflow-Y:scroll;padding:5px;line-height:1.4;width:99%;height:300px; border-width:0 1px 1px 1px;border-style:solid;font-size:110%;"></div>
 
-</td></tr></table>
 
-<table id="tblShowAux" width="99%" height="310px" border="0" style="display:none;visibility:collapse;">
-<tr><td>
-<div id="auxPanel" style="visibility:hidden;letter-spacing:1.5pt;overflow-Y:scroll;padding:5px;line-height:1.4;width:99%;height:300px; border-width:0 1px 1px 1px;border-style:solid;font-size:110%;"></div>
-</td></tr></table>
-</div>
 
 <dialog id="dlgCue">
 <label>法師授課主題時點表</label>
@@ -192,9 +198,9 @@ position:absolute; top:0;
 <dialog id="dlgPagToc" style="height:70%;width:90%;">
 <button onclick="document.all.dlgPagToc.close()" style="position:absolute;top:1px;left:1px;margin:0;padding:2px;">✖</button>
 <br/>
-<span>頁次選單</span><br/>
+<span style="font-weight:bold;color:blue;">頁次選單</span><br/>
 <select style="width:6em;" id="pageList" onchange="theBook.onPageListChange(this)"></select><br/><br/>
-<span>目錄選單</span>
+<span style="font-weight:bold;color:blue;">目次選單</span>
 <hr/>
 <div style="height:21em;width:100%;padding:0;margin:0;padding:0">
 <ul id="mnuRoot" class="menutree" onclick="onMenuClicked(event)" style="height:16em;overflow-y:scroll;margin-left:0;margin-top:0;padding-left:20px;padding-top:0"></ul>

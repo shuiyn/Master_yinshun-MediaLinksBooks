@@ -5,36 +5,16 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width">
 	<link rel="stylesheet" type="text/css" href="css/common.css" />
-	<link rel="stylesheet" type="text/css" href="css/menutree.css" />
+<!--	<link rel="stylesheet" type="text/css" href="css/menutree.css" />-->
 
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
-	<script src="data/auxData_List.js"></script>
-	<script src="data/auxJSON_List.js"></script>
-	<script src="data/book_List.js"></script>
-	<script src="data/bookFmt_List.js"></script>
-<!--
-	<script src="js/book.js"></script>
-	<script src="js/book_fmt.js"></script>
--->
-	<script src="js/base_List.js"></script>
-	<script src="js/lesson_List.js"></script>
-	<script src="js/cuePoint_List.js"></script>
-	<script src="js/lecture_List.js"></script>
-<!--	<script src="js/diamond.js"></script>-->
+	<script src="data/base_List.js"></script>
+	<script src="data/lesson_List.js"></script>
+	<script src="data/lecture_List.js"></script>
 	<script src="js/search.js"></script>
 	<script src="js/audio.js"></script>
-	<script src="js/menuTree.js"></script>
 	
-	<style>
-	select {padding:3px;font-size:100%;}
-	.srcwords_PC { font-family:標楷體; font-size:110%; font-weight:bold;}
-	.srcwords { font-family:標楷體; font-size:110%; font-weight:bold; color:Sienna;} /* MidnightBlue*/
-/* 文字框線，行動裝置無法顯示 */
-	.textborder { border-style: solid;border-width: 1px;padding: 1px;}
-	.textborder_PC { border-style: solid;border-width: 1px;padding: 1px;}
-
-	</style>
 </head>
 
 <body onload="onLoad();">
@@ -44,62 +24,39 @@
 
 	<table>
 		<tr>
-			<td><span style="color:blue;font-weight:bold;padding-left:5px;">書目：</span></td>
-			<td><span style="color:blue;font-weight:bold;padding-left:5px;"> 教授班：</span></td>
-		</tr>
+			<td><span style="color:blue;font-weight:bold;padding-left:5px;">書目：</span></td></tr>
 		<tr>
-		<td id="dvBook"></td>
+		<td id="dvBook"></td></tr>
+		<tr><td>　</td></tr>
+		<tr>
+			<td><span style="color:blue;font-weight:bold;padding-left:5px;"> 教授班：</span></td></tr>
+		<tr>
 		<td><span id="dvLecture"></span></td>
 		</tr>
-		<tr><td colspan="2">　</td></tr>
+		<tr><td>　</td></tr>
 		<tr>
-		<td colspan="2" style="text-align:center;">
+		<td style="text-align:center;">
 		<button onclick='openBookWin()' style="padding-left:2em ;padding-right:2em;">開啟</button>
 		</td>
 		</tr>
 	</table>
 
-<p>　</p>
 
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<div>
+
+
+
+<div style="position:fixed;bottom:5px;">
 <span style="padding:2px;background-color:#5f5f5f;color:#ffffff;"> 本站引用的影音文資料來源： </span><br/>
 	<div style="margin-top:0.3em;">
-	<a href="http://yinshun-edu.org.tw/Master_yinshun/books" target="_blank">印順文教基金會推廣教育中心</a><br/>
+	<a href="http://yinshun-edu.org.tw/Master_yinshun/books" target="_blank">印順文教基金會推廣教育中心</a>、
 
-	<a href="http://video.lwdh.org.tw/index.html" target="_blank">慧日講堂影音下載</a><br/>
-	<a href="http://www.fuyan.org.tw/" target="_blank">福嚴佛學院</a><br/>
-	<a href="http://www.kyba.org.tw/index.asp" target="_blank">高雄市正信佛教青年會</a><br/>
+	<a href="http://video.lwdh.org.tw/index.html" target="_blank">慧日講堂影音下載</a>、
+	<a href="http://www.fuyan.org.tw/" target="_blank">福嚴佛學院</a>、
+	<a href="http://www.kyba.org.tw/index.asp" target="_blank">高雄市正信佛教青年會</a>、
 	<a href="https://www.youtube.com/user/chuefeng1/playlists" target="_blank">覺風佛教藝術文化基金會（YouTube）</a>
 	</div>
 </div>
 
-
-<dialog id="myDialog">
-<label>法師授課主題時點表</label>
-<br/>
-<select id="cueList" style="width:16em;">
-</select>
-
-<br/>
-<br/>
-<br/>
-<div style="text-align:right;">
-	<input type="checkbox" id="bookTo" checked>書本定位</input>　
-	<button onclick="document.all.myDialog.close()">取消</button>
-	<button onclick="cuePointPlay();document.all.myDialog.close()">播放</button>
-</div>
-</dialog>
-
-<!--<dialog id="dlgMenuTree" style="height:70%;overflow-Y:scroll;padding:0;">
-<button onclick="document.all.dlgMenuTree.close()" style="position:fixed;top:10;left:10;margin:0;padding:2px;">✖</button><br/>
-<ul id="mnuRoot" class="menutree" onclick="onMenuClicked(event)"></ul>
-</dialog>
--->
 </body>
 </html>
 
