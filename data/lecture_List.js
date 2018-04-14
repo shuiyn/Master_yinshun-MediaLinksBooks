@@ -92,7 +92,7 @@ var lecture_List = {
 {"t":"白板 1", "url":"http://220.130.244.41:8080/Study/DiamondSutra/1061101-1.jpg"},
 {"t":"白板 2", "url":"http://220.130.244.41:8080/Study/DiamondSutra/1061101-2.jpg"},
 {"t":"106-11-22", "url":null},
-{"t":"講義：真常大我_真常妙我", "url":"http://220.130.244.41:8080/Study/DiamondSutra/1061122.pdf"},
+{"t":"講義：真常大我_真常妙我", "aux":"真常大我_真常妙有", "url":"http://220.130.244.41:8080/Study/DiamondSutra/1061122.pdf"},
 {"t":"106-12-13", "url":null},
 {"t":"講義：觸證VS悟得", "url":"http://220.130.244.41:8080/Study/DiamondSutra/1061213.pdf"},
 {"t":"106-12-27", "url":null},

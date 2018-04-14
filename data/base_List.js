@@ -10,7 +10,7 @@ var base_List = {
 
 "masters":{
 	"kr":"開仁法師",
-	"zh":"宗恒法師"
+	"zh":"宗恆法師"
 	},
 
 "crooms":{

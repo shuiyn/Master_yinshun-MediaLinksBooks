@@ -54,10 +54,16 @@ mysBooks.prototype.fillHandout=function() {
 	var s='<select style="width:7em;" id="selHandout" onchange="theBook.onHandoutChange(this)">';
 	if (ht) {
 		var bGroup = false;
+		var auxAttr = "";
 		
 		for (var i=0; i < ht.length; i++) {
 			if (ht[i].url) {
-				s += '<option value="' + ht[i].url + '">' + ht[i].t + "</ooption>";
+				auxAttr = "";
+				if (ht[i].aux) {
+					auxAttr = ' aux="' + ht[i].aux + '"';
+				}
+				
+				s += '<option value="' + ht[i].url + '"' + auxAttr + '>' + ht[i].t + "</ooption>";
 			} else {
 				if (bGroup) s+= '</optgroup>';
 				
@@ -81,6 +87,9 @@ mysBooks.prototype.fillHandout=function() {
 mysBooks.prototype.onHandoutChange=function(e) {
 	var url = e.options[e.selectedIndex].value;
 	document.getElementById("openHandout").href = url;
+	
+	var auxId = e.options[e.selectedIndex].getAttribute("aux");
+	toggleBtnAux(auxId);
 }
 
 
@@ -389,7 +398,7 @@ mysAud.prototype.dotPlay=function(hms) {
 }
 
 
-mysAud.prototype.forbakward=function(mode) {
+mysAud.prototype.forbackward=function(mode) {
 	if(mode == 1)//後退
 		this.aud.currentTime -= 10;
 	else
@@ -403,14 +412,22 @@ mysAud.prototype.forbakward=function(mode) {
 function fitDevice() {
 	if (theBook.mbIsPC) {
 		document.getElementById("tit_booklecName").style.fontSize = "110%";
-		document.getElementById("dlgPagToc").style.width = "50%";
-		document.getElementById("dlgPagToc").style.height = "70%";
-	} else {
-		document.getElementById("palyStartH").style.width = "0.8em";
-		document.getElementById("palyStartM").style.width = "1.2em";
-		document.getElementById("palyStartS").style.width = "1.2em";
+		document.getElementById("content").style.fontSize = "110%";
+		document.getElementById("auxPanel").style.fontSize = "110%";
+		document.getElementById("contFontSize").innerHTML = "110";
+
+		document.getElementById("palyStartH").style.width = "1.7em";
+		document.getElementById("palyStartM").style.width = "2.2em";
+		document.getElementById("palyStartS").style.width = "2.2em";
+		
 	}
 	
+		var dlgJump = document.getElementById("dlgPagToc")
+		dlgJump.style.width = "50%";
+//		dlgJump.style.height = "80%";
+		var mnuArea = document.getElementById("mnuArea")
+		mnuArea.style.height = dlgJump.offsetHeight - mnuArea.offsetTop
+//		document.getElementById("mnuRoot").style.height = mnuArea.style.height
 }
 	
 function rstPosition() {
@@ -418,10 +435,11 @@ function rstPosition() {
 	var nTop = document.getElementById("content").offsetTop;
 
 	var nDiffH = (wInnerH - nTop - 10);
+	
 //document.getElementById("try").innerHTML = wInnerH + ", t=" + nTop + ", h= " + nDiffH;
 
-	theBook.ctlShowYin.style.height = (nDiffH-10)  + "px";
-	theBook.ctlShowAux.style.height = (nDiffH-10)  + "px";
+	theBook.ctlShowYin.style.height = (nDiffH-10) + "px";
+	theBook.ctlShowAux.style.height = (nDiffH-10) + "px";
 }
 
 
@@ -473,12 +491,30 @@ function doToggle(btn, aInner, aTbl, aOwner, aDvText) {
 
 
 
-function toggleAux(btn){
-	if (!theBook.ctlShowAux.innerHTML) openAuxBook();
-  
-	doToggle(btn, ["文", "輔"], null, null,["content", "auxPanel"]);
+function toggleBtnAux(auxId){
+	var btn = document.getElementById("toggleAux");
+	
+	btn.setAttribute("auxId", auxId);
+	
+	btn.disabled = !auxId;
+	if (btn.disabled) {
+		btn.innerHTML = "輔";
+		theBook.ctlShowAux.innerHTML = "";
+		toggleAux(btn);
+	}
+	
+}
 
-	document.getElementById("toggleBR").disabled = (btn.innerHTML == "文");
+function toggleAux(btn){
+	doToggle(btn, ["文", "輔"], null, null,["content", "auxPanel"]);
+	
+	var btnBR = document.getElementById("toggleBR");
+	btnBR.disabled = (btn.innerHTML == "文");
+
+	if (btnBR.disabled) {
+		btnBR.innerHTML = "行";
+	} else if (!theBook.ctlShowAux.innerHTML)
+			openAuxBook(btn.getAttribute("auxId"));
 }
 
 function toggleHandout(btn){
@@ -490,10 +526,11 @@ function toggleStartLen(btn){
 }
 
 
-function openAuxBook() {
-	var fn = "真常大我_真常妙有";
-	var aLine = auxData_List[fn];
-	var lstParaLine = auxJSON_List[fn];
+function openAuxBook(auxId) {
+	if (!auxId) return;
+	
+	var aLine = auxData_List[auxId];
+	var lstParaLine = auxJSON_List[auxId];
 
 	var doParseBR=function(sPara, nParaIdx){
 	var aBrIdx = lstParaLine[nParaIdx];
@@ -561,6 +598,7 @@ function rstContHandFontSize(sType){
 	if (sType == "+") ps += 2;
 	else ps -= 2;
 	
-	document.getElementById("psCont").innerHTML = ps;
+	document.getElementById("contFontSize").innerHTML = ps;
 	theBook.ctlShowYin.style.fontSize = ps+"%";
+	theBook.ctlShowAux.style.fontSize = ps+"%";
 }
