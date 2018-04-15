@@ -19,17 +19,20 @@ var mysBooks = function(bkId, lecId) {
 }
 
 
-mysBooks.prototype.showPageTocSelect=function(){
+mysBooks.prototype.showPageTocSelect=function(btn){
+//	if (btn.id == "btnAuxMenu")
+//	document.getElementById("dlgPageToc_hand").showModal();
 	document.getElementById("dlgPageToc").showModal();
 }
 
 
 mysBooks.prototype.onPageListChange=function(e){
 	this.mbJumpAnchor = true;
+	var idTail = (e.id == "pageList_hand"? "_H" : "");
+	location.href = "#" + base_List.htmlIdPrefix.page + "p" + e.options[e.selectedIndex].innerText + idTail;
+	
+	console.log(location.href);
 
-	location.href = "#" + base_List.htmlIdPrefix.page + "p" + e.options[e.selectedIndex].innerText;
-//	console.log(document.getElementById("dlgPageToc").offsetHeight);
-//dlgLoad(document.getElementById("dlgPageToc"));
 	document.getElementById("dlgPageToc").close();
 }
 
@@ -91,6 +94,11 @@ mysBooks.prototype.onHandoutChange=function(e) {
 	
 	var auxId = e.options[e.selectedIndex].getAttribute("aux");
 	toggleBtnAux(auxId);
+
+	theBook.ctlShowAux.innerHTML = "";
+		
+	var pageList_hand = document.getElementById("pageList_hand");
+	while (pageList_hand.length > 0) pageList_hand.remove(0);
 }
 
 
@@ -180,6 +188,7 @@ mysBooks.prototype.onLessonChange=function(e) {
 
 mysBooks.prototype.parseCont = function(){
 	createMenu(this.book);
+
 	var pgList = document.getElementById("pageList");
 	while (pgList.length > 0) pgList.remove(0);
 		
@@ -474,8 +483,14 @@ function doToggle(btn, aInner, aTbl, aOwner, aDvText) {
 		}
 
 		if (aDvText) {
-			document.getElementById(aDvText[0]).style.display = "none";
-			document.getElementById(aDvText[1]).style.display = "block";
+			for (var i = 0;i < aDvText.length; i+=2) {
+				if (aDvText[i])
+					document.getElementById(aDvText[i]).style.display = "none";
+				if (aDvText[i+1])
+					document.getElementById(aDvText[i+1]).style.display = "block";
+			}
+//			document.getElementById(aDvText[0]).style.display = "none";
+//			document.getElementById(aDvText[1]).style.display = "block";
 		}
 	} else {
 		btn.innerHTML = aInner[0];
@@ -490,8 +505,12 @@ function doToggle(btn, aInner, aTbl, aOwner, aDvText) {
 		}
 
 		if (aDvText) {
-			document.getElementById(aDvText[1]).style.display = "none";
-			document.getElementById(aDvText[0]).style.display = "block";
+			for (var i = 0;i < aDvText.length; i+=2) {
+				if (aDvText[i+1])
+					document.getElementById(aDvText[i+1]).style.display = "none";
+				if (aDvText[i])
+					document.getElementById(aDvText[i]).style.display = "block";
+			}
 		}
 	}
 }
@@ -506,14 +525,13 @@ function toggleBtnAux(auxId){
 	btn.disabled = !auxId;
 	if (btn.disabled) {
 		btn.innerHTML = "輔";
-		theBook.ctlShowAux.innerHTML = "";
 		toggleAux(btn);
 	}
 	
 }
 
 function toggleAux(btn){
-	doToggle(btn, ["文", "輔"], null, null,["content", "auxPanel"]);
+	doToggle(btn, ["文", "輔"], null, null,["content", "auxPanel", "pageList", "pageList_hand", "btnYinMenu", null]);
 	
 	var btnBR = document.getElementById("toggleBR");
 	btnBR.disabled = (btn.innerHTML == "文");
@@ -573,10 +591,19 @@ function openAuxBook(auxId) {
 	}
 
 	var out = aLine.map(doParseBR);
+	var pgIdPfx = base_List.htmlIdPrefix.page;
 
+	var pageList_hand = document.getElementById("pageList_hand");
+//	while (pageList_hand.length > 0) pageList_hand.remove(0);
 //	ctlShowAux.innerHTML = out.join("").replace(/\[p\d+\]/g,"<hr/>");
-	theBook.ctlShowAux.innerHTML = out.join("").replace(/\[p\d+\]/g,function(x){
-		return '<hr/><p style="color:blue;">' + x + "</p>";
+	theBook.ctlShowAux.innerHTML = out.join("").replace(/\[p[a-z]?\d+\]/g,function(x){
+		var ma = x.match(/\[(p[a-z]?\d+)\]/);
+		var opt = document.createElement("option");
+		opt.text = ma[1].substr(1);
+		pageList_hand.add(opt);
+		
+		return '<hr/><p id="' + pgIdPfx + ma[1] + '_H" style="color:blue;">' + x + "</p>";
+//		return '<hr/><p style="color:blue;">' + x + "</p>";
 	});
 //	toggleAux();
 	toggleBR();
