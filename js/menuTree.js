@@ -97,9 +97,7 @@ function onMenuClicked(ev) {
 
 	if (eTrigger.nodeName == "A") {
 		theBook.mbJumpAnchor = true;
-//		document.all.dlgMenuTree.close();
-	document.getElementById("dlgPagToc").close();
-//		window.scrollTo(0, 0);
+		document.getElementById("dlgPageToc").close();
 		//skip to html#id
 	}
 	

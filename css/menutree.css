@@ -1,6 +1,6 @@
 
 .menutree ul {
-	padding-left: 20px; /*等於 png.width + 4*/
+	padding-left: 14px; /*等於 png.width - 2*/
 	margin-top: 5px;
 	margin-left: 0px;
 }

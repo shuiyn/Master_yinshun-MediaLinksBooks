@@ -394,6 +394,16 @@ var lesson_List=
      "d": "03-28: 2",
      "url": "http://220.130.244.41:8080/Study/DiamondSutra/1070328-2.mp3",
      "ybk": ""
+    },
+    {
+     "d": "04-11: 1",
+     "url": "http://220.130.244.41:8080/Study/DiamondSutra/1070411-1.mp3",
+     "ybk": ""
+    },
+    {
+     "d": "04-11: 2",
+     "url": "http://220.130.244.41:8080/Study/DiamondSutra/1070411-2.mp3",
+     "ybk": ""
     }
    ]
   }
