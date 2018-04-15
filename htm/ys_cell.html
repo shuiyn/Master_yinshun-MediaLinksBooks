@@ -73,11 +73,13 @@ var onLoad = function() {
 	<span id="dvPhase"><select><option>第 1 期 104 年</option><select><span>
 	</td>
 	<td id="tdPhrase">
-<button id="toggleHandout" onclick="toggleHandout(this)">期別</button>
+<button id="toggleHandout" onclick="toggleHandout(this)" class="toggle">期別</button>
 	</td>
 	<td id="dvLesson" style="vertical-align: middle;">
 		<select><option>104 年</option><select>
 	</td>
+	
+	<td><button onclick="theAud.showCue()" style="margin-left:6px;">cue</button></td>
 </tr></table>
 
 <!--講義-->
@@ -124,18 +126,13 @@ var onLoad = function() {
 
 <!--cue、文檔操作區  width="99%" -->
 <table><tr>
-<td><button onclick="theAud.showCue()">cue</button></td>
 
 <!--文檔操作區-->
 <td>
-	<table style="padding:3px 5px;background-color:yellow;margin-left:0.5em;"><tr>
-	<td>
-		<button id="toggleAux" onclick="toggleAux(this)" >文</button>
-		<button id="toggleBR" disabled="true" onclick='toggleBR()'>行</button>
-	</td>
+	<table style="padding:3px 5px;background-color:yellow;"><tr>
 
 	<td>
-			<button onclick="rstContHandFontSize('-')" style="padding-left:4px;padding-right:4px;color:DodgerBlue;margin-left:0.5em;">─</button>
+			<button onclick="rstContHandFontSize('-')" style="padding-right:4px;color:DodgerBlue;">─</button>
 			<span id="contFontSize" style="background-color:white;padding-left:3px;padding-right:3px;border:1px black solid;">96</span>
 			<button style="color:DodgerBlue;margin-right:0.5em;" onclick="rstContHandFontSize('+')">✚</button>
 	</td>
@@ -143,38 +140,26 @@ var onLoad = function() {
 	<td>
 		<select style="width:4em;font-size:95%;" id="pageList" onchange="theBook.onPageListChange(this)"></select>
 	</td>
-	
-	<td>
-		<button id="btnYinMenu" onclick="theBook.showPageTocSelect(this)">目次</button>
-	</td>
 
 	<td>
 		<select style="width:4em;font-size:95%;display:none" id="pageList_hand" onchange="theBook.onPageListChange(this)"></select>
 	</td>
-<!--	
+	
 	<td>
-		<button id="btnAuxMenu" disabled="true" style="display:none;" onclick="theBook.showPageTocSelect(this)">目次</button>
-	</td>
--->	
-	</tr></table>
-	<!--
-	<div style="padding:3px 5px;background-color:yellow;margin-left:0.5em;">
-<button id="toggleAux" onclick="toggleAux(this)" >文</button>
-<button id="toggleBR" disabled="true" onclick='toggleBR()'>行</button>
-	</div>
-</td>
+		<button id="toggleAux" onclick="toggleAux(this)" class="toggle" style="margin-left:6px;">文</button>
+	<td>
 
-<td>
-	<div style="padding:2px 5px;background-color:yellow;">
-		<button onclick="rstContHandFontSize('-')" style="padding-left:4px;padding-right:4px;color:DodgerBlue;">─</button>
-		<span id="contFontSize" style="background-color:white;padding-left:3px;padding-right:3px;border:1px black solid;">96</span>
-		<button style="color:DodgerBlue;" onclick="rstContHandFontSize('+')">✚</button>
-		<button onclick="theBook.showPageTocSelect()">頁目</button>
-		
-		<select style="width:4em;font-size:95%;" id="pageList" onchange="theBook.onPageListChange(this)"></select>
-		<select style="width:2em;font-size:95%;display:none" id="pageList_hand" onchange="theBook.onPageListChange(this)"></select>
-	</div>
-	-->
+	<td>
+		<button id="btnYinMenu" onclick="theBook.showPageTocSelect(this)">目次</button>
+	</td>
+	<td>
+			<button id="btnOpenAux" onclick="document.all.dlgHandout.showModal()" style="display:none">開啟</button>
+	</td>
+
+	<td>
+			<button id="toggleBR" style="display:none;" onclick="toggleBR()" class="toggle">段</button>
+	</td>
+	</tr></table>
 </td><!--文檔操作區-->
 
 </tr></table><!--cue、文檔操作區-->
@@ -193,23 +178,34 @@ var onLoad = function() {
 
 
 <dialog id="dlgCue">
-<label>法師授課主題時點表</label>
-<br/>
+<button onclick="theAud.closeCue()" style="position:absolute;top:2px;right:2px;margin:0;padding:2px;">✖</button>
+<p style="font-weight:bold;color:DodgerBlue;margin-top:1em;margin-bottom:5px;">法師授課主題時點表</p>
+
 <select id="cueList" style="width:16em;">
 </select>
 
-<br/>
-<br/>
-<br/>
-<div style="text-align:right;">
+<div style="text-align:right;margin-top:2em;">
 	<input type="checkbox" id="bookTo" checked>書本定位</input>　
-	<button onclick="theAud.closeCue()">取消</button>
 	<button onclick="theAud.cuePointPlay()">播放</button>
 </div>
 </dialog>
 
-<dialog id="dlgPageToc" style="height:80%;width:90%;" onfocus="dlgLoad(this)">
-<button onclick="document.all.dlgPageToc.close()" style="position:absolute;top:1px;left:1px;margin:0;padding:2px;">✖</button>
+
+<dialog id="dlgHandout">
+<button onclick="this.parentNode.close()" style="position:absolute;top:2px;right:2px;margin:0;padding:2px;">✖</button>
+<p style="font-weight:bold;color:DodgerBlue;margin-top:1em;margin-bottom:5px;">補充講義選單</p>
+
+<select id="auxDataList" style="width:20em;">
+<option>真常大我_真常妙有</option>
+</select>
+
+<p style="text-align:right;margin-top:2em;;margin-bottom:0px;">
+	<button onclick="theBook.openAuxData();this.parentNode.parentNode.close()">開啟</button>
+</p>
+</dialog>
+
+<dialog id="dlgPageToc" style="height:80%;width:90%;">
+<button onclick="document.all.dlgPageToc.close()" style="position:absolute;top:2px;right:2px;margin:0;padding:2px;">✖</button>
 
 <p style="font-weight:bold;color:DodgerBlue;text-align:center;margin:0;padding:0">目次選單</p>
 <hr/>

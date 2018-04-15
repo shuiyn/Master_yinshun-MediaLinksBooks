@@ -6,9 +6,18 @@ var mysBooks = function(bkId, lecId) {
 	this.bookStyle;// = eval(this.bkId + "_style");
 	try {
 		this.bookStyle = eval(this.bkId + "_style");
-	} catch(e) {
-	}
-//	this.handout = eval(this.bkId + "_handout");
+	} catch(e) {}
+	
+	this.auxData = null;
+	try {
+		this.auxData = eval("auxData_" + this.lecId);
+	} catch(e) {}
+	
+	this.auxJSON = null;
+	try {
+		this.auxJSON = eval("auxJSON_" + this.lecId);
+	} catch(e) {}
+
 	this.mbJumpAnchor = false;
 	this.mbIsPC = false;
 
@@ -31,7 +40,7 @@ mysBooks.prototype.onPageListChange=function(e){
 	var idTail = (e.id == "pageList_hand"? "_H" : "");
 	location.href = "#" + base_List.htmlIdPrefix.page + "p" + e.options[e.selectedIndex].innerText + idTail;
 	
-	console.log(location.href);
+//	console.log(location.href);
 
 	document.getElementById("dlgPageToc").close();
 }
@@ -48,9 +57,26 @@ mysBooks.prototype.TryScroll=function(ev) {
 
 mysBooks.prototype.fillBook=function() {
   this.ctlShowYin.innerHTML = this.parseCont();
+  this.fillAuxDataOpt();
   this.fillHandout();
   this.fillPhase();
 }
+
+mysBooks.prototype.fillAuxDataOpt=function() {
+	var sel = document.getElementById("auxDataList");
+	while (sel.length > 0) sel.remove(0);
+	
+	if (!this.auxData) return;
+	
+	for (id in this.auxData) {
+		var opt = document.createElement("option");
+//    opt.setAttribute("value", id);
+    var t = document.createTextNode(id);
+    opt.appendChild(t);
+		sel.appendChild(opt);
+		}
+}
+
 
 mysBooks.prototype.fillHandout=function() {
 	var ht = lecture_List[this.lecId].handout;
@@ -58,16 +84,17 @@ mysBooks.prototype.fillHandout=function() {
 	var s='<select style="width:7em;" id="selHandout" onchange="theBook.onHandoutChange(this)">';
 	if (ht) {
 		var bGroup = false;
-		var auxAttr = "";
+//		var auxAttr = "";
 		
 		for (var i=0; i < ht.length; i++) {
 			if (ht[i].url) {
-				auxAttr = "";
-				if (ht[i].aux) {
-					auxAttr = ' aux="' + ht[i].aux + '"';
-				}
-				
-				s += '<option value="' + ht[i].url + '"' + auxAttr + '>' + ht[i].t + "</ooption>";
+//				auxAttr = "";
+//				if (ht[i].aux) {
+//					auxAttr = ' aux="' + ht[i].aux + '"';
+//				}
+//				
+//				s += '<option value="' + ht[i].url + '"' + auxAttr + '>' + ht[i].t + "</ooption>";
+				s += '<option value="' + ht[i].url + '">' + ht[i].t + "</ooption>";
 			} else {
 				if (bGroup) s+= '</optgroup>';
 				
@@ -91,7 +118,7 @@ mysBooks.prototype.fillHandout=function() {
 mysBooks.prototype.onHandoutChange=function(e) {
 	var url = e.options[e.selectedIndex].value;
 	document.getElementById("openHandout").href = url;
-	
+	/*
 	var auxId = e.options[e.selectedIndex].getAttribute("aux");
 	toggleBtnAux(auxId);
 
@@ -99,6 +126,7 @@ mysBooks.prototype.onHandoutChange=function(e) {
 		
 	var pageList_hand = document.getElementById("pageList_hand");
 	while (pageList_hand.length > 0) pageList_hand.remove(0);
+	*/
 }
 
 
@@ -170,7 +198,7 @@ mysBooks.prototype.onLessonChange=function(e) {
 	
 	theAud.aud.src = e.value;
 	theAud.playStart = 0;
-	theAud.playDuration = 0;
+//	theAud.playDuration = 0;
 
 	var mbp = e.getAttribute("data-mbpId").split(",");
 	theAud.fillCue(mbp, e.value); // e.value == url
@@ -294,12 +322,12 @@ mysBooks.prototype.parseCont = function(){
 
 var mysAud=function() {
 	this.playStart = 0;
-	this.playDuration = 0;
+//	this.playDuration = 0;
 	
 	this.aud = document.getElementById("myAudio");
-	this.aud.addEventListener("timeupdate", this.onTimeUpdate);
+//	this.aud.addEventListener("timeupdate", this.onTimeUpdate);
 }
-
+	/* 終點已移除
 mysAud.prototype.onTimeUpdate=function() {
 	if(this.playDuration < 1) return;
 
@@ -307,17 +335,19 @@ mysAud.prototype.onTimeUpdate=function() {
 
 	if(this.aud.currentTime > (this.playStart + this.playDuration))
 		this.aud.pause();
-}
+}*/
 
 mysAud.prototype.getMS=function(sId) {
 	var m=0, s=0;
 	if(sId=="palyStart") {
 		m=parseInt(document.getElementById("palyStartM").value);
 		s=parseInt(document.getElementById("palyStartS").value);
-	} else {
+	}
+	/* 終點已移除
+	else {
 		m=parseInt(document.getElementById("playLengthM").value);
 		s=parseInt(document.getElementById("playLengthS").value);
-	}
+	}*/
 	return (m*60)+s;
 }
 
@@ -332,18 +362,20 @@ mysAud.prototype.cusTime=function(nType) {
 		document.getElementById("palyStartH").value = h;
 		document.getElementById("palyStartM").value = m;
 		document.getElementById("palyStartS").value = s;
-	}else{
+	}
+	/* 終點已移除
+	else{
 		this.playDuration = this.aud.currentTime - this.playStart;
 		t = this.playDuration;
 		document.getElementById("playLengthH").value = Math.floor(t/3600);
 		document.getElementById("playLengthM").value = Math.floor((t % 3600)/60);
 		document.getElementById("playLengthS").value = Math.floor(t % 60);
-	}
+	}*/
 }
 
 mysAud.prototype.cusPlay=function() {
 	this.playStart = this.getMS("palyStart");
-	this.playDuration = this.getMS("playDuration");
+//	this.playDuration = this.getMS("playDuration");
 	this.aud.currentTime = this.playStart;
 	this.aud.play();
 }
@@ -435,7 +467,7 @@ function fitDevice() {
 	
 }
 
-
+//首次開啟 Menu 窗時，擷取相對位置，設妥高度後即卸載事件器
 function dlgFocusIn(e) {
 	var dlg = document.getElementById("dlgPageToc");
 	var mnuRoot = document.getElementById("mnuRoot");
@@ -516,7 +548,7 @@ function doToggle(btn, aInner, aTbl, aOwner, aDvText) {
 }
 
 
-
+	/*
 function toggleBtnAux(auxId){
 	var btn = document.getElementById("toggleAux");
 	
@@ -527,76 +559,80 @@ function toggleBtnAux(auxId){
 		btn.innerHTML = "輔";
 		toggleAux(btn);
 	}
-	
-}
+}*/
+
 
 function toggleAux(btn){
-	doToggle(btn, ["文", "輔"], null, null,["content", "auxPanel", "pageList", "pageList_hand", "btnYinMenu", null]);
+	doToggle(btn, ["文", "輔"], null, null,["content", "auxPanel", "pageList", "pageList_hand", "btnYinMenu", "btnOpenAux", null, "toggleBR"]);
 	
+	/*
 	var btnBR = document.getElementById("toggleBR");
 	btnBR.disabled = (btn.innerHTML == "文");
 
 	if (btnBR.disabled) {
-		btnBR.innerHTML = "行";
-	} else if (!theBook.ctlShowAux.innerHTML)
+		btnBR.innerHTML = "段";
+	}
+	else if (!theBook.ctlShowAux.innerHTML)
 			openAuxBook(btn.getAttribute("auxId"));
+	*/
 }
 
 function toggleHandout(btn){
   doToggle(btn, ["期別", "講義"], ["tblShowPhrase", "tblShowHandout"], ["tdPhrase", "tdHandout"]);
 }
 
-function toggleStartLen(btn){
-  doToggle(btn, ["於", "長"], ["tblPlayStart", "tblPlayLen"]);
-}
 
-
-function openAuxBook(auxId) {
+mysBooks.prototype.openAuxData=function() {
+	var sel = document.getElementById("auxDataList");
+	var auxId = sel.value;
+//	console.log(sel.value, sel.options[sel.selectedIndex].text);
 	if (!auxId) return;
 	
-	var aLine = auxData_List[auxId];
-	var lstParaLine = auxJSON_List[auxId];
+	var aLine = this.auxData[auxId];
+//	var aLine = auxData_List[auxId];
+	var lstParaLine = this.auxJSON[auxId];
+//	var lstParaLine = auxJSON_List[auxId];
 
 	var doParseBR=function(sPara, nParaIdx){
-	var aBrIdx = lstParaLine[nParaIdx];
-	
-	var sRet = "";
-	
-	if (!aBrIdx || ((aBrIdx.length == 1) && (aBrIdx[0].startsWith("F")))) {
-		sRet = sPara;
-	} else {
-		//從倒數第 2 個往前找，最後 1 個是該段末，不加換列符
-//		var nLastFrom = aBrIdx.length - 2;
+		var aBrIdx = lstParaLine[nParaIdx];
 		
-		sPara.replace(/./g, function(x, nCharIdx){
-			var nIdx = aBrIdx.findIndex(function(s){return (s=="F" + nCharIdx) || (s=="T" + nCharIdx)});
-//			if (aBrIdx.lastIndexOf(nCharIdx, nLastFrom) > -1) {
-			if (nIdx > -1) {
-				if (aBrIdx[nIdx].startsWith("T")) {
-					sRet += "<br/>" + x; //定位於 line.length
-					//如定位於字本身的 index，應 += x + "<br/>"
+		var sRet = "";
+		
+		if (!aBrIdx || ((aBrIdx.length == 1) && (aBrIdx[0].startsWith("F")))) {
+			sRet = sPara;
+		} else {
+			//從倒數第 2 個往前找，最後 1 個是該段末，不加換列符
+	//		var nLastFrom = aBrIdx.length - 2;
+			
+			sPara.replace(/./g, function(x, nCharIdx){
+				var nIdx = aBrIdx.findIndex(function(s){return (s=="F" + nCharIdx) || (s=="T" + nCharIdx)});
+	//			if (aBrIdx.lastIndexOf(nCharIdx, nLastFrom) > -1) {
+				if (nIdx > -1) {
+					if (aBrIdx[nIdx].startsWith("T")) {
+						sRet += "<br/>" + x; //定位於 line.length
+						//如定位於字本身的 index，應 += x + "<br/>"
+					} else {
+						if (nIdx < aBrIdx.length - 1)
+							sRet += '<br class="falseBR" />' + x;
+						else
+							sRet += x;
+					}
 				} else {
-					if (nIdx < aBrIdx.length - 1)
-						sRet += '<br class="falseBR" />' + x;
-					else
-						sRet += x;
+					sRet += x;
 				}
-			} else {
-				sRet += x;
-			}
-		});
-	}
-	
-	return "<p>" + sRet + "</p>";
+			});
+		}
+		
+		return "<p>" + sRet + "</p>";
 	}
 
 	var out = aLine.map(doParseBR);
 	var pgIdPfx = base_List.htmlIdPrefix.page;
 
 	var pageList_hand = document.getElementById("pageList_hand");
-//	while (pageList_hand.length > 0) pageList_hand.remove(0);
-//	ctlShowAux.innerHTML = out.join("").replace(/\[p\d+\]/g,"<hr/>");
-	theBook.ctlShowAux.innerHTML = out.join("").replace(/\[p[a-z]?\d+\]/g,function(x){
+	while (pageList_hand.length > 0) pageList_hand.remove(0);
+
+	this.ctlShowAux.innerHTML = out.join("").replace(/\[p[a-z]?\d+\]/g,function(x){
 		var ma = x.match(/\[(p[a-z]?\d+)\]/);
 		var opt = document.createElement("option");
 		opt.text = ma[1].substr(1);
@@ -605,25 +641,28 @@ function openAuxBook(auxId) {
 		return '<hr/><p id="' + pgIdPfx + ma[1] + '_H" style="color:blue;">' + x + "</p>";
 //		return '<hr/><p style="color:blue;">' + x + "</p>";
 	});
-//	toggleAux();
-	toggleBR();
+
+	doToggleBR(false);
 }
 
 function toggleBR(){
 	var btn = document.getElementById("toggleBR");
-
-	var a = theBook.ctlShowAux.getElementsByClassName("falseBR");
-	var sDisp;// = ctlShowAux.getAttribute("brMode");
-//	sDisp = (sDisp=="none" ? "block" : "none");
+	var bShowBR = false;
+	
 	if (btn.innerHTML == "段") {
 		btn.innerHTML = "行";
-		sDisp = "block";
+		bShowBR = true;
 	} else {
 		btn.innerHTML = "段";
-		sDisp = "none";
 	}
 	
-//	ctlShowAux.setAttribute("brMode", sDisp);
+	doToggleBR(bShowBR);
+}
+
+function doToggleBR(bShowBR){
+	var a = theBook.ctlShowAux.getElementsByClassName("falseBR");
+	var sDisp = (bShowBR ? "block" : "none");
+	
 	for(var i=0; i < a.length; i++) a[i].style.display = sDisp;
 }
 
