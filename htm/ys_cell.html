@@ -9,8 +9,9 @@
 
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
-	<script src="../data/auxData_List.js"></script>
-	<script src="../data/auxJSON_List.js"></script>
+	<script src="../data/auxData_0001.js"></script>
+<!--	<script src="../data/auxData_List.js"></script>-->
+<!--	<script src="../data/auxJSON_List.js"></script>-->
 	<script src="../data/pnj_style.js"></script>
 	<script src="../data/pnj_book.js"></script>
 	<script src="../data/ffgl_book.js"></script>
@@ -25,21 +26,27 @@
 	<script src="../js/mysBooks.js"></script>
 	
 	<script>
+var mbIsPC = false;
+var msSourceWords = "srcwords mobilSWcolor"; //引文字體、色，供 toHtml 參用於行動裝置
+
 var theBook = null;
 var theAud = null;
 
 var onLoad = function() {
 	var q = JSON.parse(decodeURIComponent(location.search).substr(6));
 
+	mbIsPC = q.isPC;
+
 	document.getElementById("tit_booklecName").innerHTML = q.bkName + "：" + q.lecName;
 
 	theAud = new mysAud();
 	theBook = new mysBooks(q.bkId, q.lecId);
-	theBook.mbIsPC = q.isPC;
 	fitDevice();
 	theBook.fillBook();
 	
-	if (theBook.mbIsPC) {
+	if (mbIsPC) {
+		msSourceWords = "srcwords";
+		
 		if (window.addEventListener) {              
 		    window.addEventListener("resize", rstPosition);
 		} else if (window.attachEvent) {                 
@@ -146,7 +153,7 @@ var onLoad = function() {
 	</td>
 	
 	<td>
-		<button id="toggleAux" onclick="toggleAux(this)" class="toggle" style="margin-left:6px;">文</button>
+		<button id="toggleAux" onclick="toggleAux(this)" class="toggle" style="margin-left:6px;">原著</button>
 	<td>
 
 	<td>
@@ -170,16 +177,15 @@ var onLoad = function() {
 
 <!--文章顯示區-->
 
-<div id="content" onscroll="theBook.TryScroll(event);" style="display:block;letter-spacing:1.5pt;overflow-y:scroll;padding:5px;line-height:1.8;width:99%;height:330px; border-width:0 1px 1px 1px;border-style:solid;font-size:96%;"></div>
+<div id="content" onscroll="theBook.TryScroll(event);" class="essay"></div>
 
-
-<div id="auxPanel" style="display:none;letter-spacing:1.5pt;overflow-Y:scroll;padding:5px;line-height:1.4;width:99%;height:300px; border-width:0 1px 1px 1px;border-style:solid;font-size:96%;"></div>
+<div id="auxPanel" class="essay" style="display:none;"></div>
 
 
 
 <dialog id="dlgCue">
-<button onclick="theAud.closeCue()" style="position:absolute;top:2px;right:2px;margin:0;padding:2px;">✖</button>
-<p style="font-weight:bold;color:DodgerBlue;margin-top:1em;margin-bottom:5px;">法師授課主題時點表</p>
+<button onclick="theAud.closeCue()" class="dlgCloser">✖</button>
+<p class="dlgTitle">法師授課主題時點表</p>
 
 <select id="cueList" style="width:16em;">
 </select>
@@ -192,8 +198,8 @@ var onLoad = function() {
 
 
 <dialog id="dlgHandout">
-<button onclick="this.parentNode.close()" style="position:absolute;top:2px;right:2px;margin:0;padding:2px;">✖</button>
-<p style="font-weight:bold;color:DodgerBlue;margin-top:1em;margin-bottom:5px;">補充講義選單</p>
+<button onclick="this.parentNode.close()" class="dlgCloser">✖</button>
+<p class="dlgTitle">補充講義選單</p>
 
 <select id="auxDataList" style="width:20em;">
 <option>真常大我_真常妙有</option>
@@ -205,9 +211,9 @@ var onLoad = function() {
 </dialog>
 
 <dialog id="dlgPageToc" style="height:80%;width:90%;">
-<button onclick="document.all.dlgPageToc.close()" style="position:absolute;top:2px;right:2px;margin:0;padding:2px;">✖</button>
+<button onclick="document.all.dlgPageToc.close()"  class="dlgCloser">✖</button>
 
-<p style="font-weight:bold;color:DodgerBlue;text-align:center;margin:0;padding:0">目次選單</p>
+<p class="dlgTitle">目次選單</p>
 <hr/>
 <!--height:21em;	-->
 <div id="mnuArea" style="width:100%;padding:0;margin:0;padding:0">

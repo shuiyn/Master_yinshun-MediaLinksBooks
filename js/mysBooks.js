@@ -13,13 +13,15 @@ var mysBooks = function(bkId, lecId) {
 		this.auxData = eval("auxData_" + this.lecId);
 	} catch(e) {}
 	
-	this.auxJSON = null;
-	try {
-		this.auxJSON = eval("auxJSON_" + this.lecId);
-	} catch(e) {}
+	if (!this.auxData)
+		document.getElementById("btnOpenAux").disabled = true;
+		
+//	this.auxJSON = null;
+//	try {
+//		this.auxJSON = eval("auxJSON_" + this.lecId);
+//	} catch(e) {}
 
 	this.mbJumpAnchor = false;
-	this.mbIsPC = false;
 
 	this.tblShowYin = document.getElementById("tblShowYin");
 	this.tblShowAux = document.getElementById("tblShowAux");
@@ -227,8 +229,7 @@ mysBooks.prototype.parseCont = function(){
 	var paraIdPfx = base_List.htmlIdPrefix.para;
 	
 	var out=[];
-	var swClass = '<span class="srcwords">';
-//	var swClass = (this.mbIsPC ? '<span class="srcwords_PC">' : '<span class="srcwords">');
+	var swClass = '<span class="' + msSourceWords + '">';
 
 	for(var lineId=0; lineId < ct.length; lineId++){
 //		var aLine = ct[lineId];
@@ -452,7 +453,7 @@ mysAud.prototype.forbackward=function(mode) {
 //非物件函式 ---------------------------------------
 //重設文章、講義顯示區的高度
 function fitDevice() {
-	if (theBook.mbIsPC) {
+	if (mbIsPC) {
 		document.getElementById("tit_booklecName").style.fontSize = "110%";
 		document.getElementById("content").style.fontSize = "110%";
 		document.getElementById("auxPanel").style.fontSize = "110%";
@@ -563,7 +564,7 @@ function toggleBtnAux(auxId){
 
 
 function toggleAux(btn){
-	doToggle(btn, ["文", "輔"], null, null,["content", "auxPanel", "pageList", "pageList_hand", "btnYinMenu", "btnOpenAux", null, "toggleBR"]);
+	doToggle(btn, ["原著", "講義"], null, null,["content", "auxPanel", "pageList", "pageList_hand", "btnYinMenu", "btnOpenAux", null, "toggleBR"]);
 	
 	/*
 	var btnBR = document.getElementById("toggleBR");
@@ -588,6 +589,208 @@ mysBooks.prototype.openAuxData=function() {
 //	console.log(sel.value, sel.options[sel.selectedIndex].text);
 	if (!auxId) return;
 	
+	document.getElementById("toggleBR").innerHTML = "段";
+	
+	var pgIdPfx = base_List.htmlIdPrefix.page;
+
+	var pageList_hand = document.getElementById("pageList_hand");
+	while (pageList_hand.length > 0) pageList_hand.remove(0);
+
+	var out = this.transAuxData(this.auxData[auxId]);
+	
+	this.ctlShowAux.innerHTML = out.join("").replace(/\[p[a-z]?\d+\]/g,function(x){
+		var ma = x.match(/\[(p[a-z]?\d+)\]/);
+		var opt = document.createElement("option");
+		opt.text = ma[1].substr(1);
+		pageList_hand.add(opt);
+		
+		return '<hr/><p id="' + pgIdPfx + ma[1] + '_H" style="color:blue;">' + x + "</p>";
+//		return '<hr/><p style="color:blue;">' + x + "</p>";
+	});
+
+
+	doToggleBR(false);
+}
+
+
+mysBooks.prototype.parseParaStyle=function(paraText, paraSty) {
+	var aHtmB={};//{"66":["<span...>","<a...>", ...]
+	var aHtmE={};
+	var aVar = [], sStart = "", sEnd = "", sSet = "";
+	
+	paraSty.map(function(jsn, nIdx) {
+		for (var i in jsn) {
+			aVar = jsn[i];
+			sStart = aVar[0];
+
+			if (sStart != null)
+				sEnd = aVar[0] + aVar[1];
+			else
+				sEnd = aVar[1];
+
+			sSet = aVar[2]; // if length < 2 ??
+		
+			if (sStart != null)
+				if(!aHtmB[sStart]) aHtmB[sStart] = [];
+			
+			if (sEnd != null)
+				if(!aHtmE[sEnd]) aHtmE[sEnd] = [];
+
+			if (i == "ln") {
+				aHtmB[sStart].push('<sup class="falseBR">' + sSet + "</sup>");
+			} else if (i == "f_br") {
+				aHtmE[sEnd].push('<br class="falseBR" />');
+			} else if (/^CS_?\d{0,2}$/.test(i)) {
+				if (sSet == "srcwords")
+					sSet = msSourceWords; //定義於 ys_cell.html
+				aHtmB[sStart].push('<span class="' + sSet + '">');
+				aHtmE[sEnd].push('</span>');
+			} else if (i == "a") {
+				aHtmB[sStart].push('<a href="'+ sSet + '" target="_blank">');
+				aHtmE[sEnd].push('</a>');
+			} else if (i == "br") { // true br
+				aHtmE[sEnd].push("<br/>"); //nStart 前已計實 + sLine.length
+			} else if (/^nti_\d+$/.test(i)) {
+				//◆ 註序前後各附加１個空白
+				aHtmB[sStart].push('<sup id="' + i + '" class="noteNum"><a href="#ntd_' + i.substr(4) + '"> ');
+				aHtmE[sEnd].push(' </a></sup>');
+			} else if (/^ntd_\d+$/.test(i)) {
+				aHtmB[sStart].push('<span id="' + i + '" class="noteDet"><a href="#nti_' + i.substr(4) + '">〈註 ');
+				aHtmE[sEnd].push('〉</a></span>');
+			} else if (/^ST_?\d{0,2}$/.test(i)) {
+				aHtmB[sStart].push('<span style="' + sSet + '">');
+				aHtmE[sEnd].push('</span>');
+			} else if (i == "TAG") {
+				aHtmB[sStart].push('<' + sSet + '>');
+				aHtmE[sEnd].push('</' + sSet + '>');
+			} else {
+				console.log("Kag style not defined:", i);
+			}
+		} // for_jsn
+	}); // map
+	
+	
+	var out = 
+	paraText.join("").replace(/./g, function(x, idx) {
+		var s = "";
+		
+		if(aHtmE[idx])
+			s = aHtmE[idx].join("");
+		if(aHtmB[idx])
+			s += aHtmB[idx].join("");
+
+		return s+x;
+	});
+	
+//	console.log(out);
+	return "<p>" + out + "</p>";
+}
+
+mysBooks.prototype.transAuxData=function(aLine) {
+	var out = [];
+	//文章標題〝不計入行數〞，先寫入，此後不必判斷
+	var nIdxInPara = 0;//nStart 在全段中的實體位序
+	var nRowCount = 1; //各頁所有行的行號，人讀、從 1 起計
+	var paraText = [];
+	var paraSty = [];
+	var sLine, tagPageNum, jsn;
+
+	for (var nIdx = 0; nIdx < aLine.length; nIdx++) {
+		sLine = aLine[nIdx];
+		
+		//or ^^{p}，全段的結束標記
+		if (!sLine) {
+			out.push(this.parseParaStyle(paraText, paraSty));
+			paraText = [];
+			paraSty = [];
+			nIdxInPara = 0;
+			continue;
+		}
+		
+	//???◆◆在此必需先依 nIdxInPara 校正 nStart 在全段中的實體位址
+//		if (sLine.startsWith('^^{')) {
+		if (/^\^\^\{.*?\}$/.test(sLine)) {
+			jsn = JSON.parse(sLine.substr(2));
+			
+			for (ji in jsn) {
+				if (ji == "br") { // true br, not false br
+					//該行末位
+					jsn["br"] = [null, nIdxInPara + aLine[nIdx + 1].length];
+				} else {
+					jsn[ji][0] += nIdxInPara;
+				}
+			}
+			paraSty.push(jsn);
+			
+			nIdx++;
+			sLine = aLine[nIdx];
+//			paraText.push(aLine[nIdx]);
+//			nIdxInPara += sLine.length;
+//			continue;
+		}
+		
+		tagPageNum = /\[p[a-z]?\d+\]/.exec(sLine);
+
+		//全行只有頁次者，[p1]，不遞加 nRowCount，前也不加 行號
+		if (tagPageNum == sLine) {
+//			if (tagPageNum != "[p1]") //第１頁碼前可能已含 文章標題等
+			if (!/\[p[a-z]?1\]/.test(tagPageNum)) //第１頁碼前可能已含 文章標題等
+				nRowCount = 1; //新段開始，行號重設 1 起計
+			paraText.push(sLine);
+			nIdxInPara += sLine.length;
+			continue;
+		}
+
+		jsn = {"ln":[nIdxInPara, null,nRowCount]};
+		paraSty.unshift(jsn); //unshift 置首，以免被其他 tag <span> 等包住而誤顯
+		// !aLine[nIdx+1].startsWith("^^{p")
+		//全段的末行、或同一行已含 true br 者，不另加 false br
+		if (!paraSty.find(function(x){return x["br"]})) {
+			if (nIdx < aLine.length-1 && aLine[nIdx+1]) {
+				jsn = {"f_br":[null, nIdxInPara + sLine.length]};
+
+				paraSty.push(jsn);
+			}
+	}
+
+			paraText.push(sLine);
+			nIdxInPara += sLine.length;
+
+		if (tagPageNum)
+			nRowCount = 1;
+		else
+			nRowCount++;
+	}
+	
+	if (paraText.length > 0)
+			out.push(this.parseParaStyle(paraText, paraSty));
+	
+	return out;
+}
+
+//return out.join("").replace(/\[p[a-z]?\d+\]/g,function(x){
+////		var ma = x.match(/\[(p[a-z]?\d+)\]/);
+////		var opt = document.createElement("option");
+////		opt.text = ma[1].substr(1);
+////		pageList_hand.add(opt);
+//		
+////		return '<hr/><p id="' + pgIdPfx + ma[1] + '_H" style="color:blue;">' + x + "</p>";
+//		return '<hr/><p style="color:blue;">' + x + "</p>";
+//	});
+
+
+
+
+
+mysBooks.prototype.openAuxData_Old=function() {
+	var sel = document.getElementById("auxDataList");
+	var auxId = sel.value;
+//	console.log(sel.value, sel.options[sel.selectedIndex].text);
+	if (!auxId) return;
+	
+	document.getElementById("toggleBR").innerHTML = "段";
+	
+	var nRowCount = 1;
 	var aLine = this.auxData[auxId];
 //	var aLine = auxData_List[auxId];
 	var lstParaLine = this.auxJSON[auxId];
@@ -603,19 +806,30 @@ mysBooks.prototype.openAuxData=function() {
 		} else {
 			//從倒數第 2 個往前找，最後 1 個是該段末，不加換列符
 	//		var nLastFrom = aBrIdx.length - 2;
-			
+				
 			sPara.replace(/./g, function(x, nCharIdx){
 				var nIdx = aBrIdx.findIndex(function(s){return (s=="F" + nCharIdx) || (s=="T" + nCharIdx)});
 	//			if (aBrIdx.lastIndexOf(nCharIdx, nLastFrom) > -1) {
+				//每段開頭
+				if (nCharIdx==0) {
+					sRet += '<sup class="falseBR">' + nRowCount + "</sup>";
+					nRowCount++;
+				} else if (sPara.substr(nCharIdx).search(/\[(p[a-z]?\d+)\]/) == 0) {
+					nRowCount = 1;
+				}
+				
 				if (nIdx > -1) {
 					if (aBrIdx[nIdx].startsWith("T")) {
 						sRet += "<br/>" + x; //定位於 line.length
 						//如定位於字本身的 index，應 += x + "<br/>"
 					} else {
-						if (nIdx < aBrIdx.length - 1)
-							sRet += '<br class="falseBR" />' + x;
-						else
+						if (nIdx < aBrIdx.length - 1) {
+							sRet += '<br class="falseBR" /><sup class="falseBR">' + nRowCount + "</sup>"+ x;
+							nRowCount++;
+//							sRet += '<br class="falseBR" />' + x;
+						} else {
 							sRet += x;
+						}
 					}
 				} else {
 					sRet += x;
@@ -646,6 +860,9 @@ mysBooks.prototype.openAuxData=function() {
 }
 
 function toggleBR(){
+	if (!theBook.ctlShowAux.innerHTML)
+		return;
+	
 	var btn = document.getElementById("toggleBR");
 	var bShowBR = false;
 	
