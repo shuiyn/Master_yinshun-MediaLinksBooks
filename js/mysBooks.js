@@ -608,7 +608,7 @@ mysBooks.prototype.openAuxData=function() {
 //		return '<hr/><p style="color:blue;">' + x + "</p>";
 	});
 
-
+	this.ctlShowAux.scrollTo(0,0);
 	doToggleBR(false);
 }
 
