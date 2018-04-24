@@ -2,7 +2,11 @@
 var mysBooks = function(bkId, lecId) {
 	this.bkId = bkId;
 	this.lecId = lecId;
-	this.book = eval(this.bkId + "_book");
+	this.book;
+	try {
+		this.book = eval(this.bkId + "_book");
+	} catch(e) {}
+	
 	this.bookStyle;// = eval(this.bkId + "_style");
 	try {
 		this.bookStyle = eval(this.bkId + "_style");
@@ -58,7 +62,9 @@ mysBooks.prototype.TryScroll=function(ev) {
 
 
 mysBooks.prototype.fillBook=function() {
-  this.ctlShowYin.innerHTML = this.parseCont();
+	if (this.book)
+	  this.ctlShowYin.innerHTML = this.parseCont();
+	
   this.fillAuxDataOpt();
   this.fillHandout();
   this.fillPhase();
@@ -604,8 +610,8 @@ mysBooks.prototype.openAuxData=function() {
 		opt.text = ma[1].substr(1);
 		pageList_hand.add(opt);
 		
-		return '<hr/><p id="' + pgIdPfx + ma[1] + '_H" style="color:blue;">' + x + "</p>";
-//		return '<hr/><p style="color:blue;">' + x + "</p>";
+		return '<p id="' + pgIdPfx + ma[1] + '_H" style="color:blue;">' + x + "</p>";
+//		return '<hr/><p id="' + pgIdPfx + ma[1] + '_H" style="color:blue;">' + x + "</p>";
 	});
 
 	this.ctlShowAux.scrollTo(0,0);
@@ -613,6 +619,7 @@ mysBooks.prototype.openAuxData=function() {
 }
 
 
+//◆ nti_、ntd_ 要末加識別字，以區分「原著、講義」
 mysBooks.prototype.parseParaStyle=function(paraText, paraSty) {
 	var aHtmB={};//{"66":["<span...>","<a...>", ...]
 	var aHtmE={};
@@ -687,6 +694,9 @@ mysBooks.prototype.parseParaStyle=function(paraText, paraSty) {
 }
 
 mysBooks.prototype.transAuxData=function(aLine) {
+	if (this.lecId != "0001")
+		return openEssayData(aLine);
+	
 	var out = [];
 	//文章標題〝不計入行數〞，先寫入，此後不必判斷
 	var nIdxInPara = 0;//nStart 在全段中的實體位序
@@ -767,16 +777,6 @@ mysBooks.prototype.transAuxData=function(aLine) {
 	
 	return out;
 }
-
-//return out.join("").replace(/\[p[a-z]?\d+\]/g,function(x){
-////		var ma = x.match(/\[(p[a-z]?\d+)\]/);
-////		var opt = document.createElement("option");
-////		opt.text = ma[1].substr(1);
-////		pageList_hand.add(opt);
-//		
-////		return '<hr/><p id="' + pgIdPfx + ma[1] + '_H" style="color:blue;">' + x + "</p>";
-//		return '<hr/><p style="color:blue;">' + x + "</p>";
-//	});
 
 
 

@@ -197,11 +197,23 @@ var lecture_List = {
 {"t":"　補充講義", "url":"http://video.lwdh.org.tw/download/lwdh/pdf/ffgl/ffgl_B12.pdf"},
 {"t":"第20章 正覺與解脫", "url":"http://video.lwdh.org.tw/download/lwdh/pdf/ffgl/ffgl20.pdf"}
 ],
-	"bkid":"ffgl", "master":"kr", "byear":"098", "croom":"wl", "phase":[
+	"bkid":"ffgl", "master":"kr", "byear":"098", "croom":"lw", "phase":[
 {"id":"wl20090918", "t":"第 1 期 98 年", "url":"http://video.lwdh.org.tw/html/ffgl/ffgl01.html"},
 {"id":"wl20100305", "t":"第 2 期 99 年", "url":"http://video.lwdh.org.tw/html/ffgl/ffgl02.html"}
 		]
-	}
+	},
+
+//寬謙 大乘廣五蘊論講記(精華版)
+	"0005": {
+	"handout":null,
+	"bkid":"dsgwyl",
+	"master":"kq",
+	"byear":"",
+	"croom":"cf",
+	"phase":[
+	{"id":"gwy_18", "t":"精華版 18 集"}
+		]
+}
 }
 
 

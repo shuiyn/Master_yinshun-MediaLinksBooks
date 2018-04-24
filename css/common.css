@@ -1,5 +1,38 @@
 
 /*	body {font-size:100%;}*/
+	div.notearea { background-color:rgb(252, 252, 252);margin-left:0;text-indent:0}
+	
+/*	文章名稱*/
+	.esyTitle {
+		text-align:center;
+	}
+	
+/*	節 標題*/
+	.esySection {
+	}
+	
+/*	Toc 標題*/
+	.tocTitle {
+/*		color:DarkBlue;*/
+		border-style:solid;
+		border-width:1px;
+		padding: 1px;
+	}
+	
+	.noteNum { font-size:100%;}
+/*	.noteDet { margin:15px;}*/
+	.srcwords {
+		font-family:標楷體;
+		font-size:105%;
+/*		font-weight:bold;*/
+	}
+
+/*	行動裝置無「標楷體」，以色標之*/
+	.mobilSWcolor {
+		font-size:103%;
+		color:MidnightBlue; /* Sienna */
+	}
+
 
 	/*原文、講義內容*/
 	div.essay {
@@ -45,17 +78,10 @@
     	padding:0;*/
     }
     
-	.srcwords {
-		font-family:標楷體;
-		font-size:105%;
-		font-weight:bold;
-	}
-
-/*	行動裝置無「標楷體」，以色標之*/
-	.mobilSWcolor {
-		color:MidnightBlue; /* Sienna*/
-	}
-
+	
+	// 佛經原文樣式；原為 p_sutratext
+	.sutratext {font-size:110%; font-weight:bold;}
+	
 	.textborder {
 		border-style:solid;
 		border-width:1px;

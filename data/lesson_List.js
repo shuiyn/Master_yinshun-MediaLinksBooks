@@ -1053,5 +1053,102 @@ var lesson_List=
     }
    ]
   }
- }
+ },
+
+ "kq": {
+  "dsgwyl": {
+   "gwy_18": [
+	{
+	"d":"01",
+	"url":"../mp3/01_大乘廣五蘊論_精華版.mp3",
+	"vod":"http://www.chuefeng.org.tw/vod/44bGDATffhCScDELJ"
+	},
+	{
+	"d":"02",
+	"url":"https://drive.google.com/file/d/1peIZIlF64XsxdeH2Hk0Cai3DC0sv5kk0/view?usp=sharing",
+	"vod":"http://www.chuefeng.org.tw/vod/AweiFqAZYvWuquE4d"
+	},
+	{
+	"d":"03",
+	"url":"https://drive.google.com/file/d/1rxChbEwRx7w-TyJYPlsFGVKGH3c2BEtY/view?usp=sharing",
+	"vod":"http://www.chuefeng.org.tw/vod/fqj392Gp2epRrDZma"
+	},
+	{
+	"d":"04",
+	"url":"https://drive.google.com/file/d/18voZXSKBJQpxLI9Mm2qxH0SyVPJdMOj7/view?usp=sharing",
+	"vod":"http://www.chuefeng.org.tw/vod/h8emihAgguPGskGgn"
+	},
+	{
+	"d":"05",
+	"url":"https://drive.google.com/file/d/1oh5DsFXD6reeReVor7KTuqK9BvUfwFq3/view?usp=sharing",
+	"vod":"http://www.chuefeng.org.tw/vod/82cjcuF6n9QPgjw3J"
+	},
+	{
+	"d":"06",
+	"url":"https://drive.google.com/file/d/1D3IV8HEgoOb7kCCP9snG61bXlytdcpeU/view?usp=sharing",
+	"vod":"http://www.chuefeng.org.tw/vod/jwfXbWgAEW7EoAxvz"
+	},
+	{
+	"d":"07",
+	"url":"https://drive.google.com/file/d/1nr9pv-ArO2fdKxwTYi6QL7NXeSQFYPfg/view?usp=sharing",
+	"vod":"http://www.chuefeng.org.tw/vod/SdkEzjQQTZBqsGgML"
+	},
+	{
+	"d":"08",
+	"url":"https://drive.google.com/file/d/1l8URlyhN60MNwz4C3MPuvn_pxsf5kDQ2/view?usp=sharing",
+	"vod":"http://www.chuefeng.org.tw/vod/7Sn2k6he5y4bQtdmi"
+	},
+	{
+	"d":"09",
+	"url":"https://drive.google.com/file/d/1WuX6AOm6kGPeYloZSnEF06-IbMzLbhTC/view?usp=sharing",
+	"vod":"http://www.chuefeng.org.tw/vod/73RqtA8pLhXL65RuE"
+	},
+	{
+	"d":"10",
+	"url":"https://drive.google.com/file/d/1jwvx78CsJtFibI2YTL2B_qpF8OIN3EmX/view?usp=sharing",
+	"vod":"http://www.chuefeng.org.tw/vod/yyvmZeYQMrsZj48db"
+	},
+	{
+	"d":"11",
+	"url":"https://drive.google.com/file/d/1oVEPhUO6Qu7d4Q2wCTPYi526gxdk4OFP/view?usp=sharing",
+	"vod":"http://www.chuefeng.org.tw/vod/6MyaisKTN77zgxFTq"
+	},
+	{
+	"d":"12",
+	"url":"https://drive.google.com/file/d/1zuT2pTKdWPhOj6TR5Jl_3VoYNxBNHcEj/view?usp=sharing",
+	"vod":"http://www.chuefeng.org.tw/vod/HsosEazfFxkcsHSQJ"
+	},
+	{
+	"d":"13",
+	"url":"https://drive.google.com/file/d/1MdYQclRSeSpGxq7LcPsK9yXULLth5Hgw/view?usp=sharing",
+	"vod":"http://www.chuefeng.org.tw/vod/nqrMBgxyYbqnNPp7f"
+	},
+	{
+	"d":"14",
+	"url":"https://drive.google.com/file/d/1yuLexgL1l8aPmQHXhcbBJ-PtvN6WZ-YX/view?usp=sharing",
+	"vod":"http://www.chuefeng.org.tw/vod/x2mu43f7x6SBwBNn3"
+	},
+	{
+	"d":"15",
+	"url":"https://drive.google.com/file/d/1tgAdRDZzCrvK2Q6E78jpnITEoE4LMswK/view?usp=sharing",
+	"vod":"http://www.chuefeng.org.tw/vod/H2D49LKpsZ3aZNoa4"
+	},
+	{
+	"d":"16",
+	"url":"https://drive.google.com/file/d/1mx9I1eQlxVQRvoTOvnPreiN57_spJqdG/view?usp=sharing",
+	"vod":"http://www.chuefeng.org.tw/vod/2g74f8yCBz8vvghQG"
+	},
+	{
+	"d":"17",
+	"url":"https://drive.google.com/file/d/1PVbRWNVSdZo_-qo6-ljK1JOqlbNwr7Ha/view?usp=sharing",
+	"vod":"http://www.chuefeng.org.tw/vod/uNx28rbCyEzP368zW"
+	},
+	{
+	"d":"18",
+	"url":"https://drive.google.com/file/d/1Ihk8u0pB_ceARGG2zuOJsxXBM-wEZ4Pm/view?usp=sharing",
+	"vod":"http://www.chuefeng.org.tw/vod/vE89bhSeNEywxCPz4"
+	}
+]
+}
+}
 }
