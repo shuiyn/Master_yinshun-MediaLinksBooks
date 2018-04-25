@@ -1,8 +1,9 @@
 
 //img 網站資料夾的路徑，供 menuTree 使用
-var hostImgURL=function() {
+var hostImgURL=function(fdn) {
 	var sImgPath = location.pathname;
-	return ".".repeat(sImgPath.substr(sImgPath.lastIndexOf("Books/")).split("/").length-1) + "/img/";
+	fdn = fdn || "img";
+	return ".".repeat(sImgPath.substr(sImgPath.lastIndexOf("Books/")).split("/").length-1) + "/" + fdn + "/";
 }
 
 //var loadBook=function(bkid) {

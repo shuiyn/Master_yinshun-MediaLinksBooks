@@ -2,6 +2,7 @@
 var mysBooks = function(bkId, lecId) {
 	this.bkId = bkId;
 	this.lecId = lecId;
+	this.phId = null;
 	this.book;
 	try {
 		this.book = eval(this.bkId + "_book");
@@ -161,6 +162,8 @@ mysBooks.prototype.onPhaseChange=function(e) {
 //{"item":"ffgl", "master":"kr", "croom":"pn", "period":"9"}
 	document.getElementById('goSite').href = e.value;
 	var phId=e.options[e.selectedIndex].getAttribute("data-phid");
+
+this.phId = phId;
 //	var bkId = document.getElementById('selBook').value;
 	var masterId = e.getAttribute("data-masterId");
 //	console.log("bkId", bkId,"phId",phId,"masterId",masterId);
@@ -203,8 +206,15 @@ mysBooks.prototype.onLessonChange=function(e) {
 		this.ctlShowYin.innerHTML = "";
 		return;
 	}
-	
-	theAud.aud.src = e.value;
+			console.log(hostImgURL("mp3"));
+
+	var src = e.value;
+	if (src.search(/https?:\/\//) != 0) {
+		src = hostImgURL("mp3") + this.phId + "/" + src;
+	}
+		
+		console.log(src);
+	theAud.aud.src = src; //.value;
 	theAud.playStart = 0;
 //	theAud.playDuration = 0;
 

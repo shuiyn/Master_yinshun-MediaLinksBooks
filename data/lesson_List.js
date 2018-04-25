@@ -1060,12 +1060,12 @@ var lesson_List=
    "gwy_18": [
 	{
 	"d":"01",
-	"url":"../mp3/01_大乘廣五蘊論_精華版.mp3",
+	"url":"01_大乘廣五蘊論_精華版.mp3",
 	"vod":"http://www.chuefeng.org.tw/vod/44bGDATffhCScDELJ"
 	},
 	{
 	"d":"02",
-	"url":"https://drive.google.com/file/d/1peIZIlF64XsxdeH2Hk0Cai3DC0sv5kk0/view?usp=sharing",
+	"url":"02-四大種_大乘廣五蘊論_精華版.mp3",
 	"vod":"http://www.chuefeng.org.tw/vod/AweiFqAZYvWuquE4d"
 	},
 	{
