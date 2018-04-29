@@ -301,7 +301,7 @@ kEssayNode.prototype.processUnLined=function(jsn, nLnIdx) {
 			nReadLines = 0;
 			
 			if (typeof jsn[itm] == "object") {
-				if (jsn[itm].cs != undefined && jsn[itm].cs == "notearea")
+				if (jsn[itm].cs != undefined && jsn[itm].cs.startsWith("notearea"))
 					this.jumbNAreaTocLevel(true);
 
 				nd = this.anaTagStyle(jsn[itm], "div");
@@ -506,7 +506,7 @@ kEssayNode.prototype.anaClass=function(cs) {
 			if (mbIsPC)
 				aRet.push("notearea");
 			else
-				aRet.push("notearea notearea_m");
+				aRet.push("notearea_m");
 		else
 			aRet.push(aCss[i]);
 	}

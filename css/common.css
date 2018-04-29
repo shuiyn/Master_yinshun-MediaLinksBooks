@@ -68,7 +68,7 @@
 
 
 	div.notearea { background-color:rgb(252, 252, 252);margin-left:0;text-indent:0}
-	div.notearea_m { background-color:rgb(230, 230, 230);}
+	div.notearea_m { background-color:rgb(210, 210, 210);margin-left:0;text-indent:0}
 
 /*	文章名稱*/
 	.esyTitle {
