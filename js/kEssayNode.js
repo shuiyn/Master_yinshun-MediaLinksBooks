@@ -502,6 +502,11 @@ kEssayNode.prototype.anaClass=function(cs) {
 			aRet.push("textborder");
 		else if (aCss[i] == "p")
 			aRet.push("paraIndent");
+		else if (aCss[i] == "notearea")
+			if (mbIsPC)
+				aRet.push("notearea");
+			else
+				aRet.push("notearea notearea_m");
 		else
 			aRet.push(aCss[i]);
 	}
