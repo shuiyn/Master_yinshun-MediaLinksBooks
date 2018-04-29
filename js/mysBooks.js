@@ -67,8 +67,10 @@ mysBooks.prototype.TryScroll=function(ev) {
 
 
 mysBooks.prototype.fillBook=function() {
-	if (this.cm)
+	if (this.cm) {
 		openEssay(this.ctlShowYin, this.cm["第一章"]);
+		doToggleBR();
+	}
 	else if (this.book)
 	  this.ctlShowYin.innerHTML = this.parseCont();
 	
@@ -892,20 +894,35 @@ function toggleBR(){
 		btn.innerHTML = "段";
 	}
 	
-	doToggleBR(bShowBR, theBook.ctlShowAux);
+	doToggleBR(theBook.ctlShowAux);
+//	doToggleBR(bShowBR, theBook.ctlShowAux);
 }
 
-function doToggleBR(bShowBR, dv){
+function doToggleBR(dv){
 	dv = dv || theBook.ctlShowYin;
 	var a = dv.getElementsByClassName("falseBR");
 //	var a = theBook.ctlShowAux.getElementsByClassName("falseBR");
-	var sDisp = (bShowBR ? "block" : "none");
-	
+//	var sDisp = (bShowBR ? "block" : "none");
+	var sDisp = (a[1].style.display=="none" ? "block" : "none");
+
+	for(var i=0; i < a.length; i++) a[i].style.display = sDisp;
+}
+
+
+function toggleNA(dv){
+	dv = dv || theBook.ctlShowYin;
+	var sName = (mbIsPC ? "notearea" :"notearea_m");
+	var a = dv.getElementsByClassName(sName);
+//	var a = theBook.ctlShowAux.getElementsByClassName("falseBR");
+//	var sDisp = (bShowBR ? "block" : "none");
+	var sDisp = (a[1].style.display=="none" ? "block" : "none");
+
 	for(var i=0; i < a.length; i++) a[i].style.display = sDisp;
 }
 
 function rstContHandFontSize(sType){
-	var ps = parseInt(theBook.ctlShowYin.style.fontSize);
+//	var ps = parseInt(theBook.ctlShowYin.style.fontSize);
+	var ps = parseInt(document.getElementById("contFontSize").innerHTML);
 	if (sType == "+") ps += 2;
 	else ps -= 2;
 	

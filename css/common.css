@@ -121,7 +121,7 @@
 		border-style:solid;
 	}
 	
-	sup.falseBR {padding:0;color:red}
+	sup.falseBR {padding:0;color:red;}
 	
 	select {padding:3px;font-size:100%;}
 	button {padding:2px;font-size:100%;}

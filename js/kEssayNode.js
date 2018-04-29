@@ -1,5 +1,32 @@
 
-var togglePageNum=function(nMode) {
+var togglePageNum=function() {
+	var eHrNums = document.getElementsByClassName("__pageNumHrDiv");
+	var sDisp = "none";
+	if (eHrNums && (eHrNums[0].style.display == "none"))
+		sDisp = "block";
+
+	var eNums = document.getElementsByClassName("__pageNum");
+	/*
+	if (eNums) {
+		if (sDisp == "block") {
+			for (var i=0; i < eNums.length; i++) {
+				eNums[i].innerHTML = eNums[i].getAttribute("pgNum");
+			}
+		} else {
+			for (var i=0; i < eNums.length; i++) {
+				eNums[i].innerHTML = "";
+			}
+		}
+	}*/
+	
+	if (eHrNums) {
+		for (var i=0; i < eHrNums.length; i++) {
+			eHrNums[i].style.display = sDisp;
+		}
+	}
+}
+
+var togglePageNum_ALL=function(nMode) {
 	var eNums = document.getElementsByClassName("__pageNum");
 	var bNumsBlock = false;
 	if (eNums && ("" != eNums[0].innerHTML))
