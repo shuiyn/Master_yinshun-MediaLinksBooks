@@ -75,25 +75,6 @@ var onLoad = function() {
 
 <body onload="onLoad()">
 <!--<span id="tit_booklecName"></span>- style="overflow:hidden;"-->
-<div id="pnlEsyTool" class="dropdown" style="position:fixed; top:1em; right:1em;">
-	<tbale><tr>
-	<td>
-	<button onclick="myFunction()" class="dropbtn">章</button>
-	  <div id="myDropdown" class="dropdown-content"> </div></td>
-	<td>
-	<button onclick="togglePageNum(0)" class="dropbtn">目</button>
-	</td>
-	<td>
-	<button onclick="togglePageNum(1)" class="dropbtn">頁</button>
-	</td>
-	<td>
-	<button onclick="togglePageNum(2)" class="dropbtn">hr</button>
-	</td>
-	<td>
-	<button onclick="doToggleBR(false)" class="dropbtn">段</button>
-	</td>
-	</tr></tbale>
-</div>
 
 <span id="tit_booklecName" style="font-size:90%;font-family:標楷體;font-weight:bold;"></span><br/>
 <span id="try" style="width:80%;"></span>
@@ -179,7 +160,7 @@ var onLoad = function() {
 	
 	<td>
 		<button id="toggleAux" onclick="toggleAux(this)" class="toggle" style="margin-left:6px;">原著</button>
-	<td>
+	</td>
 
 	<td>
 		<button id="btnYinMenu" onclick="theBook.showPageTocSelect(this)">目次</button>
@@ -191,6 +172,30 @@ var onLoad = function() {
 	<td>
 			<button id="toggleBR" style="display:none;" onclick="toggleBR()" class="toggle">段</button>
 	</td>
+	
+<td style="position:relative;"><!--文檔工具區fixed-->
+
+<!--<div id="pnlEsyTool" class="dropdown" style="position:relative; top:1em; right:1em;">-->
+<!--	<tbale><tr>-->
+<!--	<td>-->
+	<button onclick="myFunction()" class="dropbtn">章</button>
+	  <div id="myDropdown" class="dropdown-content"> </div></td>
+	<td>
+	<button onclick="togglePageNum(0)" class="dropbtn">目</button>
+	</td>
+	<td>
+	<button onclick="togglePageNum(1)" class="dropbtn">頁</button>
+	</td>
+	<td>
+	<button onclick="togglePageNum(2)" class="dropbtn">hr</button>
+	</td>
+	<td>
+	<button onclick="doToggleBR(false)" class="dropbtn">段</button>
+	</td>
+<!--	</tr></tbale>-->
+<!--</div>-->
+
+</td>
 	</tr></table>
 </td><!--文檔操作區-->
 

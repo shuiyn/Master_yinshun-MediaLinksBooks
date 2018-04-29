@@ -504,7 +504,7 @@ function dlgFocusIn(e) {
 function rstPosition() {
 	var wInnerH = window.innerHeight;
 	var nTop = document.getElementById("content").offsetTop;
-	document.getElementById("pnlEsyTool").style.top = (nTop-28) + "px";
+//	document.getElementById("pnlEsyTool").style.top = (nTop-28) + "px";
 
 	var nDiffH = (wInnerH - nTop - 10);
 	
