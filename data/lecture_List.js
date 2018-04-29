@@ -151,7 +151,7 @@ var lecture_List = {
 {"t":"第20章 正覺與解脫", "url":"http://220.130.244.41:8080/prajna/2017PDF/81.pdf"},
 {"t":"　補充講義", "url":"http://220.130.244.41:8080/prajna/2017PDF/82.pdf"}
 ],
-	"bkid":"ffgl", "master":"kr", "byear":"104", "croom":"pn", "phase":[
+	"bkid":"ffgl", "cm":"ffgl_kr_2014", "master":"kr", "byear":"104", "croom":"pn", "phase":[
 {"id":"pn1040321", "t":"第 8 期 104 年", "url":"http://www.kyba.org.tw/board/showcontent.asp?bd=11&id=687&totable=1"},
 {"id":"pn1050910", "t":"第 9 期 105 年", "url":"http://www.kyba.org.tw/board/showcontent.asp?bd=11&id=694&totable=1"},
 {"id":"pn1060318", "t":"第 10 期 106 年", "url":"http://www.kyba.org.tw/board/showcontent.asp?bd=11&id=710&totable=1"},

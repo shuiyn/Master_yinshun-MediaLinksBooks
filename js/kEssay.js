@@ -623,8 +623,16 @@ kEssay.prototype.transData=function() {
 						jsn["PS"] = {};
 					
 					jsn["PS"].cs = tocCsName;
-				} else
-				jsn["CS_99"] = [0, this.aLine[nLnIdx + 1].length, tocCsName]; // "tocTitle" defined in common.css
+				} else {
+					var sTmpLine = this.aLine[nLnIdx + 1];
+					var nTitRight = sTmpLine.search(/（p[^）]+）$/);
+				if (nTitRight > -1) {
+					sTmpLine = sTmpLine.slice(0, nTitRight);
+				}
+					
+					jsn["CS_99"] = [0, sTmpLine.length, tocCsName]; // "tocTitle" defined in common.css
+//					jsn["CS_99"] = [0, this.aLine[nLnIdx + 1].length, tocCsName]; // "tocTitle" defined in common.css
+			}
 				unLined["jiCount"]++;
 				
 				nLnIdx += unLined["rLns"];

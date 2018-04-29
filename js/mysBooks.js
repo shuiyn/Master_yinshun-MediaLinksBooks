@@ -3,6 +3,10 @@ var mysBooks = function(bkId, lecId) {
 	this.bkId = bkId;
 	this.lecId = lecId;
 	this.phId = null;
+	this.cm; // course materials
+	if(lecture_List[lecId].cm != undefined) {
+		this.cm = eval(lecture_List[lecId].cm);
+	}
 	this.book;
 	try {
 		this.book = eval(this.bkId + "_book");
@@ -63,7 +67,9 @@ mysBooks.prototype.TryScroll=function(ev) {
 
 
 mysBooks.prototype.fillBook=function() {
-	if (this.book)
+	if (this.cm)
+		openEssay(this.ctlShowYin, this.cm["第一章"]);
+	else if (this.book)
 	  this.ctlShowYin.innerHTML = this.parseCont();
 	
   this.fillAuxDataOpt();
@@ -206,14 +212,14 @@ mysBooks.prototype.onLessonChange=function(e) {
 		this.ctlShowYin.innerHTML = "";
 		return;
 	}
-			console.log(hostImgURL("mp3"));
+//			console.log(hostImgURL("mp3"));
 
 	var src = e.value;
 	if (src.search(/https?:\/\//) != 0) {
 		src = hostImgURL("mp3") + this.phId + "/" + src;
 	}
 		
-		console.log(src);
+//		console.log(src);
 	theAud.aud.src = src; //.value;
 	theAud.playStart = 0;
 //	theAud.playDuration = 0;
@@ -498,6 +504,7 @@ function dlgFocusIn(e) {
 function rstPosition() {
 	var wInnerH = window.innerHeight;
 	var nTop = document.getElementById("content").offsetTop;
+	document.getElementById("pnlEsyTool").style.top = (nTop-28) + "px";
 
 	var nDiffH = (wInnerH - nTop - 10);
 	
@@ -749,7 +756,9 @@ mysBooks.prototype.transAuxData=function(aLine) {
 //			continue;
 		}
 		
-		tagPageNum = /\[p[a-z]?\d+\]/.exec(sLine);
+		var aTestNum = /\[p[a-z]?\d+\]/.exec(sLine);
+		tagPageNum= null;
+		if (aTestNum) tagPageNum = aTestNum[0];
 
 		//全行只有頁次者，[p1]，不遞加 nRowCount，前也不加 行號
 		if (tagPageNum == sLine) {
@@ -883,11 +892,13 @@ function toggleBR(){
 		btn.innerHTML = "段";
 	}
 	
-	doToggleBR(bShowBR);
+	doToggleBR(bShowBR, theBook.ctlShowAux);
 }
 
-function doToggleBR(bShowBR){
-	var a = theBook.ctlShowAux.getElementsByClassName("falseBR");
+function doToggleBR(bShowBR, dv){
+	dv = dv || theBook.ctlShowYin;
+	var a = dv.getElementsByClassName("falseBR");
+//	var a = theBook.ctlShowAux.getElementsByClassName("falseBR");
 	var sDisp = (bShowBR ? "block" : "none");
 	
 	for(var i=0; i < a.length; i++) a[i].style.display = sDisp;
