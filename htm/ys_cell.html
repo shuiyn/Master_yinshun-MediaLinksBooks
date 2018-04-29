@@ -31,8 +31,8 @@
 	
 	<script>
 var mbIsPC = false;
-var msSourceWords = "srcwords mobilSWcolor"; //引文字體、色，供 toHtml 參用於行動裝置
-var msNoteareaBg = "div.notearea div.notearea_m"; //註解區背景色
+//var msSourceWords = "srcwords mobilSWcolor"; //引文字體、色，供 toHtml 參用於行動裝置
+//var msNoteareaBg = "div.notearea div.notearea_m"; //註解區背景色
 
 var theBook = null;
 var theAud = null;
@@ -50,8 +50,8 @@ var onLoad = function() {
 	theBook.fillBook();
 	
 	if (mbIsPC) {
-		msSourceWords = "srcwords";
-		msNoteareaBg = "div.notearea"; //註解區背景色
+//		msSourceWords = "srcwords";
+//		msNoteareaBg = "div.notearea"; //註解區背景色
 		
 		if (window.addEventListener) {              
 		    window.addEventListener("resize", rstPosition);

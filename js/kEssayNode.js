@@ -301,7 +301,7 @@ kEssayNode.prototype.processUnLined=function(jsn, nLnIdx) {
 			nReadLines = 0;
 			
 			if (typeof jsn[itm] == "object") {
-				if (jsn[itm].cs != undefined && jsn[itm].cs.startsWith("notearea"))
+				if (jsn[itm].cs != undefined && jsn[itm].cs.startsWith("notearea")) //mobil is notearea_m
 					this.jumbNAreaTocLevel(true);
 
 				nd = this.anaTagStyle(jsn[itm], "div");
@@ -495,7 +495,11 @@ kEssayNode.prototype.anaClass=function(cs) {
 		if (!aCss[i]) continue;
 		
 		if (aCss[i] == "0" || aCss[i] == "srcwords")
-			aRet.push(msSourceWords);
+//			aRet.push(msSourceWords);
+			if (mbIsPC)
+				aRet.push("srcwords");
+			else
+				aRet.push("srcwords_m");
 		else if (aCss[i] == "1")
 			aRet.push("sutratext");
 		else if (aCss[i] == "2")
