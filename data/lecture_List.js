@@ -98,7 +98,7 @@ var lecture_List = {
 {"t":"106-12-27", "url":null},
 {"t":"白板", "url":"http://www.kyba.org.tw/board/upload/2017122809342193216-14817.jpg"}
 ],
-	"bkid":"pnj", "master":"zh", "byear":"104", "croom":"pn", "phase":[
+	"bkid":"pnj", "cm":"pnjjj_book", "master":"zh", "byear":"104", "croom":"pn", "phase":[
 {"id":"pn1041223", "t":"第 1 期 104 年", "url":"http://www.kyba.org.tw/board/showcontent.asp?bd=11&id=690&totable=1"},
 {"id":"pn1060913", "t":"第 2 期 106 年", "url":"http://www.kyba.org.tw/board/showcontent.asp?bd=11&id=724&totable=1"}
 		]

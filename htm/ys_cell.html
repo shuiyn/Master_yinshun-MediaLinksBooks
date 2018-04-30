@@ -9,6 +9,7 @@
 
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
+	<script src="../data/pnjjj_book.js"></script>
 	<script src="../data/ffgl_kr_2014.js"></script>
 	<script src="../data/auxData_0001.js"></script>
 	<script src="../data/auxData_0002.js"></script>
@@ -55,8 +56,10 @@ var onLoad = function() {
 		
 		if (window.addEventListener) {              
 		    window.addEventListener("resize", rstPosition);
+//		    window.addEventListener("onclick", winOnClick);
 		} else if (window.attachEvent) {                 
 		    window.attachEvent("onresize", rstPosition);
+//		    window.attachEvent("onclick", winOnClick);
 		}
 	}
 	
@@ -178,8 +181,8 @@ var onLoad = function() {
 <!--<div id="pnlEsyTool" class="dropdown" style="position:relative; top:1em; right:1em;">-->
 <!--	<tbale><tr>-->
 <!--	<td>-->
-	<button onclick="myFunction()" class="dropbtn">章</button>
-	  <div id="myDropdown" class="dropdown-content"> </div></td>
+	<button onclick="toggleDropDown('dropdnChpter')" class="dropbtn">章</button>
+	  <div id="dropdnChpter" class="dropdown-content"> </div></td>
 	<td>
 	<button onclick="togglePageNum(0)" class="dropbtn">目</button>
 	</td>
@@ -190,7 +193,7 @@ var onLoad = function() {
 	<button onclick="toggleNA()" class="dropbtn">註</button>
 	</td>
 	<td>
-	<button onclick="doToggleBR()" class="dropbtn">段</button>
+	<button onclick="doToggleBR()" class="dropbtn" id="toggleLineNo">段</button>
 	</td>
 <!--	</tr></tbale>-->
 <!--</div>-->

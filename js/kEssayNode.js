@@ -88,8 +88,11 @@ var grabEssayChapter=function(jsEsy) {
 
 //將指定的「章」，填入展示的 divRoot
 var openEssay=function(divRoot, jsnChapter) {
+	divRoot.innerHTML = "";
 	var esy = new kEssayNode(divRoot, jsnChapter);
 	esy.transData();
+	
+	doToggleBR();
 }
 
 

@@ -64,12 +64,64 @@ mysBooks.prototype.TryScroll=function(ev) {
 	}
 }
 
+window.onclick=function(event) {
+    var dropdowns = document.getElementsByClassName("dropdown-content");
+    console.log(event.target.nextElementSibling, dropdowns[0]);
+//  if (!event.target.matches('.dropbtn')) {
+//  if (!event.target.nextElementSibling.isSameNode(dropdowns[0])) {
+  if (event.target.nextElementSibling != dropdowns[0]) {
+    var i;
+    for (i = 0; i < dropdowns.length; i++) {
+      var openDropdown = dropdowns[i];
+      if (openDropdown.classList.contains('dropdownShow')) {
+        openDropdown.classList.remove('dropdownShow');
+      }
+    }
+  }
+}
 
+
+mysBooks.prototype.fillDropdown=function(ctl, aItem) {
+	while (ctl.length > 0) ctl.remove(0);
+
+	var nWidth = 0;
+	
+	for (var i=0; i < aItem.length; i++) {
+  	var nd = document.createElement("A");
+  	var tnd = document.createTextNode(aItem[i]); 
+  	nd.appendChild(tnd);
+  	ctl.appendChild(nd);
+ 	nd.setAttribute("onclick", 'openEssay(theBook.ctlShowYin,theBook.cm["' + aItem[i]+ '"])');
+  	nWidth = Math.max(nWidth, aItem[i].length);
+	}
+	
+	ctl.style.width = (nWidth*16+16) + "px";
+}
+
+function toggleDropDown(id) {
+	var drpdn = document.getElementById(id);
+	drpdn.classList.toggle("dropdownShow");
+}
 
 mysBooks.prototype.fillBook=function() {
+	var drpdn = document.getElementById("dropdnChpter");
+	
 	if (this.cm) {
-		openEssay(this.ctlShowYin, this.cm["第一章"]);
-		doToggleBR();
+		var aChapter = [];
+		for (var ch in this.cm) {
+			if (ch == "ft") {
+					document.getElementById("toggleLineNo").disabled = (this.cm[ch]["lnNo"] != true);
+			} else {
+				aChapter.push(ch);
+			}
+		}
+		
+		this.fillDropdown(drpdn, aChapter);
+		
+		openEssay(this.ctlShowYin, this.cm[aChapter[0]]);
+//		openEssay(this.ctlShowYin, this.cm["般若經講記"]);
+//		openEssay(this.ctlShowYin, this.cm["第一章"]);
+//		doToggleBR();
 	}
 	else if (this.book)
 	  this.ctlShowYin.innerHTML = this.parseCont();
