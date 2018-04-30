@@ -15,6 +15,11 @@
 	    background-color: #2980B9;
 	}
 
+	.dropbtn:disabled {
+	    background-color: lightgray;
+	    cursor: not-allowed;
+	}
+
 	.dropdown {
 	    position: relative;
 	    display: inline-block;
@@ -38,7 +43,7 @@
 	    display: block;
 	}
 
-	.dropdown a:hover {
+	.dropdown-content a:hover {
 		background-color: #ddd;
 		cursor: pointer;
 	}
@@ -63,7 +68,7 @@
 		right:0px;
 		color:blue;
 		background-color:LightGray;/*rgb(244, 244, 244);*/
-		padding:2px;
+		padding:1px;
 	}
 
 

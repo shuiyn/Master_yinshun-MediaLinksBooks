@@ -84,26 +84,26 @@ var onLoad = function() {
 
 <!--期別、著文、講義切換-->
 <table id="tblShowPhrase" style="visibility:visible;background-color:lightGray;margin-top:3px;"><tr>
+	<td id="tdPhrase">
+<button id="toggleHandout" onclick="toggleHandout(this)" class="toggle">期別</button>
+	</td>
 	<td><a id="goSite" href="" target="_blank">到</a></td>
 	<td>
 	<span id="dvPhase"><select><option>第 1 期 104 年</option><select><span>
-	</td>
-	<td id="tdPhrase">
-<button id="toggleHandout" onclick="toggleHandout(this)" class="toggle">期別</button>
 	</td>
 	<td id="dvLesson" style="vertical-align: middle;">
 		<select><option>104 年</option><select>
 	</td>
 	
-	<td><button onclick="theAud.showCue()" style="margin-left:6px;">cue</button></td>
+	<td><button onclick="theAud.showCue()" style="margin-left:6px;display:none">cue</button></td>
 </tr></table>
 
 <!--講義-->
 	<table id="tblShowHandout" style="visibility:collapse;background-color:lightgreen;">
 		<tr>
+		<td id="tdHandout"></td>
 		<td><a id="openHandout" href="" target="_blank">到</a></td>
 		<td id="pnlHandout"></td>
-		<td id="tdHandout"></td>
 		</tr>
 	</table>
 
@@ -162,11 +162,11 @@ var onLoad = function() {
 	</td>
 	
 	<td>
-		<button id="toggleAux" onclick="toggleAux(this)" class="toggle" style="margin-left:6px;">原</button>
+		<button id="toggleAux" onclick="toggleAux(this)" class="toggle" style="margin-left:6px;display:none;">教材</button>
 	</td>
 
 	<td>
-		<button id="btnYinMenu" onclick="theBook.showPageTocSelect(this)">目</button>
+		<button id="btnYinMenu" onclick="theBook.showPageTocSelect(this)" style="display:none">目</button>
 	</td>
 	<td>
 			<button id="btnOpenAux" onclick="document.all.dlgHandout.showModal()" style="display:none">開啟</button>
@@ -190,7 +190,7 @@ var onLoad = function() {
 	<button onclick="togglePageNum()" class="dropbtn">頁</button>
 	</td>
 	<td>
-	<button onclick="toggleNA()" class="dropbtn">註</button>
+	<button onclick="toggleNA()" class="dropbtn" id="toggleNote">註</button>
 	</td>
 	<td>
 	<button onclick="doToggleBR()" class="dropbtn" id="toggleLineNo">段</button>

@@ -110,7 +110,8 @@ mysBooks.prototype.fillBook=function() {
 		var aChapter = [];
 		for (var ch in this.cm) {
 			if (ch == "ft") {
-					document.getElementById("toggleLineNo").disabled = (this.cm[ch]["lnNo"] != true);
+					document.getElementById("toggleNote").disabled = (!this.cm[ch]["note"]);
+					document.getElementById("toggleLineNo").disabled = (!this.cm[ch]["lnNo"]);
 			} else {
 				aChapter.push(ch);
 			}
@@ -641,7 +642,7 @@ function toggleBtnAux(auxId){
 
 
 function toggleAux(btn){
-	doToggle(btn, ["原著", "講義"], null, null,["content", "auxPanel", "pageList", "pageList_hand", "btnYinMenu", "btnOpenAux", null, "toggleBR"]);
+	doToggle(btn, ["教材", "補充"], null, null,["content", "auxPanel", "pageList", "pageList_hand", "btnYinMenu", "btnOpenAux", null, "toggleBR"]);
 	
 	/*
 	var btnBR = document.getElementById("toggleBR");
