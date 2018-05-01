@@ -195,13 +195,15 @@ kEssayNode.prototype.transData=function() {
 			this.ndCurrDiv.appendChild(this.genNode(sLine));
 		}
 		else { //非標記行、即實體文字行
-			var aTestNum = /\[p[a-z]?\d+\]/.exec(sLine);
+			var aPageNumTag = sLine.match(/\[p[a-z]?\d+\]/g);
 			var tagPageNum = null;
-			if (aTestNum)
-				tagPageNum = aTestNum[0];
+			if (aPageNumTag) {
+				tagPageNum = aPageNumTag[0];
+			}
 			
 			var jTmpLine = null;
 			
+			//一行只有一個 tagPageNum 時，才會有tagPageNum == sLine
 			if (tagPageNum != sLine && !this.mbPrevParaIsNTDno) {
 				jTmpLine = {"ln":[this.nIdxInPara, null, this.nRowCount]};
 				this.paraSty.push(jTmpLine); //✖unshift 置首，以免被其他 tag <span> 等包住而誤顯，parseParaStyle() 已有相應作為
@@ -217,8 +219,11 @@ kEssayNode.prototype.transData=function() {
 			
 			this.paraText.push(sLine);
 			
-			if (tagPageNum) {
-				this.paraSty.push({"pgNum":[this.nIdxInPara + sLine.indexOf(tagPageNum), tagPageNum.length, tagPageNum]});
+			if (aPageNumTag) {
+				//pgNum 不存在同一類別內，∴不必加序號
+				for (var i=0; i < aPageNumTag.length; i++) {
+					this.paraSty.push({"pgNum":[this.nIdxInPara + sLine.indexOf(aPageNumTag[i]), aPageNumTag[i].length, aPageNumTag[i]]});
+				}
 				
 				if (this.bOverParaTag)
 					this.nRowCount = 0; //新段開始，下面 ++ 重設行號 1 起計
@@ -716,8 +721,8 @@ kEssayNode.prototype.parseParaStyle=function() {
 		out += aHtmE[sParaCont.length].join("");
 	
 // 目前尚未有含 <p>、<div>者 04-23 20:19
-	if (out.search(/<(p|div)[^>]*?>/) > -1)
-		console.log("out 含有 p|div Tag");
+	if (out.search(/<(p +|div +)[^>]*?>/) > -1)
+		console.log("out 含有 p|div Tag", out);
 	
 	return out;
 
