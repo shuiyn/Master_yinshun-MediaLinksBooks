@@ -87,10 +87,19 @@ var grabEssayChapter=function(jsEsy) {
 }
 
 //將指定的「章」，填入展示的 divRoot
-var openEssay=function(divRoot, jsnChapter) {
+//var openEssay=function(divRoot, jsnChapter, selPageList) {
+var openEssay=function(bCM, jsnChapter) {
+	var divRoot = (bCM ? theBook.ctlShowYin : theBook.ctlShowAux);
+	var selPageList = (bCM ? theBook.selPageListYin : theBook.selPageListAux);
+	var idTail = (bCM ? "" : "_H");
+
 	divRoot.innerHTML = "";
-	var esy = new kEssayNode(divRoot, jsnChapter);
+	
+	while (selPageList.length > 0) selPageList.remove(0);
+	
+	var esy = new kEssayNode(divRoot, jsnChapter, selPageList, idTail);
 	esy.transData();
+	createCmMenu(esy.maToc);
 	
 	doToggleBR();
 }
@@ -102,13 +111,17 @@ var openEssay=function(divRoot, jsnChapter) {
 
 */
 
-var kEssayNode=function(divRoot, jsnChapter) {
+var kEssayNode=function(divRoot, jsnChapter, selPageList, idTail) {
 	this.divRoot = divRoot;
+	this.selPageList = selPageList;
+	this.idTail = idTail;
+	
 	this.aLine = jsnChapter.c;
 	this.mnStartMarginLev = 3; // margin-left 開始設值的 level，1 是「節」
 	if (jsnChapter.mlStartLev != undefined)
 		this.mnStartMarginLev = jsnChapter.mlStartLev;
 	// pgNum -> [p[a-z]?\d+]
+	this.maToc = [];
 	this.paraText = [];
 	this.paraSty = [];
 	this.nIdxInPara = 0;
@@ -242,7 +255,7 @@ kEssayNode.prototype.settleTocLevel=function(nLev, bCloseToc, bOpenNA) {
 	if (nLev < this.mnStartMarginLev)
 		sDist = "0";
 	
-	var sDivSty = '<div tocLev="' + nLev + '" style="margin-left:' + sDist + ';text-indent:0;">';
+	var sDivSty = '<div style="margin-left:' + sDist + ';text-indent:0;">';
 	
 	if (!bOpenNA) {
 		
@@ -366,8 +379,21 @@ kEssayNode.prototype.processUnLined=function(jsn, nLnIdx) {
 
 kEssayNode.prototype.anaToc=function(jsn, nLnIdx) {
 	var jToc = jsn["toc"];
+	var tocIdPfx = base_List.htmlIdPrefix.toc;
+	var sTmpLine = this.aLine[nLnIdx + 1];
+	var nTitRight = sTmpLine.search(/（p[^）]+）$/);
+	if (nTitRight > -1) {
+		sTmpLine = sTmpLine.slice(0, nTitRight);
+	}
 	
 	this.settleTocLevel(jToc["lev"]);
+	
+	if (jsn["PS"] == undefined) //此為 jsn 非 jToc，供 transData() 處理
+		jsn["PS"] = {};
+	
+	jsn["PS"].id = tocIdPfx + this.maToc.length;
+//	this.mnTocSno++;
+	this.maToc.push({"a":jsn["PS"].id, "lev":jToc["lev"], "c":sTmpLine});
 	
 	//可能會有 textborder 使用 span, 所以不可定義於 "PS" 中
 	var tocCsName = "tocTitle";
@@ -379,16 +405,16 @@ kEssayNode.prototype.anaToc=function(jsn, nLnIdx) {
 		else
 			tocCsName = "esySection";
 
-		if (jsn["PS"] == undefined) //此為 jsn 非 jToc，供 transData() 處理
-			jsn["PS"] = {};
+//		if (jsn["PS"] == undefined) //此為 jsn 非 jToc，供 transData() 處理
+//			jsn["PS"] = {};
 		
 		jsn["PS"].cs = tocCsName;
 	} else {
-		var sTmpLine = this.aLine[nLnIdx + 1];
-		var nTitRight = sTmpLine.search(/（p[^）]+）$/);
-		if (nTitRight > -1) {
-			sTmpLine = sTmpLine.slice(0, nTitRight);
-		}
+//		var sTmpLine = this.aLine[nLnIdx + 1];
+//		var nTitRight = sTmpLine.search(/（p[^）]+）$/);
+//		if (nTitRight > -1) {
+//			sTmpLine = sTmpLine.slice(0, nTitRight);
+//		}
 		
 		if (jToc["noBox"] != undefined)
 			tocCsName = ""; //沒有外框
@@ -464,6 +490,9 @@ kEssayNode.prototype.stuffPara=function(nLnIdx) {
 kEssayNode.prototype.anaTagStyle=function(jTmp, sTagName) {
 	var sTagName = sTagName || "p"; //預設為 p，可用於其他 Tag，取代原 TAG
 	var sTag = "";
+	var sId = "";
+	var sClass = "";
+	var sStyle = "";
 	var aPgSty = [];
 	
 	if (jTmp["st"])
@@ -489,20 +518,33 @@ kEssayNode.prototype.anaTagStyle=function(jTmp, sTagName) {
 	}
 	
 	if (aPgSty.length > 0) {
-		sTag = '<' + sTagName + ' style="' + aPgSty.join(";") + '"';
+		sStyle = ' style="' + aPgSty.join(";") + '"';
 	}
+//	if (aPgSty.length > 0) {
+//		sTag = '<' + sTagName + ' style="' + aPgSty.join(";") + '"';
+//	}
 	
-	if (typeof jTmp["cs"] != "undefined") {
+	if (jTmp["id"] != undefined)
+		sId = ' id="' + jTmp["id"] + '"';
+	
+	if (jTmp["cs"] != undefined) {
+		sClass = ' class="' + this.anaClass(jTmp["cs"]) + '"';
+	}
+
+	sTag = '<' + sTagName + sId + sClass + sStyle + '>';
+	
+	/*
+	if (jTmp["cs"] != undefined) {
 		var sTmp = this.anaClass(jTmp["cs"]);
 		
 		if (sTag)
 			sTag += ' class="' + sTmp + '"';
 		else
 			sTag = '<' + sTagName + ' class="' + sTmp + '"';
-	}
+	}*/
 	
-	if (sTag) sTag += '>';
-	else sTag = '<' + sTagName + '>';
+//	if (sTag) sTag += '>';
+//	else sTag = '<' + sTagName + '>';
 	
 	return this.genNode(sTag);
 } // eof anaTagStyle
@@ -595,7 +637,13 @@ kEssayNode.prototype.parseParaStyle=function() {
 				aHtmE[sEnd].push('<br class="falseBR" />');
 
 			} else if (jItm == "pgNum") {
-				aHtmB[sStart].push('<span class="__pageNum" pgNum="' + sSet + '">');
+				var pgIdPfx = base_List.htmlIdPrefix.page;
+				var id = sSet.replace(/\[|\]/g, "");
+		var opt = document.createElement("option");
+		opt.text = id.substr(1);
+		this.selPageList.add(opt);
+				
+				aHtmB[sStart].push('<span ' + 'id="' + pgIdPfx + id + this.idTail + '" class="__pageNum" pgNum="' + sSet + '">');
 				aHtmE[sEnd].unshift('</span>');
 
 			} else if (/^CS_?\d{0,2}$/.test(jItm)) {

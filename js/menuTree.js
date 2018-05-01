@@ -1,5 +1,74 @@
 
-//function createMenu(bkId) {
+function createCmMenu(aTocItem) {
+	var sPath = hostImgURL();
+	var rtUL = document.getElementById("mnuRoot");
+	
+	while (rtUL.childNodes.length > 0){
+		rtUL.removeChild(rtUL.childNodes[0]);
+	}
+
+	var ndUL;
+	
+	for (var i=0; i < aTocItem.length; i++) {
+	    var textnode = document.createTextNode(aTocItem[i].c);
+	    var ndAnchor = document.createElement("A");
+//	    var ndSpan = document.createElement("SPAN");
+	    var nd = document.createElement("LI");
+		var nOffset = -1;
+
+	    ndAnchor.appendChild(textnode);
+	    ndAnchor.setAttribute("href", "#" + aTocItem[i].a);
+//	    ndSpan.appendChild(textnode);
+
+		if (aTocItem[i].lev == 0) {
+    		ndUL = rtUL;
+			nOffset = -1;
+		}
+		else
+			nOffset = (aTocItem[i-1].lev - aTocItem[i].lev);
+		
+		if (nOffset < -1) {
+			alert("Toc.level 錯誤；請檢視 console.log。");
+			console.log("Err of Toc.level: prev= ",aTocItem[i-1].lev,", curr= ", aTocItem[i].lev);
+		}
+			
+    	if (i==aTocItem.length-1 || aTocItem[i+1].lev <= aTocItem[i].lev) {
+	    	nd.style.listStyleImage = 'none';
+    	} else
+	    	nd.style.listStyleImage = 'url("' + sPath + 'open_brk.png")';
+
+	    nd.appendChild(ndAnchor);
+//	    nd.appendChild(ndSpan);
+		
+		if (nOffset == 0) {
+			ndUL.appendChild(nd);
+
+			if (i<aTocItem.length-1 && aTocItem[i+1].lev > aTocItem[i].lev) {
+	    		ndUL = document.createElement("UL");
+				nd.appendChild(ndUL);
+			}
+		} else if (nOffset < 0){
+			ndUL.appendChild(nd);
+			if (i<aTocItem.length-1 && aTocItem[i+1].lev > aTocItem[i].lev) {
+	    		ndUL = document.createElement("UL");
+				nd.appendChild(ndUL);
+			}
+		} else {
+			for (j=0; j<nOffset; j++) {
+				ndUL = ndUL.parentNode.parentNode;
+			}
+				
+			ndUL.appendChild(nd);
+			
+			if (i<aTocItem.length-1 && aTocItem[i+1].lev > aTocItem[i].lev) {
+	    		ndUL = document.createElement("UL");
+				nd.appendChild(ndUL);
+			}
+		}
+	}
+}
+
+	/*
 function createMenu(aItem) {
 	var sPath = hostImgURL();
 	
@@ -87,7 +156,7 @@ function createMenu(aItem) {
 //console.log("end");
 //	return aIdx;
 }
-
+*/
 
 function onMenuClicked(ev) {
 	var sPath = hostImgURL();

@@ -36,6 +36,9 @@ var mysBooks = function(bkId, lecId) {
 	this.tblShowAux = document.getElementById("tblShowAux");
 	this.ctlShowYin = document.getElementById("content");
 	this.ctlShowAux = document.getElementById("auxPanel");
+	
+	this.selPageListYin = document.getElementById("pageList");
+	this.selPageListAux = document.getElementById("pageList_hand");
 }
 
 
@@ -66,7 +69,7 @@ mysBooks.prototype.TryScroll=function(ev) {
 
 window.onclick=function(event) {
     var dropdowns = document.getElementsByClassName("dropdown-content");
-    console.log(event.target.nextElementSibling, dropdowns[0]);
+//    console.log(event.target.nextElementSibling, dropdowns[0]);
 //  if (!event.target.matches('.dropbtn')) {
 //  if (!event.target.nextElementSibling.isSameNode(dropdowns[0])) {
   if (event.target.nextElementSibling != dropdowns[0]) {
@@ -91,7 +94,7 @@ mysBooks.prototype.fillDropdown=function(ctl, aItem) {
   	var tnd = document.createTextNode(aItem[i]); 
   	nd.appendChild(tnd);
   	ctl.appendChild(nd);
- 	nd.setAttribute("onclick", 'openEssay(theBook.ctlShowYin,theBook.cm["' + aItem[i]+ '"])');
+ 	nd.setAttribute("onclick", 'openEssay(true,theBook.cm["' + aItem[i]+ '"])');
   	nWidth = Math.max(nWidth, aItem[i].length);
 	}
 	
@@ -119,7 +122,7 @@ mysBooks.prototype.fillBook=function() {
 		
 		this.fillDropdown(drpdn, aChapter);
 		
-		openEssay(this.ctlShowYin, this.cm[aChapter[0]]);
+		openEssay(true, this.cm[aChapter[0]]);
 //		openEssay(this.ctlShowYin, this.cm["般若經講記"]);
 //		openEssay(this.ctlShowYin, this.cm["第一章"]);
 //		doToggleBR();

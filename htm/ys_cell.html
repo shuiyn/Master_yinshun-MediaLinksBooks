@@ -152,17 +152,10 @@ var onLoad = function() {
 			<span id="contFontSize" style="background-color:white;padding-left:3px;padding-right:3px;border:1px black solid;">96</span>
 			<button style="color:DodgerBlue;margin-right:0.5em;" onclick="rstContHandFontSize('+')">✚</button>
 	</td>
-		
-	<td>
-		<select style="width:4em;font-size:95%;" id="pageList" onchange="theBook.onPageListChange(this)"></select>
-	</td>
 
 	<td>
-		<select style="width:4em;font-size:95%;display:none" id="pageList_hand" onchange="theBook.onPageListChange(this)"></select>
-	</td>
-	
-	<td>
-		<button id="toggleAux" onclick="toggleAux(this)" class="toggle" style="margin-left:6px;display:none;">教材</button>
+<!--		<button id="toggleAux" onclick="toggleAux(this)" class="toggle" style="margin-left:6px;">教材</button>-->
+		<button id="toggleAux" class="toggle" style="margin-left:6px;">教材</button>
 	</td>
 
 	<td>
@@ -184,8 +177,19 @@ var onLoad = function() {
 	<button onclick="toggleDropDown('dropdnChpter')" class="dropbtn">章</button>
 	  <div id="dropdnChpter" class="dropdown-content"> </div></td>
 	<td>
-	<button onclick="togglePageNum(0)" class="dropbtn">目</button>
+	<button onclick="theBook.showPageTocSelect(this)" class="dropbtn">目</button>
 	</td>
+
+		
+	<td>
+		<select style="width:4em;font-size:95%;" id="pageList" onchange="theBook.onPageListChange(this)"></select>
+	</td>
+
+	<td>
+		<select style="width:4em;font-size:95%;display:none" id="pageList_hand" onchange="theBook.onPageListChange(this)"></select>
+	</td>
+	
+
 	<td>
 	<button onclick="togglePageNum()" class="dropbtn">頁</button>
 	</td>
