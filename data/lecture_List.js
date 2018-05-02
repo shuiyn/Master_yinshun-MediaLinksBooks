@@ -1393,6 +1393,7 @@ var lecture_List={
  },
  "0008": {
   "bkid": "fzrj",
+  "cm":"fzrj_kr_2015",
   "master": "kr",
   "byear": "2015",
   "croom": "lw",
