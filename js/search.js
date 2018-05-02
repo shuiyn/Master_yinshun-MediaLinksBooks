@@ -1,4 +1,8 @@
 
+var uaNotPC=function() {
+	return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+}
+
 //img 網站資料夾的路徑，供 menuTree 使用
 var hostImgURL=function(fdn) {
 	var sImgPath = location.pathname;

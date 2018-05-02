@@ -388,13 +388,15 @@ function fillCue(mbp, url){
 
 
 function onLoad() {
+	mbIsPC = !uaNotPC();
+	/*
 	var ua = navigator.userAgent;
 	if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(ua) ) {
 		mbIsPC = false;
 	} else {
 		mbIsPC = true;
 	}
-	
+	*/
 //	document.getElementById("forTest").value = ua;
 
 //	document.getElementById("content").height=document.body.scrollHeight/3*2;
@@ -688,9 +690,6 @@ function onPageListChange(e){
 function openBookWin() {
 	var fn = "ys_cell";
 	
-//	if (mbIsPC)
-//		fn = "pnj";
-	
 	var ctlBook = document.getElementById('selBook');
 	var bkId = ctlBook.value;
 	var bkName = ctlBook.options[ctlBook.selectedIndex].text;
@@ -698,8 +697,11 @@ function openBookWin() {
 	var lecName = ctlLec.options[ctlLec.selectedIndex].text;
 	var lecId = ctlLec.value;
 var sQry = {'bkName':bkName, 'bkId':bkId, 'lecName':lecName, 'lecId':lecId, 'isPC':mbIsPC};
-
 	var jsn = JSON.stringify(sQry);
-	window.open("./htm/" + fn + ".html?info=" + jsn);
+//	window.open("./htm/" + fn + ".html?info=" + jsn);
+
+	window.open('./htm/' + fn + '.html?"bkName":"' + bkName + '","bkId":"' + bkId + '","lecName":"' + lecName + '","lecId":"' + lecId + '"');
+	
+//	window.open('./htm/' + fn + '.html?"bkName":"佛在人間","bkId":"fzrj","lecName":"開仁法師 2015 慧日講堂","lecId":"0008"');
 //	window.open("./htm/" + bkId + ".html?info=" + jsn);
 }

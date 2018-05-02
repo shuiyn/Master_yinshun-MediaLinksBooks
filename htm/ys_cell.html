@@ -39,9 +39,13 @@ var theBook = null;
 var theAud = null;
 
 var onLoad = function() {
-	var q = JSON.parse(decodeURIComponent(location.search).substr(6));
+var sQry = decodeURIComponent(location.search).slice(1);
+var q = JSON.parse("{" + sQry + "}");
 
-	mbIsPC = q.isPC;
+//	var q = JSON.parse(decodeURIComponent(location.search).substr(6));
+
+	mbIsPC = !uaNotPC();
+
 
 	document.getElementById("tit_booklecName").innerHTML = q.bkName + "：" + q.lecName;
 
