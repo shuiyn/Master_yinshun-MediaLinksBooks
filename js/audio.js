@@ -13,7 +13,7 @@ function fillBook(){
 //	location.href = "htm/cueSelect.htm";
 	
 	var arr = initUsedBook(); //傳回 類別
-	var s = '<select id="selBook" onchange="onBookChange(this);" style="width:7em;"> ';
+	var s = '<select id="selBook" onchange="onBookChange(this);" style="width:10em;"> ';
 	
 	for(var b in arr){
 		s+= ' <option value="' + b + '">' + arr[b] + '</option>'

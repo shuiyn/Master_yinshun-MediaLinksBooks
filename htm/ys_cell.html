@@ -87,7 +87,7 @@ var onLoad = function() {
 	<td id="tdPhrase">
 <button id="toggleHandout" onclick="toggleHandout(this)" class="toggle">期別</button>
 	</td>
-	<td><a id="goSite" href="" target="_blank">到</a></td>
+	<td><a style="padding:2px;" id="goSite" href="" target="_blank">到網頁</a></td>
 	<td>
 	<span id="dvPhase"><select><option>第 1 期 104 年</option><select><span>
 	</td>
@@ -95,14 +95,18 @@ var onLoad = function() {
 		<select><option>104 年</option><select>
 	</td>
 	
-	<td><button onclick="theAud.showCue()" style="margin-left:6px;display:none">cue</button></td>
+<td style="position:relative;">
+	<button id="btnDropdnProcess" onclick="toggleDropDown('dropdnProcess')" class="dropbtn">進度</button>
+	  <div id="dropdnProcess" class="dropdown-content" style="width:10em;right:0"> </div></td>
+	
+<!--	<td><button onclick="theAud.showCue()" style="margin-left:6px;display:none">cue</button></td>-->
 </tr></table>
 
 <!--講義-->
 	<table id="tblShowHandout" style="visibility:collapse;background-color:lightgreen;">
 		<tr>
 		<td id="tdHandout"></td>
-		<td><a id="openHandout" href="" target="_blank">到</a></td>
+		<td><a style="padding:2px;" id="openHandout" href="" target="_blank">到網頁</a></td>
 		<td id="pnlHandout"></td>
 		</tr>
 	</table>

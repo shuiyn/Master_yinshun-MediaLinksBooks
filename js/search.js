@@ -6,25 +6,41 @@ var hostImgURL=function(fdn) {
 	return ".".repeat(sImgPath.substr(sImgPath.lastIndexOf("Books/")).split("/").length-1) + "/" + fdn + "/";
 }
 
-//var loadBook=function(bkid) {
-//	var fs = require("fs");
-//	var ct = fs.readFileSync("../data/book_List.js", "utf-8");
-//	console.log(ct);
-//}
-
 
 //目前已建有 課程 的書目，非整個 books
 var initUsedBook=function(){
 	var out={}; //{bkid:bkName, ...}
+	var aRet = [];
 	
 	for(var id in lecture_List){
 		var bkid = lecture_List[id].bkid;
 		
 		if (!out[bkid]) {
 		//取得中文書名
-			out[bkid] = base_List.books[bkid];
+			out[bkid] = 1;
+			aRet.push([bkid, base_List.books[bkid]]);
 		}
 	}
+		//慧日的所有課程
+		var aBook = ["十住毘婆沙論","大乘廣五蘊論","大乘廣五蘊論講記","大智度論","中阿含經選讀","中論","中觀今論","印度佛教史","如來藏之研究","成佛之道","佛在人間","佛法概論","妙雲集選讀","初期大乘佛教之起源與開展","空之探究","阿含經","青年的佛教","修定——修心與唯心．秘密乘","俱舍論","般若經講記","淨土學論集","華雨集選讀","學佛三要","雜阿含經論會編","寶積經講記"];
+
+	aRet.sort(function(a,b) {
+		var cmp=function(s) {
+			return aBook.findIndex(function(m) {
+				return (m.search(s.replace(/《|》/g, "")) > -1);
+			});
+		}
+		
+		var n1 = cmp(a[1]);
+		var n2 = cmp(b[1]);
+		
+		return (n1-n2);
+	});
+	
+	out={};
+	aRet.map(function(a){
+		out[a[0]] = a[1];
+	});
 	
 	return out;
 }

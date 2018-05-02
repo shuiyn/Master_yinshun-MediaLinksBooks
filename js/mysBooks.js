@@ -126,9 +126,11 @@ mysBooks.prototype.fillBook=function() {
 //		openEssay(this.ctlShowYin, this.cm["般若經講記"]);
 //		openEssay(this.ctlShowYin, this.cm["第一章"]);
 //		doToggleBR();
+	} else if (this.book) {
+	} else {
+	  this.ctlShowYin.innerHTML = "<p>本單元尚未建立 ePub 檔。</p><p>請點按左上角【<span style='font-weight:bold;color:brown;'>期別</span>】按鈕，切換到【<span style='font-weight:bold;color:brown;'>講義</span>】，開啟右側選單，點選所要參閱的章節，再點按【<span style='background-color:lightgreen;'>到網頁</span>】連結，即可前往該文件網址。</p>";
+//	  this.ctlShowYin.innerHTML = this.parseCont();
 	}
-	else if (this.book)
-	  this.ctlShowYin.innerHTML = this.parseCont();
 	
   this.fillAuxDataOpt();
   this.fillHandout();
@@ -244,12 +246,17 @@ mysBooks.prototype.fillLesson=function(out, masterId, phId){
 
 	var s='<select id="selLesson" onchange="theBook.onLessonChange(this)" style="width:6em;"'+ 'data-mbpId="' + [masterId, this.bkId, phId].join(",") + '"> ';
 	for(var i=0; i< out.length; i++) {
-		var bkid=(out[i].ybk ? out[i].ybk : "");
+		var lpros=(out[i].p ? out[i].p : "");
 		if (out[i].url) {
-		s+= '<option value="' + out[i].url + '" data-ybk="' +bkid+ '">' + out[i].d + '</option>';
+			if (out[i].sno)
+		s+= '<option value="' + out[i].url + '" data-lpros="' +lpros+ '">' + out[i].sno + '</option>';
+			else
+		s+= '<option value="' + out[i].url + '" data-lpros="' +lpros+ '">' + out[i].d + '</option>';
 		} else {
 			if (bGroup) s+= '</optgroup>';
-			
+				if (out[i].sno)
+			s += '<optgroup label="' + out[i].sno + '">';
+				else
 			s += '<optgroup label="' + out[i].d + '">';
 			bGroup = true;
 		}
@@ -264,6 +271,9 @@ mysBooks.prototype.fillLesson=function(out, masterId, phId){
 
 
 mysBooks.prototype.onLessonChange=function(e) {
+	var lpros = e.options[e.selectedIndex].getAttribute("data-lpros");
+	document.getElementById("btnDropdnProcess").disabled = (lpros == "");
+	document.getElementById("dropdnProcess").innerHTML = lpros;
 	if(!e.value){
 		theAud.aud.src = "";
 //		alert(aud.src);為本站址
@@ -284,7 +294,7 @@ mysBooks.prototype.onLessonChange=function(e) {
 
 	var mbp = e.getAttribute("data-mbpId").split(",");
 	theAud.fillCue(mbp, e.value); // e.value == url
-	
+
 //	var lineScope = e.options[e.selectedIndex].getAttribute("data-ybk");
 //	if(!lineScope)
 //		ctl.innerHTML="";
