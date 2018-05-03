@@ -520,22 +520,22 @@ var lecture_List={
   "croom": "pn",
   "phase": [
    {
-    "id": "pn1040321",
+    "id": "kr_ffgl_pn1040321",
     "t": "第 8 期 104 年",
     "url": "http://www.kyba.org.tw/board/showcontent.asp?bd=11&id=687&totable=1"
    },
    {
-    "id": "pn1050910",
+    "id": "kr_ffgl_pn1050910",
     "t": "第 9 期 105 年",
     "url": "http://www.kyba.org.tw/board/showcontent.asp?bd=11&id=694&totable=1"
    },
    {
-    "id": "pn1060318",
+    "id": "kr_ffgl_pn1060318",
     "t": "第 10 期 106 年",
     "url": "http://www.kyba.org.tw/board/showcontent.asp?bd=11&id=710&totable=1"
    },
    {
-    "id": "pn1060916",
+    "id": "kr_ffgl_pn1060916",
     "t": "第 11 期 106 年",
     "url": "http://www.kyba.org.tw/board/showcontent.asp?bd=11&id=725&totable=1"
    }
@@ -722,12 +722,12 @@ var lecture_List={
   "croom": "lw",
   "phase": [
    {
-    "id": "wl20090918",
+    "id": "kr_ffgl_lw20090918",
     "t": "第 1 期 98 年",
     "url": "http://video.lwdh.org.tw/html/ffgl/ffgl01.html"
    },
    {
-    "id": "wl20100305",
+    "id": "kr_ffgl_lw20100305",
     "t": "第 2 期 99 年",
     "url": "http://video.lwdh.org.tw/html/ffgl/ffgl02.html"
    }
@@ -1393,7 +1393,7 @@ var lecture_List={
  },
  "0008": {
   "bkid": "fzrj",
-  "cm":"fzrj_kr_2015",
+  "cm": "fzrj_kr_2015",
   "master": "kr",
   "byear": "2015",
   "croom": "lw",
@@ -1469,6 +1469,197 @@ var lecture_List={
    {
     "t": "第十四章、發揚佛法以鼓鑄世界之新文化",
     "url": "http://video.lwdh.org.tw/download/lwdh/pdf/fzrj/014_fzrj.pdf"
+   }
+  ]
+ },
+ "0009": {
+  "bkid": "kztj",
+  "cm": "",
+  "master": "hg",
+  "byear": "2004",
+  "croom": "fy",
+  "phase": [
+   {
+    "id": "hg_kztj_20040303",
+    "t": "第 1 期 2004-03",
+    "url": "http://video.lwdh.org.tw/html/kztj/kztj00.html"
+   },
+   {
+    "id": "hg_kztj_20041005",
+    "t": "第 2 期 2004-10",
+    "url": "http://video.lwdh.org.tw/html/kztj/kztj02.html"
+   },
+   {
+    "id": "hg_kztj_20050309",
+    "t": "第 3 期 2005-03",
+    "url": "http://video.lwdh.org.tw/html/kztj/kztj03.html"
+   },
+   {
+    "id": "hg_kztj_20051005",
+    "t": "第 4 期 2005-10",
+    "url": "http://video.lwdh.org.tw/html/kztj/kztj04.html"
+   }
+  ],
+  "handout": [
+   {
+    "t": "第一章"
+   },
+   {
+    "t": "第一節",
+    "url": "http://video.lwdh.org.tw/download/fuyan/pdf/kztj/kztj01_1.pdf"
+   },
+   {
+    "t": "第二節",
+    "url": "http://video.lwdh.org.tw/download/fuyan/pdf/kztj/kztj01_2.pdf"
+   },
+   {
+    "t": "第三節",
+    "url": "http://video.lwdh.org.tw/download/fuyan/pdf/kztj/kztj01_3.pdf"
+   },
+   {
+    "t": "第四節",
+    "url": "http://video.lwdh.org.tw/download/fuyan/pdf/kztj/kztj01_4.pdf"
+   },
+   {
+    "t": "第五節",
+    "url": "http://video.lwdh.org.tw/download/fuyan/pdf/kztj/kztj01_5.pdf"
+   },
+   {
+    "t": "第六節",
+    "url": "http://video.lwdh.org.tw/download/fuyan/pdf/kztj/kztj01_6.pdf"
+   },
+   {
+    "t": "第七節",
+    "url": "http://video.lwdh.org.tw/download/fuyan/pdf/kztj/kztj01_7.pdf"
+   },
+   {
+    "t": "第八節",
+    "url": "http://video.lwdh.org.tw/download/fuyan/pdf/kztj/kztj01_8.pdf"
+   },
+   {
+    "t": "第九節",
+    "url": "http://video.lwdh.org.tw/download/fuyan/pdf/kztj/kztj01_9.pdf"
+   },
+   {
+    "t": "第十節",
+    "url": "http://video.lwdh.org.tw/download/fuyan/pdf/kztj/kztj01_10.pdf"
+   },
+   {
+    "t": "第二章"
+   },
+   {
+    "t": "第一節",
+    "url": "http://video.lwdh.org.tw/download/fuyan/pdf/kztj/kztj02_1.pdf"
+   },
+   {
+    "t": "第二節",
+    "url": "http://video.lwdh.org.tw/download/fuyan/pdf/kztj/kztj02_2.pdf"
+   },
+   {
+    "t": "第三節",
+    "url": "http://video.lwdh.org.tw/download/fuyan/pdf/kztj/kztj02_3.pdf"
+   },
+   {
+    "t": "第四節",
+    "url": "http://video.lwdh.org.tw/download/fuyan/pdf/kztj/kztj02_4.pdf"
+   },
+   {
+    "t": "第五節",
+    "url": "http://video.lwdh.org.tw/download/fuyan/pdf/kztj/kztj02_5.pdf"
+   },
+   {
+    "t": "第六節",
+    "url": "http://video.lwdh.org.tw/download/fuyan/pdf/kztj/kztj02_6.pdf"
+   },
+   {
+    "t": "第七節",
+    "url": "http://video.lwdh.org.tw/download/fuyan/pdf/kztj/kztj02_7.pdf"
+   },
+   {
+    "t": "第八節",
+    "url": "http://video.lwdh.org.tw/download/fuyan/pdf/kztj/kztj02_8.pdf"
+   },
+   {
+    "t": "第九節",
+    "url": "http://video.lwdh.org.tw/download/fuyan/pdf/kztj/kztj02_9.pdf"
+   },
+   {
+    "t": "第十節",
+    "url": "http://video.lwdh.org.tw/download/fuyan/pdf/kztj/kztj02_10.pdf"
+   },
+   {
+    "t": "第三章"
+   },
+   {
+    "t": "第一節",
+    "url": "http://video.lwdh.org.tw/download/fuyan/pdf/kztj/kztj03_1.pdf"
+   },
+   {
+    "t": "第二節",
+    "url": "http://video.lwdh.org.tw/download/fuyan/pdf/kztj/kztj03_2.pdf"
+   },
+   {
+    "t": "第三節",
+    "url": "http://video.lwdh.org.tw/download/fuyan/pdf/kztj/kztj03_3.pdf"
+   },
+   {
+    "t": "第四節",
+    "url": "http://video.lwdh.org.tw/download/fuyan/pdf/kztj/kztj03_4.pdf"
+   },
+   {
+    "t": "第五節",
+    "url": "http://video.lwdh.org.tw/download/fuyan/pdf/kztj/kztj03_5.pdf"
+   },
+   {
+    "t": "第六節",
+    "url": "http://video.lwdh.org.tw/download/fuyan/pdf/kztj/kztj03_6.pdf"
+   },
+   {
+    "t": "第七節",
+    "url": "http://video.lwdh.org.tw/download/fuyan/pdf/kztj/kztj03_7.pdf"
+   },
+   {
+    "t": "第八節",
+    "url": "http://video.lwdh.org.tw/download/fuyan/pdf/kztj/kztj03_8.pdf"
+   },
+   {
+    "t": "第九節",
+    "url": "http://video.lwdh.org.tw/download/fuyan/pdf/kztj/kztj03_9.pdf"
+   },
+   {
+    "t": "第四章"
+   },
+   {
+    "t": "第一節",
+    "url": "http://video.lwdh.org.tw/download/fuyan/pdf/kztj/kztj04_1.pdf"
+   },
+   {
+    "t": "第二節",
+    "url": "http://video.lwdh.org.tw/download/fuyan/pdf/kztj/kztj04_2.pdf"
+   },
+   {
+    "t": "第三節",
+    "url": "http://video.lwdh.org.tw/download/fuyan/pdf/kztj/kztj04_3.pdf"
+   },
+   {
+    "t": "第四節",
+    "url": "http://video.lwdh.org.tw/download/fuyan/pdf/kztj/kztj04_4.pdf"
+   },
+   {
+    "t": "第五節",
+    "url": "http://video.lwdh.org.tw/download/fuyan/pdf/kztj/kztj04_5.pdf"
+   },
+   {
+    "t": "第六節",
+    "url": "http://video.lwdh.org.tw/download/fuyan/pdf/kztj/kztj04_6.pdf"
+   },
+   {
+    "t": "第七節",
+    "url": "http://video.lwdh.org.tw/download/fuyan/pdf/kztj/kztj04_7.pdf"
+   },
+   {
+    "t": "第八節",
+    "url": "http://video.lwdh.org.tw/download/fuyan/pdf/kztj/kztj04_8.pdf"
    }
   ]
  }

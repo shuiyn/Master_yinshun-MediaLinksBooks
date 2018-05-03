@@ -67,12 +67,23 @@ mysBooks.prototype.TryScroll=function(ev) {
 	}
 }
 
+//◆ 彈出式選單必與 invoke button 同屬一個 parentNode
 window.onclick=function(event) {
     var dropdowns = document.getElementsByClassName("dropdown-content");
+    for (var nDrop=0; nDrop < dropdowns.length; nDrop++) {
+			var openDropdown = dropdowns[nDrop];
+    	if (event.target.parentNode != openDropdown.parentNode) {
+	      if (openDropdown.classList.contains('dropdownShow')) {
+	        openDropdown.classList.remove('dropdownShow');
+	      }
+    	}
+    }
+//    console.log(dropdowns[nDrop].id, ", sameP, ", event.target.parentNode == dropdowns[nDrop].parentNode)
 //    console.log(event.target.nextElementSibling, dropdowns[0]);
-//  if (!event.target.matches('.dropbtn')) {
 //  if (!event.target.nextElementSibling.isSameNode(dropdowns[0])) {
-  if (event.target.nextElementSibling != dropdowns[0]) {
+  /*
+  if (!event.target.matches('.dropbtn')) {
+//  if (event.target.nextElementSibling != dropdowns[0]) {
     var i;
     for (i = 0; i < dropdowns.length; i++) {
       var openDropdown = dropdowns[i];
@@ -80,7 +91,7 @@ window.onclick=function(event) {
         openDropdown.classList.remove('dropdownShow');
       }
     }
-  }
+  }*/
 }
 
 
@@ -229,10 +240,8 @@ mysBooks.prototype.onPhaseChange=function(e) {
 	document.getElementById('goSite').href = e.value;
 	var phId=e.options[e.selectedIndex].getAttribute("data-phid");
 
-this.phId = phId;
-//	var bkId = document.getElementById('selBook').value;
+	this.phId = phId;
 	var masterId = e.getAttribute("data-masterId");
-//	console.log("bkId", bkId,"phId",phId,"masterId",masterId);
 
 	var out = grabLesson(masterId, this.bkId, phId);
 	
@@ -240,68 +249,68 @@ this.phId = phId;
 }
 
 
+var lessonProcessOnClick=function(selectedIndex) {
+	var e = document.getElementById("selLesson");
+	e.selectedIndex = selectedIndex;
+	theBook.onLessonChange(e);
+}
 
 mysBooks.prototype.fillLesson=function(out, masterId, phId){
  	var bGroup = false;
+ 	var aProcess = [];
 
 	var s='<select id="selLesson" onchange="theBook.onLessonChange(this)" style="width:6em;"'+ 'data-mbpId="' + [masterId, this.bkId, phId].join(",") + '"> ';
 	for(var i=0; i< out.length; i++) {
 		var lpros=(out[i].p ? out[i].p : "");
+	 	var sLiText = (out[i].sno ? out[i].sno : out[i].d);
+ 	
+		if (lpros)
+			aProcess.push('<p><a onclick=lessonProcessOnClick(' + i + ')><span style="color:blue;">' + sLiText + "</span>：" + lpros + "</a></p>");
+
 		if (out[i].url) {
-			if (out[i].sno)
-		s+= '<option value="' + out[i].url + '" data-lpros="' +lpros+ '">' + out[i].sno + '</option>';
-			else
-		s+= '<option value="' + out[i].url + '" data-lpros="' +lpros+ '">' + out[i].d + '</option>';
+			s+= '<option value="' + out[i].url + '" data-lpros="' +lpros+ '">' + sLiText + '</option>';
 		} else {
 			if (bGroup) s+= '</optgroup>';
-				if (out[i].sno)
-			s += '<optgroup label="' + out[i].sno + '">';
-				else
-			s += '<optgroup label="' + out[i].d + '">';
+				s += '<optgroup label="' + sLiText + '">';
 			bGroup = true;
 		}
 	}
 	if (bGroup) s+= '</optgroup>';
-	s+=" </select>";
-	document.getElementById("dvLesson").innerHTML = s;
+		s+=" </select>";
 
+	document.getElementById("dvLesson").innerHTML = s;
+	
+	document.getElementById("btnDropdnProcess").disabled = (aProcess.length == 0);
+	document.getElementById("dropdnProcess").innerHTML = aProcess.join("\n");
+	
 	this.onLessonChange(document.getElementById('selLesson'));
 }
 
 
 
 mysBooks.prototype.onLessonChange=function(e) {
-	var lpros = e.options[e.selectedIndex].getAttribute("data-lpros");
+	/*var lpros = e.options[e.selectedIndex].getAttribute("data-lpros");
 	document.getElementById("btnDropdnProcess").disabled = (lpros == "");
-	document.getElementById("dropdnProcess").innerHTML = lpros;
+	document.getElementById("dropdnProcess").innerHTML = lpros;*/
+	
 	if(!e.value){
 		theAud.aud.src = "";
 //		alert(aud.src);為本站址
 		this.ctlShowYin.innerHTML = "";
 		return;
 	}
-//			console.log(hostImgURL("mp3"));
 
 	var src = e.value;
 	if (src.search(/https?:\/\//) != 0) {
 		src = hostImgURL("mp3") + this.phId + "/" + src;
 	}
 		
-//		console.log(src);
 	theAud.aud.src = src; //.value;
 	theAud.playStart = 0;
 //	theAud.playDuration = 0;
 
 	var mbp = e.getAttribute("data-mbpId").split(",");
 	theAud.fillCue(mbp, e.value); // e.value == url
-
-//	var lineScope = e.options[e.selectedIndex].getAttribute("data-ybk");
-//	if(!lineScope)
-//		ctl.innerHTML="";
-//	else {
-//		var ct = grabYbkCont(mbp[1], lineScope);
-//		ctl.innerHTML = parseCont(mbp[1], ct);
-//	}
 }
 
 
@@ -564,7 +573,7 @@ function dlgFocusIn(e) {
 	var mnuRoot = document.getElementById("mnuRoot");
 	mnuRoot.style.height = (dlg.offsetHeight - mnuRoot.offsetTop -20) + "px";
 
-	dlg.removeEventListener("dlgFocusIn", dlgLoad);
+	dlg.removeEventListener("dlgFocusIn", dlgFocusIn);
 
 }
 

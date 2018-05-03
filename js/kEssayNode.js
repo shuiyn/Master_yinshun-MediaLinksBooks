@@ -185,6 +185,13 @@ kEssayNode.prototype.transData=function() {
 				throw e
 			}
 			
+			if (jsn.fPC != undefined) {
+				if ((jsn.fPC && !mbIsPC) || (!jsn.fPC && mbIsPC))
+					continue;
+				
+				jsn.fPC = undefined;
+			}
+			
 			this.processUnLined(jsn, nLnIdx);
 			nLnIdx += this.mnReadExtra;
 			

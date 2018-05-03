@@ -601,6 +601,580 @@ var lesson_List={
      "p": "佛果功德，pp.150-151"
     }
    ]
+  },
+  "kztj": {
+   "hg_kztj_20040303": [
+    {
+     "d": "2004.03.03",
+     "url": "http://media.lwdh.org.tw/mp3/lwdh/kztj/kztj1/001kztj.mp3",
+     "sno": "001",
+     "p": "序，p.1"
+    },
+    {
+     "d": "2004.03.03",
+     "url": "http://media.lwdh.org.tw/mp3/lwdh/kztj/kztj1/002kztj.mp3",
+     "sno": "002",
+     "p": "第一節、引言，p.2"
+    },
+    {
+     "d": "2004.03.10",
+     "url": "http://media.lwdh.org.tw/mp3/lwdh/kztj/kztj1/003kztj.mp3",
+     "sno": "003",
+     "p": "序，p.1第一節、引言，pp.2-8"
+    },
+    {
+     "d": "2004.03.10",
+     "url": "http://media.lwdh.org.tw/mp3/lwdh/kztj/kztj1/004kztj.mp3",
+     "sno": "004",
+     "p": "第一節、引言，pp.7-11"
+    },
+    {
+     "d": "2004.03.17",
+     "url": "http://media.lwdh.org.tw/mp3/lwdh/kztj/kztj1/005kztj.mp3",
+     "sno": "005",
+     "p": "第二節、泛說解脫道，pp.12-13"
+    },
+    {
+     "d": "2004.03.17",
+     "url": "http://media.lwdh.org.tw/mp3/lwdh/kztj/kztj1/006kztj.mp3",
+     "sno": "006",
+     "p": "第二節、泛說解脫道，pp.14-19"
+    },
+    {
+     "d": "2004.03.24",
+     "url": "http://media.lwdh.org.tw/mp3/lwdh/kztj/kztj1/007kztj.mp3",
+     "sno": "007",
+     "p": "第二節、泛說解脫道，pp.19-22"
+    },
+    {
+     "d": "2004.03.24",
+     "url": "http://media.lwdh.org.tw/mp3/lwdh/kztj/kztj1/008kztj.mp3",
+     "sno": "008",
+     "p": "第二節、泛說解脫道，pp.22-23第三節、空與心解脫，pp.24-26"
+    },
+    {
+     "d": "2004.03.31",
+     "url": "http://media.lwdh.org.tw/mp3/lwdh/kztj/kztj1/009kztj.mp3",
+     "sno": "009",
+     "p": "第三節、空與心解脫，pp.27-29"
+    },
+    {
+     "d": "2004.03.31",
+     "url": "http://media.lwdh.org.tw/mp3/lwdh/kztj/kztj1/010kztj.mp3",
+     "sno": "010",
+     "p": "第四節、無量，pp.30-34"
+    },
+    {
+     "d": "2004.04.07",
+     "url": "http://media.lwdh.org.tw/mp3/lwdh/kztj/kztj1/011kztj.mp3",
+     "sno": "011",
+     "p": "第四節、無量，pp.30-35"
+    },
+    {
+     "d": "2004.04.07",
+     "url": "http://media.lwdh.org.tw/mp3/lwdh/kztj/kztj1/012kztj.mp3",
+     "sno": "012",
+     "p": "第五節、無所有，pp.36-41"
+    },
+    {
+     "d": "2004.04.14",
+     "url": "http://media.lwdh.org.tw/mp3/lwdh/kztj/kztj1/013kztj.mp3",
+     "sno": "013",
+     "p": "第六節、無相，pp.42-53"
+    },
+    {
+     "d": "2004.04.14",
+     "url": "http://media.lwdh.org.tw/mp3/lwdh/kztj/kztj1/014kztj.mp3",
+     "sno": "014",
+     "p": "第六節、無相，pp.42-46"
+    },
+    {
+     "d": "2004.05.12",
+     "url": "http://media.lwdh.org.tw/mp3/lwdh/kztj/kztj1/015kztj.mp3",
+     "sno": "015",
+     "p": "第六節、無相，pp.42-48"
+    },
+    {
+     "d": "2004.05.12",
+     "url": "http://media.lwdh.org.tw/mp3/lwdh/kztj/kztj1/016kztj.mp3",
+     "sno": "016",
+     "p": "第六節、無相，pp.49-53"
+    },
+    {
+     "d": "2004.05.19",
+     "url": "http://media.lwdh.org.tw/mp3/lwdh/kztj/kztj1/017kztj.mp3",
+     "sno": "017",
+     "p": "第六節、無相，pp.43第七節、空與空性，pp.54-58"
+    },
+    {
+     "d": "2004.05.19",
+     "url": "http://media.lwdh.org.tw/mp3/lwdh/kztj/kztj1/018kztj.mp3",
+     "sno": "018",
+     "p": "第七節、空與空性，pp.58-66"
+    },
+    {
+     "d": "2004.05.26",
+     "url": "http://media.lwdh.org.tw/mp3/lwdh/kztj/kztj1/019kztj.mp3",
+     "sno": "019",
+     "p": "第七節、空與空性，pp.56-66第八節、空為三三昧先導 ，p.67"
+    },
+    {
+     "d": "2004.05.26",
+     "url": "http://media.lwdh.org.tw/mp3/lwdh/kztj/kztj1/020kztj.mp3",
+     "sno": "020",
+     "p": "第八節、空為三三昧先導 ，pp.67-72"
+    },
+    {
+     "d": "2004.06.02",
+     "url": "http://media.lwdh.org.tw/mp3/lwdh/kztj/kztj1/021kztj.mp3",
+     "sno": "021",
+     "p": "第九節、三三昧．三觸．三法印， pp.73-76"
+    },
+    {
+     "d": "2004.06.02",
+     "url": "http://media.lwdh.org.tw/mp3/lwdh/kztj/kztj1/022kztj.mp3",
+     "sno": "022",
+     "p": "第九節、三三昧．三觸．三法印， pp.76-81"
+    },
+    {
+     "d": "2004.06.09",
+     "url": "http://media.lwdh.org.tw/mp3/lwdh/kztj/kztj1/023kztj.mp3",
+     "sno": "023",
+     "p": "第九節、三三昧．三觸．三法印， pp.74-81第十節、勝解觀與真實觀，pp.82-86"
+    },
+    {
+     "d": "2004.06.09",
+     "url": "http://media.lwdh.org.tw/mp3/lwdh/kztj/kztj1/024kztj.mp3",
+     "sno": "024",
+     "p": "第十節、勝解觀與真實觀，pp.84-87"
+    },
+    {
+     "d": "2004.06.16",
+     "url": "http://media.lwdh.org.tw/mp3/lwdh/kztj/kztj1/025kztj.mp3",
+     "sno": "025",
+     "p": "第十節、勝解觀與真實觀，pp.82-91"
+    },
+    {
+     "d": "2004.06.16",
+     "url": "http://media.lwdh.org.tw/mp3/lwdh/kztj/kztj1/026kztj.mp3",
+     "sno": "026",
+     "p": "第十節、勝解觀與真實觀，pp.91-95"
+    }
+   ],
+   "hg_kztj_20041005": [
+    {
+     "d": "2004.10.05",
+     "url": "http://media.lwdh.org.tw/mp3/lwdh/kztj/kztj2/027kztj.mp3",
+     "sno": "027",
+     "p": "複習：第一章，pp.1-95"
+    },
+    {
+     "d": "2004.10.05",
+     "url": "http://media.lwdh.org.tw/mp3/lwdh/kztj/kztj2/028kztj.mp3",
+     "sno": "028",
+     "p": "第一節、空義依聞思而開展，pp.96-98"
+    },
+    {
+     "d": "2004.10.12",
+     "url": "http://media.lwdh.org.tw/mp3/lwdh/kztj/kztj2/029kztj.mp3",
+     "sno": "029",
+     "p": "第二節、勝義空與大空，pp.99-103"
+    },
+    {
+     "d": "2004.10.12",
+     "url": "http://media.lwdh.org.tw/mp3/lwdh/kztj/kztj2/030kztj.mp3",
+     "sno": "030",
+     "p": "第二節、勝義空與大空，pp.103-105"
+    },
+    {
+     "d": "2004.10.19",
+     "url": "http://media.lwdh.org.tw/mp3/lwdh/kztj/kztj2/031kztj.mp3",
+     "sno": "031",
+     "p": "第三節、無來無去之生滅如幻， pp.106-108"
+    },
+    {
+     "d": "2004.10.19",
+     "url": "http://media.lwdh.org.tw/mp3/lwdh/kztj/kztj2/032kztj.mp3",
+     "sno": "032",
+     "p": "第三節、無來無去之生滅如幻， pp.108-113"
+    },
+    {
+     "d": "2004.10.26",
+     "url": "http://media.lwdh.org.tw/mp3/lwdh/kztj/kztj2/033kztj.mp3",
+     "sno": "033",
+     "p": "第三節、無來無去之生滅如幻， pp.106-113"
+    },
+    {
+     "d": "2004.10.26",
+     "url": "http://media.lwdh.org.tw/mp3/lwdh/kztj/kztj2/034kztj.mp3",
+     "sno": "034",
+     "p": "第四節、聲聞學派之我法二空說，pp.114-118"
+    },
+    {
+     "d": "2004.11.03",
+     "url": "http://media.lwdh.org.tw/mp3/lwdh/kztj/kztj2/035kztj.mp3",
+     "sno": "035",
+     "p": "第四節、聲聞學派之我法二空說，pp.114-120"
+    },
+    {
+     "d": "2004.11.03",
+     "url": "http://media.lwdh.org.tw/mp3/lwdh/kztj/kztj2/036kztj.mp3",
+     "sno": "036",
+     "p": "第四節、聲聞學派之我法二空說，pp.120-123"
+    },
+    {
+     "d": "2004.11.10",
+     "url": "http://media.lwdh.org.tw/mp3/lwdh/kztj/kztj2/037kztj.mp3",
+     "sno": "037",
+     "p": "第四節、聲聞學派之我法二空說，pp.123-125"
+    },
+    {
+     "d": "2004.11.10",
+     "url": "http://media.lwdh.org.tw/mp3/lwdh/kztj/kztj2/038kztj.mp3",
+     "sno": "038",
+     "p": "第五節、常空、我我所空，pp.126-129"
+    },
+    {
+     "d": "2004.11.24",
+     "url": "http://media.lwdh.org.tw/mp3/lwdh/kztj/kztj2/039kztj.mp3",
+     "sno": "039",
+     "p": "第六節、三三摩地，pp.130-133"
+    },
+    {
+     "d": "2004.11.24",
+     "url": "http://media.lwdh.org.tw/mp3/lwdh/kztj/kztj2/040kztj.mp3",
+     "sno": "040",
+     "p": "第六節、三三摩地，pp132-136"
+    },
+    {
+     "d": "2004.12.01",
+     "url": "http://media.lwdh.org.tw/mp3/lwdh/kztj/kztj2/041kztj.mp3",
+     "sno": "041",
+     "p": "第六節、三三摩地，pp130-136"
+    },
+    {
+     "d": "2004.12.01",
+     "url": "http://media.lwdh.org.tw/mp3/lwdh/kztj/kztj2/042kztj.mp3",
+     "sno": "042",
+     "p": "第七節、空之類集，pp.137-141"
+    },
+    {
+     "d": "2004.12.08",
+     "url": "http://media.lwdh.org.tw/mp3/lwdh/kztj/kztj2/043kztj.mp3",
+     "sno": "043",
+     "p": "第七節、空之類集，pp.137-142"
+    },
+    {
+     "d": "2004.12.08",
+     "url": "http://media.lwdh.org.tw/mp3/lwdh/kztj/kztj2/044kztj.mp3",
+     "sno": "044",
+     "p": "第七節、空之類集，pp.142-144第八節、諸行空與涅槃空，p.145"
+    },
+    {
+     "d": "2004.12.15",
+     "url": "http://media.lwdh.org.tw/mp3/lwdh/kztj/kztj2/045kztj.mp3",
+     "sno": "045",
+     "p": "第八節、諸行空與涅槃空，pp.145-148"
+    },
+    {
+     "d": "2004.12.15",
+     "url": "http://media.lwdh.org.tw/mp3/lwdh/kztj/kztj2/046kztj.mp3",
+     "sno": "046",
+     "p": "第八節、諸行空與涅槃空，pp.145-149"
+    },
+    {
+     "d": "2004.12.22",
+     "url": "http://media.lwdh.org.tw/mp3/lwdh/kztj/kztj2/047kztj.mp3",
+     "sno": "047",
+     "p": "第八節、諸行空與涅槃空，pp.145-153"
+    },
+    {
+     "d": "2004.12.22",
+     "url": "http://media.lwdh.org.tw/mp3/lwdh/kztj/kztj2/048kztj.mp3",
+     "sno": "048",
+     "p": "第九節、二諦與一切法空無我，pp.154-158"
+    },
+    {
+     "d": "2004.12.29",
+     "url": "http://media.lwdh.org.tw/mp3/lwdh/kztj/kztj2/049kztj.mp3",
+     "sno": "049",
+     "p": "第九節、二諦與一切法空無我，pp.154-157"
+    },
+    {
+     "d": "2004.12.29",
+     "url": "http://media.lwdh.org.tw/mp3/lwdh/kztj/kztj2/050kztj.mp3",
+     "sno": "050",
+     "p": "第九節、二諦與一切法空無我，pp.157-161"
+    },
+    {
+     "d": "2005.01.05",
+     "url": "http://media.lwdh.org.tw/mp3/lwdh/kztj/kztj2/051kztj.mp3",
+     "sno": "051",
+     "p": "第十節、大眾部系與法空，pp.162-164"
+    },
+    {
+     "d": "2005.01.05",
+     "url": "http://media.lwdh.org.tw/mp3/lwdh/kztj/kztj2/052kztj.mp3",
+     "sno": "052",
+     "p": "第十節、大眾部系與法空，pp.164-168"
+    },
+    {
+     "d": "2005.01.12",
+     "url": "http://media.lwdh.org.tw/mp3/lwdh/kztj/kztj2/053kztj.mp3",
+     "sno": "053",
+     "p": "第十節、大眾部系與法空，pp.162-168"
+    },
+    {
+     "d": "2005.01.12",
+     "url": "http://media.lwdh.org.tw/mp3/lwdh/kztj/kztj2/054kztj.mp3",
+     "sno": "054",
+     "p": "第十節、大眾部系與法空，pp.168-171"
+    }
+   ],
+   "hg_kztj_20050309": [
+    {
+     "d": "2005.03.09",
+     "url": "http://media.lwdh.org.tw/mp3/lwdh/kztj/kztj3/055kztj.mp3",
+     "sno": "055",
+     "p": "複習：序～第二章，pp.1-171預習：第三章，pp.172-250"
+    },
+    {
+     "d": "2005.03.09",
+     "url": "http://media.lwdh.org.tw/mp3/lwdh/kztj/kztj3/056kztj.mp3",
+     "sno": "056",
+     "p": "第一節、《般若經》之譯出，pp.172-175"
+    },
+    {
+     "d": "2005.03.16",
+     "url": "http://media.lwdh.org.tw/mp3/lwdh/kztj/kztj3/057kztj.mp3",
+     "sno": "057",
+     "p": "第一節、《般若經》之譯出，pp.172-177"
+    },
+    {
+     "d": "2005.03.16",
+     "url": "http://media.lwdh.org.tw/mp3/lwdh/kztj/kztj3/058kztj.mp3",
+     "sno": "058",
+     "p": "第一節、《般若經》之譯出，p.177第二節、法空性是涅槃的異名，pp.178-181"
+    },
+    {
+     "d": "2005.03.23",
+     "url": "http://media.lwdh.org.tw/mp3/lwdh/kztj/kztj3/059kztj.mp3",
+     "sno": "059",
+     "p": "第二節、法空性是涅槃的異名，pp.178-182第三節、大乘《般若》與《阿含經》，p.183"
+    },
+    {
+     "d": "2005.03.23",
+     "url": "http://media.lwdh.org.tw/mp3/lwdh/kztj/kztj3/060kztj.mp3",
+     "sno": "060",
+     "p": "第三節、大乘《般若》與《阿含經》，pp.183-187"
+    },
+    {
+     "d": "2005.03.30",
+     "url": "http://media.lwdh.org.tw/mp3/lwdh/kztj/kztj3/061kztj.mp3",
+     "sno": "061",
+     "p": "第三節、大乘《般若》與《阿含經》，pp.183-188"
+    },
+    {
+     "d": "2005.03.30",
+     "url": "http://media.lwdh.org.tw/mp3/lwdh/kztj/kztj3/062kztj.mp3",
+     "sno": "062",
+     "p": "第三節、大乘《般若》與《阿含經》，pp.188-191"
+    },
+    {
+     "d": "2005.04.06",
+     "url": "http://media.lwdh.org.tw/mp3/lwdh/kztj/kztj3/063kztj.mp3",
+     "sno": "063",
+     "p": "第三節、大乘《般若》與《阿含經》，pp.183-191"
+    },
+    {
+     "d": "2005.04.06",
+     "url": "http://media.lwdh.org.tw/mp3/lwdh/kztj/kztj3/064kztj.mp3",
+     "sno": "064",
+     "p": "第四節、空之發展與類集，pp.192-201"
+    },
+    {
+     "d": "2005.04.13",
+     "url": "http://media.lwdh.org.tw/mp3/lwdh/kztj/kztj3/065kztj.mp3",
+     "sno": "065",
+     "p": "第四節、空之發展與類集，pp.192-204第五節、空之解說，pp.205-206"
+    },
+    {
+     "d": "2005.04.13",
+     "url": "http://media.lwdh.org.tw/mp3/lwdh/kztj/kztj3/066kztj.mp3",
+     "sno": "066",
+     "p": "第五節、空之解說，pp.206-210"
+    },
+    {
+     "d": "2005.04.27",
+     "url": "http://media.lwdh.org.tw/mp3/lwdh/kztj/kztj3/067kztj.mp3",
+     "sno": "067",
+     "p": "第五節、空之解說，pp.205-213"
+    },
+    {
+     "d": "2005.04.27",
+     "url": "http://media.lwdh.org.tw/mp3/lwdh/kztj/kztj3/068kztj.mp3",
+     "sno": "068",
+     "p": "第五節、空之解說，pp.213-214第六節、空之雙關意義，pp.216-217"
+    },
+    {
+     "d": "2005.05.11",
+     "url": "http://media.lwdh.org.tw/mp3/lwdh/kztj/kztj3/069kztj.mp3",
+     "sno": "069",
+     "p": "第五節、空之解說，pp.205-214第六節、空之雙關意義，pp.216-219"
+    },
+    {
+     "d": "2005.05.11",
+     "url": "http://media.lwdh.org.tw/mp3/lwdh/kztj/kztj3/070kztj.mp3",
+     "sno": "070",
+     "p": "第六節、空之雙關意義，pp.221-224第七節、自性空與無自性空，pp.224-225、pp.228-229"
+    },
+    {
+     "d": "2005.05.18",
+     "url": "http://media.lwdh.org.tw/mp3/lwdh/kztj/kztj3/071kztj.mp3",
+     "sno": "071",
+     "p": "第六節、空之雙關意義，pp.216-224第七節、自性空與無自性空，pp.224-227"
+    },
+    {
+     "d": "2005.05.18",
+     "url": "http://media.lwdh.org.tw/mp3/lwdh/kztj/kztj3/072kztj.mp3",
+     "sno": "072",
+     "p": "第七節、自性空與無自性空，pp.227-233"
+    },
+    {
+     "d": "2005.05.25",
+     "url": "http://media.lwdh.org.tw/mp3/lwdh/kztj/kztj3/073kztj.mp3",
+     "sno": "073",
+     "p": "第八節、空與一切法 ，pp.234-240"
+    },
+    {
+     "d": "2005.05.25",
+     "url": "http://media.lwdh.org.tw/mp3/lwdh/kztj/kztj3/074kztj.mp3",
+     "sno": "074",
+     "p": "第八節、空與一切法 ，pp.240-243第九節、法空如，pp.244-250"
+    }
+   ],
+   "hg_kztj_20051005": [
+    {
+     "d": "2005.10.05",
+     "url": "http://media.lwdh.org.tw/mp3/lwdh/kztj/kztj4/075kztj.mp3",
+     "sno": "075",
+     "p": "複習：序～第三章，pp.1-250第一節、龍樹與龍樹論，pp.251-253"
+    },
+    {
+     "d": "2005.10.05",
+     "url": "http://media.lwdh.org.tw/mp3/lwdh/kztj/kztj4/076kztj.mp3",
+     "sno": "076",
+     "p": "第一節、龍樹與龍樹論，pp.253-257"
+    },
+    {
+     "d": "2005.10.12",
+     "url": "http://media.lwdh.org.tw/mp3/lwdh/kztj/kztj4/077kztj.mp3",
+     "sno": "077",
+     "p": "第一節、龍樹與龍樹論，pp.251-257"
+    },
+    {
+     "d": "2005.10.12",
+     "url": "http://media.lwdh.org.tw/mp3/lwdh/kztj/kztj4/078kztj.mp3",
+     "sno": "078",
+     "p": "第二節、《中論》與《阿含經》，pp.258-262"
+    },
+    {
+     "d": "2005.10.26",
+     "url": "http://media.lwdh.org.tw/mp3/lwdh/kztj/kztj4/079kztj.mp3",
+     "sno": "079",
+     "p": "第二節、《中論》與《阿含經》，pp.258-264"
+    },
+    {
+     "d": "2005.10.26",
+     "url": "http://media.lwdh.org.tw/mp3/lwdh/kztj/kztj4/080kztj.mp3",
+     "sno": "080",
+     "p": "第二節、《中論》與《阿含經》，pp.264-267第三節、《中論》之中心思想，pp.268-270"
+    },
+    {
+     "d": "2005.11.02",
+     "url": "http://media.lwdh.org.tw/mp3/lwdh/kztj/kztj4/081kztj.mp3",
+     "sno": "081",
+     "p": "第三節、《中論》之中心思想，pp.268-270第四節、緣起——八不緣起，pp.271-273"
+    },
+    {
+     "d": "2005.11.02",
+     "url": "http://media.lwdh.org.tw/mp3/lwdh/kztj/kztj4/082kztj.mp3",
+     "sno": "082",
+     "p": "第四節、緣起——八不緣起，pp.273-278"
+    },
+    {
+     "d": "2005.11.09",
+     "url": "http://media.lwdh.org.tw/mp3/lwdh/kztj/kztj4/083kztj.mp3",
+     "sno": "083",
+     "p": "第四節、緣起——八不緣起，pp.271-282"
+    },
+    {
+     "d": "2005.11.09",
+     "url": "http://media.lwdh.org.tw/mp3/lwdh/kztj/kztj4/084kztj.mp3",
+     "sno": "084",
+     "p": "第四節、緣起——八不緣起，pp.282-286"
+    },
+    {
+     "d": "2005.11.16",
+     "url": "http://media.lwdh.org.tw/mp3/lwdh/kztj/kztj4/085kztj.mp3",
+     "sno": "085",
+     "p": "第四節、緣起——八不緣起，pp.278-286第五節、假名——受假，pp.287-292"
+    },
+    {
+     "d": "2005.11.16",
+     "url": "http://media.lwdh.org.tw/mp3/lwdh/kztj/kztj4/086kztj.mp3",
+     "sno": "086",
+     "p": "第五節、假名——受假，pp.287-289"
+    },
+    {
+     "d": "2005.11.23",
+     "url": "http://media.lwdh.org.tw/mp3/lwdh/kztj/kztj4/087kztj.mp3",
+     "sno": "087",
+     "p": "第五節、假名——受假，pp.287-292"
+    },
+    {
+     "d": "2005.11.23",
+     "url": "http://media.lwdh.org.tw/mp3/lwdh/kztj/kztj4/088kztj.mp3",
+     "sno": "088",
+     "p": "第五節、假名——受假，pp.293-295第六節、空性——無自性空，pp.296-309"
+    },
+    {
+     "d": "2005.11.30",
+     "url": "http://media.lwdh.org.tw/mp3/lwdh/kztj/kztj4/089kztj.mp3",
+     "sno": "089",
+     "p": "第五節、假名——受假，pp.287-295第六節、空性——無自性空，pp.296-299"
+    },
+    {
+     "d": "2005.11.30",
+     "url": "http://media.lwdh.org.tw/mp3/lwdh/kztj/kztj4/090kztj.mp3",
+     "sno": "090",
+     "p": "第六節、空性——無自性空，pp.299-303"
+    },
+    {
+     "d": "2005.12.07",
+     "url": "http://media.lwdh.org.tw/mp3/lwdh/kztj/kztj4/091kztj.mp3",
+     "sno": "091",
+     "p": "第六節、空性——無自性空，pp.296-306"
+    },
+    {
+     "d": "2005.12.07",
+     "url": "http://media.lwdh.org.tw/mp3/lwdh/kztj/kztj4/092kztj.mp3",
+     "sno": "092",
+     "p": "第六節、空性——無自性空，pp.306-309"
+    },
+    {
+     "d": "2005.12.14",
+     "url": "http://media.lwdh.org.tw/mp3/lwdh/kztj/kztj4/093kztj.mp3",
+     "sno": "093",
+     "p": "第六節、空性——無自性空，pp.296-309第七節、中道——中論與中觀，pp.310-313"
+    },
+    {
+     "d": "2005.12.14",
+     "url": "http://media.lwdh.org.tw/mp3/lwdh/kztj/kztj4/094kztj.mp3",
+     "sno": "094",
+     "p": "第七節、中道——中論與中觀，pp.313-317第八節、如幻——即空即假之緣，pp.318-322"
+    }
+   ]
   }
  },
  "zh": {
@@ -941,7 +1515,7 @@ var lesson_List={
  },
  "kr": {
   "ffgl": {
-   "pn1040321": [
+   "kr_ffgl_pn1040321": [
     {
      "d": "104 年",
      "url": ""
@@ -1043,7 +1617,7 @@ var lesson_List={
      "url": "http://220.130.244.41:8080/prajna/20151219-3.mp3"
     }
    ],
-   "pn1050910": [
+   "kr_ffgl_pn1050910": [
     {
      "d": "105 年",
      "url": ""
@@ -1153,7 +1727,7 @@ var lesson_List={
      "url": "http://220.130.244.41:8080/prajna/20161217-3.mp3"
     }
    ],
-   "pn1060318": [
+   "kr_ffgl_pn1060318": [
     {
      "d": "106 年",
      "url": ""
@@ -1199,7 +1773,7 @@ var lesson_List={
      "url": "http://220.130.244.41:8080/prajna/20170520-3.mp3"
     }
    ],
-   "pn1060916": [
+   "kr_ffgl_pn1060916": [
     {
      "d": "106 年",
      "url": ""
@@ -1253,208 +1827,308 @@ var lesson_List={
      "url": "http://220.130.244.41:8080/prajna/20171216-3.mp3"
     }
    ],
-   "wl20090918": [
+   "kr_ffgl_lw20090918": [
     {
-     "d": "001A",
-     "url": "http://media.lwdh.org.tw/mp3/lwdh/ffgl/ffgl1/ffgl001A(20090918).mp3"
+     "d": "2009.09.18",
+     "url": "http://media.lwdh.org.tw/mp3/lwdh/ffgl/ffgl1/ffgl001A(20090918).mp3",
+     "sno": "001A",
+     "p": "自序，pp.1-3"
     },
     {
-     "d": "001B",
-     "url": "http://media.lwdh.org.tw/mp3/lwdh/ffgl/ffgl1/ffgl001B(20090918).mp3"
+     "d": "2009.09.18",
+     "url": "http://media.lwdh.org.tw/mp3/lwdh/ffgl/ffgl1/ffgl001B(20090918).mp3",
+     "sno": "001B",
+     "p": "緒言，pp.4-6"
     },
     {
-     "d": "002A",
-     "url": "http://media.lwdh.org.tw/mp3/lwdh/ffgl/ffgl1/ffgl002A(20090925).mp3"
+     "d": "2009.09.25",
+     "url": "http://media.lwdh.org.tw/mp3/lwdh/ffgl/ffgl1/ffgl002A(20090925).mp3",
+     "sno": "002A",
+     "p": "第一章、法與法的創覺者與及奉行者，pp.7-13"
     },
     {
-     "d": "002B",
-     "url": "http://media.lwdh.org.tw/mp3/lwdh/ffgl/ffgl1/ffgl002B(20090925).mp3"
+     "d": "2009.09.25",
+     "url": "http://media.lwdh.org.tw/mp3/lwdh/ffgl/ffgl1/ffgl002B(20090925).mp3",
+     "sno": "002B",
+     "p": "第一章、法與法的創覺者與及奉行者，pp.14-23"
     },
     {
-     "d": "003A",
-     "url": "http://media.lwdh.org.tw/mp3/lwdh/ffgl/ffgl1/ffgl003A(20091016).mp3"
+     "d": "2009.10.16",
+     "url": "http://media.lwdh.org.tw/mp3/lwdh/ffgl/ffgl1/ffgl003A(20091016).mp3",
+     "sno": "003A",
+     "p": "第二章、教法，pp.24-27"
     },
     {
-     "d": "003B",
-     "url": "http://media.lwdh.org.tw/mp3/lwdh/ffgl/ffgl1/ffgl003B(20091016).mp3"
+     "d": "2009.10.16",
+     "url": "http://media.lwdh.org.tw/mp3/lwdh/ffgl/ffgl1/ffgl003B(20091016).mp3",
+     "sno": "003B",
+     "p": "第二章、教法，pp.27-31"
     },
     {
-     "d": "004A",
-     "url": "http://media.lwdh.org.tw/mp3/lwdh/ffgl/ffgl1/ffgl004A(20091030).mp3"
+     "d": "2009.10.30",
+     "url": "http://media.lwdh.org.tw/mp3/lwdh/ffgl/ffgl1/ffgl004A(20091030).mp3",
+     "sno": "004A",
+     "p": "第二章、教法，pp.31-42"
     },
     {
-     "d": "004B",
-     "url": "http://media.lwdh.org.tw/mp3/lwdh/ffgl/ffgl1/ffgl004B(20091030).mp3"
+     "d": "2009.10.30",
+     "url": "http://media.lwdh.org.tw/mp3/lwdh/ffgl/ffgl1/ffgl004B(20091030).mp3",
+     "sno": "004B",
+     "p": "第三章、有情——人類為本的佛法，pp.43-47"
     },
     {
-     "d": "005A",
-     "url": "http://media.lwdh.org.tw/mp3/lwdh/ffgl/ffgl1/ffgl005A(20091106).mp3"
+     "d": "2009.11.06",
+     "url": "http://media.lwdh.org.tw/mp3/lwdh/ffgl/ffgl1/ffgl005A(20091106).mp3",
+     "sno": "005A",
+     "p": "第三章、有情——人類為本的佛法，pp.47-50"
     },
     {
-     "d": "005B",
-     "url": "http://media.lwdh.org.tw/mp3/lwdh/ffgl/ffgl1/ffgl005B(20091106).mp3"
+     "d": "2009.11.06",
+     "url": "http://media.lwdh.org.tw/mp3/lwdh/ffgl/ffgl1/ffgl005B(20091106).mp3",
+     "sno": "005B",
+     "p": "第三章、有情——人類為本的佛法，pp.51-58第四章、有情與有情的分析，pp.59-61"
     },
     {
-     "d": "006A",
-     "url": "http://media.lwdh.org.tw/mp3/lwdh/ffgl/ffgl1/ffgl006A(20091120).mp3"
+     "d": "2009.11.20",
+     "url": "http://media.lwdh.org.tw/mp3/lwdh/ffgl/ffgl1/ffgl006A(20091120).mp3",
+     "sno": "006A",
+     "p": "第四章、有情與有情的分析，pp.59-65"
     },
     {
-     "d": "006B",
-     "url": "http://media.lwdh.org.tw/mp3/lwdh/ffgl/ffgl1/ffgl006B(20091120).mp3"
+     "d": "2009.11.20",
+     "url": "http://media.lwdh.org.tw/mp3/lwdh/ffgl/ffgl1/ffgl006B(20091120).mp3",
+     "sno": "006B",
+     "p": "第四章、有情與有情的分析，pp.65-70第五章、有情的延續與新生，pp.73-75"
     },
     {
-     "d": "007A",
-     "url": "http://media.lwdh.org.tw/mp3/lwdh/ffgl/ffgl1/ffgl007A(20091127).mp3"
+     "d": "2009.11.27",
+     "url": "http://media.lwdh.org.tw/mp3/lwdh/ffgl/ffgl1/ffgl007A(20091127).mp3",
+     "sno": "007A",
+     "p": "第五章、有情的延續與新生，pp.73-78"
     },
     {
-     "d": "007B",
-     "url": "http://media.lwdh.org.tw/mp3/lwdh/ffgl/ffgl1/ffgl007B(20091127).mp3"
+     "d": "2009.11.27",
+     "url": "http://media.lwdh.org.tw/mp3/lwdh/ffgl/ffgl1/ffgl007B(20091127).mp3",
+     "sno": "007B",
+     "p": "第五章、有情的延續與新生，pp.78-83第六章、有情流轉的生死根本，pp.84-86"
     },
     {
-     "d": "008A",
-     "url": "http://media.lwdh.org.tw/mp3/lwdh/ffgl/ffgl1/ffgl008A(20091204).mp3"
+     "d": "2009.12.04",
+     "url": "http://media.lwdh.org.tw/mp3/lwdh/ffgl/ffgl1/ffgl008A(20091204).mp3",
+     "sno": "008A",
+     "p": "第六章、有情流轉的生死根本，pp.84-89"
     },
     {
-     "d": "008B",
-     "url": "http://media.lwdh.org.tw/mp3/lwdh/ffgl/ffgl1/ffgl008B(20091204).mp3"
+     "d": "2009.12.04",
+     "url": "http://media.lwdh.org.tw/mp3/lwdh/ffgl/ffgl1/ffgl008B(20091204).mp3",
+     "sno": "008B",
+     "p": "第六章、有情流轉的生死根本，pp.90-95"
     },
     {
-     "d": "009A",
-     "url": "http://media.lwdh.org.tw/mp3/lwdh/ffgl/ffgl1/ffgl009A(20091211).mp3"
+     "d": "2009.12.11",
+     "url": "http://media.lwdh.org.tw/mp3/lwdh/ffgl/ffgl1/ffgl009A(20091211).mp3",
+     "sno": "009A",
+     "p": "第七章、關於有情流轉的業力，pp.96-98"
     },
     {
-     "d": "009B",
-     "url": "http://media.lwdh.org.tw/mp3/lwdh/ffgl/ffgl1/ffgl009B(20091211).mp3"
+     "d": "2009.12.11",
+     "url": "http://media.lwdh.org.tw/mp3/lwdh/ffgl/ffgl1/ffgl009B(20091211).mp3",
+     "sno": "009B",
+     "p": "第七章、關於有情流轉的業力，pp.98-102"
     },
     {
-     "d": "010A",
-     "url": "http://media.lwdh.org.tw/mp3/lwdh/ffgl/ffgl1/ffgl010A(20091218).mp3"
+     "d": "2009.12.18",
+     "url": "http://media.lwdh.org.tw/mp3/lwdh/ffgl/ffgl1/ffgl010A(20091218).mp3",
+     "sno": "010A",
+     "p": "第七章、關於有情流轉的業力，pp.103-105"
     },
     {
-     "d": "010B",
-     "url": "http://media.lwdh.org.tw/mp3/lwdh/ffgl/ffgl1/ffgl010B(20091218).mp3"
+     "d": "2009.12.18",
+     "url": "http://media.lwdh.org.tw/mp3/lwdh/ffgl/ffgl1/ffgl010B(20091218).mp3",
+     "sno": "010B",
+     "p": "第七章、關於有情流轉的業力，pp.105-107第八章、佛法的心理觀，pp.110-113"
     },
     {
-     "d": "011A",
-     "url": "http://media.lwdh.org.tw/mp3/lwdh/ffgl/ffgl1/ffgl011A(20091225).mp3"
+     "d": "2009.12.25",
+     "url": "http://media.lwdh.org.tw/mp3/lwdh/ffgl/ffgl1/ffgl011A(20091225).mp3",
+     "sno": "011A",
+     "p": "第八章、佛法的心理觀，pp.113-118"
     },
     {
-     "d": "011B",
-     "url": "http://media.lwdh.org.tw/mp3/lwdh/ffgl/ffgl1/ffgl011B(20091225).mp3"
+     "d": "2009.12.25",
+     "url": "http://media.lwdh.org.tw/mp3/lwdh/ffgl/ffgl1/ffgl011B(20091225).mp3",
+     "sno": "011B",
+     "p": "第八章、佛法的心理觀，pp.119-124"
     },
     {
-     "d": "012A",
-     "url": "http://media.lwdh.org.tw/mp3/lwdh/ffgl/ffgl1/ffgl012A(20100115).mp3"
+     "d": "2010.01.15",
+     "url": "http://media.lwdh.org.tw/mp3/lwdh/ffgl/ffgl1/ffgl012A(20100115).mp3",
+     "sno": "012A",
+     "p": "第九章、 我們的世間，pp.125-131"
     },
     {
-     "d": "012B",
-     "url": "http://media.lwdh.org.tw/mp3/lwdh/ffgl/ffgl1/ffgl012B(20100115).mp3"
+     "d": "2010.01.15",
+     "url": "http://media.lwdh.org.tw/mp3/lwdh/ffgl/ffgl1/ffgl012B(20100115).mp3",
+     "sno": "012B",
+     "p": "第九章、 我們的世間，pp.131-137"
     }
    ],
-   "wl20100305": [
+   "kr_ffgl_lw20100305": [
     {
-     "d": "013A",
-     "url": "http://media.lwdh.org.tw/mp3/lwdh/ffgl/ffgl2/ffgl013A(20100305).mp3"
+     "d": "2010.03.05",
+     "url": "http://media.lwdh.org.tw/mp3/lwdh/ffgl/ffgl2/ffgl013A(20100305).mp3",
+     "sno": "013A",
+     "p": "第十章、我論因說因，pp.141-143"
     },
     {
-     "d": "013B",
-     "url": "http://media.lwdh.org.tw/mp3/lwdh/ffgl/ffgl2/ffgl013B(20100305).mp3"
+     "d": "2010.03.05",
+     "url": "http://media.lwdh.org.tw/mp3/lwdh/ffgl/ffgl2/ffgl013B(20100305).mp3",
+     "sno": "013B",
+     "p": "第十章、我論因說因，pp.144-149"
     },
     {
-     "d": "014A",
-     "url": "http://media.lwdh.org.tw/mp3/lwdh/ffgl/ffgl2/ffgl014A(20100319).mp3"
+     "d": "2010.03.19",
+     "url": "http://media.lwdh.org.tw/mp3/lwdh/ffgl/ffgl2/ffgl014A(20100319).mp3",
+     "sno": "014A",
+     "p": "第十章、我論因說因，p.149第十一章、緣起法，pp.150-153"
     },
     {
-     "d": "014B",
-     "url": "http://media.lwdh.org.tw/mp3/lwdh/ffgl/ffgl2/ffgl014B(20100319).mp3"
+     "d": "2010.03.19",
+     "url": "http://media.lwdh.org.tw/mp3/lwdh/ffgl/ffgl2/ffgl014B(20100319).mp3",
+     "sno": "014B",
+     "p": "第十一章、緣起法，pp.153-158"
     },
     {
-     "d": "015A",
-     "url": "http://media.lwdh.org.tw/mp3/lwdh/ffgl/ffgl2/ffgl015A(20100326).mp3"
+     "d": "2010.03.26",
+     "url": "http://media.lwdh.org.tw/mp3/lwdh/ffgl/ffgl2/ffgl015A(20100326).mp3",
+     "sno": "015A",
+     "p": "第十二章、三大理性的統一，pp.159-172"
     },
     {
-     "d": "015B",
-     "url": "http://media.lwdh.org.tw/mp3/lwdh/ffgl/ffgl2/ffgl015B(20100326).mp3"
+     "d": "2010.03.26",
+     "url": "http://media.lwdh.org.tw/mp3/lwdh/ffgl/ffgl2/ffgl015B(20100326).mp3",
+     "sno": "015B",
+     "p": "第十二章、三大理性的統一，pp.159-165"
     },
     {
-     "d": "016A",
-     "url": "http://media.lwdh.org.tw/mp3/lwdh/ffgl/ffgl2/ffgl016A(20100402).mp3"
+     "d": "2010.04.02",
+     "url": "http://media.lwdh.org.tw/mp3/lwdh/ffgl/ffgl2/ffgl016A(20100402).mp3",
+     "sno": "016A",
+     "p": "第十二章、三大理性的統一，pp.165-167"
     },
     {
-     "d": "016B",
-     "url": "http://media.lwdh.org.tw/mp3/lwdh/ffgl/ffgl2/ffgl016B(20100402).mp3"
+     "d": "2010.04.02",
+     "url": "http://media.lwdh.org.tw/mp3/lwdh/ffgl/ffgl2/ffgl016B(20100402).mp3",
+     "sno": "016B",
+     "p": "第十二章、三大理性的統一，pp.167-172"
     },
     {
-     "d": "017A",
-     "url": "http://media.lwdh.org.tw/mp3/lwdh/ffgl/ffgl2/ffgl017A(20100409).mp3"
+     "d": "2010.04.09",
+     "url": "http://media.lwdh.org.tw/mp3/lwdh/ffgl/ffgl2/ffgl017A(20100409).mp3",
+     "sno": "017A",
+     "p": "第十三章、中道泛論，pp.173-178"
     },
     {
-     "d": "017B",
-     "url": "http://media.lwdh.org.tw/mp3/lwdh/ffgl/ffgl2/ffgl017B(20100409).mp3"
+     "d": "2010.04.09",
+     "url": "http://media.lwdh.org.tw/mp3/lwdh/ffgl/ffgl2/ffgl017B(20100409).mp3",
+     "sno": "017B",
+     "p": "第十三章、中道泛論，pp.178-183"
     },
     {
-     "d": "018A",
-     "url": "http://media.lwdh.org.tw/mp3/lwdh/ffgl/ffgl2/ffgl018A(20100416).mp3"
+     "d": "2010.04.16",
+     "url": "http://media.lwdh.org.tw/mp3/lwdh/ffgl/ffgl2/ffgl018A(20100416).mp3",
+     "sno": "018A",
+     "p": "第十三章、中道泛論，pp.184-185第十四章、德行的心素與實施原則，pp.186-189"
     },
     {
-     "d": "018B",
-     "url": "http://media.lwdh.org.tw/mp3/lwdh/ffgl/ffgl2/ffgl018B(20100416).mp3"
+     "d": "2010.04.16",
+     "url": "http://media.lwdh.org.tw/mp3/lwdh/ffgl/ffgl2/ffgl018B(20100416).mp3",
+     "sno": "018B",
+     "p": "第十四章、德行的心素與實施原則，pp.189-199"
     },
     {
-     "d": "019A",
-     "url": "http://media.lwdh.org.tw/mp3/lwdh/ffgl/ffgl2/ffgl019A(20100423).mp3"
+     "d": "2010.04.23",
+     "url": "http://media.lwdh.org.tw/mp3/lwdh/ffgl/ffgl2/ffgl019A(20100423).mp3",
+     "sno": "019A",
+     "p": "第十五章、佛法的信徒，pp.200-204"
     },
     {
-     "d": "019B",
-     "url": "http://media.lwdh.org.tw/mp3/lwdh/ffgl/ffgl2/ffgl019B(20100423).mp3"
+     "d": "2010.04.23",
+     "url": "http://media.lwdh.org.tw/mp3/lwdh/ffgl/ffgl2/ffgl019B(20100423).mp3",
+     "sno": "019B",
+     "p": "第十五章、佛法的信徒，pp.204-214"
     },
     {
-     "d": "020A",
-     "url": "http://media.lwdh.org.tw/mp3/lwdh/ffgl/ffgl2/ffgl020A(20100430).mp3"
+     "d": "2010.04.30",
+     "url": "http://media.lwdh.org.tw/mp3/lwdh/ffgl/ffgl2/ffgl020A(20100430).mp3",
+     "sno": "020A",
+     "p": "第十六章、在家眾的德行，pp.215-219"
     },
     {
-     "d": "020B",
-     "url": "http://media.lwdh.org.tw/mp3/lwdh/ffgl/ffgl2/ffgl020B(20100430).mp3"
+     "d": "2010.04.30",
+     "url": "http://media.lwdh.org.tw/mp3/lwdh/ffgl/ffgl2/ffgl020B(20100430).mp3",
+     "sno": "020B",
+     "p": "第十六章、在家眾的德行，pp.219-229"
     },
     {
-     "d": "021A",
-     "url": "http://media.lwdh.org.tw/mp3/lwdh/ffgl/ffgl2/ffgl021A(20100507).mp3"
+     "d": "2010.05.07",
+     "url": "http://media.lwdh.org.tw/mp3/lwdh/ffgl/ffgl2/ffgl021A(20100507).mp3",
+     "sno": "021A",
+     "p": "第十七章、出家眾的德行，pp.230-235、p.245"
     },
     {
-     "d": "021B",
-     "url": "http://media.lwdh.org.tw/mp3/lwdh/ffgl/ffgl2/ffgl021B(20100507).mp3"
+     "d": "2010.05.07",
+     "url": "http://media.lwdh.org.tw/mp3/lwdh/ffgl/ffgl2/ffgl021B(20100507).mp3",
+     "sno": "021B",
+     "p": "第十七章、出家眾的德行，pp.235-244"
     },
     {
-     "d": "022A",
-     "url": "http://media.lwdh.org.tw/mp3/lwdh/ffgl/ffgl2/ffgl022A(20100514).mp3"
+     "d": "2010.05.14",
+     "url": "http://media.lwdh.org.tw/mp3/lwdh/ffgl/ffgl2/ffgl022A(20100514).mp3",
+     "sno": "022A",
+     "p": "第十八章、戒定慧的考察，pp.248-254"
     },
     {
-     "d": "022B",
-     "url": "http://media.lwdh.org.tw/mp3/lwdh/ffgl/ffgl2/ffgl022B(20100514).mp3"
+     "d": "2010.05.14",
+     "url": "http://media.lwdh.org.tw/mp3/lwdh/ffgl/ffgl2/ffgl022B(20100514).mp3",
+     "sno": "022B",
+     "p": "第十八章、戒定慧的考察，pp.255-267"
     },
     {
-     "d": "023A",
-     "url": "http://media.lwdh.org.tw/mp3/lwdh/ffgl/ffgl2/ffgl023A(20100528).mp3"
+     "d": "2010.05.28",
+     "url": "http://media.lwdh.org.tw/mp3/lwdh/ffgl/ffgl2/ffgl023A(20100528).mp3",
+     "sno": "023A",
+     "p": "第十八章、戒定慧的考察，pp.267-272第十九章、菩薩眾的德行，p.279"
     },
     {
-     "d": "023B",
-     "url": "http://media.lwdh.org.tw/mp3/lwdh/ffgl/ffgl2/ffgl023B(20100528).mp3"
+     "d": "2010.05.28",
+     "url": "http://media.lwdh.org.tw/mp3/lwdh/ffgl/ffgl2/ffgl023B(20100528).mp3",
+     "sno": "023B",
+     "p": "第十九章、菩薩眾的德行，pp.280-287"
     },
     {
-     "d": "024A",
-     "url": "http://media.lwdh.org.tw/mp3/lwdh/ffgl/ffgl2/ffgl024A(20100604).mp3"
+     "d": "2010.06.04",
+     "url": "http://media.lwdh.org.tw/mp3/lwdh/ffgl/ffgl2/ffgl024A(20100604).mp3",
+     "sno": "024A",
+     "p": "第十九章、菩薩眾的德行，pp.288-293"
     },
     {
-     "d": "024B",
-     "url": "http://media.lwdh.org.tw/mp3/lwdh/ffgl/ffgl2/ffgl024B(20100604).mp3"
+     "d": "2010.06.04",
+     "url": "http://media.lwdh.org.tw/mp3/lwdh/ffgl/ffgl2/ffgl024B(20100604).mp3",
+     "sno": "024B",
+     "p": "第十九章、菩薩眾的德行，pp.293-296第二十章、正覺與解脫，pp.303-309"
     },
     {
-     "d": "025A",
-     "url": "http://media.lwdh.org.tw/mp3/lwdh/ffgl/ffgl2/ffgl025A(20100611).mp3"
+     "d": "2010.06.11",
+     "url": "http://media.lwdh.org.tw/mp3/lwdh/ffgl/ffgl2/ffgl025A(20100611).mp3",
+     "sno": "025A",
+     "p": "第二十章、正覺與解脫，pp.309-317"
     },
     {
-     "d": "025B",
-     "url": "http://media.lwdh.org.tw/mp3/lwdh/ffgl/ffgl2/ffgl025B(20100611).mp3"
+     "d": "2010.06.11",
+     "url": "http://media.lwdh.org.tw/mp3/lwdh/ffgl/ffgl2/ffgl025B(20100611).mp3",
+     "sno": "025B",
+     "p": "－"
     }
    ]
   },
