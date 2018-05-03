@@ -4857,5 +4857,619 @@ var lesson_List={
     }
    ]
   }
+ },
+ "yb": {
+  "bjjjj": {
+   "yb_bjjjj_20080916": [
+    {
+     "d": "2008.09.16",
+     "url": "http://media.lwdh.org.tw/mp3/lwdh/bjjjj/bjjjj1/bjjjj001A.mp3",
+     "sno": "001A",
+     "p": "寶積經講記（一），pp.1-4"
+    },
+    {
+     "d": "2008.09.16",
+     "url": "http://media.lwdh.org.tw/mp3/lwdh/bjjjj/bjjjj1/bjjjj001B.mp3",
+     "sno": "001B",
+     "p": "寶積經講記（一），pp.5-10"
+    },
+    {
+     "d": "2008.09.23",
+     "url": "http://media.lwdh.org.tw/mp3/lwdh/bjjjj/bjjjj1/bjjjj002A.mp3",
+     "sno": "002A",
+     "p": "寶積經講記（一），pp.10-14"
+    },
+    {
+     "d": "2008.09.23",
+     "url": "http://media.lwdh.org.tw/mp3/lwdh/bjjjj/bjjjj1/bjjjj002B.mp3",
+     "sno": "002B",
+     "p": "寶積經講記（一），pp.15-19"
+    },
+    {
+     "d": "2008.09.30",
+     "url": "http://media.lwdh.org.tw/mp3/lwdh/bjjjj/bjjjj1/bjjjj003A.mp3",
+     "sno": "003A",
+     "p": "寶積經講記（一），pp.19-24"
+    },
+    {
+     "d": "2008.09.30",
+     "url": "http://media.lwdh.org.tw/mp3/lwdh/bjjjj/bjjjj1/bjjjj003B.mp3",
+     "sno": "003B",
+     "p": "寶積經講記（一），pp.24-29"
+    },
+    {
+     "d": "2008.10.07",
+     "url": "http://media.lwdh.org.tw/mp3/lwdh/bjjjj/bjjjj1/bjjjj004A.mp3",
+     "sno": "004A",
+     "p": "寶積經講記（一），pp.29-35"
+    },
+    {
+     "d": "2008.10.07",
+     "url": "http://media.lwdh.org.tw/mp3/lwdh/bjjjj/bjjjj1/bjjjj004B.mp3",
+     "sno": "004B",
+     "p": "寶積經講記（一），pp.36-41"
+    },
+    {
+     "d": "2008.10.14",
+     "url": "http://media.lwdh.org.tw/mp3/lwdh/bjjjj/bjjjj1/bjjjj005A.mp3",
+     "sno": "005A",
+     "p": "寶積經講記（一），pp.41-46"
+    },
+    {
+     "d": "2008.10.14",
+     "url": "http://media.lwdh.org.tw/mp3/lwdh/bjjjj/bjjjj1/bjjjj005B.mp3",
+     "sno": "005B",
+     "p": "寶積經講記（一），pp.46-48"
+    },
+    {
+     "d": "2008.10.28",
+     "url": "http://media.lwdh.org.tw/mp3/lwdh/bjjjj/bjjjj1/bjjjj006A.mp3",
+     "sno": "006A",
+     "p": "寶積經講記（一），pp.49-55"
+    },
+    {
+     "d": "2008.10.28",
+     "url": "http://media.lwdh.org.tw/mp3/lwdh/bjjjj/bjjjj1/bjjjj006B.mp3",
+     "sno": "006B",
+     "p": "寶積經講記（一），pp.56-61"
+    },
+    {
+     "d": "2008.11.04",
+     "url": "http://media.lwdh.org.tw/mp3/lwdh/bjjjj/bjjjj1/bjjjj007A.mp3",
+     "sno": "007A",
+     "p": "補充說明「慈悲、四悉壇、緣覺」"
+    },
+    {
+     "d": "2008.11.04",
+     "url": "http://media.lwdh.org.tw/mp3/lwdh/bjjjj/bjjjj1/bjjjj007B.mp3",
+     "sno": "007B",
+     "p": "寶積經講記（二），pp.62-65"
+    },
+    {
+     "d": "2008.11.18",
+     "url": "http://media.lwdh.org.tw/mp3/lwdh/bjjjj/bjjjj1/bjjjj008A.mp3",
+     "sno": "008A",
+     "p": "寶積經講記（二），pp.65-70"
+    },
+    {
+     "d": "2008.11.18",
+     "url": "http://media.lwdh.org.tw/mp3/lwdh/bjjjj/bjjjj1/bjjjj008B.mp3",
+     "sno": "008B",
+     "p": "寶積經講記（二），pp.70-73"
+    },
+    {
+     "d": "2008.11.25",
+     "url": "http://media.lwdh.org.tw/mp3/lwdh/bjjjj/bjjjj1/bjjjj009A.mp3",
+     "sno": "009A",
+     "p": "寶積經講記（二），pp.73-84"
+    },
+    {
+     "d": "2008.11.25",
+     "url": "http://media.lwdh.org.tw/mp3/lwdh/bjjjj/bjjjj1/bjjjj009B.mp3",
+     "sno": "009B",
+     "p": "寶積經講記（二），pp.84-93"
+    },
+    {
+     "d": "2008.12.02",
+     "url": "http://media.lwdh.org.tw/mp3/lwdh/bjjjj/bjjjj1/bjjjj010A.mp3",
+     "sno": "010A",
+     "p": "寶積經講記（二），pp.93-99"
+    },
+    {
+     "d": "2008.12.02",
+     "url": "http://media.lwdh.org.tw/mp3/lwdh/bjjjj/bjjjj1/bjjjj010B.mp3",
+     "sno": "010B",
+     "p": "寶積經講記（二），pp.99-102"
+    },
+    {
+     "d": "2008.12.09",
+     "url": "http://media.lwdh.org.tw/mp3/lwdh/bjjjj/bjjjj1/bjjjj011A.mp3",
+     "sno": "011A",
+     "p": "寶積經講記（二），pp.102-106"
+    },
+    {
+     "d": "2008.12.09",
+     "url": "http://media.lwdh.org.tw/mp3/lwdh/bjjjj/bjjjj1/bjjjj011B.mp3",
+     "sno": "011B",
+     "p": "寶積經講記（二），pp.106-111"
+    },
+    {
+     "d": "2008.12.16",
+     "url": "http://media.lwdh.org.tw/mp3/lwdh/bjjjj/bjjjj1/bjjjj012A.mp3",
+     "sno": "012A",
+     "p": "寶積經講記（二），pp.111-115"
+    },
+    {
+     "d": "2008.12.16",
+     "url": "http://media.lwdh.org.tw/mp3/lwdh/bjjjj/bjjjj1/bjjjj012B.mp3",
+     "sno": "012B",
+     "p": "寶積經講記（二），pp.115-121"
+    }
+   ],
+   "yb_bjjjj_20080303": [
+    {
+     "d": "2009.03.03",
+     "url": "http://media.lwdh.org.tw/mp3/lwdh/bjjjj/bjjjj2/bjjjj013A.mp3",
+     "sno": "013A",
+     "p": "複習pp.99-121寶積經講記（三），pp.122-124"
+    },
+    {
+     "d": "2009.03.03",
+     "url": "http://media.lwdh.org.tw/mp3/lwdh/bjjjj/bjjjj2/bjjjj013B.mp3",
+     "sno": "013B",
+     "p": "寶積經講記（三），pp.124-129"
+    },
+    {
+     "d": "2009.03.10",
+     "url": "http://media.lwdh.org.tw/mp3/lwdh/bjjjj/bjjjj2/bjjjj014A(20090310).mp3",
+     "sno": "014A",
+     "p": "寶積經講記（三），pp.129-133"
+    },
+    {
+     "d": "2009.03.10",
+     "url": "http://media.lwdh.org.tw/mp3/lwdh/bjjjj/bjjjj2/bjjjj014B(20090310).mp3",
+     "sno": "014B",
+     "p": "寶積經講記（三），pp.133-136"
+    },
+    {
+     "d": "2009.03.17",
+     "url": "http://media.lwdh.org.tw/mp3/lwdh/bjjjj/bjjjj2/bjjjj015A(20090317).mp3",
+     "sno": "015A",
+     "p": "寶積經講記（三），pp.136-138"
+    },
+    {
+     "d": "2009.03.17",
+     "url": "http://media.lwdh.org.tw/mp3/lwdh/bjjjj/bjjjj2/bjjjj015B(20090317).mp3",
+     "sno": "015B",
+     "p": "寶積經講記（三），pp.138-144"
+    },
+    {
+     "d": "2009.03.24",
+     "url": "http://media.lwdh.org.tw/mp3/lwdh/bjjjj/bjjjj2/bjjjj016A(20090324).mp3",
+     "sno": "016A",
+     "p": "寶積經講記（三），pp.145-146"
+    },
+    {
+     "d": "2009.03.24",
+     "url": "http://media.lwdh.org.tw/mp3/lwdh/bjjjj/bjjjj2/bjjjj016B(20090324).mp3",
+     "sno": "016B",
+     "p": "寶積經講記（三），pp.147-156"
+    },
+    {
+     "d": "2009.04.07",
+     "url": "http://media.lwdh.org.tw/mp3/lwdh/bjjjj/bjjjj2/bjjjj017A(20090407).mp3",
+     "sno": "017A",
+     "p": "寶積經講記（三），pp.156-161"
+    },
+    {
+     "d": "2009.04.07",
+     "url": "http://media.lwdh.org.tw/mp3/lwdh/bjjjj/bjjjj2/bjjjj017B(20090407).mp3",
+     "sno": "017B",
+     "p": "寶積經講記（三），pp.162-164"
+    },
+    {
+     "d": "2009.04.14",
+     "url": "http://media.lwdh.org.tw/mp3/lwdh/bjjjj/bjjjj2/bjjjj018A(20090414).mp3",
+     "sno": "018A",
+     "p": "寶積經講記（三），pp.164-168"
+    },
+    {
+     "d": "2009.04.14",
+     "url": "http://media.lwdh.org.tw/mp3/lwdh/bjjjj/bjjjj2/bjjjj018B(20090414).mp3",
+     "sno": "018B",
+     "p": "寶積經講記（三），pp.168-174"
+    },
+    {
+     "d": "2009.04.21",
+     "url": "http://media.lwdh.org.tw/mp3/lwdh/bjjjj/bjjjj2/bjjjj019A(20090421).mp3",
+     "sno": "019A",
+     "p": "寶積經講記（三），pp.174-180"
+    },
+    {
+     "d": "2009.04.21",
+     "url": "http://media.lwdh.org.tw/mp3/lwdh/bjjjj/bjjjj2/bjjjj019B(20090421).mp3",
+     "sno": "019B",
+     "p": "寶積經講記（三），pp.181-189"
+    },
+    {
+     "d": "2009.05.05",
+     "url": "http://media.lwdh.org.tw/mp3/lwdh/bjjjj/bjjjj2/bjjjj020A(20090505).mp3",
+     "sno": "020A",
+     "p": "寶積經講記（三），pp.189-192"
+    },
+    {
+     "d": "2009.05.05",
+     "url": "http://media.lwdh.org.tw/mp3/lwdh/bjjjj/bjjjj2/bjjjj020B(20090505).mp3",
+     "sno": "020B",
+     "p": "寶積經講記（三），pp.192-203"
+    },
+    {
+     "d": "2009.05.12",
+     "url": "http://media.lwdh.org.tw/mp3/lwdh/bjjjj/bjjjj2/bjjjj021A(20090512).mp3",
+     "sno": "021A",
+     "p": "寶積經講記（三），pp.203-207寶積經講記（四），pp.208-212"
+    },
+    {
+     "d": "2009.05.12",
+     "url": "http://media.lwdh.org.tw/mp3/lwdh/bjjjj/bjjjj2/bjjjj021B(20090512).mp3",
+     "sno": "021B",
+     "p": "寶積經講記（四），pp.213-224"
+    },
+    {
+     "d": "2009.05.19",
+     "url": "http://media.lwdh.org.tw/mp3/lwdh/bjjjj/bjjjj2/bjjjj022A(20090519).mp3",
+     "sno": "022A",
+     "p": "寶積經講記（四），pp.224-227"
+    },
+    {
+     "d": "2009.05.19",
+     "url": "http://media.lwdh.org.tw/mp3/lwdh/bjjjj/bjjjj2/bjjjj022B(20090519).mp3",
+     "sno": "022B",
+     "p": "寶積經講記（四），pp.228-238"
+    },
+    {
+     "d": "2009.05.26",
+     "url": "http://media.lwdh.org.tw/mp3/lwdh/bjjjj/bjjjj2/bjjjj023A(20090526).mp3",
+     "sno": "023A",
+     "p": "寶積經講記（四），pp.239-249"
+    },
+    {
+     "d": "2009.05.26",
+     "url": "http://media.lwdh.org.tw/mp3/lwdh/bjjjj/bjjjj2/bjjjj023B(20090526).mp3",
+     "sno": "023B",
+     "p": "寶積經講記（四），pp.249-268"
+    },
+    {
+     "d": "2009.06.02",
+     "url": "http://media.lwdh.org.tw/mp3/lwdh/bjjjj/bjjjj2/bjjjj024A(20090602).mp3",
+     "sno": "024A",
+     "p": "寶積經講記（四），pp.269-278"
+    },
+    {
+     "d": "2009.06.02",
+     "url": "http://media.lwdh.org.tw/mp3/lwdh/bjjjj/bjjjj2/bjjjj024B(20090602).mp3",
+     "sno": "024B",
+     "p": "寶積經講記（四），pp.278-299"
+    }
+   ]
+  },
+  "hyjxd": {
+   "yb_hyjxd_20090915": [
+    {
+     "d": "2009.09.15",
+     "url": "http://media.lwdh.org.tw/mp3/lwdh/hyjxd/hyjxd1/hyjxd001A(20090915).mp3",
+     "sno": "001A",
+     "p": "契理契機之人間佛教，pp.1-4"
+    },
+    {
+     "d": "2009.09.15",
+     "url": "http://media.lwdh.org.tw/mp3/lwdh/hyjxd/hyjxd1/hyjxd001B(20090915).mp3",
+     "sno": "001B",
+     "p": "契理契機之人間佛教，pp.5-11"
+    },
+    {
+     "d": "2009.09.22",
+     "url": "http://media.lwdh.org.tw/mp3/lwdh/hyjxd/hyjxd1/hyjxd002A(20090922).mp3",
+     "sno": "002A",
+     "p": "契理契機之人間佛教，pp.11-16"
+    },
+    {
+     "d": "2009.09.22",
+     "url": "http://media.lwdh.org.tw/mp3/lwdh/hyjxd/hyjxd1/hyjxd002B(20090922).mp3",
+     "sno": "002B",
+     "p": "契理契機之人間佛教，pp.18-21"
+    },
+    {
+     "d": "2009.10.13",
+     "url": "http://media.lwdh.org.tw/mp3/lwdh/hyjxd/hyjxd1/hyjxd003A(20091013).mp3",
+     "sno": "003A",
+     "p": "契理契機之人間佛教，pp.21-25"
+    },
+    {
+     "d": "2009.10.13",
+     "url": "http://media.lwdh.org.tw/mp3/lwdh/hyjxd/hyjxd1/hyjxd003B(20091013).mp3",
+     "sno": "003B",
+     "p": "契理契機之人間佛教，pp.25-32"
+    },
+    {
+     "d": "2009.10.20",
+     "url": "http://media.lwdh.org.tw/mp3/lwdh/hyjxd/hyjxd1/hyjxd004A(20091020).mp3",
+     "sno": "004A",
+     "p": "契理契機之人間佛教，pp.33-38"
+    },
+    {
+     "d": "2009.10.20",
+     "url": "http://media.lwdh.org.tw/mp3/lwdh/hyjxd/hyjxd1/hyjxd004B(20091020).mp3",
+     "sno": "004B",
+     "p": "契理契機之人間佛教，pp.38-46法海探珍，pp.1-3"
+    },
+    {
+     "d": "2009.10.27",
+     "url": "http://media.lwdh.org.tw/mp3/lwdh/hyjxd/hyjxd1/hyjxd005A(20091027).mp3",
+     "sno": "005A",
+     "p": "法海探珍，pp.3-11"
+    },
+    {
+     "d": "2009.10.27",
+     "url": "http://media.lwdh.org.tw/mp3/lwdh/hyjxd/hyjxd1/hyjxd005B(20091027).mp3",
+     "sno": "005B",
+     "p": "法海探珍，pp.10-22"
+    },
+    {
+     "d": "2009.11.03",
+     "url": "http://media.lwdh.org.tw/mp3/lwdh/hyjxd/hyjxd1/hyjxd006A(20091103).mp3",
+     "sno": "006A",
+     "p": "法海探珍，pp.22-26"
+    },
+    {
+     "d": "2009.11.03",
+     "url": "http://media.lwdh.org.tw/mp3/lwdh/hyjxd/hyjxd1/hyjxd006B(20091103).mp3",
+     "sno": "006B",
+     "p": "法海探珍，pp.26-29"
+    },
+    {
+     "d": "2009.11.17",
+     "url": "http://media.lwdh.org.tw/mp3/lwdh/hyjxd/hyjxd1/hyjxd007A(20091117).mp3",
+     "sno": "007A",
+     "p": "法海探珍，pp.29-35"
+    },
+    {
+     "d": "2009.11.17",
+     "url": "http://media.lwdh.org.tw/mp3/lwdh/hyjxd/hyjxd1/hyjxd007B(20091117).mp3",
+     "sno": "007B",
+     "p": "法海探珍，pp.35-40中國佛教瑣談，pp.1-4"
+    },
+    {
+     "d": "2009.11.24",
+     "url": "http://media.lwdh.org.tw/mp3/lwdh/hyjxd/hyjxd1/hyjxd008A(20091124).mp3",
+     "sno": "008A",
+     "p": "中國佛教瑣談，pp.5-11"
+    },
+    {
+     "d": "2009.11.24",
+     "url": "http://media.lwdh.org.tw/mp3/lwdh/hyjxd/hyjxd1/hyjxd008B(20091124).mp3",
+     "sno": "008B",
+     "p": "中國佛教瑣談，pp.12-19"
+    },
+    {
+     "d": "2009.12.01",
+     "url": "http://media.lwdh.org.tw/mp3/lwdh/hyjxd/hyjxd1/hyjxd009A(20091201).mp3",
+     "sno": "009A",
+     "p": "中國佛教瑣談，pp.19-24"
+    },
+    {
+     "d": "2009.12.01",
+     "url": "http://media.lwdh.org.tw/mp3/lwdh/hyjxd/hyjxd1/hyjxd009B(20091201).mp3",
+     "sno": "009B",
+     "p": "中國佛教瑣談，pp.25-37"
+    },
+    {
+     "d": "2009.12.08",
+     "url": "http://media.lwdh.org.tw/mp3/lwdh/hyjxd/hyjxd1/hyjxd010A(20091208).mp3",
+     "sno": "010A",
+     "p": "中國佛教瑣談，pp.35-46"
+    },
+    {
+     "d": "2009.12.08",
+     "url": "http://media.lwdh.org.tw/mp3/lwdh/hyjxd/hyjxd1/hyjxd010B(20091208).mp3",
+     "sno": "010B",
+     "p": "中國佛教瑣談，pp.46-54"
+    },
+    {
+     "d": "2009.12.15",
+     "url": "http://media.lwdh.org.tw/mp3/lwdh/hyjxd/hyjxd1/hyjxd011A(20091215).mp3",
+     "sno": "011A",
+     "p": "中國佛教瑣談，pp.53-58"
+    },
+    {
+     "d": "2009.12.15",
+     "url": "http://media.lwdh.org.tw/mp3/lwdh/hyjxd/hyjxd1/hyjxd011B(20091215).mp3",
+     "sno": "011B",
+     "p": "中國佛教瑣談，pp.58-63淫欲為道，pp.1-8"
+    },
+    {
+     "d": "2009.12.22",
+     "url": "http://media.lwdh.org.tw/mp3/lwdh/hyjxd/hyjxd1/hyjxd012A(20091222).mp3",
+     "sno": "012A",
+     "p": "淫欲為道，pp.9-13"
+    },
+    {
+     "d": "2009.12.22",
+     "url": "http://media.lwdh.org.tw/mp3/lwdh/hyjxd/hyjxd1/hyjxd012B(20091222).mp3",
+     "sno": "012B",
+     "p": "淫欲為道，pp.13-17辨法相與唯識，pp.1-4"
+    },
+    {
+     "d": "2010.01.05",
+     "url": "http://media.lwdh.org.tw/mp3/lwdh/hyjxd/hyjxd1/hyjxd013A(20100105).mp3",
+     "sno": "013A",
+     "p": "辨法相與唯識，pp.3-8"
+    },
+    {
+     "d": "2010.01.05",
+     "url": "http://media.lwdh.org.tw/mp3/lwdh/hyjxd/hyjxd1/hyjxd013B(20100105).mp3",
+     "sno": "013B",
+     "p": "談法相"
+    },
+    {
+     "d": "2010.01.12",
+     "url": "http://media.lwdh.org.tw/mp3/lwdh/hyjxd/hyjxd1/hyjxd014A(20100112).mp3",
+     "sno": "014A",
+     "p": "談法相"
+    },
+    {
+     "d": "2010.01.12",
+     "url": "http://media.lwdh.org.tw/mp3/lwdh/hyjxd/hyjxd1/hyjxd014B(20100112).mp3",
+     "sno": "014B",
+     "p": "談法相"
+    }
+   ],
+   "yb_hyjxd_20100302": [
+    {
+     "d": "2010.03.02",
+     "url": "http://media.lwdh.org.tw/mp3/lwdh/hyjxd/hyjxd2/hyjxd015A(20100302).mp3",
+     "sno": "015A",
+     "p": "苦痛與知識，pp.1-2佛教的知識觀，pp.1-7"
+    },
+    {
+     "d": "2010.03.02",
+     "url": "http://media.lwdh.org.tw/mp3/lwdh/hyjxd/hyjxd2/hyjxd015B(20100302).mp3",
+     "sno": "015B",
+     "p": "佛教的知識觀，pp.7-14"
+    },
+    {
+     "d": "2010.03.09",
+     "url": "http://media.lwdh.org.tw/mp3/lwdh/hyjxd/hyjxd2/hyjxd016A(20100309).mp3",
+     "sno": "016A",
+     "p": "佛教的知識觀，pp.10-18"
+    },
+    {
+     "d": "2010.03.09",
+     "url": "http://media.lwdh.org.tw/mp3/lwdh/hyjxd/hyjxd2/hyjxd016B(20100309).mp3",
+     "sno": "016B",
+     "p": "佛教的知識觀，pp.18-22道在平常日用中，pp.1-4"
+    },
+    {
+     "d": "2010.03.16",
+     "url": "http://media.lwdh.org.tw/mp3/lwdh/hyjxd/hyjxd2/hyjxd017A(20100316).mp3",
+     "sno": "017A",
+     "p": "道在平常日用中，pp.4-10"
+    },
+    {
+     "d": "2010.03.16",
+     "url": "http://media.lwdh.org.tw/mp3/lwdh/hyjxd/hyjxd2/hyjxd017B(20100316).mp3",
+     "sno": "017B",
+     "p": "道在平常日用中，pp.10-11道在平常日用中佛法的宗教經驗"
+    },
+    {
+     "d": "2010.03.23",
+     "url": "http://media.lwdh.org.tw/mp3/lwdh/hyjxd/hyjxd2/hyjxd018A(20100323).mp3",
+     "sno": "018A",
+     "p": "教法與證法的信仰佛學大要，pp.1-2"
+    },
+    {
+     "d": "2010.03.23",
+     "url": "http://media.lwdh.org.tw/mp3/lwdh/hyjxd/hyjxd2/hyjxd018B(20100323).mp3",
+     "sno": "018B",
+     "p": "佛學大要，pp.2-6"
+    },
+    {
+     "d": "2010.03.30",
+     "url": "http://media.lwdh.org.tw/mp3/lwdh/hyjxd/hyjxd2/hyjxd019A(20100330).mp3",
+     "sno": "019A",
+     "p": "佛學大要，pp.6-8、24"
+    },
+    {
+     "d": "2010.03.30",
+     "url": "http://media.lwdh.org.tw/mp3/lwdh/hyjxd/hyjxd2/hyjxd019B(20100330).mp3",
+     "sno": "019B",
+     "p": "佛學大要，pp.8-15"
+    },
+    {
+     "d": "2010.04.13",
+     "url": "http://media.lwdh.org.tw/mp3/lwdh/hyjxd/hyjxd2/hyjxd020A(20100413).mp3",
+     "sno": "020A",
+     "p": "佛學大要，pp.16-19"
+    },
+    {
+     "d": "2010.04.13",
+     "url": "http://media.lwdh.org.tw/mp3/lwdh/hyjxd/hyjxd2/hyjxd020B(20100413).mp3",
+     "sno": "020B",
+     "p": "佛學大要，pp.19-24遊心法海六十年，pp.1-6"
+    },
+    {
+     "d": "2010.04.20",
+     "url": "http://media.lwdh.org.tw/mp3/lwdh/hyjxd/hyjxd2/hyjxd021A(20100420).mp3",
+     "sno": "021A",
+     "p": "遊心法海六十年，pp.5-11"
+    },
+    {
+     "d": "2010.04.20",
+     "url": "http://media.lwdh.org.tw/mp3/lwdh/hyjxd/hyjxd2/hyjxd021B(20100420).mp3",
+     "sno": "021B",
+     "p": "遊心法海六十年，pp.10-21"
+    },
+    {
+     "d": "2010.04.27",
+     "url": "http://media.lwdh.org.tw/mp3/lwdh/hyjxd/hyjxd2/hyjxd022A(20100427).mp3",
+     "sno": "022A",
+     "p": "遊心法海六十年，pp.18-29"
+    },
+    {
+     "d": "2010.04.27",
+     "url": "http://media.lwdh.org.tw/mp3/lwdh/hyjxd/hyjxd2/hyjxd022B(20100427).mp3",
+     "sno": "022B",
+     "p": "遊心法海六十年，pp.29-37"
+    },
+    {
+     "d": "2010.05.04",
+     "url": "http://media.lwdh.org.tw/mp3/lwdh/hyjxd/hyjxd2/hyjxd023A(20100504).mp3",
+     "sno": "023A",
+     "p": "遊心法海六十年，pp.26-40研究佛法的立場與方法，p.1"
+    },
+    {
+     "d": "2010.05.04",
+     "url": "http://media.lwdh.org.tw/mp3/lwdh/hyjxd/hyjxd2/hyjxd023B(20100504).mp3",
+     "sno": "023B",
+     "p": "研究佛法的立場與方法，pp.1-11從復興佛教談研究佛學，p.1"
+    },
+    {
+     "d": "2010.05.11",
+     "url": "http://media.lwdh.org.tw/mp3/lwdh/hyjxd/hyjxd2/hyjxd024A(20100511).mp3",
+     "sno": "024A",
+     "p": "從復興佛教談研究佛學，p.13南傳大藏對中國佛教的重要，pp.1-5"
+    },
+    {
+     "d": "2010.05.11",
+     "url": "http://media.lwdh.org.tw/mp3/lwdh/hyjxd/hyjxd2/hyjxd024B(20100511).mp3",
+     "sno": "024B",
+     "p": "泛評周繼武居士「起信論正謬」，pp.1-2"
+    },
+    {
+     "d": "2010.05.18",
+     "url": "http://media.lwdh.org.tw/mp3/lwdh/hyjxd/hyjxd2/hyjxd025A(20100518).mp3",
+     "sno": "025A",
+     "p": "泛評周繼武居士「起信論正謬」，pp.1-5"
+    },
+    {
+     "d": "2010.05.18",
+     "url": "http://media.lwdh.org.tw/mp3/lwdh/hyjxd/hyjxd2/hyjxd025B(20100518).mp3",
+     "sno": "025B",
+     "p": "泛評周繼武居士「起信論正謬」，pp.6-11印順導師訪問記，p.1"
+    },
+    {
+     "d": "2010.05.25",
+     "url": "http://media.lwdh.org.tw/mp3/lwdh/hyjxd/hyjxd2/hyjxd026A(20100525).mp3",
+     "sno": "026A",
+     "p": "印順導師訪問記，pp.1-6"
+    },
+    {
+     "d": "2010.05.25",
+     "url": "http://media.lwdh.org.tw/mp3/lwdh/hyjxd/hyjxd2/hyjxd026B(20100525).mp3",
+     "sno": "026B",
+     "p": "印順導師訪問記，pp.6-7中國佛教的由興到衰及其未來的展望，pp.1-9"
+    }
+   ]
+  }
  }
 }

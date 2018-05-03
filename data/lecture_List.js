@@ -1662,5 +1662,130 @@ var lecture_List={
     "url": "http://video.lwdh.org.tw/download/fuyan/pdf/kztj/kztj04_8.pdf"
    }
   ]
+ },
+ "0010": {
+  "bkid": "bjjjj",
+  "cm": "",
+  "master": "yb",
+  "byear": "2008",
+  "croom": "lw",
+  "phase": [
+   {
+    "id": "yb_bjjjj_20080916",
+    "t": "第 1 期 2008-09",
+    "url": "http://video.lwdh.org.tw/html/bjjjj_hz/bjjjj_hz00.html"
+   },
+   {
+    "id": "yb_bjjjj_20080303",
+    "t": "第 2 期 2009-03",
+    "url": "http://video.lwdh.org.tw/html/bjjjj_hz/bjjjj_hz02.html"
+   }
+  ],
+  "handout": [
+   {
+    "t": "寶積經講記"
+   },
+   {
+    "t": "（一）",
+    "url": "http://video.lwdh.org.tw/download/lwdh/pdf/bjjjj/bjjjj001.pdf"
+   },
+   {
+    "t": "（二）",
+    "url": "http://video.lwdh.org.tw/download/lwdh/pdf/bjjjj/bjjjj002.pdf"
+   },
+   {
+    "t": "（三）",
+    "url": "http://video.lwdh.org.tw/download/lwdh/pdf/bjjjj/bjjjj003.pdf"
+   },
+   {
+    "t": "（四）",
+    "url": "http://video.lwdh.org.tw/download/lwdh/pdf/bjjjj/bjjjj004.pdf"
+   }
+  ]
+ },
+ "0011": {
+  "bkid": "hyjxd",
+  "cm": "",
+  "master": "yb",
+  "byear": "2009",
+  "croom": "lw",
+  "phase": [
+   {
+    "id": "yb_hyjxd_20090915",
+    "t": "第 1 期 2009-09",
+    "url": "http://video.lwdh.org.tw/html/hyjxd_hz/hyjxd_hz00.html"
+   },
+   {
+    "id": "yb_hyjxd_20100302",
+    "t": "第 2 期 2010-03",
+    "url": "http://video.lwdh.org.tw/html/hyjxd_hz/hyjxd_hz02.html"
+   }
+  ],
+  "handout": [
+   {
+    "t": "契理契機之人間佛教",
+    "url": "http://video.lwdh.org.tw/download/lwdh/pdf/hyjxd/hyjxd_01.pdf"
+   },
+   {
+    "t": "法海探珍",
+    "url": "http://video.lwdh.org.tw/download/lwdh/pdf/hyjxd/hyjxd_02.pdf"
+   },
+   {
+    "t": "中國佛教瑣談",
+    "url": "http://video.lwdh.org.tw/download/lwdh/pdf/hyjxd/hyjxd_03.pdf"
+   },
+   {
+    "t": "淫欲為道",
+    "url": "http://video.lwdh.org.tw/download/lwdh/pdf/hyjxd/hyjxd_04.pdf"
+   },
+   {
+    "t": "辨法相與唯識",
+    "url": "http://video.lwdh.org.tw/download/lwdh/pdf/hyjxd/hyjxd_05.pdf"
+   },
+   {
+    "t": "苦痛與知識",
+    "url": "http://video.lwdh.org.tw/download/lwdh/pdf/hyjxd/hyjxd_07.pdf"
+   },
+   {
+    "t": "佛教的知識觀",
+    "url": "http://video.lwdh.org.tw/download/lwdh/pdf/hyjxd/hyjxd_08.pdf"
+   },
+   {
+    "t": "道在平常日用中",
+    "url": "http://video.lwdh.org.tw/download/lwdh/pdf/hyjxd/hyjxd_09.pdf"
+   },
+   {
+    "t": "佛學大要",
+    "url": "http://video.lwdh.org.tw/download/lwdh/pdf/hyjxd/hyjxd_12.pdf"
+   },
+   {
+    "t": "遊心法海六十年",
+    "url": "http://video.lwdh.org.tw/download/lwdh/pdf/hyjxd/hyjxd_10.pdf"
+   },
+   {
+    "t": "研究佛法的立場與方法",
+    "url": "http://video.lwdh.org.tw/download/lwdh/pdf/hyjxd/hyjxd_14.pdf"
+   },
+   {
+    "t": "從復興佛教談研究佛學",
+    "url": "http://video.lwdh.org.tw/download/lwdh/pdf/hyjxd/hyjxd_15.pdf"
+   },
+   {
+    "t": "南傳大藏對中國佛教的重要",
+    "url": "http://video.lwdh.org.tw/download/lwdh/pdf/hyjxd/hyjxd_16.pdf"
+   },
+   {
+    "t": "泛評周繼武居士『起信論正謬』",
+    "url": "http://video.lwdh.org.tw/download/lwdh/pdf/hyjxd/hyjxd_17.pdf"
+   },
+   {
+    "t": "印順導師訪問記",
+    "url": "http://video.lwdh.org.tw/download/lwdh/pdf/hyjxd/hyjxd_18.pdf"
+   },
+   {
+    "t": "中國佛教的由興到衰及其未來的展望",
+    "url": "http://video.lwdh.org.tw/download/lwdh/pdf/hyjxd/hyjxd_19.pdf"
+   }
+  ]
  }
 }
