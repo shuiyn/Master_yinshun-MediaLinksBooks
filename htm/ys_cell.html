@@ -83,12 +83,13 @@ var q = JSON.parse("{" + sQry + "}");
 
 <body onload="onLoad()">
 <!--<span id="tit_booklecName"></span>- style="overflow:hidden;"-->
-
+<div  class="audioGroup">
 <span id="tit_booklecName" style="font-size:90%;font-family:標楷體;font-weight:bold;"></span><br/>
 <span id="try" style="width:80%;"></span>
+</div>
 
 <!--期別、著文、講義切換-->
-<table id="tblShowPhrase" style="visibility:visible;background-color:lightGray;margin-top:3px;"><tr>
+<table class="audioGroup" id="tblShowPhrase" style="visibility:visible;background-color:lightGray;margin-top:3px;"><tr>
 	<td id="tdPhrase">
 <button id="toggleHandout" onclick="toggleHandout(this)" class="toggle">期別</button>
 	</td>
@@ -108,7 +109,7 @@ var q = JSON.parse("{" + sQry + "}");
 </tr></table>
 
 <!--講義-->
-	<table id="tblShowHandout" style="visibility:collapse;background-color:lightgreen;">
+	<table class="audioGroup" id="tblShowHandout" style="visibility:collapse;background-color:lightgreen;">
 		<tr>
 		<td id="tdHandout"></td>
 		<td><a style="padding:2px;" id="openHandout" href="" target="_blank">到網頁</a></td>
@@ -117,14 +118,14 @@ var q = JSON.parse("{" + sQry + "}");
 	</table>
 
 
-<div id="dvAudioLesson" style="width:100%; border:1px solid black">
-  <audio id="myAudio" style="margin:0;padding:1px;width:99%" controls>
+<div id="dvAudioLesson" style="position:relative;width:100%; border:1px solid black">
+  <audio class="audioGroup" id="myAudio" style="margin:0;padding:1px;width:99%" controls>
   <source src="" type="audio/mpeg">
   </audio>
 
 
 <!--Audio 面板操作區 width="99%" -->
-<table style="padding-top:0;margin-top:-5px;">
+<table class="audioGroup" style="padding-top:0;margin-top:-5px;">
 <tr style="background-color:#EEFFFF;">
 	<td>
 		<button onclick="theAud.cusPlay();">播於</button>
@@ -159,12 +160,13 @@ var q = JSON.parse("{" + sQry + "}");
 	<td>
 			<button onclick="rstContHandFontSize('-')" style="padding-right:4px;color:DodgerBlue;">─</button>
 			<span id="contFontSize" style="background-color:white;padding-left:3px;padding-right:3px;border:1px black solid;">96</span>
-			<button style="color:DodgerBlue;margin-right:0.5em;" onclick="rstContHandFontSize('+')">✚</button>
+<!--			margin-right:0.5em;-->
+			<button style="color:DodgerBlue;" onclick="rstContHandFontSize('+')">✚</button>
 	</td>
 
 	<td>
 <!--		<button id="toggleAux" onclick="toggleAux(this)" class="toggle" style="margin-left:6px;">教材</button>-->
-		<button id="toggleAux" class="toggle" style="margin-left:6px;">教材</button>
+		<button id="toggleAux" class="toggle">教材</button>
 	</td>
 
 	<td>
@@ -208,11 +210,16 @@ var q = JSON.parse("{" + sQry + "}");
 	<td>
 	<button onclick="doToggleBR()" class="dropbtn" id="toggleLineNo">段</button>
 	</td>
-<!--	</tr></tbale>-->
-<!--</div>-->
 
+	<td>
+			<button onclick="toggleTocBold()" class="dropbtn">B</button>
+	</td>
+
+	<td>
+	<button onclick="toggleFullBookScreen()" class="dropbtn">F</button>
 </td>
 	</tr></table>
+	
 </td><!--文檔操作區-->
 
 </tr></table><!--cue、文檔操作區-->

@@ -974,25 +974,36 @@ function toggleBR(){
 }
 
 function doToggleBR(dv){
-	dv = dv || theBook.ctlShowYin;
-	var a = dv.getElementsByClassName("falseBR");
-//	var a = theBook.ctlShowAux.getElementsByClassName("falseBR");
-//	var sDisp = (bShowBR ? "block" : "none");
-	var sDisp = (a[1].style.display=="none" ? "block" : "none");
+	bookToggle("falseBR", "Hider", dv);
+}
 
-	for(var i=0; i < a.length; i++) a[i].style.display = sDisp;
+
+function bookToggle(clsNameEle, clsNameTog, dv){
+	dv = dv || theBook.ctlShowYin;
+	var a = dv.getElementsByClassName(clsNameEle);
+	for(var i=0; i < a.length; i++) a[i].classList.toggle(clsNameTog);
+}
+
+function toggleTocBold(dv){
+	bookToggle("tocTitle", "Bolder", dv);
+}
+
+function togglePageNum(dv) {
+	bookToggle("__pageNumHrDiv", "Hider", dv);
+}
+
+function toggleFullBookScreen(dv){
+//	dv = dv || theBook.ctlShowYin;
+//	var a = document.body.getElementsByClassName("audioGroupX");
+//	for(var i=0; i < a.length; i++) a[i].style.display="none";
+	bookToggle("audioGroup", "Hider", document.body);
+	rstPosition();
 }
 
 
 function toggleNA(dv){
-	dv = dv || theBook.ctlShowYin;
 	var sName = (mbIsPC ? "notearea" :"notearea_m");
-	var a = dv.getElementsByClassName(sName);
-//	var a = theBook.ctlShowAux.getElementsByClassName("falseBR");
-//	var sDisp = (bShowBR ? "block" : "none");
-	var sDisp = (a[1].style.display=="none" ? "block" : "none");
-
-	for(var i=0; i < a.length; i++) a[i].style.display = sDisp;
+	bookToggle(sName, "Hider", dv);
 }
 
 function rstContHandFontSize(sType){

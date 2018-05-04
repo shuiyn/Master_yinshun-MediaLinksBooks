@@ -99,6 +99,10 @@
 		padding: 1px;
 	}
 	
+	.Hider { display:none;}
+	.Bolder { font-weight:bold;}
+/*	.audioGroupX {}*/
+	
 	.noteNum { font-size:100%;}
 /*	.noteDet { margin:15px;}*/
 	.srcwords {

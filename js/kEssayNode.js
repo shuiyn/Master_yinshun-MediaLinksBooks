@@ -1,4 +1,4 @@
-
+	/*
 var togglePageNum=function() {
 	var eHrNums = document.getElementsByClassName("__pageNumHrDiv");
 	var sDisp = "none";
@@ -6,18 +6,6 @@ var togglePageNum=function() {
 		sDisp = "block";
 
 	var eNums = document.getElementsByClassName("__pageNum");
-	/*
-	if (eNums) {
-		if (sDisp == "block") {
-			for (var i=0; i < eNums.length; i++) {
-				eNums[i].innerHTML = eNums[i].getAttribute("pgNum");
-			}
-		} else {
-			for (var i=0; i < eNums.length; i++) {
-				eNums[i].innerHTML = "";
-			}
-		}
-	}*/
 	
 	if (eHrNums) {
 		for (var i=0; i < eHrNums.length; i++) {
@@ -74,7 +62,7 @@ var togglePageNum_ALL=function(nMode) {
 		}
 	}
 }
-
+*/
 
 //讀取書本的各「章」名稱，作為選單
 var grabEssayChapter=function(jsEsy) {
@@ -346,8 +334,35 @@ kEssayNode.prototype.processUnLined=function(jsn, nLnIdx) {
 			jsn[itm] = undefined;
 		} else if (itm == "NA" && (jsn[itm] != undefined)) {
 			nReadLines = 0;
-			htm = '<img src="' + hostImgURL() + 'noteArea.png" width="25%" height="2px" />'; //<br/>';
-				this.ndCurrDiv.appendChild(this.genNode(htm));
+			htm = '<img src="' + hostImgURL() + 'noteArea.png" width="25%" height="2px" />';
+			
+			this.ndCurrDiv.appendChild(this.genNode(htm));
+				
+			jsn[itm] = undefined;
+			
+		} else if (itm == "img" && (jsn[itm] != undefined)) {
+			nReadLines = 0;
+			var jTmp = jsn[itm];
+			var nWid = jTmp.t*16;
+			var nHei = Math.floor(nWid * (jTmp.h / jTmp.w));
+			htm = '<img src="' + hostImgURL() + jTmp.s + '" width="' + nWid + 'px" height="' + nHei + 'px" />';
+			
+			var sStyMisc = "";
+			
+			if (jTmp.al)
+				sStyMisc += this.anaAlignment(jTmp.al);
+			
+			if (jTmp.ml)
+				sStyMisc += "margin-left:" + this.anaUnits(jTmp.ml) + ";";
+			
+			if (jTmp.st)
+				sStyMisc += jTmp.st + ";";
+				
+			if (sStyMisc) {
+				sStyMisc = 'style="' + sStyMisc;
+				htm = '<p ' + sStyMisc + '">' + htm + "</p>";
+			}
+			this.ndCurrDiv.appendChild(this.genNode(htm));
 				
 			jsn[itm] = undefined;
 			
@@ -517,7 +532,7 @@ kEssayNode.prototype.anaTagStyle=function(jTmp, sTagName) {
 				aPgSty.push("text-indent:" + this.anaUnits(jTmp["ti"]));
 		
 		if (typeof jTmp["al"] != "undefined")
-			aPgSty.push("text-align:" + jTmp["al"]);
+			aPgSty.push(this.anaAlignment(jTmp["al"]));
 	}
 	
 	if (sTagName == "p") {
@@ -611,6 +626,18 @@ kEssayNode.prototype.anaUnits=function(id) {
 }
 
 
+//尾均附加 ";"
+kEssayNode.prototype.anaAlignment=function(al) {
+	var sRet = "text-align:";
+	if (al == "c")
+		sRet += "center;";
+	else if (al == "r")
+		sRet += "right;";
+	else
+		sRet += al + ";";
+	
+	return sRet;
+}
 
 kEssayNode.prototype.parseParaStyle=function() {
 //	if (this.paraSty.length == 0)
