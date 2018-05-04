@@ -166,7 +166,7 @@ var q = JSON.parse("{" + sQry + "}");
 
 	<td>
 <!--		<button id="toggleAux" onclick="toggleAux(this)" class="toggle" style="margin-left:6px;">教材</button>-->
-		<button id="toggleAux" class="toggle">課</button>
+		<button id="toggleAux" class="toggle" style="display:none;">課</button>
 	</td>
 
 	<td>
@@ -186,7 +186,8 @@ var q = JSON.parse("{" + sQry + "}");
 <!--	<tbale><tr>-->
 <!--	<td>-->
 	<button onclick="toggleDropDown('dropdnChpter')" class="dropbtn">章</button>
-	  <div id="dropdnChpter" class="dropdown-content"> </div></td>
+	  <div id="dropdnChpter" class="dropdown-content"></div>
+	</td>
 	<td>
 	<button onclick="theBook.showPageTocSelect(this)" class="dropbtn">目</button>
 	</td>
@@ -216,7 +217,7 @@ var q = JSON.parse("{" + sQry + "}");
 	</td>
 
 	<td>
-	<button onclick="toggleFullBookScreen()" class="dropbtn">F</button>
+	<button onclick="toggleFullBookScreen()" class="dropbtn">全</button>
 </td>
 	</tr></table>
 	

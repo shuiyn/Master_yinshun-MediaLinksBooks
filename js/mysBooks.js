@@ -1009,8 +1009,8 @@ function toggleNA(dv){
 function rstContHandFontSize(sType){
 //	var ps = parseInt(theBook.ctlShowYin.style.fontSize);
 	var ps = parseInt(document.getElementById("contFontSize").innerHTML);
-	if (sType == "+") ps += 2;
-	else ps -= 2;
+	if (sType == "+") ps += 4;
+	else ps -= 4;
 	
 	document.getElementById("contFontSize").innerHTML = ps;
 	theBook.ctlShowYin.style.fontSize = ps+"%";
