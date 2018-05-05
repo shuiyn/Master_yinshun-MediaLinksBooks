@@ -151,16 +151,16 @@
 		margin-bottom:5px;
 	}
 
-    table {
-    	border-collapse:collapse;
-    }
-    
-    pre {
-    	font-family:新細明體;
-    	line-height:0em;
-    	/*margin:0;
-    	padding:0;*/
-    }
+  table {
+  	border-collapse:collapse;
+  }
+  
+  pre {
+  	font-family:新細明體;
+  	line-height:0em;
+  	/*margin:0;
+  	padding:0;*/
+  }
     
 	
 	// 佛經原文樣式；原為 p_sutratext
@@ -172,4 +172,21 @@
 		padding: 1px;
 	}
 
-    
+	.dotu {border-bottom: dotted 2px;}
+	.dashu {border-bottom: dashed 2px;}
+	/*Wavy underline Border／Decoration*/
+	.wu {text-decoration: underline; text-decoration-style: wavy;}
+
+	/*Double underline Border／Decoration*/
+	.du {border-bottom: double 3px;}
+	/*.du_m {text-decoration: underline; border-bottom: 1px solid;}*/
+
+	/* 40px; --> 1.5em  */
+	blockquote {
+    display: block;
+    margin-top: 1em;
+    margin-bottom: 1em;
+    margin-left: 1.5em;
+    margin-right: 1.5em;
+	}
+

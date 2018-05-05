@@ -718,6 +718,17 @@ kEssayNode.prototype.parseParaStyle=function() {
 			//強制加上 <br/> 移除 class="noteDet"
 				aHtmE[sEnd].unshift('</a>〉</span><br/>');
 
+			//simple/shorten style 需 多個 合併 ？？
+			} else if (/^sST_?\d{0,2}/.test(jItm)) {
+				var sSty = "";
+				if (sSet == "B")
+					sSty = "font-weight:bold";
+				else if (sSet == "U")
+					sSty = "text-decoration:underline";
+
+				aHtmB[sStart].push('<span style="' + sSty + ';">');
+				aHtmE[sEnd].unshift('</span>');
+
 			} else if (/^ST_?\d{0,2}/.test(jItm)) {
 				aHtmB[sStart].push('<span style="' + sSet + '">');
 				aHtmE[sEnd].unshift('</span>');
