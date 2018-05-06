@@ -514,7 +514,7 @@ kEssayNode.prototype.stuffPara=function(nLnIdx) {
 } // eof stuffPara()
 
 
-kEssayNode.prototype.anaTagStyle=function(jTmp, sTagName) {
+kEssayNode.prototype.anaTagStyle=function(jTmp, sTagName, bHtmText) {
 	var sTagName = sTagName || "p"; //預設為 p，可用於其他 Tag，取代原 TAG
 	var sTag = "";
 	var sId = "";
@@ -572,8 +572,10 @@ kEssayNode.prototype.anaTagStyle=function(jTmp, sTagName) {
 	
 //	if (sTag) sTag += '>';
 //	else sTag = '<' + sTagName + '>';
-	
-	return this.genNode(sTag);
+	if (bHtmText)
+		return sTag;
+	else
+		return this.genNode(sTag);
 } // eof anaTagStyle
 
 
@@ -821,11 +823,11 @@ kEssayNode.prototype.parseJSON=function(jsn, nLnIdx) {
 		} else if (/^TAG_?\d{0,2}/.test(ji)) {
 			var aTmp = jsn[ji];
 			var tmpJ = {"st":aTmp[3]};
-			jsn[ji].tagO = this.anaTagStyle(tmpJ, aTmp[2]).outerHTML;
+			jsn[ji].tagO = this.anaTagStyle(tmpJ, aTmp[2], true);
+//			console.log(jsn[ji].tagO);
 			jsn[ji][0] += this.nIdxInPara;
 
 		} else if (ji == "PS") { //para align、class、other style
-//			jsn["PS"].tagO = this.anaTagStyle(jsn["PS"]);
 			this.jsPara = jsn["PS"];
 			
 		} else {
