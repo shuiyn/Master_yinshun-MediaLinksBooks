@@ -40,10 +40,10 @@ var theBook = null;
 var theAud = null;
 
 var onLoad = function() {
-var sQry = decodeURIComponent(location.search).slice(1);
-var q = JSON.parse("{" + sQry + "}");
+//var sQry = decodeURIComponent(location.search).slice(1);
+//var q = JSON.parse("{" + sQry + "}");
 
-//	var q = JSON.parse(decodeURIComponent(location.search).substr(6));
+	var q = JSON.parse(decodeURIComponent(location.search).substr(6));
 
 	mbIsPC = !uaNotPC();
 

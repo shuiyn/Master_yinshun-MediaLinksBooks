@@ -124,6 +124,8 @@ var kEssayNode=function(divRoot, jsnChapter, selPageList, idTail) {
 	this.nRowCount = 1; //各頁所有行的行號，人讀、從 1 起計
 	this.mnPrevLev = -1; // > -1 表示已有 toc item
 	this.mbPrevParaIsNTDno = false; //前段是否全段 = 註釋的註序號
+	this.mbFitDevice = true; // Kag Line 是否適用裝置
+	this.moTable = null;
 	this.nTry = 0;
 }
 
@@ -165,21 +167,11 @@ kEssayNode.prototype.transData=function() {
 			sLine = sLine.replace(/@@\{img\/\}/g, hostImgURL());
 		}
 		
-		if (/^\^\^\{.*?\}$/.test(sLine)) {
-			try {
-				jsn = JSON.parse(sLine.substr(2));
-			} catch(e) {
-				console.log("第", nLnIdx, "行：", sLine);
-				throw e
-			}
+		jsn = this.isKagLine(sLine, nLnIdx);
+		if (!this.mbFitDevice)
+			continue;
 			
-			if (jsn.fPC != undefined) {
-				if ((jsn.fPC && !mbIsPC) || (!jsn.fPC && mbIsPC))
-					continue;
-				
-				jsn.fPC = undefined;
-			}
-			
+		if (jsn) {
 			this.processUnLined(jsn, nLnIdx);
 			nLnIdx += this.mnReadExtra;
 			
@@ -198,17 +190,19 @@ kEssayNode.prototype.transData=function() {
 			
 			var jTmpLine = null;
 			
-			//一行只有一個 tagPageNum 時，才會有tagPageNum == sLine
-			if (tagPageNum != sLine && !this.mbPrevParaIsNTDno) {
-				jTmpLine = {"ln":[this.nIdxInPara, null, this.nRowCount]};
-				this.paraSty.push(jTmpLine); //✖unshift 置首，以免被其他 tag <span> 等包住而誤顯，parseParaStyle() 已有相應作為
-			}
-			
-			//全段的末行、或同一行已含 true br 者，不另加 false br
-			if (!this.paraSty.find(function(s){return (s["br"])})) {
-				if (nLnIdx < this.aLine.length-1 && this.aLine[nLnIdx+1]) {
-					var jTmpF_Br = {"f_br":[null, this.nIdxInPara + sLine.length]};
-					this.paraSty.push(jTmpF_Br);
+			if (!this.moTable) {
+				//一行只有一個 tagPageNum 時，才會有tagPageNum == sLine
+				if (tagPageNum != sLine && !this.mbPrevParaIsNTDno) {
+					jTmpLine = {"ln":[this.nIdxInPara, null, this.nRowCount]};
+					this.paraSty.push(jTmpLine); //✖unshift 置首，以免被其他 tag <span> 等包住而誤顯，parseParaStyle() 已有相應作為
+				}
+				
+				//全段的末行、或同一行已含 true br 者，不另加 false br
+				if (!this.paraSty.find(function(s){return (s["br"])})) {
+					if (nLnIdx < this.aLine.length-1 && this.aLine[nLnIdx+1]) {
+						var jTmpF_Br = {"f_br":[null, this.nIdxInPara + sLine.length]};
+						this.paraSty.push(jTmpF_Br);
+					}
 				}
 			}
 			
@@ -236,18 +230,18 @@ kEssayNode.prototype.transData=function() {
 
 
 //要跳過「註解區」
-kEssayNode.prototype.jumbNAreaTocLevel=function(bStart) {
+kEssayNode.prototype.jumbNAreaTocLevel=function(bStart, nLnIdx) {
 	if (bStart)
-		this.settleTocLevel(0, true);
+		this.settleTocLevel(0, true, false, nLnIdx);
 	else {
 		for (var i=0; i <= this.mnPrevLev; i++) {
-			this.settleTocLevel(i, false, true);
+			this.settleTocLevel(i, false, true, nLnIdx);
 		}
 	}
 }
 
-
-kEssayNode.prototype.settleTocLevel=function(nLev, bCloseToc, bOpenNA) {
+//nLnIdx
+kEssayNode.prototype.settleTocLevel=function(nLev, bCloseToc, bOpenNA, nLnIdx) {
 	var sRet = "";
 	var nDiff = this.mnPrevLev - nLev;
 	var sDist = "0.5em"; //"4px";
@@ -270,10 +264,10 @@ kEssayNode.prototype.settleTocLevel=function(nLev, bCloseToc, bOpenNA) {
 		if (nDiff < -1) {
 	//		sRet = sDivSty;
 		} else if (nDiff == 0) {
-				this.closeCurrDiv();
+				this.closeCurrDiv(nLnIdx);
 		} else {
 			for (var i=0; i <= nDiff; i++) {
-				this.closeCurrDiv();
+				this.closeCurrDiv(nLnIdx);
 			}
 		}
 		
@@ -291,7 +285,12 @@ kEssayNode.prototype.settleTocLevel=function(nLev, bCloseToc, bOpenNA) {
 
 
 //收束當前 div，並檢查是否已達 rootDiv
-kEssayNode.prototype.closeCurrDiv=function() {
+kEssayNode.prototype.closeCurrDiv=function(nLnIdx) {
+	if (this.paraText.length > 0) {
+		this.stuffPara(nLnIdx);
+		this.NewPara();
+	}
+
 	if (this.ndCurrDiv == this.divRoot) {
 		throw "目前 div 已是頂點，divRoot 不能收束！";
 	}
@@ -307,6 +306,36 @@ kEssayNode.prototype.processUnLined=function(jsn, nLnIdx) {
 	
 	for (var itm in jsn) {
 		nJsnCount++;
+
+		if (/^(end_table|td|tr|\/td)$/i.test(itm)) {
+			if (this.paraText.length > 0)	{
+					this.stuffPara(nLnIdx); //paraSty 插入 br
+					this.ndCurrPara.style.marginTop = "0";
+					this.ndCurrPara.style.marginBottom = "0";
+					this.NewPara();
+					
+					if (this.moTable.ndPrevDiv)
+						this.ndCurrDiv = this.moTable.ndPrevDiv;
+//					else
+//						console.log(jsn, this.moTable);
+			}
+			
+			if (itm == "tr" && (jsn[itm] != undefined)) {
+				this.genTRow(jsn["tr"]);
+
+			} else if (itm == "td" && (jsn[itm] != undefined)) {
+				this.genTData(nLnIdx, jsn["td"]);
+			}
+			
+					if ("end_table" == itm) {
+//						console.log("end_table", jsn[itm], nLnIdx, this.ndCurrDiv);
+						this.moTable = null;
+					}
+			jsn[itm] = undefined;
+			continue;
+		}
+
+
 		
 		if (itm == "toc" && (jsn[itm] != undefined)) {
 			nReadLines = 0;
@@ -322,6 +351,19 @@ kEssayNode.prototype.processUnLined=function(jsn, nLnIdx) {
 				htm = this.createReadMenu(aRslt[1]);
 				this.ndCurrDiv.appendChild(this.genNode(htm));
 			}
+			jsn[itm] = undefined;
+			
+		} else if (itm == "tableNode" && (jsn[itm] != undefined)) {
+			this.genTableNode(jsn["tableNode"]);
+			jsn[itm] = undefined;
+
+		} else if (itm == "old_tableNode" && (jsn[itm] != undefined)) {
+			aRslt = this.genTableNode(nLnIdx+1, jsn["tableNode"]);
+			if (aRslt) {
+				nReadLines = aRslt[0];
+				this.ndCurrDiv.appendChild(aRslt[1]);
+			}
+			
 			jsn[itm] = undefined;
 			
 		} else if (itm == "table" && (jsn[itm] != undefined)) {
@@ -372,7 +414,7 @@ kEssayNode.prototype.processUnLined=function(jsn, nLnIdx) {
 			
 			if (typeof jsn[itm] == "object") {
 				if (jsn[itm].cs != undefined && jsn[itm].cs.startsWith("notearea")) //mobil is notearea_m
-					this.jumbNAreaTocLevel(true);
+					this.jumbNAreaTocLevel(true, nLnIdx);
 
 				nd = this.anaTagStyle(jsn[itm], "div");
 				this.ndCurrDiv.appendChild(nd);
@@ -380,12 +422,12 @@ kEssayNode.prototype.processUnLined=function(jsn, nLnIdx) {
 				
 			} else {
 				if (jsn[itm] == "eoNA") {
-					this.closeCurrDiv();
-					this.jumbNAreaTocLevel(false);
+					this.closeCurrDiv(nLnIdx);
+					this.jumbNAreaTocLevel(false, nLnIdx);
 				} else {
 					htm = this.anaDivValue(jsn[itm]);
 					if (htm == '</div>')
-						this.closeCurrDiv();
+						this.closeCurrDiv(nLnIdx);
 					else {
 						nd = this.genNode(htm);
 						this.ndCurrDiv.appendChild(nd);
@@ -413,7 +455,7 @@ kEssayNode.prototype.anaToc=function(jsn, nLnIdx) {
 		sTmpLine = sTmpLine.slice(0, nTitRight);
 	}
 	
-	this.settleTocLevel(jToc["lev"]);
+	this.settleTocLevel(jToc["lev"], false, false,nLnIdx);
 	
 	if (jsn["PS"] == undefined) //此為 jsn 非 jToc，供 transData() 處理
 		jsn["PS"] = {};
@@ -475,7 +517,7 @@ kEssayNode.prototype.anaDivValue=function(value) {
 } //eof anaDivValue
 
 
-kEssayNode.prototype.stuffPara=function(nLnIdx) {
+kEssayNode.prototype.stuffPara=function(nLnIdx, isNotParaTag) {
 	if (this.jsPara) {
 		var nLen = 0;
 		if (this.jsPara["brLns"] != undefined) {
@@ -500,11 +542,18 @@ kEssayNode.prototype.stuffPara=function(nLnIdx) {
 			}
 		}
 		
-		this.ndCurrPara = this.anaTagStyle(this.jsPara);
+		if (isNotParaTag)
+			return this.anaTagStyle(this.jsPara);
+		else
+			this.ndCurrPara = this.anaTagStyle(this.jsPara);
 
 	} //eof if (this.jsPara)
-	else
+	else {
+		if (isNotParaTag)
+			return null;
+		
 		this.ndCurrPara = document.createElement("P");
+	}
 	
 	var sPara = this.parseParaStyle();
 	this.ndCurrPara.innerHTML = sPara;
@@ -525,7 +574,8 @@ kEssayNode.prototype.anaTagStyle=function(jTmp, sTagName, bHtmText) {
 	if (jTmp["st"])
 		aPgSty.push(jTmp["st"]); //.replace(/[;]+$/, "");
 	
-	if (sTagName == "p" || sTagName == "div") {
+//	if (sTagName == "p" || sTagName == "div") {
+	if (sTagName.search(/p|div|td/i) > -1) {
 		if (typeof jTmp["ml"] != "undefined")
 				aPgSty.push("margin-left:" + this.anaUnits(jTmp["ml"]));
 		if (typeof jTmp["ti"] != "undefined")
@@ -559,7 +609,6 @@ kEssayNode.prototype.anaTagStyle=function(jTmp, sTagName, bHtmText) {
 	}
 
 	sTag = '<' + sTagName + sId + sClass + sStyle + '>';
-	
 	/*
 	if (jTmp["cs"] != undefined) {
 		var sTmp = this.anaClass(jTmp["cs"]);
@@ -715,7 +764,6 @@ kEssayNode.prototype.parseParaStyle=function() {
 
 			} else if (/^ntd_\d+$/.test(jItm)) {
 				bHasNTD = true;
-				
 				aHtmB[sStart].push('<span id="' + jItm + '" class="noteNum"><a href="#nti_' + jItm.substr(4) + '">註 ');
 			//強制加上 <br/> 移除 class="noteDet"
 				aHtmE[sEnd].unshift('</a>〉</span><br/>');
@@ -739,7 +787,7 @@ kEssayNode.prototype.parseParaStyle=function() {
 				aHtmB[sStart].push(jsn[jItm].tagO);
 				aHtmE[sEnd].push('</' + sSet + '>');
 			} else {
-				console.log("Kag style not defined:", jItm);
+				console.log("Kag style not processed:", jItm);
 			}
 		} //eof for (var jItm in jsn)
 	} // ffor (var nIdx = 0; nIdx < this.paraSty.length
@@ -973,4 +1021,270 @@ kEssayNode.prototype.readTable=function(idx, jsn) {
 //	out.push("</table></p>");
 	
 	return [nRead, out.join("")];
+}
+
+
+kEssayNode.prototype.isKagLine=function(sLine, nLnIdx) {
+	var jsn = null;
+	
+	if (/^\^\^\{.*?\}$/.test(sLine)) {
+		try {
+			jsn = JSON.parse(sLine.substr(2));
+		} catch(e) {
+			console.log("第", nLnIdx, "行：", sLine);
+			throw e
+		}
+		
+		this.mbFitDevice = true;
+
+		if (jsn.fPC != undefined) {
+			if ((jsn.fPC && !mbIsPC) || (!jsn.fPC && mbIsPC))
+				this.mbFitDevice = false;
+			
+			jsn.fPC = undefined;
+		}
+	}
+	
+	return jsn;
+}
+
+
+// nLnIdx 是目前 table 所在行的次１行
+kEssayNode.prototype.genTableNode=function(jsn) {
+	var jTbl = {};
+	
+	jTbl.nTrIdx = 0;
+	
+	if (jsn["nth_e"])
+		jTbl.nth_e = jsn["nth_e"];
+	
+	if (jsn["nth_o"])
+		jTbl.nth_o = jsn["nth_o"];
+	
+	jTbl.sTDcommonStyle = jsn["tdst"] || "";
+
+//	var ndTbl = document.createElement("TABLE");
+	var ndTbl = this.anaTagStyle(jsn, "table");
+	var ndTBody = document.createElement("TBODY");
+	
+	if (!jsn["noborder"])
+		ndTbl.border = 1;
+	
+	ndTbl.appendChild(ndTBody);
+	
+	this.ndCurrDiv.appendChild(ndTbl)
+	jTbl.TBody = ndTBody;
+	jTbl.currTRow = null;
+	jTbl.ndPrevDiv = this.ndCurrDiv;
+	
+	this.moTable = jTbl;
+}
+
+
+//jsn 傳入上層的 jsn["tr"]
+kEssayNode.prototype.genTRow =function(jsn) {
+	var htm = this.anaTagStyle(jsn, "tr", true);
+	this.moTable.TBody.insertAdjacentHTML("beforeend", htm);
+	
+	var ndTR = this.moTable.TBody.lastElementChild;
+
+	if (this.moTable.nTrIdx % 2 == 0 && this.moTable.nth_e)
+		ndTR.style.backgroundColor = this.moTable.nth_e;
+	else if (this.moTable.nTrIdx % 2 == 1 && this.moTable.nth_o)
+		ndTR.style.backgroundColor = this.moTable.nth_o;
+
+	this.moTable.currTRow = ndTR;
+	this.moTable.nTrIdx++;
+}
+
+
+
+//jsn 傳入上層的 nLnIdx, jsn["td"]
+kEssayNode.prototype.genTData =function(nLnIdx, jsn) {
+	var nRead = 0;
+	
+	if (!jsn["st"])
+		jsn["st"] = this.moTable.sTDcommonStyle;
+	else
+		jsn["st"] += ";" + this.moTable.sTDcommonStyle;
+
+	var	htm = this.anaTagStyle(jsn, "td", true);
+	//htm 此時已含 <td>
+//	htm += "</td>";
+	this.moTable.currTRow.insertAdjacentHTML("beforeend", htm);
+//	var ndPrevDiv = this.ndCurrDiv;
+	var ndTD = this.moTable.currTRow.lastElementChild;
+	
+	if (jsn.csp != undefined) {
+		ndTD.colSpan = parseInt(jsn.csp);
+		jsn.csp = undefined;
+	}
+	if (jsn.rsp != undefined) {
+		ndTD.rowSpan = parseInt(jsn.rsp);
+		jsn.rsp = undefined;
+	}
+
+	if (jsn.c == undefined) {
+		this.ndCurrDiv = ndTD;
+		/*nLnIdx++;
+		for (; nLnIdx < this.aLine.length; nLnIdx++) {
+			nRead++;
+			
+			var sLine = this.aLine[nLnIdx];
+			
+//			if (/^\^\^\{"end_table"|\{"td"|\{"\/td".*\}|\{"tr"/i.test(sLine))
+			if (/^\^\^\{("end_table"|"td"|"tr")/i.test(sLine)) {
+				nRead--;
+
+				ndPara = this.stuffPara(nLnIdx); //paraSty 插入 br
+//				this.parseParaStyle();
+//				htm += this.parseParaStyle();
+				this.NewPara();
+	this.ndCurrDiv = ndPrevDiv;
+				break;
+			} else {
+				this.paraText.push(sLine);
+			}
+		}*/
+	} // if (!jValue.c)
+	else {
+		ndTD.innerHTML = jsn.c;
+	}
+}
+
+
+kEssayNode.prototype.genTableNode_p =function(nLnIdx, jsn) {
+	var nRead = 0;
+	var nth_e = "";
+	if (jsn["nth_e"])
+		nth_e = jsn["nth_e"];
+	
+	var nth_o = "";
+	if (jsn["nth_o"])
+		nth_o = jsn["nth_o"];
+	
+	var sTDcommonStyle = jsn["tdst"] || "";
+
+	var ndTbl = document.createElement("TABLE");
+	var ndTBody = document.createElement("TBODY");
+	
+	if (!jsn["noborder"])
+		ndTbl.border = 1;
+	
+	ndTbl.appendChild(ndTBody);
+//  var ndTH = document.createElement("TH");
+  var ndTR = null;
+  var ndTD = null;
+  var ndPara = null;
+  var jValue = null;
+  var nRowSpan = 0;
+  var nColSpan = 0;
+	
+	var nTrIdx = 0, htm = "";
+	
+	for (; nLnIdx < this.aLine.length; nLnIdx++) {
+		nRead++;
+		
+		var sLine = this.aLine[nLnIdx];
+		if (!sLine) continue;
+		
+		if (/^\^\^\{"end_table".*\}/.test(sLine)) break;
+		
+		jsn = this.isKagLine(sLine, nLnIdx);
+		if (!this.mbFitDevice)
+			continue;
+		
+		if (jsn) {
+			//tr 沒有文字內容，不必 anaParaStyle
+			if (jsn["tr"]) {
+				jValue = jsn["tr"];
+ 				htm = this.anaTagStyle(jValue, "tr", true);
+				ndTBody.insertAdjacentHTML("beforeend", htm);
+				ndTR = ndTBody.lastElementChild;
+				
+				if (nTrIdx % 2 == 0 && nth_e)
+					ndTR.style.backgroundColor = nth_e;
+				else if (nTrIdx % 2 == 1 && nth_o)
+					ndTR.style.backgroundColor = nth_o;
+				
+				nTrIdx++;
+			
+			//td 格式：
+			// 欄位內容沒有格式者，可逕寫 {"td":{"c":"欄位內容"}}
+			// 有格式者：分兩行，◆ 不能含空白行
+			// ^^{"td":{"st":"", ...} td Tag 的格式，非 欄位內容
+			// ^^{"nti_xx":......}不能含 "PS"
+//^^{"td":{"c":""}} 表示此欄為空白，<br/> 可逕寫其中
+//^^{"td":{}} 表示此欄內容在下方數列中
+			} else if (jsn["td"]) {
+				jValue = jsn["td"];
+
+				if (!jValue["st"]) {
+					jValue["st"] = "";
+					jValue["st"] += sTDcommonStyle;
+				} else {
+					jValue["st"] += ";" + sTDcommonStyle;
+//					console.log(jValue);
+				}
+//				jsn["td"].st += (jValue.st.slice(-1) == ";" ? "" : ";") + sTDcommonStyle;
+
+				htm = this.anaTagStyle(jValue, "td", true);
+				//htm 此時已含 <td>
+				
+				nRowSpan = 0;
+				nColSpan = 0;
+				if (jValue.csp) {
+					nColSpan = parseInt(jValue.csp);
+					jValue.csp = undefined;
+				}
+				if (jValue.rsp) {
+					nRowSpan = parseInt(jValue.rsp);
+					jValue.rsp = undefined;
+				}
+
+				if (jValue.c == undefined) {
+					nLnIdx++;
+					for (; nLnIdx < this.aLine.length; nLnIdx++) {
+						nRead++;
+						sLine = this.aLine[nLnIdx];
+						
+						if (/^\^\^\{"\/td".*\}/.test(sLine)) {
+							ndPara = this.stuffPara(nLnIdx, true); //paraSty 插入 br
+							htm += this.parseParaStyle();
+							this.NewPara();
+							break;
+						}
+
+						jsn = this.isKagLine(sLine, nLnIdx);
+						if (!this.mbFitDevice)
+							continue;
+						
+						if (jsn) {
+							this.parseJSON(jsn, nLnIdx);
+						} else {
+							this.paraText.push(sLine);
+							this.nIdxInPara += sLine.length;
+						}
+					}
+				} // if (!jValue.c)
+				else {
+					htm += jValue.c;
+				}
+
+				htm += "</td>";
+				ndTR.insertAdjacentHTML("beforeend", htm);
+				ndTD = ndTR.lastElementChild;
+
+				if (nColSpan > 0)
+					ndTD.colSpan = nColSpan;
+				if (nRowSpan > 0)
+					ndTD.rowSpan = nRowSpan;
+			}
+		}
+				
+	}
+//	console.log(ndTbl);
+//	如有 div 時
+//	this.ndCurrDiv = this.divRoot;
+	return [nRead, ndTbl];
 }

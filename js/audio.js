@@ -696,11 +696,11 @@ function openBookWin() {
 	var ctlLec = document.getElementById('selLecture');
 	var lecName = ctlLec.options[ctlLec.selectedIndex].text;
 	var lecId = ctlLec.value;
-//var sQry = {'bkName':bkName, 'bkId':bkId, 'lecName':lecName, 'lecId':lecId, 'isPC':mbIsPC};
-//	var jsn = JSON.stringify(sQry);
-//	window.open("./htm/" + fn + ".html?info=" + jsn);
+	var sQry = {'bkName':bkName, 'bkId':bkId, 'lecName':lecName, 'lecId':lecId, 'isPC':mbIsPC};
+	var jsn = JSON.stringify(sQry);
+	window.open("./htm/" + fn + ".html?info=" + jsn);
 
-	window.open('./htm/' + fn + '.html?"bkName":"' + bkName + '","bkId":"' + bkId + '","lecName":"' + lecName + '","lecId":"' + lecId + '"');
+//	window.open('./htm/' + fn + '.html?"bkName":"' + bkName + '","bkId":"' + bkId + '","lecName":"' + lecName + '","lecId":"' + lecId + '"');
 	
 //	window.open('./htm/' + fn + '.html?"bkName":"佛在人間","bkId":"fzrj","lecName":"開仁法師 2015 慧日講堂","lecId":"0008"');
 //	window.open("./htm/" + bkId + ".html?info=" + jsn);
