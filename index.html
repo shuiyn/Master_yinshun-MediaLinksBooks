@@ -5,7 +5,6 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width">
 	<link rel="stylesheet" type="text/css" href="css/common.css" />
-<!--	<link rel="stylesheet" type="text/css" href="css/menutree.css" />-->
 
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
@@ -13,14 +12,14 @@
 	<script src="data/lesson_List.js"></script>
 	<script src="data/lecture_List.js"></script>
 	<script src="js/search.js"></script>
-	<script src="js/audio.js"></script>
+<script>
+	var mbIsPC = false;
+</script>
 	
 </head>
 
 <body onload="onLoad();">
-<!--text-align:center;-->
 <h3 style="font-family:標楷體;">印順導師著作的相關影音文鏈結</h3>
-<!--<span id="demobody">body</span>-->
 
 	<table>
 		<tr>
@@ -52,7 +51,6 @@
 <span>已部分完成者：<a href="https://shuiyn.github.io/Master_yinshun-MediaLinksBooks/htm/ys_cell.html?%22bkName%22:%22%E4%BD%9B%E5%9C%A8%E4%BA%BA%E9%96%93%22,%22bkId%22:%22fzrj%22,%22lecName%22:%22%E9%96%8B%E4%BB%81%E6%B3%95%E5%B8%AB%202015%20%E6%85%A7%E6%97%A5%E8%AC%9B%E5%A0%82%22,%22lecId%22:%220008%22" target="_blank">佛在人間</a></span>
 </p>
 
-<!--padding:2px;<span style="padding:5px;color:red;"> 持續施工中……</span><br/><br/>-->
 <span style="background-color:#5f5f5f;color:#ffffff;"> 本站引用的影音文資料來源：</span><br/>
 	<div style="margin-top:0.3em;">
 	<a href="http://yinshun-edu.org.tw/Master_yinshun/books" target="_blank">印順文教基金會推廣教育中心</a><br/>
@@ -67,6 +65,65 @@
 </span>
 	</div>
 </div>
+
+
+
+
+<script>
+
+function onLoad() {
+	mbIsPC = !uaNotPC();
+	fillBook();
+}
+
+function fillBook(){
+	var arr = initUsedBook(); //傳回 類別
+	var s = '<select id="selBook" onchange="onBookChange(this);" style="width:10em;"> ';
+	
+	for(var b in arr){
+		s+= ' <option value="' + b + '">' + arr[b] + '</option>'
+	}
+	
+	s+=" </select>";
+	document.getElementById("dvBook").innerHTML = s;
+
+	onBookChange(document.getElementById('selBook'));
+}
+
+
+function onBookChange(e){
+	fillLecture(e.value);
+}
+
+
+function fillLecture(bkid){
+	var lecs=grabLecture(bkid);
+console.log(lecs);
+	var s='<select id="selLecture" style="width:14em;"> ';
+	for(var lecId in lecs) {
+		s+= ' <option value="' + lecId + '">' + lecs[lecId] + '</option>'
+	}
+	
+	s+=" </select>";
+	document.getElementById("dvLecture").innerHTML = s;
+		
+}
+
+function openBookWin() {
+	var fn = "ys_cell";
+	
+	var ctlBook = document.getElementById('selBook');
+	var bkId = ctlBook.value;
+	var bkName = ctlBook.options[ctlBook.selectedIndex].text;
+	var ctlLec = document.getElementById('selLecture');
+	var lecName = ctlLec.options[ctlLec.selectedIndex].text;
+	var lecId = ctlLec.value;
+	var sQry = {'bkName':bkName, 'bkId':bkId, 'lecName':lecName, 'lecId':lecId, 'isPC':mbIsPC};
+	var jsn = JSON.stringify(sQry);
+	window.open("./htm/" + fn + ".html?info=" + jsn);
+}
+</script>
+
 </body>
 </html>
 

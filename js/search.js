@@ -75,33 +75,6 @@ var grabLesson=function(masterId, bkId, phId){
 }
 
 
-
-//old: grabYbkCont("jkjjj","1.31~1.36") 同 slice：不含 36
-//grabYbkCont("jkjjj","31~36") 同 slice：不含 36
-var grabYbkCont_Old=function(bkid, lineScope){
-	var ybk=book_jkjjj;
-	var se=lineScope.split("~"); //Start & End Line
-	if (!se[1]) se[1]="~~toEndOfFile";
-	
-	var bStart=false;
-	var out={};
-	//列號必為連續，且從 1 （程式從 0）計起
-	//是否改為 for(var i=se[0]; i < se[1]; i++)
-	//	out[lineId]=ybk[i];
-	for(var lineId in ybk){
-		if (!bStart) {
-			if (lineId==se[0]) bStart=true;
-		}
-
-		if (bStart) {
-			if (lineId==se[1]) break;
-			out[lineId]=ybk[lineId];
-		}
-	}
-	
-	return out;
-}
-
 var grabYbkCont=function(bkId, lineScope){
 	var ybk=book_List[bkId];
 	var se=lineScope.split("~"); //Start & End Line

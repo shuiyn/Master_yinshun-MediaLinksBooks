@@ -357,7 +357,7 @@ kEssayNode.prototype.processUnLined=function(jsn, nLnIdx) {
 			this.genTableNode(jsn["tableNode"]);
 			jsn[itm] = undefined;
 
-		} else if (itm == "old_tableNode" && (jsn[itm] != undefined)) {
+		/*} else if (itm == "old_tableNode" && (jsn[itm] != undefined)) {
 			aRslt = this.genTableNode(nLnIdx+1, jsn["tableNode"]);
 			if (aRslt) {
 				nReadLines = aRslt[0];
@@ -373,7 +373,7 @@ kEssayNode.prototype.processUnLined=function(jsn, nLnIdx) {
 				htm = aRslt[1];
 				this.ndCurrDiv.appendChild(this.genNode(htm));
 		}
-			jsn[itm] = undefined;
+			jsn[itm] = undefined;*/
 		} else if (itm == "NA" && (jsn[itm] != undefined)) {
 			nReadLines = 0;
 			htm = '<img src="' + hostImgURL() + 'noteArea.png" width="25%" height="2px" />';
@@ -919,7 +919,7 @@ kEssayNode.prototype.readMenu=function(idx) {
 
 //aItem = [{"c":"", "lev":0}, ...]
 kEssayNode.prototype.createReadMenu=function(aItem) {
-	var sPath = "img/";//hostImgURL();
+	var sPath = hostImgURL();
 	var rtUL = document.createElement("UL");
 	rtUL.setAttribute("class", "menutree");
 	rtUL.setAttribute("onclick", "onMenuClicked(event)");

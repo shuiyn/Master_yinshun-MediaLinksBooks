@@ -14,8 +14,6 @@
 	<script src="../data/fzrj_kr_2015.js"></script>
 	<script src="../data/auxData_0001.js"></script>
 	<script src="../data/auxData_0002.js"></script>
-<!--	<script src="../data/auxData_List.js"></script>-->
-<!--	<script src="../data/auxJSON_List.js"></script>-->
 	<script src="../data/pnj_style.js"></script>
 	<script src="../data/pnj_book.js"></script>
 	<script src="../data/ffgl_book.js"></script>
@@ -47,7 +45,6 @@ var onLoad = function() {
 
 	mbIsPC = !uaNotPC();
 
-
 	document.getElementById("tit_booklecName").innerHTML = q.bkName + "：" + q.lecName;
 
 	theAud = new mysAud();
@@ -56,9 +53,6 @@ var onLoad = function() {
 	theBook.fillBook();
 	
 	if (mbIsPC) {
-//		msSourceWords = "srcwords";
-//		msNoteareaBg = "div.notearea"; //註解區背景色
-		
 		if (window.addEventListener) {              
 		    window.addEventListener("resize", rstPosition);
 //		    window.addEventListener("onclick", winOnClick);
@@ -82,10 +76,9 @@ var onLoad = function() {
 </head>
 
 <body onload="onLoad()">
-<!--<span id="tit_booklecName"></span>- style="overflow:hidden;"-->
 <div  class="audioGroup">
 <span id="tit_booklecName" style="font-size:90%;font-family:標楷體;font-weight:bold;"></span><br/>
-<span id="try" style="width:80%;"></span>
+<!--<span id="try" style="width:80%;"></span>-->
 </div>
 
 <!--期別、著文、講義切換-->
@@ -160,7 +153,6 @@ var onLoad = function() {
 	<td>
 			<button onclick="rstContHandFontSize('-')" style="padding-right:4px;color:DodgerBlue;">─</button>
 			<span id="contFontSize" style="background-color:white;padding-left:3px;padding-right:3px;border:1px black solid;">96</span>
-<!--			margin-right:0.5em;-->
 			<button style="color:DodgerBlue;" onclick="rstContHandFontSize('+')">✚</button>
 	</td>
 
