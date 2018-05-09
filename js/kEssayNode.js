@@ -64,6 +64,8 @@ var togglePageNum_ALL=function(nMode) {
 }
 */
 
+
+	/* 移到 ys)cell.html
 //讀取書本的各「章」名稱，作為選單
 var grabEssayChapter=function(jsEsy) {
 	var aChapt = [];
@@ -91,7 +93,7 @@ var openEssay=function(bCM, jsnChapter) {
 	
 	doToggleBR();
 }
-
+*/
 
 /*
 需要斷行者：

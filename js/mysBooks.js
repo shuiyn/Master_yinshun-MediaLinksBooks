@@ -258,17 +258,21 @@ var lessonProcessOnClick=function(selectedIndex) {
 mysBooks.prototype.fillLesson=function(out, masterId, phId){
  	var bGroup = false;
  	var aProcess = [];
+ 	var nNonGroupIdx = 0;
 
 	var s='<select id="selLesson" onchange="theBook.onLessonChange(this)" style="width:6em;"'+ 'data-mbpId="' + [masterId, this.bkId, phId].join(",") + '"> ';
 	for(var i=0; i< out.length; i++) {
 		var lpros=(out[i].p ? out[i].p : "");
 	 	var sLiText = (out[i].sno ? out[i].sno : out[i].d);
  	
-		if (lpros)
-			aProcess.push('<p><a onclick=lessonProcessOnClick(' + i + ')><span style="color:blue;">' + sLiText + "</span>：" + lpros + "</a></p>");
 
 		if (out[i].url) {
 			s+= '<option value="' + out[i].url + '" data-lpros="' +lpros+ '">' + sLiText + '</option>';
+
+		if (lpros)
+			aProcess.push('<p><a onclick=lessonProcessOnClick(' + nNonGroupIdx + ')><span style="color:blue;">' + sLiText + "</span>：" + lpros + "</a></p>");
+		
+			nNonGroupIdx++;
 		} else {
 			if (bGroup) s+= '</optgroup>';
 				s += '<optgroup label="' + sLiText + '">';

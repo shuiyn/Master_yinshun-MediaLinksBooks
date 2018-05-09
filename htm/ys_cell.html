@@ -72,6 +72,37 @@ var onLoad = function() {
 	rstPosition();
 }
 
+
+
+//讀取書本的各「章」名稱，作為選單
+var grabEssayChapter=function(jsEsy) {
+	var aChapt = [];
+	for (s in jsEsy) {
+		aChapt.push(s);
+	}
+	
+	return aChapt;
+}
+
+//將指定的「章」，填入展示的 divRoot
+//var openEssay=function(divRoot, jsnChapter, selPageList) {
+var openEssay=function(bCM, jsnChapter) {
+	var divRoot = (bCM ? theBook.ctlShowYin : theBook.ctlShowAux);
+	var selPageList = (bCM ? theBook.selPageListYin : theBook.selPageListAux);
+	var idTail = (bCM ? "" : "_H");
+
+	divRoot.innerHTML = "";
+	
+	while (selPageList.length > 0) selPageList.remove(0);
+	
+	var esy = new kEssayNode(divRoot, jsnChapter, selPageList, idTail);
+	esy.transData();
+	createCmMenu(esy.maToc);
+	
+	doToggleBR();
+}
+
+
 	</script>
 </head>
 
