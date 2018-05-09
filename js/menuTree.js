@@ -185,6 +185,7 @@ function onMenuClicked(ev) {
 			}
 		}
 	}
+}
 	
 	/*
 	var sShow = "";
@@ -202,11 +203,11 @@ function onMenuClicked(ev) {
 	}
 		
 	document.getElementById("demo").innerHTML = sShow;*/
-	
+	*/
+		
 //	document.getElementById("demo").innerHTML = tt.nodeName + ", " + tt.childElementCount + tt.parentNode;
 	//alert(event.target.nodeName);
 //	alert("this.childElementCount");
-}
 
 
 
