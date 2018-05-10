@@ -168,11 +168,11 @@ kEssayNode.prototype.transData=function() {
 		if (/@@\{img\/\}/.test(sLine)) {
 			sLine = sLine.replace(/@@\{img\/\}/g, hostImgURL());
 		}
-		
+
 		jsn = this.isKagLine(sLine, nLnIdx);
 		if (!this.mbFitDevice)
 			continue;
-			
+		
 		if (jsn) {
 			this.processUnLined(jsn, nLnIdx);
 			nLnIdx += this.mnReadExtra;
@@ -309,17 +309,16 @@ kEssayNode.prototype.processUnLined=function(jsn, nLnIdx) {
 	for (var itm in jsn) {
 		nJsnCount++;
 
-		if (/^(end_table|td|tr|\/td)$/i.test(itm)) {
+//		if (/^(end_table|td|tr|\/td)$/i.test(itm)) {
+		if (/^(end_table|td|tr)$/i.test(itm)) {
 			if (this.paraText.length > 0)	{
 					this.stuffPara(nLnIdx); //paraSty 插入 br
 					this.ndCurrPara.style.marginTop = "0";
 					this.ndCurrPara.style.marginBottom = "0";
 					this.NewPara();
 					
-					if (this.moTable.ndPrevDiv)
-						this.ndCurrDiv = this.moTable.ndPrevDiv;
-//					else
-//						console.log(jsn, this.moTable);
+//					if (this.moTable.ndPrevDiv)
+					this.ndCurrDiv = this.moTable.ndPrevDiv;
 			}
 			
 			if (itm == "tr" && (jsn[itm] != undefined)) {
@@ -327,12 +326,11 @@ kEssayNode.prototype.processUnLined=function(jsn, nLnIdx) {
 
 			} else if (itm == "td" && (jsn[itm] != undefined)) {
 				this.genTData(nLnIdx, jsn["td"]);
+			} else if ("end_table" == itm) {
+//	console.log("end_table", jsn[itm], nLnIdx, this.ndCurrDiv);
+				this.ndCurrDiv = this.moTable.ndPrevDiv
+				this.moTable = null;
 			}
-			
-					if ("end_table" == itm) {
-//						console.log("end_table", jsn[itm], nLnIdx, this.ndCurrDiv);
-						this.moTable = null;
-					}
 			jsn[itm] = undefined;
 			continue;
 		}
@@ -519,7 +517,8 @@ kEssayNode.prototype.anaDivValue=function(value) {
 } //eof anaDivValue
 
 
-kEssayNode.prototype.stuffPara=function(nLnIdx, isNotParaTag) {
+//kEssayNode.prototype.stuffPara=function(nLnIdx, isNotParaTag) {
+kEssayNode.prototype.stuffPara=function(nLnIdx) {
 	if (this.jsPara) {
 		var nLen = 0;
 		if (this.jsPara["brLns"] != undefined) {
@@ -544,15 +543,15 @@ kEssayNode.prototype.stuffPara=function(nLnIdx, isNotParaTag) {
 			}
 		}
 		
-		if (isNotParaTag)
-			return this.anaTagStyle(this.jsPara);
-		else
+//		if (isNotParaTag)
+//			return this.anaTagStyle(this.jsPara);
+//		else
 			this.ndCurrPara = this.anaTagStyle(this.jsPara);
 
 	} //eof if (this.jsPara)
 	else {
-		if (isNotParaTag)
-			return null;
+//		if (isNotParaTag)
+//			return null;
 		
 		this.ndCurrPara = document.createElement("P");
 	}
@@ -571,20 +570,25 @@ kEssayNode.prototype.anaTagStyle=function(jTmp, sTagName, bHtmText) {
 	var sId = "";
 	var sClass = "";
 	var sStyle = "";
+	var sTblAttr = "";
 	var aPgSty = [];
 	
 	if (jTmp["st"])
 		aPgSty.push(jTmp["st"]); //.replace(/[;]+$/, "");
 	
 //	if (sTagName == "p" || sTagName == "div") {
-	if (sTagName.search(/p|div|td/i) > -1) {
+	if (sTagName.search(/^(p|div|td|table)$/i) > -1) {
 		if (typeof jTmp["ml"] != "undefined")
 				aPgSty.push("margin-left:" + this.anaUnits(jTmp["ml"]));
 		if (typeof jTmp["ti"] != "undefined")
 				aPgSty.push("text-indent:" + this.anaUnits(jTmp["ti"]));
 		
-		if (typeof jTmp["al"] != "undefined")
-			aPgSty.push(this.anaAlignment(jTmp["al"]));
+		if (typeof jTmp["al"] != "undefined") {
+			if (sTagName.toLowerCase() != "table")
+				aPgSty.push(this.anaAlignment(jTmp["al"]));
+			else
+				sTblAttr += ' align="' + this.anaAlignment(jTmp["al"], true) + '" ';
+		}
 	}
 	
 	if (sTagName == "p") {
@@ -610,7 +614,7 @@ kEssayNode.prototype.anaTagStyle=function(jTmp, sTagName, bHtmText) {
 		sClass = ' class="' + this.anaClass(jTmp["cs"]) + '"';
 	}
 
-	sTag = '<' + sTagName + sId + sClass + sStyle + '>';
+	sTag = '<' + sTagName + sId + sClass + sStyle + sTblAttr + '>';
 	/*
 	if (jTmp["cs"] != undefined) {
 		var sTmp = this.anaClass(jTmp["cs"]);
@@ -680,16 +684,16 @@ kEssayNode.prototype.anaUnits=function(id) {
 
 
 //尾均附加 ";"
-kEssayNode.prototype.anaAlignment=function(al) {
-	var sRet = "text-align:";
+kEssayNode.prototype.anaAlignment=function(al, bTable) {
+	var sRet = (bTable ? "" : "text-align:");
 	if (al == "c")
-		sRet += "center;";
+		sRet += "center";
 	else if (al == "r")
-		sRet += "right;";
+		sRet += "right";
 	else
-		sRet += al + ";";
+		sRet += al;
 	
-	return sRet;
+	return sRet + (bTable ? "" : ";");
 }
 
 kEssayNode.prototype.parseParaStyle=function() {
@@ -776,6 +780,10 @@ kEssayNode.prototype.parseParaStyle=function() {
 				if (sSet == "B")
 					sSty = "font-weight:bold";
 				else if (sSet == "U")
+					sSty = "border-bottom:1px solid black";
+				else if (sSet == "U2")
+					sSty = "border-bottom:2px solid black";
+				else if (sSet == "U0") // 保留，在 text-border 中時用
 					sSty = "text-decoration:underline";
 
 				aHtmB[sStart].push('<span style="' + sSty + ';">');
@@ -1029,6 +1037,8 @@ kEssayNode.prototype.readTable=function(idx, jsn) {
 kEssayNode.prototype.isKagLine=function(sLine, nLnIdx) {
 	var jsn = null;
 	
+	this.mbFitDevice = true;
+	
 	if (/^\^\^\{.*?\}$/.test(sLine)) {
 		try {
 			jsn = JSON.parse(sLine.substr(2));
@@ -1037,7 +1047,6 @@ kEssayNode.prototype.isKagLine=function(sLine, nLnIdx) {
 			throw e
 		}
 		
-		this.mbFitDevice = true;
 
 		if (jsn.fPC != undefined) {
 			if ((jsn.fPC && !mbIsPC) || (!jsn.fPC && mbIsPC))
@@ -1066,6 +1075,7 @@ kEssayNode.prototype.genTableNode=function(jsn) {
 	jTbl.sTDcommonStyle = jsn["tdst"] || "";
 
 //	var ndTbl = document.createElement("TABLE");
+	var ndPara = document.createElement("P");
 	var ndTbl = this.anaTagStyle(jsn, "table");
 	var ndTBody = document.createElement("TBODY");
 	
@@ -1073,10 +1083,13 @@ kEssayNode.prototype.genTableNode=function(jsn) {
 		ndTbl.border = 1;
 	
 	ndTbl.appendChild(ndTBody);
+	ndPara.appendChild(ndTbl);
 	
-	this.ndCurrDiv.appendChild(ndTbl)
+	this.ndCurrDiv.appendChild(ndPara)
+//	this.ndCurrDiv.appendChild(ndTbl)
 	jTbl.TBody = ndTBody;
 	jTbl.currTRow = null;
+	//因外裹 <p>
 	jTbl.ndPrevDiv = this.ndCurrDiv;
 	
 	this.moTable = jTbl;
@@ -1249,13 +1262,14 @@ kEssayNode.prototype.genTableNode_p =function(nLnIdx, jsn) {
 					for (; nLnIdx < this.aLine.length; nLnIdx++) {
 						nRead++;
 						sLine = this.aLine[nLnIdx];
-						
+						/*
 						if (/^\^\^\{"\/td".*\}/.test(sLine)) {
 							ndPara = this.stuffPara(nLnIdx, true); //paraSty 插入 br
 							htm += this.parseParaStyle();
 							this.NewPara();
 							break;
 						}
+						*/
 
 						jsn = this.isKagLine(sLine, nLnIdx);
 						if (!this.mbFitDevice)

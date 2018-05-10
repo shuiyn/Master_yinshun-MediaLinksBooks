@@ -515,6 +515,7 @@ var lecture_List={
  "0002": {
   "bkid": "ffgl",
   "cm": "ffgl_kr_2014",
+  "aux": "ffgl_kr_2014_aux",
   "master": "kr",
   "byear": "104",
   "croom": "pn",

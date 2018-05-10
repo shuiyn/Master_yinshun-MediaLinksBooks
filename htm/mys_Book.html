@@ -25,7 +25,6 @@
 	<script src="../data/cuePoint_List.js"></script>
 	
 	<script src="../js/kEssayNode.js"></script>
-	<script src="../js/ui.js"></script>
 	<script src="../js/search.js"></script>
 	<script src="../js/mysBooks.js"></script>
 	<script src="../js/kEssay.js"></script>
@@ -100,7 +99,7 @@ var openEssay=function(bCM, jsnChapter) {
 	esy.transData();
 	createCmMenu(esy.maToc);
 	
-	doToggleBR(divRoot);
+	doToggleBR();
 }
 
 
@@ -227,7 +226,7 @@ function onMenuClicked(ev) {
 	</td>
 	
 <td style="position:relative;">
-	<button id="btnDropdnProcess" onclick="tglDropDown(this,2)" class="dropbtn">進度</button>
+	<button id="btnDropdnProcess" onclick="toggleDropDown('dropdnProcess')" class="dropbtn">進度</button>
 	  <div id="dropdnProcess" class="dropdown-content" style="width:16em;right:0;height:26em;"> </div></td>
 	
 <!--	<td><button onclick="theAud.showCue()" style="margin-left:6px;display:none">cue</button></td>-->
@@ -289,14 +288,28 @@ function onMenuClicked(ev) {
 	</td>
 
 	<td>
-		<button id="toggleAux" onclick="toggleAux(this)" class="toggle">課</button>
+<!--		<button id="toggleAux" onclick="toggleAux(this)" class="toggle" style="margin-left:6px;">教材</button>-->
+		<button id="toggleAux" class="toggle" style="display:none;">課</button>
 	</td>
 
+	<td>
+		<button id="btnYinMenu" onclick="theBook.showPageTocSelect(this)" style="display:none">目</button>
+	</td>
+	<td>
+			<button id="btnOpenAux" onclick="document.all.dlgHandout.showModal()" style="display:none">開啟</button>
+	</td>
+
+	<td>
+			<button id="toggleBR" style="display:none;" onclick="toggleBR()" class="toggle">段</button>
+	</td>
 	
 <td style="position:relative;"><!--文檔工具區fixed-->
-	<button onclick="tglDropDown(this, 1)" class="dropbtn">章</button>
-	  <div id="dpdnChapterCm" class="dropdown-content"></div>
-	  <div id="dpdnChapterAux" class="dropdown-content"></div>
+
+<!--<div id="pnlEsyTool" class="dropdown" style="position:relative; top:1em; right:1em;">-->
+<!--	<tbale><tr>-->
+<!--	<td>-->
+	<button onclick="toggleDropDown('dropdnChpter')" class="dropbtn">章</button>
+	  <div id="dropdnChpter" class="dropdown-content"></div>
 	</td>
 	<td>
 	<button onclick="theBook.showPageTocSelect(this)" class="dropbtn">目</button>
@@ -341,9 +354,9 @@ function onMenuClicked(ev) {
 
 <!--文章顯示區-->
 
-<div id="content" onscroll="TryScroll(event);" class="essay"></div>
+<div id="content" onscroll="theBook.TryScroll(event);" class="essay"></div>
 
-<div id="auxPanel" onscroll="TryScroll(event);" class="essay" style="display:none;"></div>
+<div id="auxPanel" class="essay" style="display:none;"></div>
 
 
 
@@ -361,6 +374,18 @@ function onMenuClicked(ev) {
 </dialog>
 
 
+<dialog id="dlgHandout">
+<button onclick="this.parentNode.close()" class="dlgCloser">✖</button>
+<p class="dlgTitle">補充講義選單</p>
+
+<select id="auxDataList" style="width:20em;">
+<option>真常大我_真常妙有</option>
+</select>
+
+<p style="text-align:right;margin-top:2em;;margin-bottom:0px;">
+	<button onclick="theBook.openAuxData();this.parentNode.parentNode.close()">開啟</button>
+</p>
+</dialog>
 
 <dialog id="dlgPageToc" style="height:80%;width:90%;">
 <button onclick="document.all.dlgPageToc.close()"  class="dlgCloser">✖</button>

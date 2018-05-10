@@ -3,9 +3,19 @@ var mysBooks = function(bkId, lecId) {
 	this.bkId = bkId;
 	this.lecId = lecId;
 	this.phId = null;
+	
+	// book/cm Or aux Data
+	this.mbReadCm = true; //
+	this.currDropBtn = null; ///章、目、進度 invoke btn
+	this.currDropDown = null; ///章、目、進度 drop
+	
 	this.cm; // course materials
 	if(lecture_List[lecId].cm != undefined) {
 		this.cm = eval(lecture_List[lecId].cm);
+	}
+	this.aux; // aux course materials
+	if(lecture_List[lecId].aux != undefined) {
+		this.aux = eval(lecture_List[lecId].aux);
 	}
 	this.book;
 	try {
@@ -31,21 +41,24 @@ var mysBooks = function(bkId, lecId) {
 //	} catch(e) {}
 
 	this.mbJumpAnchor = false;
+	this.pairingIdCtrl();
+}
 
+
+mysBooks.prototype.pairingIdCtrl=function(){
 	this.tblShowYin = document.getElementById("tblShowYin");
 	this.tblShowAux = document.getElementById("tblShowAux");
 	this.ctlShowYin = document.getElementById("content");
 	this.ctlShowAux = document.getElementById("auxPanel");
 	
+	this.fontSizePan = document.getElementById("contFontSize");
+	
 	this.selPageListYin = document.getElementById("pageList");
 	this.selPageListAux = document.getElementById("pageList_hand");
-}
-
-
-mysBooks.prototype.showPageTocSelect=function(btn){
-//	if (btn.id == "btnAuxMenu")
-//	document.getElementById("dlgPageToc_hand").showModal();
-	document.getElementById("dlgPageToc").showModal();
+	
+	this.dpdnProcess = document.getElementById("dropdnProcess");
+	this.dpdnChapterCm = document.getElementById("dpdnChapterCm");
+	this.dpdnChapterAux = document.getElementById("dpdnChapterAux");
 }
 
 
@@ -59,40 +72,6 @@ mysBooks.prototype.onPageListChange=function(e){
 	document.getElementById("dlgPageToc").close();
 }
 
-
-mysBooks.prototype.TryScroll=function(ev) {
-	if (this.mbJumpAnchor) {
-		window.scrollTo(0, 0);
-		this.mbJumpAnchor = false;
-	}
-}
-
-//◆ 彈出式選單必與 invoke button 同屬一個 parentNode
-window.onclick=function(event) {
-    var dropdowns = document.getElementsByClassName("dropdown-content");
-    for (var nDrop=0; nDrop < dropdowns.length; nDrop++) {
-			var openDropdown = dropdowns[nDrop];
-    	if (event.target.parentNode != openDropdown.parentNode) {
-	      if (openDropdown.classList.contains('dropdownShow')) {
-	        openDropdown.classList.remove('dropdownShow');
-	      }
-    	}
-    }
-//    console.log(dropdowns[nDrop].id, ", sameP, ", event.target.parentNode == dropdowns[nDrop].parentNode)
-//    console.log(event.target.nextElementSibling, dropdowns[0]);
-//  if (!event.target.nextElementSibling.isSameNode(dropdowns[0])) {
-  /*
-  if (!event.target.matches('.dropbtn')) {
-//  if (event.target.nextElementSibling != dropdowns[0]) {
-    var i;
-    for (i = 0; i < dropdowns.length; i++) {
-      var openDropdown = dropdowns[i];
-      if (openDropdown.classList.contains('dropdownShow')) {
-        openDropdown.classList.remove('dropdownShow');
-      }
-    }
-  }*/
-}
 
 
 mysBooks.prototype.fillDropdown=function(ctl, aItem) {
@@ -112,13 +91,39 @@ mysBooks.prototype.fillDropdown=function(ctl, aItem) {
 	ctl.style.width = (nWidth*16+16) + "px";
 }
 
-function toggleDropDown(id) {
-	var drpdn = document.getElementById(id);
-	drpdn.classList.toggle("dropdownShow");
+
+mysBooks.prototype.doFillBook=function(bCM) {
+	var src = (bCM ? this.cm : this.aux);
+	var drpdn = (bCM ? this.dpdnChapterCm : this.dpdnChapterAux);
+	
+	if (src) {
+		var aChapter = [];
+		for (var ch in src) {
+			if (ch == "ft") {
+					document.getElementById("toggleNote").disabled = (!this.cm[ch]["note"]);
+					document.getElementById("toggleLineNo").disabled = (!this.cm[ch]["lnNo"]);
+			} else {
+				aChapter.push(ch);
+			}
+		}
+		
+		this.fillDropdown(drpdn, aChapter);
+		
+		openEssay(bCM, src[aChapter[0]]);
+	}
 }
 
+
 mysBooks.prototype.fillBook=function() {
-	var drpdn = document.getElementById("dropdnChpter");
+	this.doFillBook(false);
+	
+	if (this.cm)
+		this.doFillBook(true);
+	else {
+	  this.ctlShowYin.innerHTML = "<p>本單元尚未建立 ePub 檔。</p><p>請點按左上角【<span style='font-weight:bold;color:brown;'>期別</span>】按鈕，切換到【<span style='font-weight:bold;color:brown;'>講義</span>】，開啟右側選單，點選所要參閱的章節，再點按【<span style='background-color:lightgreen;'>到網頁</span>】連結，即可前往該文件網址。</p>";
+	}
+	/*
+	var drpdn = document.getElementById("dpdnChapterCm");
 	
 	if (this.cm) {
 		var aChapter = [];
@@ -142,6 +147,7 @@ mysBooks.prototype.fillBook=function() {
 	  this.ctlShowYin.innerHTML = "<p>本單元尚未建立 ePub 檔。</p><p>請點按左上角【<span style='font-weight:bold;color:brown;'>期別</span>】按鈕，切換到【<span style='font-weight:bold;color:brown;'>講義</span>】，開啟右側選單，點選所要參閱的章節，再點按【<span style='background-color:lightgreen;'>到網頁</span>】連結，即可前往該文件網址。</p>";
 //	  this.ctlShowYin.innerHTML = this.parseCont();
 	}
+	*/
 	
   this.fillAuxDataOpt();
   this.fillHandout();
@@ -551,472 +557,3 @@ mysAud.prototype.forbackward=function(mode) {
 		this.aud.currentTime += 10;
 }
 
-
-
-//非物件函式 ---------------------------------------
-//重設文章、講義顯示區的高度
-function fitDevice() {
-	if (mbIsPC) {
-		document.getElementById("tit_booklecName").style.fontSize = "110%";
-		document.getElementById("content").style.fontSize = "110%";
-		document.getElementById("auxPanel").style.fontSize = "110%";
-		document.getElementById("contFontSize").innerHTML = "110";
-
-		document.getElementById("palyStartH").style.width = "1.7em";
-		document.getElementById("palyStartM").style.width = "2.2em";
-		document.getElementById("palyStartS").style.width = "2.2em";
-		
-		document.getElementById("dlgPageToc").style.width = "50%";
-	}
-	
-}
-
-//首次開啟 Menu 窗時，擷取相對位置，設妥高度後即卸載事件器
-function dlgFocusIn(e) {
-	var dlg = document.getElementById("dlgPageToc");
-	var mnuRoot = document.getElementById("mnuRoot");
-	mnuRoot.style.height = (dlg.offsetHeight - mnuRoot.offsetTop -20) + "px";
-
-	dlg.removeEventListener("dlgFocusIn", dlgFocusIn);
-
-}
-
-
-function rstPosition() {
-	var wInnerH = window.innerHeight;
-	var nTop = document.getElementById("content").offsetTop;
-//	document.getElementById("pnlEsyTool").style.top = (nTop-28) + "px";
-
-	var nDiffH = (wInnerH - nTop - 10);
-	
-//document.getElementById("try").innerHTML = wInnerH + ", t=" + nTop + ", h= " + nDiffH;
-
-	theBook.ctlShowYin.style.height = (nDiffH-10) + "px";
-	theBook.ctlShowAux.style.height = (nDiffH-10) + "px";
-}
-
-
-
-//重疊 table 切換顯示
-function doToggle(btn, aInner, aTbl, aOwner, aDvText) {
-//	var btn = document.getElementById(btnId);
-	var tbl_0,tbl_1;
-
-	if (aTbl) {
-		tbl_0 = document.getElementById(aTbl[0]);
-		tbl_1 = document.getElementById(aTbl[1]);
-	}
-	
-	if (btn.innerHTML == aInner[0]) {
-		btn.innerHTML = aInner[1];
-		if (aOwner) {
-			document.getElementById(aOwner[0]).removeChild(btn);
-			document.getElementById(aOwner[1]).appendChild(btn);
-		}
-
-		if (aTbl) {
-			tbl_0.style.visibility = "collapse";
-			tbl_1.style.visibility = "visible";
-		}
-
-		if (aDvText) {
-			for (var i = 0;i < aDvText.length; i+=2) {
-				if (aDvText[i])
-					document.getElementById(aDvText[i]).style.display = "none";
-				if (aDvText[i+1])
-					document.getElementById(aDvText[i+1]).style.display = "block";
-			}
-//			document.getElementById(aDvText[0]).style.display = "none";
-//			document.getElementById(aDvText[1]).style.display = "block";
-		}
-	} else {
-		btn.innerHTML = aInner[0];
-		if (aOwner) {
-			document.getElementById(aOwner[1]).removeChild(btn);
-			document.getElementById(aOwner[0]).appendChild(btn);
-		}
-
-		if (aTbl) {
-			tbl_0.style.visibility = "visible";
-			tbl_1.style.visibility = "collapse";
-		}
-
-		if (aDvText) {
-			for (var i = 0;i < aDvText.length; i+=2) {
-				if (aDvText[i+1])
-					document.getElementById(aDvText[i+1]).style.display = "none";
-				if (aDvText[i])
-					document.getElementById(aDvText[i]).style.display = "block";
-			}
-		}
-	}
-}
-
-
-	/*
-function toggleBtnAux(auxId){
-	var btn = document.getElementById("toggleAux");
-	
-	btn.setAttribute("auxId", auxId);
-	
-	btn.disabled = !auxId;
-	if (btn.disabled) {
-		btn.innerHTML = "輔";
-		toggleAux(btn);
-	}
-}*/
-
-
-function toggleAux(btn){
-	doToggle(btn, ["教材", "補充"], null, null,["content", "auxPanel", "pageList", "pageList_hand", "btnYinMenu", "btnOpenAux", null, "toggleBR"]);
-	
-	/*
-	var btnBR = document.getElementById("toggleBR");
-	btnBR.disabled = (btn.innerHTML == "文");
-
-	if (btnBR.disabled) {
-		btnBR.innerHTML = "段";
-	}
-	else if (!theBook.ctlShowAux.innerHTML)
-			openAuxBook(btn.getAttribute("auxId"));
-	*/
-}
-
-function toggleHandout(btn){
-  doToggle(btn, ["期別", "講義"], ["tblShowPhrase", "tblShowHandout"], ["tdPhrase", "tdHandout"]);
-}
-
-
-mysBooks.prototype.openAuxData=function() {
-	var sel = document.getElementById("auxDataList");
-	var auxId = sel.value;
-//	console.log(sel.value, sel.options[sel.selectedIndex].text);
-	if (!auxId) return;
-	
-	document.getElementById("toggleBR").innerHTML = "段";
-	
-	var pgIdPfx = base_List.htmlIdPrefix.page;
-
-	var pageList_hand = document.getElementById("pageList_hand");
-	while (pageList_hand.length > 0) pageList_hand.remove(0);
-
-	var out = this.transAuxData(this.auxData[auxId]);
-	
-	this.ctlShowAux.innerHTML = out.join("").replace(/\[p[a-z]?\d+\]/g,function(x){
-		var ma = x.match(/\[(p[a-z]?\d+)\]/);
-		var opt = document.createElement("option");
-		opt.text = ma[1].substr(1);
-		pageList_hand.add(opt);
-		
-		return '<p id="' + pgIdPfx + ma[1] + '_H" style="color:blue;">' + x + "</p>";
-//		return '<hr/><p id="' + pgIdPfx + ma[1] + '_H" style="color:blue;">' + x + "</p>";
-	});
-
-	this.ctlShowAux.scrollTo(0,0);
-	doToggleBR(false);
-}
-
-
-//◆ nti_、ntd_ 要末加識別字，以區分「原著、講義」
-mysBooks.prototype.parseParaStyle=function(paraText, paraSty) {
-	var aHtmB={};//{"66":["<span...>","<a...>", ...]
-	var aHtmE={};
-	var aVar = [], sStart = "", sEnd = "", sSet = "";
-	
-	paraSty.map(function(jsn, nIdx) {
-		for (var i in jsn) {
-			aVar = jsn[i];
-			sStart = aVar[0];
-
-			if (sStart != null)
-				sEnd = aVar[0] + aVar[1];
-			else
-				sEnd = aVar[1];
-
-			sSet = aVar[2]; // if length < 2 ??
-		
-			if (sStart != null)
-				if(!aHtmB[sStart]) aHtmB[sStart] = [];
-			
-			if (sEnd != null)
-				if(!aHtmE[sEnd]) aHtmE[sEnd] = [];
-
-			if (i == "ln") {
-				aHtmB[sStart].push('<sup class="falseBR">' + sSet + "</sup>");
-			} else if (i == "f_br") {
-				aHtmE[sEnd].push('<br class="falseBR" />');
-			} else if (/^CS_?\d{0,2}$/.test(i)) {
-				if (sSet == "srcwords")
-					sSet = msSourceWords; //定義於 ys_cell.html
-				aHtmB[sStart].push('<span class="' + sSet + '">');
-				aHtmE[sEnd].push('</span>');
-			} else if (i == "a") {
-				aHtmB[sStart].push('<a href="'+ sSet + '" target="_blank">');
-				aHtmE[sEnd].push('</a>');
-			} else if (i == "br") { // true br
-				aHtmE[sEnd].push("<br/>"); //nStart 前已計實 + sLine.length
-			} else if (/^nti_\d+$/.test(i)) {
-				//◆ 註序前後各附加１個空白
-				aHtmB[sStart].push('<sup id="' + i + '" class="noteNum"><a href="#ntd_' + i.substr(4) + '"> ');
-				aHtmE[sEnd].push(' </a></sup>');
-			} else if (/^ntd_\d+$/.test(i)) {
-				aHtmB[sStart].push('<span id="' + i + '" class="noteDet"><a href="#nti_' + i.substr(4) + '">〈註 ');
-				aHtmE[sEnd].push('〉</a></span>');
-			} else if (/^ST_?\d{0,2}$/.test(i)) {
-				aHtmB[sStart].push('<span style="' + sSet + '">');
-				aHtmE[sEnd].push('</span>');
-			} else if (i == "TAG") {
-				aHtmB[sStart].push('<' + sSet + '>');
-				aHtmE[sEnd].push('</' + sSet + '>');
-			} else {
-				console.log("Kag style not defined:", i);
-			}
-		} // for_jsn
-	}); // map
-	
-	
-	var out = 
-	paraText.join("").replace(/./g, function(x, idx) {
-		var s = "";
-		
-		if(aHtmE[idx])
-			s = aHtmE[idx].join("");
-		if(aHtmB[idx])
-			s += aHtmB[idx].join("");
-
-		return s+x;
-	});
-	
-//	console.log(out);
-	return "<p>" + out + "</p>";
-}
-
-mysBooks.prototype.transAuxData=function(aLine) {
-	if (this.lecId != "0001")
-		return openEssayData(aLine);
-	
-	var out = [];
-	//文章標題〝不計入行數〞，先寫入，此後不必判斷
-	var nIdxInPara = 0;//nStart 在全段中的實體位序
-	var nRowCount = 1; //各頁所有行的行號，人讀、從 1 起計
-	var paraText = [];
-	var paraSty = [];
-	var sLine, tagPageNum, jsn;
-
-	for (var nIdx = 0; nIdx < aLine.length; nIdx++) {
-		sLine = aLine[nIdx];
-		
-		//or ^^{p}，全段的結束標記
-		if (!sLine) {
-			out.push(this.parseParaStyle(paraText, paraSty));
-			paraText = [];
-			paraSty = [];
-			nIdxInPara = 0;
-			continue;
-		}
-		
-	//???◆◆在此必需先依 nIdxInPara 校正 nStart 在全段中的實體位址
-//		if (sLine.startsWith('^^{')) {
-		if (/^\^\^\{.*?\}$/.test(sLine)) {
-			jsn = JSON.parse(sLine.substr(2));
-			
-			for (ji in jsn) {
-				if (ji == "br") { // true br, not false br
-					//該行末位
-					jsn["br"] = [null, nIdxInPara + aLine[nIdx + 1].length];
-				} else {
-					jsn[ji][0] += nIdxInPara;
-				}
-			}
-			paraSty.push(jsn);
-			
-			nIdx++;
-			sLine = aLine[nIdx];
-//			paraText.push(aLine[nIdx]);
-//			nIdxInPara += sLine.length;
-//			continue;
-		}
-		
-		var aTestNum = /\[p[a-z]?\d+\]/.exec(sLine);
-		tagPageNum= null;
-		if (aTestNum) tagPageNum = aTestNum[0];
-
-		//全行只有頁次者，[p1]，不遞加 nRowCount，前也不加 行號
-		if (tagPageNum == sLine) {
-//			if (tagPageNum != "[p1]") //第１頁碼前可能已含 文章標題等
-			if (!/\[p[a-z]?1\]/.test(tagPageNum)) //第１頁碼前可能已含 文章標題等
-				nRowCount = 1; //新段開始，行號重設 1 起計
-			paraText.push(sLine);
-			nIdxInPara += sLine.length;
-			continue;
-		}
-
-		jsn = {"ln":[nIdxInPara, null,nRowCount]};
-		paraSty.unshift(jsn); //unshift 置首，以免被其他 tag <span> 等包住而誤顯
-		// !aLine[nIdx+1].startsWith("^^{p")
-		//全段的末行、或同一行已含 true br 者，不另加 false br
-		if (!paraSty.find(function(x){return x["br"]})) {
-			if (nIdx < aLine.length-1 && aLine[nIdx+1]) {
-				jsn = {"f_br":[null, nIdxInPara + sLine.length]};
-
-				paraSty.push(jsn);
-			}
-	}
-
-			paraText.push(sLine);
-			nIdxInPara += sLine.length;
-
-		if (tagPageNum)
-			nRowCount = 1;
-		else
-			nRowCount++;
-	}
-	
-	if (paraText.length > 0)
-			out.push(this.parseParaStyle(paraText, paraSty));
-	
-	return out;
-}
-
-
-
-
-
-mysBooks.prototype.openAuxData_Old=function() {
-	var sel = document.getElementById("auxDataList");
-	var auxId = sel.value;
-//	console.log(sel.value, sel.options[sel.selectedIndex].text);
-	if (!auxId) return;
-	
-	document.getElementById("toggleBR").innerHTML = "段";
-	
-	var nRowCount = 1;
-	var aLine = this.auxData[auxId];
-//	var aLine = auxData_List[auxId];
-	var lstParaLine = this.auxJSON[auxId];
-//	var lstParaLine = auxJSON_List[auxId];
-
-	var doParseBR=function(sPara, nParaIdx){
-		var aBrIdx = lstParaLine[nParaIdx];
-		
-		var sRet = "";
-		
-		if (!aBrIdx || ((aBrIdx.length == 1) && (aBrIdx[0].startsWith("F")))) {
-			sRet = sPara;
-		} else {
-			//從倒數第 2 個往前找，最後 1 個是該段末，不加換列符
-	//		var nLastFrom = aBrIdx.length - 2;
-				
-			sPara.replace(/./g, function(x, nCharIdx){
-				var nIdx = aBrIdx.findIndex(function(s){return (s=="F" + nCharIdx) || (s=="T" + nCharIdx)});
-	//			if (aBrIdx.lastIndexOf(nCharIdx, nLastFrom) > -1) {
-				//每段開頭
-				if (nCharIdx==0) {
-					sRet += '<sup class="falseBR">' + nRowCount + "</sup>";
-					nRowCount++;
-				} else if (sPara.substr(nCharIdx).search(/\[(p[a-z]?\d+)\]/) == 0) {
-					nRowCount = 1;
-				}
-				
-				if (nIdx > -1) {
-					if (aBrIdx[nIdx].startsWith("T")) {
-						sRet += "<br/>" + x; //定位於 line.length
-						//如定位於字本身的 index，應 += x + "<br/>"
-					} else {
-						if (nIdx < aBrIdx.length - 1) {
-							sRet += '<br class="falseBR" /><sup class="falseBR">' + nRowCount + "</sup>"+ x;
-							nRowCount++;
-//							sRet += '<br class="falseBR" />' + x;
-						} else {
-							sRet += x;
-						}
-					}
-				} else {
-					sRet += x;
-				}
-			});
-		}
-		
-		return "<p>" + sRet + "</p>";
-	}
-
-	var out = aLine.map(doParseBR);
-	var pgIdPfx = base_List.htmlIdPrefix.page;
-
-	var pageList_hand = document.getElementById("pageList_hand");
-	while (pageList_hand.length > 0) pageList_hand.remove(0);
-
-	this.ctlShowAux.innerHTML = out.join("").replace(/\[p[a-z]?\d+\]/g,function(x){
-		var ma = x.match(/\[(p[a-z]?\d+)\]/);
-		var opt = document.createElement("option");
-		opt.text = ma[1].substr(1);
-		pageList_hand.add(opt);
-		
-		return '<hr/><p id="' + pgIdPfx + ma[1] + '_H" style="color:blue;">' + x + "</p>";
-//		return '<hr/><p style="color:blue;">' + x + "</p>";
-	});
-
-	doToggleBR(false);
-}
-
-function toggleBR(){
-	if (!theBook.ctlShowAux.innerHTML)
-		return;
-	
-	var btn = document.getElementById("toggleBR");
-	var bShowBR = false;
-	
-	if (btn.innerHTML == "段") {
-		btn.innerHTML = "行";
-		bShowBR = true;
-	} else {
-		btn.innerHTML = "段";
-	}
-	
-	doToggleBR(theBook.ctlShowAux);
-//	doToggleBR(bShowBR, theBook.ctlShowAux);
-}
-
-function doToggleBR(dv){
-	bookToggle("falseBR", "Hider", dv);
-}
-
-
-function bookToggle(clsNameEle, clsNameTog, dv){
-	dv = dv || theBook.ctlShowYin;
-	var a = dv.getElementsByClassName(clsNameEle);
-	for(var i=0; i < a.length; i++) a[i].classList.toggle(clsNameTog);
-}
-
-function toggleTocBold(dv){
-	bookToggle("tocTitle", "Bolder", dv);
-}
-
-function togglePageNum(dv) {
-	bookToggle("__pageNumHrDiv", "Hider", dv);
-}
-
-function toggleFullBookScreen(dv){
-//	dv = dv || theBook.ctlShowYin;
-//	var a = document.body.getElementsByClassName("audioGroupX");
-//	for(var i=0; i < a.length; i++) a[i].style.display="none";
-	bookToggle("audioGroup", "Hider", document.body);
-	rstPosition();
-}
-
-
-function toggleNA(dv){
-	var sName = (mbIsPC ? "notearea" :"notearea_m");
-	bookToggle(sName, "Hider", dv);
-}
-
-function rstContHandFontSize(sType){
-//	var ps = parseInt(theBook.ctlShowYin.style.fontSize);
-	var ps = parseInt(document.getElementById("contFontSize").innerHTML);
-	if (sType == "+") ps += 4;
-	else ps -= 4;
-	
-	document.getElementById("contFontSize").innerHTML = ps;
-	theBook.ctlShowYin.style.fontSize = ps+"%";
-	theBook.ctlShowAux.style.fontSize = ps+"%";
-}
