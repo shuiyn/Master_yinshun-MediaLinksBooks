@@ -460,7 +460,7 @@ kEssayNode.prototype.anaToc=function(jsn, nLnIdx) {
 	if (jsn["PS"] == undefined) //此為 jsn 非 jToc，供 transData() 處理
 		jsn["PS"] = {};
 	
-	jsn["PS"].id = tocIdPfx + this.maToc.length;
+	jsn["PS"].id = tocIdPfx + this.maToc.length + this.idTail;
 //	this.mnTocSno++;
 	this.maToc.push({"a":jsn["PS"].id, "lev":jToc["lev"], "c":sTmpLine});
 	

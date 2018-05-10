@@ -1,11 +1,11 @@
 
 
-//³¹¡B¥Ø¡B¶i«×
+//ç« ã€ç›®ã€é€²åº¦
 function tglDropDown(btn, nKind) {
 	theBook.currDropBtn = btn;
-	if (nKind == 1) { //³¹
+	if (nKind == 1) { //ç« 
 		theBook.currDropDown = (theBook.mbReadCm ? theBook.dpdnChapterCm : theBook.dpdnChapterAux);
-	} else if (nKind == 2) { //¶i«×
+	} else if (nKind == 2) { //é€²åº¦
 		theBook.currDropDown = theBook.dpdnProcess;
 	}
 	
@@ -13,7 +13,7 @@ function tglDropDown(btn, nKind) {
 }
 
 
-//¡» ¼u¥X¦¡¿ï³æ¥²»P invoke button ¦PÄİ¤@­Ó parentNode
+//â—† å½ˆå‡ºå¼é¸å–®å¿…èˆ‡ invoke button åŒå±¬ä¸€å€‹ parentNode
 window.onclick=function(event) {
     var dropdowns = document.getElementsByClassName("dropdown-content");
     for (var nDrop=0; nDrop < dropdowns.length; nDrop++) {
@@ -43,7 +43,7 @@ var TryScroll=function(ev) {
 
 
 
-//­º¦¸¶}±Ò Menu µ¡®É¡AÂ^¨ú¬Û¹ï¦ì¸m¡A³]§´°ª«×«á§Y¨ø¸ü¨Æ¥ó¾¹
+//é¦–æ¬¡é–‹å•Ÿ Menu çª—æ™‚ï¼Œæ“·å–ç›¸å°ä½ç½®ï¼Œè¨­å¦¥é«˜åº¦å¾Œå³å¸è¼‰äº‹ä»¶å™¨
 function dlgFocusIn(e) {
 	var dlg = document.getElementById("dlgPageToc");
 	var mnuRoot = document.getElementById("mnuRoot");
@@ -61,7 +61,7 @@ var showPageTocSelect=function(btn){
 }
 
 
-//½Õ¾ã ¤å³¹°Ï ¦r«¬¤j¤p
+//èª¿æ•´ æ–‡ç« å€ å­—å‹å¤§å°
 function rstContHandFontSize(sType){
 	var ps = parseInt(theBook.fontSizePan.innerHTML);
 	if (sType == "+") ps += 4;
@@ -73,7 +73,7 @@ function rstContHandFontSize(sType){
 }
 
 
-//­«³]¤å³¹¡BÁ¿¸qÅã¥Ü°Ïªº°ª«×
+//é‡è¨­æ–‡ç« ã€è¬›ç¾©é¡¯ç¤ºå€çš„é«˜åº¦
 function fitDevice() {
 	if (mbIsPC) {
 		document.getElementById("tit_booklecName").style.fontSize = "110%";
@@ -106,7 +106,7 @@ function rstPosition() {
 
 
 
-//¤å³¹Åã¥Ü ¤Á´«
+//æ–‡ç« é¡¯ç¤º åˆ‡æ›
 function bookToggle(clsNameEle, clsNameTog, dv){
 	dv = dv || theBook.ctlShowYin;
 	var a = dv.getElementsByClassName(clsNameEle);
@@ -114,7 +114,7 @@ function bookToggle(clsNameEle, clsNameTog, dv){
 }
 
 
-//openEssay ©I¥s®É·|¶Ç¤J°Ñ¼Æ
+//openEssay å‘¼å«æ™‚æœƒå‚³å…¥åƒæ•¸
 function doToggleBR(dv){
 	if (!dv)
 		dv = (theBook.mbReadCm ? theBook.ctlShowYin : theBook.ctlShowAux);
@@ -146,7 +146,7 @@ function toggleNA(dv){
 }
 
 
-//­«Å| table ¤Á´«Åã¥Ü
+//é‡ç–Š table åˆ‡æ›é¡¯ç¤º
 function doToggle(btn, aInner, aTbl, aOwner, aDvText) {
 	var tbl_0,tbl_1;
 
@@ -200,14 +200,16 @@ function doToggle(btn, aInner, aTbl, aOwner, aDvText) {
 
 
 function toggleHandout(btn){
-  doToggle(btn, ["´Á§O", "Á¿¸q"], ["tblShowPhrase", "tblShowHandout"], ["tdPhrase", "tdHandout"]);
+  doToggle(btn, ["æœŸåˆ¥", "è¬›ç¾©"], ["tblShowPhrase", "tblShowHandout"], ["tdPhrase", "tdHandout"]);
 }
 
 
 function toggleAux(btn){
-	doToggle(btn, ["½Ò", "»²"], null, null,["content", "auxPanel", "pageList", "pageList_hand"]);
+	doToggle(btn, ["èª²", "è¼”"], null, null,["content", "auxPanel", "pageList", "pageList_hand"]);
 	
-	theBook.mbReadCm = (btn.innerHTML == "½Ò");
+	theBook.mbReadCm = (btn.innerHTML == "èª²");
 	
+	theBook.mnuCm.style.display = (theBook.mbReadCm ? "block" : "none");
+	theBook.mnuAux.style.display = (theBook.mbReadCm ? "none" : "block");
 }
 

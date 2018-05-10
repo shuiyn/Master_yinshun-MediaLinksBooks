@@ -53,6 +53,9 @@ mysBooks.prototype.pairingIdCtrl=function(){
 	
 	this.fontSizePan = document.getElementById("contFontSize");
 	
+	this.mnuCm = document.getElementById("mnuRoot");
+	this.mnuAux = document.getElementById("mnuAux");
+	
 	this.selPageListYin = document.getElementById("pageList");
 	this.selPageListAux = document.getElementById("pageList_hand");
 	
@@ -149,24 +152,8 @@ mysBooks.prototype.fillBook=function() {
 	}
 	*/
 	
-  this.fillAuxDataOpt();
   this.fillHandout();
   this.fillPhase();
-}
-
-mysBooks.prototype.fillAuxDataOpt=function() {
-	var sel = document.getElementById("auxDataList");
-	while (sel.length > 0) sel.remove(0);
-	
-	if (!this.auxData) return;
-	
-	for (id in this.auxData) {
-		var opt = document.createElement("option");
-//    opt.setAttribute("value", id);
-    var t = document.createTextNode(id);
-    opt.appendChild(t);
-		sel.appendChild(opt);
-		}
 }
 
 
