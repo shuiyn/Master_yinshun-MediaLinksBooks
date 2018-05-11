@@ -104,13 +104,18 @@ var openEssay=function(bCM, jsnChapter) {
 var kEssayNode=function(divRoot, jsnChapter, selPageList, idTail) {
 	this.divRoot = divRoot;
 	this.selPageList = selPageList;
-	this.idTail = idTail;
+	this.msIdTail = idTail || "";
 	
 	this.aLine = jsnChapter.c;
 	this.mnStartMarginLev = 3; // margin-left 開始設值的 level，1 是「節」
 	if (jsnChapter.mlStartLev != undefined)
 		this.mnStartMarginLev = jsnChapter.mlStartLev;
 	// pgNum -> [p[a-z]?\d+]
+	
+	this.mbHasLineNum = true;
+	if (jsnChapter.lnNo != undefined)
+		this.mbHasLineNum = (jsnChapter.lnNo != 0);
+	
 	this.maToc = [];
 	this.paraText = [];
 	this.paraSty = [];
@@ -192,6 +197,7 @@ kEssayNode.prototype.transData=function() {
 			
 			var jTmpLine = null;
 			
+		if (this.mbHasLineNum) {
 			if (!this.moTable) {
 				//一行只有一個 tagPageNum 時，才會有tagPageNum == sLine
 				if (tagPageNum != sLine && !this.mbPrevParaIsNTDno) {
@@ -207,6 +213,7 @@ kEssayNode.prototype.transData=function() {
 					}
 				}
 			}
+		}
 			
 			this.paraText.push(sLine);
 			
@@ -460,7 +467,7 @@ kEssayNode.prototype.anaToc=function(jsn, nLnIdx) {
 	if (jsn["PS"] == undefined) //此為 jsn 非 jToc，供 transData() 處理
 		jsn["PS"] = {};
 	
-	jsn["PS"].id = tocIdPfx + this.maToc.length + this.idTail;
+	jsn["PS"].id = tocIdPfx + this.maToc.length + this.msIdTail;
 //	this.mnTocSno++;
 	this.maToc.push({"a":jsn["PS"].id, "lev":jToc["lev"], "c":sTmpLine});
 	
@@ -739,7 +746,7 @@ kEssayNode.prototype.parseParaStyle=function() {
 		opt.text = id.substr(1);
 		this.selPageList.add(opt);
 				
-				aHtmB[sStart].push('<span ' + 'id="' + pgIdPfx + id + this.idTail + '" class="__pageNum" pgNum="' + sSet + '">');
+				aHtmB[sStart].push('<span ' + 'id="' + pgIdPfx + id + this.msIdTail + '" class="__pageNum" pgNum="' + sSet + '">');
 				aHtmE[sEnd].unshift('</span>');
 
 			} else if (/^CS_?\d{0,2}$/.test(jItm)) {
