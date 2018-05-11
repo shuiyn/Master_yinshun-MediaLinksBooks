@@ -53,6 +53,8 @@ mysBooks.prototype.pairingIdCtrl=function(){
 	
 	this.fontSizePan = document.getElementById("contFontSize");
 	
+	this.dpdnMenuCm = document.getElementById("dpdnMenuCm");
+	this.dpdnMenuAux = document.getElementById("dpdnMenuAux");
 	this.mnuCm = document.getElementById("mnuRoot");
 	this.mnuAux = document.getElementById("mnuAux");
 	

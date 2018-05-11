@@ -63,13 +63,6 @@ var onLoad = function() {
 		}
 	}
 	
-	var dlg = document.getElementById("dlgPageToc");
-	if (window.addEventListener) {              
-	    dlg.addEventListener("focusin", dlgFocusIn);
-	} else if (window.attachEvent) {                 
-	    dlg.attachEvent("onfocusin", dlgFocusIn);
-	}
-
 	rstPosition();
 }
 
@@ -185,7 +178,6 @@ function onMenuClicked(ev) {
 
 	if (eTrigger.nodeName == "A") {
 		theBook.mbJumpAnchor = true;
-		document.getElementById("dlgPageToc").close();
 		//skip to html#id
 	}
 	
@@ -299,8 +291,12 @@ function onMenuClicked(ev) {
 	  <div id="dpdnChapterCm" class="dropdown-content"></div>
 	  <div id="dpdnChapterAux" class="dropdown-content"></div>
 	</td>
-	<td>
-	<button onclick="showPageTocSelect(this)" class="dropbtn">目</button>
+	<td style="position:relative;">
+	<button onclick="tglDropDown(this,3)" class="dropbtn">目</button>
+	  <div id="dpdnMenuCm" class="dropdown-content" style="width:26em;margin:0;padding:2px;left:-4em;">
+<ul id="mnuRoot" class="menutree" onclick="onMenuClicked(event)" style="height:18em;overflow-y:scroll;margin-left:0;margin-top:0;padding-left:20px;padding-top:0"></ul></div>
+	  <div id="dpdnMenuAux" class="dropdown-content" style="width:26em;margin:0;padding:2px;left:-4em;">
+<ul id="mnuAux" class="menutree" onclick="onMenuClicked(event)" style="height:18em;overflow-y:scroll;margin-left:0;margin-top:0;padding-left:20px;padding-top:0"></ul></div>
 	</td>
 
 		
@@ -347,7 +343,6 @@ function onMenuClicked(ev) {
 <div id="auxPanel" onscroll="TryScroll(event);" class="essay" style="display:none;"></div>
 
 
-
 <dialog id="dlgCue">
 <button onclick="theAud.closeCue()" class="dlgCloser">✖</button>
 <p class="dlgTitle">法師授課主題時點表</p>
@@ -359,22 +354,6 @@ function onMenuClicked(ev) {
 	<input type="checkbox" id="bookTo" checked>書本定位</input>　
 	<button onclick="theAud.cuePointPlay()">播放</button>
 </div>
-</dialog>
-
-
-
-<dialog id="dlgPageToc" style="height:80%;width:90%;">
-<button onclick="document.all.dlgPageToc.close()"  class="dlgCloser">✖</button>
-
-<p class="dlgTitle">目次選單</p>
-<hr/>
-<!--height:21em;	-->
-<div id="mnuArea" style="width:100%;padding:0;margin:0;padding:0">
-<ul id="mnuRoot" class="menutree" onclick="onMenuClicked(event)" style="height:18em;overflow-y:scroll;margin-left:0;margin-top:0;padding-left:20px;padding-top:0"></ul>
-
-<ul id="mnuAux" class="menutree" onclick="onMenuClicked(event)" style="display:none;height:18em;overflow-y:scroll;margin-left:0;margin-top:0;padding-left:20px;padding-top:0"></ul>
-</div>
-
 </dialog>
 
 <script>

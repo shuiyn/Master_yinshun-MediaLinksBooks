@@ -1,12 +1,17 @@
 
 
-//章、目、進度
+//章、目次選單、進度
 function tglDropDown(btn, nKind) {
 	theBook.currDropBtn = btn;
 	if (nKind == 1) { //章
 		theBook.currDropDown = (theBook.mbReadCm ? theBook.dpdnChapterCm : theBook.dpdnChapterAux);
 	} else if (nKind == 2) { //進度
 		theBook.currDropDown = theBook.dpdnProcess;
+	} else if (nKind == 3) { //目次選單
+		if (theBook.mbReadCm)
+			theBook.currDropDown = theBook.dpdnMenuCm;
+		else
+			theBook.currDropDown = theBook.dpdnMenuAux;
 	}
 	
 	theBook.currDropDown.classList.toggle("dropdownShow");
@@ -42,25 +47,6 @@ var TryScroll=function(ev) {
 }
 
 
-
-//首次開啟 Menu 窗時，擷取相對位置，設妥高度後即卸載事件器
-function dlgFocusIn(e) {
-	var dlg = document.getElementById("dlgPageToc");
-	var mnuRoot = document.getElementById("mnuRoot");
-	mnuRoot.style.height = (dlg.offsetHeight - mnuRoot.offsetTop -20) + "px";
-
-	dlg.removeEventListener("dlgFocusIn", dlgFocusIn);
-
-}
-
-
-
-
-var showPageTocSelect=function(btn){
-	document.getElementById("dlgPageToc").showModal();
-}
-
-
 //調整 文章區 字型大小
 function rstContHandFontSize(sType){
 	var ps = parseInt(theBook.fontSizePan.innerHTML);
@@ -85,9 +71,7 @@ function fitDevice() {
 		document.getElementById("palyStartM").style.width = "2.2em";
 		document.getElementById("palyStartS").style.width = "2.2em";
 		
-		document.getElementById("dlgPageToc").style.width = "50%";
 	}
-	
 }
 
 
