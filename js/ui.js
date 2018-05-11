@@ -67,9 +67,11 @@ function fitDevice() {
 		theBook.ctlShowAux.style.fontSize = "110%";
 		theBook.fontSizePan.innerHTML = "110";
 		
-		theBook.dpdnMenuCm.style.width = "26em";
 //		theBook.dpdnMenuCm.style.left = "-4em";
+		theBook.dpdnMenuCm.style.width = "26em";
 		theBook.dpdnMenuAux.style.width = "26em";
+		theBook.dpdnChapterCm.style.width = "26em";
+		theBook.dpdnChapterAux.style.width = "26em";
 
 		document.getElementById("palyStartH").style.width = "1.7em";
 		document.getElementById("palyStartM").style.width = "2.2em";
