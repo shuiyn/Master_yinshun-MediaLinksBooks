@@ -1073,11 +1073,11 @@ kEssayNode.prototype.genTableNode=function(jsn) {
 	
 	jTbl.nTrIdx = 0;
 	
-	if (jsn["nth_e"])
-		jTbl.nth_e = jsn["nth_e"];
+//	if (jsn["nth_e"])
+		jTbl.nth_e = jsn["nth_e"] || "";
 	
-	if (jsn["nth_o"])
-		jTbl.nth_o = jsn["nth_o"];
+//	if (jsn["nth_o"])
+		jTbl.nth_o = jsn["nth_o"] || "";
 	
 	jTbl.sTDcommonStyle = jsn["tdst"] || "";
 
@@ -1094,7 +1094,8 @@ kEssayNode.prototype.genTableNode=function(jsn) {
 	
 	this.ndCurrDiv.appendChild(ndPara)
 //	this.ndCurrDiv.appendChild(ndTbl)
-	jTbl.TBody = ndTBody;
+	jTbl.table = ndTbl;
+//	jTbl.TBody = ndTBody;
 	jTbl.currTRow = null;
 	//因外裹 <p>
 	jTbl.ndPrevDiv = this.ndCurrDiv;
@@ -1105,10 +1106,12 @@ kEssayNode.prototype.genTableNode=function(jsn) {
 
 //jsn 傳入上層的 jsn["tr"]
 kEssayNode.prototype.genTRow =function(jsn) {
-	var htm = this.anaTagStyle(jsn, "tr", true);
-	this.moTable.TBody.insertAdjacentHTML("beforeend", htm);
-	
-	var ndTR = this.moTable.TBody.lastElementChild;
+//	var htm = this.anaTagStyle(jsn, "tr", true);
+//	this.moTable.TBody.insertAdjacentHTML("beforeend", htm);
+//	
+//	var ndTR = this.moTable.TBody.lastElementChild;
+	var ndTR = document.createElement("TR");
+	this.moTable.table.appendChild(ndTR);
 
 	if (this.moTable.nTrIdx % 2 == 0 && this.moTable.nth_e)
 		ndTR.style.backgroundColor = this.moTable.nth_e;
@@ -1134,8 +1137,9 @@ kEssayNode.prototype.genTData =function(nLnIdx, jsn) {
 	//htm 此時已含 <td>
 //	htm += "</td>";
 	this.moTable.currTRow.insertAdjacentHTML("beforeend", htm);
-//	var ndPrevDiv = this.ndCurrDiv;
 	var ndTD = this.moTable.currTRow.lastElementChild;
+	
+//	var ndTD = document.createElement("TD");
 	
 	if (jsn.csp != undefined) {
 		ndTD.colSpan = parseInt(jsn.csp);
@@ -1170,6 +1174,16 @@ kEssayNode.prototype.genTData =function(nLnIdx, jsn) {
 		}*/
 	} // if (!jValue.c)
 	else {
+		/*
+		var nd = this.anaTagStyle(jsn.c, "p");
+		if (!nd.style.marginTop)
+			nd.style.marginTop = "0px";
+		if (!nd.style.marginBottom)
+			nd.style.marginBottom = "0px";
+		
+		ndTD.appendChild(nd);
+		*/
+//		ndTD.innerHTML = '<p style="margin-top:0;margin-bottom:0;">' + jsn.c + '</p>';
 		ndTD.innerHTML = jsn.c;
 	}
 }
