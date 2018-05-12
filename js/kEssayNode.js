@@ -602,11 +602,11 @@ kEssayNode.prototype.anaTagStyle=function(jTmp, sTagName, bHtmText) {
 	}
 	
 	if (sTagName == "p") {
-		if (typeof jTmp["pbrF"] != "undefined")
+		if (jTmp["pbrF"] != undefined)
 			aPgSty.push("margin-bottom:0");
-		if (typeof jTmp["pbrM"] != "undefined")
+		if (jTmp["pbrM"] != undefined)
 			aPgSty.push("margin-top:0;margin-bottom:0");
-		if (typeof jTmp["pbrL"] != "undefined")
+		if (jTmp["pbrL"] != undefined)
 			aPgSty.push("margin-top:0");
 	}
 	
