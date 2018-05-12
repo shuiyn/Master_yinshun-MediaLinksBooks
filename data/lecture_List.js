@@ -113,6 +113,7 @@ var lecture_List={
  "0001": {
   "bkid": "pnj",
   "cm": "pnjjj_book",
+  "aux":"pnjjj_zh_aux",
   "master": "zh",
   "byear": "104",
   "croom": "pn",

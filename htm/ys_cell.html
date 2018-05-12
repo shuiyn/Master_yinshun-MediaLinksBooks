@@ -10,14 +10,15 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
 	<script src="../data/pnjjj_book.js"></script>
+	<script src="../data/pnjjj_zh_aux.js"></script>
 	<script src="../data/ffgl_kr_2014.js"></script>
 	<script src="../data/ffgl_kr_2014_aux.js"></script>
 	<script src="../data/fzrj_kr_2015.js"></script>
-	<script src="../data/auxData_0001.js"></script>
+<!--	<script src="../data/auxData_0001.js"></script>
 	<script src="../data/auxData_0002.js"></script>
 	<script src="../data/pnj_style.js"></script>
 	<script src="../data/pnj_book.js"></script>
-	<script src="../data/ffgl_book.js"></script>
+-->	<script src="../data/ffgl_book.js"></script>
 	
 	<script src="../data/base_List.js"></script>
 	<script src="../data/lecture_List.js"></script>
@@ -39,14 +40,17 @@ var theBook = null;
 var theAud = null;
 
 var onLoad = function() {
-//var sQry = decodeURIComponent(location.search).slice(1);
-//var q = JSON.parse("{" + sQry + "}");
-
-	var q = JSON.parse(decodeURIComponent(location.search).substr(6));
+var sQry = decodeURIComponent(location.search);
+var q = null;
+if (sQry)
+	q = JSON.parse(sQry.substr(6)); //?info=
+else
+	q = {"bkId":"ffgl", "lecId":"0002"};
 
 	mbIsPC = !uaNotPC();
+	var lecs=grabLecture(q.bkId);
 
-	document.getElementById("tit_booklecName").innerHTML = q.bkName + "：" + q.lecName;
+	document.getElementById("tit_booklecName").innerHTML = base_List.books[q.bkId] + "：" + grabLecture(q.bkId)[q.lecId];
 
 	theAud = new mysAud();
 	theBook = new mysBooks(q.bkId, q.lecId);
@@ -79,7 +83,6 @@ var grabEssayChapter=function(jsEsy) {
 }
 
 //將指定的「章」，填入展示的 divRoot
-//var openEssay=function(divRoot, jsnChapter, selPageList) {
 var openEssay=function(bCM, jsnChapter) {
 	var divRoot = (bCM ? theBook.ctlShowYin : theBook.ctlShowAux);
 	var mnu = (bCM ? theBook.mnuCm : theBook.mnuAux);
@@ -90,8 +93,12 @@ var openEssay=function(bCM, jsnChapter) {
 	
 	while (selPageList.length > 0) selPageList.remove(0);
 	
-	var esy = new kEssayNode(divRoot, jsnChapter, selPageList, idTail);
+//	var esy = new kEssayNode(divRoot, jsnChapter, selPageList, idTail);
+	var esy = new kEssayNode(jsnChapter, idTail);
 	esy.transData();
+	
+	divRoot.innerHTML = esy.divRoot.innerHTML;
+	selPageList.innerHTML = esy.selPageList.innerHTML;
 	createCmMenu(esy.maToc, mnu);
 	
 	doToggleBR(divRoot);
@@ -101,7 +108,7 @@ var openEssay=function(bCM, jsnChapter) {
 
 function createCmMenu(aTocItem, mnu) {
 	var sPath = hostImgURL();
-	var rtUL = mnu; //document.getElementById("mnuRoot");
+	var rtUL = mnu;
 	
 	while (rtUL.childNodes.length > 0){
 		rtUL.removeChild(rtUL.childNodes[0]);
@@ -112,13 +119,11 @@ function createCmMenu(aTocItem, mnu) {
 	for (var i=0; i < aTocItem.length; i++) {
 	    var textnode = document.createTextNode(aTocItem[i].c);
 	    var ndAnchor = document.createElement("A");
-//	    var ndSpan = document.createElement("SPAN");
 	    var nd = document.createElement("LI");
 		var nOffset = -1;
 
 	    ndAnchor.appendChild(textnode);
 	    ndAnchor.setAttribute("href", "#" + aTocItem[i].a);
-//	    ndSpan.appendChild(textnode);
 
 		if (aTocItem[i].lev == 0) {
     		ndUL = rtUL;
@@ -138,7 +143,6 @@ function createCmMenu(aTocItem, mnu) {
 	    	nd.style.listStyleImage = 'url("' + sPath + 'open_brk.png")';
 
 	    nd.appendChild(ndAnchor);
-//	    nd.appendChild(ndSpan);
 		
 		if (nOffset == 0) {
 			ndUL.appendChild(nd);

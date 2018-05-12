@@ -98,7 +98,7 @@ function onBookChange(e){
 
 function fillLecture(bkid){
 	var lecs=grabLecture(bkid);
-console.log(lecs);
+
 	var s='<select id="selLecture" style="width:14em;"> ';
 	for(var lecId in lecs) {
 		s+= ' <option value="' + lecId + '">' + lecs[lecId] + '</option>'
@@ -112,13 +112,9 @@ console.log(lecs);
 function openBookWin() {
 	var fn = "ys_cell";
 	
-	var ctlBook = document.getElementById('selBook');
-	var bkId = ctlBook.value;
-	var bkName = ctlBook.options[ctlBook.selectedIndex].text;
-	var ctlLec = document.getElementById('selLecture');
-	var lecName = ctlLec.options[ctlLec.selectedIndex].text;
-	var lecId = ctlLec.value;
-	var sQry = {'bkName':bkName, 'bkId':bkId, 'lecName':lecName, 'lecId':lecId, 'isPC':mbIsPC};
+	var bkId = document.getElementById('selBook').value;
+	var lecId = document.getElementById('selLecture').value;
+	var sQry = {"bkId":bkId, "lecId":lecId};
 	var jsn = JSON.stringify(sQry);
 	window.open("./htm/" + fn + ".html?info=" + jsn);
 }

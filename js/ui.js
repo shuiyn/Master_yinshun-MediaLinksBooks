@@ -1,4 +1,29 @@
 
+var fillDropdown=function(bCM, aItem) {
+	var ctl = (bCM ? theBook.dpdnChapterCm : theBook.dpdnChapterAux);
+	
+	while (ctl.length > 0) ctl.remove(0);
+
+	var nWidth = 0;
+	
+	for (var i=0; i < aItem.length; i++) {
+  	var nd = document.createElement("A");
+  	var tnd = document.createTextNode(aItem[i]); 
+  	nd.appendChild(tnd);
+  	ctl.appendChild(nd);
+  	
+  	if (bCM)
+		 	nd.setAttribute("onclick", 'openEssay(true,theBook.cm["' + aItem[i]+ '"])');
+		else
+		 	nd.setAttribute("onclick", 'openEssay(false,theBook.aux["' + aItem[i]+ '"])');
+		
+  	nWidth = Math.max(nWidth, aItem[i].length);
+	}
+	
+	ctl.style.width = (nWidth*16+16) + "px";
+}
+
+
 
 //章、目次選單、進度
 function tglDropDown(btn, nKind) {

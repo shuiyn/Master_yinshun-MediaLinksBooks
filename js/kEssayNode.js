@@ -101,9 +101,12 @@ var openEssay=function(bCM, jsnChapter) {
 
 */
 
-var kEssayNode=function(divRoot, jsnChapter, selPageList, idTail) {
-	this.divRoot = divRoot;
-	this.selPageList = selPageList;
+//var kEssayNode=function(divRoot, jsnChapter, selPageList, idTail) {
+var kEssayNode=function(jsnChapter, idTail) {
+//	this.divRoot = divRoot;
+	this.divRoot = document.createElement("DIV");
+//	this.selPageList = selPageList;
+	this.selPageList = document.createElement("SELECT");
 	this.msIdTail = idTail || "";
 	
 	this.aLine = jsnChapter.c;

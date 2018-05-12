@@ -22,6 +22,7 @@ var mysBooks = function(bkId, lecId) {
 		this.book = eval(this.bkId + "_book");
 	} catch(e) {}
 	
+	/*
 	this.bookStyle;// = eval(this.bkId + "_style");
 	try {
 		this.bookStyle = eval(this.bkId + "_style");
@@ -39,7 +40,7 @@ var mysBooks = function(bkId, lecId) {
 //	try {
 //		this.auxJSON = eval("auxJSON_" + this.lecId);
 //	} catch(e) {}
-
+*/
 	this.mbJumpAnchor = false;
 	this.pairingIdCtrl();
 }
@@ -72,47 +73,25 @@ mysBooks.prototype.onPageListChange=function(e){
 	var idTail = (e.id == "pageList_hand"? "_H" : "");
 	location.href = "#" + base_List.htmlIdPrefix.page + "p" + e.options[e.selectedIndex].innerText + idTail;
 	
-//	console.log(location.href);
-
 	document.getElementById("dlgPageToc").close();
-}
-
-
-
-mysBooks.prototype.fillDropdown=function(ctl, aItem) {
-	while (ctl.length > 0) ctl.remove(0);
-
-	var nWidth = 0;
-	
-	for (var i=0; i < aItem.length; i++) {
-  	var nd = document.createElement("A");
-  	var tnd = document.createTextNode(aItem[i]); 
-  	nd.appendChild(tnd);
-  	ctl.appendChild(nd);
- 	nd.setAttribute("onclick", 'openEssay(true,theBook.cm["' + aItem[i]+ '"])');
-  	nWidth = Math.max(nWidth, aItem[i].length);
-	}
-	
-	ctl.style.width = (nWidth*16+16) + "px";
 }
 
 
 mysBooks.prototype.doFillBook=function(bCM) {
 	var src = (bCM ? this.cm : this.aux);
-	var drpdn = (bCM ? this.dpdnChapterCm : this.dpdnChapterAux);
 	
 	if (src) {
 		var aChapter = [];
 		for (var ch in src) {
 			if (ch == "ft") {
-					document.getElementById("toggleNote").disabled = (!this.cm[ch]["note"]);
-					document.getElementById("toggleLineNo").disabled = (!this.cm[ch]["lnNo"]);
+//					document.getElementById("toggleNote").disabled = (!this.cm[ch]["note"]);
+//					document.getElementById("toggleLineNo").disabled = (!this.cm[ch]["lnNo"]);
 			} else {
 				aChapter.push(ch);
 			}
 		}
 		
-		this.fillDropdown(drpdn, aChapter);
+		fillDropdown(bCM, aChapter);
 		
 		openEssay(bCM, src[aChapter[0]]);
 	}
@@ -127,32 +106,6 @@ mysBooks.prototype.fillBook=function() {
 	else {
 	  this.ctlShowYin.innerHTML = "<p>本單元尚未建立 ePub 檔。</p><p>請點按左上角【<span style='font-weight:bold;color:brown;'>期別</span>】按鈕，切換到【<span style='font-weight:bold;color:brown;'>講義</span>】，開啟右側選單，點選所要參閱的章節，再點按【<span style='background-color:lightgreen;'>到網頁</span>】連結，即可前往該文件網址。</p>";
 	}
-	/*
-	var drpdn = document.getElementById("dpdnChapterCm");
-	
-	if (this.cm) {
-		var aChapter = [];
-		for (var ch in this.cm) {
-			if (ch == "ft") {
-					document.getElementById("toggleNote").disabled = (!this.cm[ch]["note"]);
-					document.getElementById("toggleLineNo").disabled = (!this.cm[ch]["lnNo"]);
-			} else {
-				aChapter.push(ch);
-			}
-		}
-		
-		this.fillDropdown(drpdn, aChapter);
-		
-		openEssay(true, this.cm[aChapter[0]]);
-//		openEssay(this.ctlShowYin, this.cm["般若經講記"]);
-//		openEssay(this.ctlShowYin, this.cm["第一章"]);
-//		doToggleBR();
-	} else if (this.book) {
-	} else {
-	  this.ctlShowYin.innerHTML = "<p>本單元尚未建立 ePub 檔。</p><p>請點按左上角【<span style='font-weight:bold;color:brown;'>期別</span>】按鈕，切換到【<span style='font-weight:bold;color:brown;'>講義</span>】，開啟右側選單，點選所要參閱的章節，再點按【<span style='background-color:lightgreen;'>到網頁</span>】連結，即可前往該文件網址。</p>";
-//	  this.ctlShowYin.innerHTML = this.parseCont();
-	}
-	*/
 	
   this.fillHandout();
   this.fillPhase();
@@ -310,112 +263,6 @@ mysBooks.prototype.onLessonChange=function(e) {
 
 	var mbp = e.getAttribute("data-mbpId").split(",");
 	theAud.fillCue(mbp, e.value); // e.value == url
-}
-
-
-
-mysBooks.prototype.parseCont = function(){
-	createMenu(this.book);
-
-	var pgList = document.getElementById("pageList");
-	while (pgList.length > 0) pgList.remove(0);
-		
-	var ct = this.book;
-	var styBook = this.bookStyle;
-	var pgIdPfx = base_List.htmlIdPrefix.page;
-	var tocIdPfx = base_List.htmlIdPrefix.toc;
-	var paraIdPfx = base_List.htmlIdPrefix.para;
-	
-	var out=[];
-	var swClass = '<span class="' + msSourceWords + '">';
-
-	for(var lineId=0; lineId < ct.length; lineId++){
-//		var aLine = ct[lineId];
-//		var pg = aLine[0];
-//		var fmt = aLine[1];
-		var pg = ct[lineId].c;
-		var fmt = ct[lineId].lev;
-//		var fmt = ct[lineId].bs;
-		var stl; //=bookFmt_List[this.bkId][lineId];
-		var sTocSty = "";
-		
-		if (styBook)
-			stl=styBook[lineId];
-//		var stl=book_fmt[lineId];
-		var aHtmB={};//{"66":["<span...>",""]
-		var aHtmE={};
-
-		if (stl){
-			for (var i=0; i < stl.length; i++) {
-				var aSet = stl[i].split(/[~,]/);
-				if (aSet[2] == "sw") {
-					if (!aHtmB[aSet[0]]) aHtmB[aSet[0]]=[];
-					aHtmB[aSet[0]].push(swClass);
-					if (!aHtmE[aSet[1]]) aHtmE[aSet[1]]=[];
-					aHtmE[aSet[1]].push('</span>');
-				}
-				else if (aSet[2] == "a") {
-					if (!aHtmB[aSet[0]]) aHtmB[aSet[0]]=[];
-					aHtmB[aSet[0]].push('<a href="'+ aSet[3] + '" target="_blank">');
-					if (!aHtmE[aSet[1]]) aHtmE[aSet[1]]=[];
-					aHtmE[aSet[1]].push('</a>');
-				}
-				else if (aSet[2] == "tbr") {
-					if (!aHtmB[aSet[0]]) aHtmB[aSet[0]]=[];
-					aHtmB[aSet[0]].push('<span class="textborder">');
-					if (!aHtmE[aSet[1]]) aHtmE[aSet[1]]=[];
-					aHtmE[aSet[1]].push('</span>');
-				}
-			}
-		}
-		
-		var sNew = "";
-		
-		pg.replace(/./g, function(x,idx){
-			var bHtml = false;
-
-			if(aHtmE[idx]) {
-				bHtml = true;
-				sNew += x + aHtmE[idx].join("");
-			}
-			if(aHtmB[idx]) {
-				bHtml = true;
-				sNew += aHtmB[idx].join("") + x;
-			}
-			
-			if (!bHtml) sNew += x;
-		});
-
-		pg = sNew;
-		
-		if(fmt) {
-			if(fmt.search(/\d/)==0){
-				sTocSty = "margin-left:" + (Number(ct[lineId].lev) * 0.5) + "em;";
-				if (lineId > 0 && ct[lineId-1].lev) {
-					sTocSty += "margin-top:0;";
-				}
-				if (lineId < ct.length-1 && ct[lineId+1].lev) {
-					sTocSty += "margin-bottom:0;";
-				}
-
-				pg='<h4 style="color:darkblue;font-weight:bold;' + sTocSty + '" id="' + tocIdPfx + ct[lineId].a + '">' + pg + "</h4>";
-			}
-		} else {
-			pg="<p>" + pg + "</p>";
-		}
-		
-		out.push('<span style="display:none;" id="' + paraIdPfx + lineId + '">' + (lineId+1) + '</span>' + pg);
-	}
-	
-//	return out.join("");
-	//頁次 Id、selectPage-Option
-	return out.join("").replace(/\[p[a-z]?\d+\]/g,function(x){
-		var ma = x.match(/\[(p[a-z]?\d+)\]/);
-		var opt = document.createElement("option");
-		opt.text = ma[1].substr(1);
-		pgList.add(opt);
-		return '<hr/><p id="' + pgIdPfx + ma[1] + '" style="color:blue;">' + x + "</p>";
-	});
 }
 
 
