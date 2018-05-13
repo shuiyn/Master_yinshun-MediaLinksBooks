@@ -48,10 +48,12 @@ var fillDropdown=function(bCM, aItem) {
 	var nWidth = 0;
 	
 	for (var i=0; i < aItem.length; i++) {
+  	var ndPara = document.createElement("P");
   	var nd = document.createElement("A");
   	var tnd = document.createTextNode(aItem[i]); 
+  	ndPara.appendChild(nd);
   	nd.appendChild(tnd);
-  	ctl.appendChild(nd);
+  	ctl.appendChild(ndPara);
   	
   	if (bCM)
 		 	nd.setAttribute("onclick", 'openEssay(true,theBook.cm["' + aItem[i]+ '"])');
