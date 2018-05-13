@@ -1,3 +1,44 @@
+ /*
+$(document).ready(function() {
+
+$(body).click(function(event){
+    var dropdowns = document.getElementsByClassName("dropdown-content");
+    for (var nDrop=0; nDrop < dropdowns.length; nDrop++) {
+			var openDropdown = dropdowns[nDrop];
+     	if (event.target != theBook.currDropBtn || theBook.currDropDown != openDropdown) {
+	      if (openDropdown.classList.contains('dropdownShow')) {
+	        openDropdown.classList.remove('dropdownShow');
+	      }
+    	}
+   }
+
+});
+
+});
+*/
+
+
+//◆ 彈出式選單必與 invoke button 同屬一個 parentNode
+window.onclick=function(event) {
+    var dropdowns = document.getElementsByClassName("dropdown-content");
+    for (var nDrop=0; nDrop < dropdowns.length; nDrop++) {
+			var openDropdown = dropdowns[nDrop];
+
+//    	if (event.target.parentNode != openDropdown.parentNode) {
+//	      if (openDropdown.classList.contains('dropdownShow')) {
+//	        openDropdown.classList.remove('dropdownShow');
+//	      }
+//    	}
+ 
+     	if (event.target != theBook.currDropBtn || theBook.currDropDown != openDropdown) {
+	      if (openDropdown.classList.contains('dropdownShow')) {
+	        openDropdown.classList.remove('dropdownShow');
+	      }
+    	}
+   }
+}
+
+
 
 var fillDropdown=function(bCM, aItem) {
 	var ctl = (bCM ? theBook.dpdnChapterCm : theBook.dpdnChapterAux);
@@ -40,27 +81,6 @@ function tglDropDown(btn, nKind) {
 	}
 	
 	theBook.currDropDown.classList.toggle("dropdownShow");
-}
-
-
-//◆ 彈出式選單必與 invoke button 同屬一個 parentNode
-window.onclick=function(event) {
-    var dropdowns = document.getElementsByClassName("dropdown-content");
-    for (var nDrop=0; nDrop < dropdowns.length; nDrop++) {
-			var openDropdown = dropdowns[nDrop];
-			/*
-    	if (event.target.parentNode != openDropdown.parentNode) {
-	      if (openDropdown.classList.contains('dropdownShow')) {
-	        openDropdown.classList.remove('dropdownShow');
-	      }
-    	}
-    	*/
-     	if (event.target != theBook.currDropBtn || theBook.currDropDown != openDropdown) {
-	      if (openDropdown.classList.contains('dropdownShow')) {
-	        openDropdown.classList.remove('dropdownShow');
-	      }
-    	}
-   }
 }
 
 

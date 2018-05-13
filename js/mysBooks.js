@@ -72,8 +72,6 @@ mysBooks.prototype.onPageListChange=function(e){
 	this.mbJumpAnchor = true;
 	var idTail = (e.id == "pageList_hand"? "_H" : "");
 	location.href = "#" + base_List.htmlIdPrefix.page + "p" + e.options[e.selectedIndex].innerText + idTail;
-	
-	document.getElementById("dlgPageToc").close();
 }
 
 

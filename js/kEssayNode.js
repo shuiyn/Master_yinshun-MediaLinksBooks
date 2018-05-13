@@ -394,8 +394,12 @@ kEssayNode.prototype.processUnLined=function(jsn, nLnIdx) {
 			
 		} else if (itm == "img" && (jsn[itm] != undefined)) {
 			nReadLines = 0;
+			var wInnerW = window.innerWidth;
 			var jTmp = jsn[itm];
 			var nWid = jTmp.t*16;
+			if (nWid > wInnerW)
+				nWid = wInnerW;
+				
 			var nHei = Math.floor(nWid * (jTmp.h / jTmp.w));
 			htm = '<img src="' + hostImgURL() + jTmp.s + '" width="' + nWid + 'px" height="' + nHei + 'px" />';
 			
