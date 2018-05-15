@@ -134,17 +134,18 @@ function fitDevice() {
 
 function rstPosition() {
 	var wInnerH = window.innerHeight;
-	var nTop = document.getElementById("content").offsetTop;
-//	document.getElementById("pnlEsyTool").style.top = (nTop-28) + "px";
+	var nTop = theBook.essayPool.offsetTop;
 
 	var nDiffH = (wInnerH - nTop - 10);
+
+	theBook.essayPool.style.height = (nDiffH-10) + "px";
 	
 //document.getElementById("try").innerHTML = wInnerH + ", t=" + nTop + ", h= " + nDiffH;
 
 	theBook.ctlShowYin.style.height = (nDiffH-10) + "px";
 	theBook.ctlShowAux.style.height = (nDiffH-10) + "px";
-}
 
+}
 
 
 //文章顯示 切換

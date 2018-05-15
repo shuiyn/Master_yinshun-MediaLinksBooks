@@ -12,25 +12,72 @@
 	<script src="data/lesson_List.js"></script>
 	<script src="data/lecture_List.js"></script>
 	<script src="js/search.js"></script>
+
 <script>
 	var mbIsPC = false;
+
+function fillBook(){
+	var arr = initUsedBook(); //傳回 類別
+	var s = '<select id="selBook" onchange="onBookChange();" style="width:10em;"> ';
+	
+	for(var b in arr){
+		s+= ' <option value="' + b + '">' + arr[b] + '</option>'
+	}
+	
+	s+=" </select>";
+	return s;
+}
+
+
+function onBookChange(){
+	var lecs = grabLecture($("#selBook").val());
+
+	var s = '<select id="selLecture" style="width:14em;"> ';
+	for(var lecId in lecs) {
+		s += ' <option value="' + lecId + '">' + lecs[lecId] + '</option>'
+	}
+	
+	s += " </select>";
+	
+	$("#pnlLecture").html(s);
+}
+
+
+function openBookWin() {
+	var fn = "ys_cell";
+	
+	var bkId = $("#selBook").val();
+	var lecId = $("#selLecture").val();
+	var sQry = {"bkId":bkId, "lecId":lecId};
+	var jsn = JSON.stringify(sQry);
+	window.open("./htm/" + fn + ".html?info=" + jsn);
+}
+
+
+$(document).ready(function(){
+	mbIsPC = !uaNotPC();
+	
+	$("#pnlBook").html(fillBook());
+	$("#selBook").val("ffgl").change(); //初始於 ffgl / kr，change 不可加 on
+});
+
 </script>
 	
 </head>
 
-<body onload="onLoad();">
+<body">
 <h3 style="font-family:標楷體;">印順導師著作的相關影音文鏈結</h3>
 
 	<table>
 		<tr>
 			<td><span style="color:DodgerBlue;font-weight:bold;padding-left:5px;">書目：</span>（依筆劃排序）</td></tr>
 		<tr>
-		<td id="dvBook"></td></tr>
+		<td id="pnlBook"></td></tr>
 		<tr><td>　</td></tr>
 		<tr>
 			<td><span style="color:DodgerBlue;font-weight:bold;padding-left:5px;"> 教授班：</span></td></tr>
 		<tr>
-		<td><span id="dvLecture"></span></td>
+		<td><span id="pnlLecture"></span></td>
 		</tr>
 		<tr><td>　</td></tr>
 		<tr>
@@ -70,62 +117,5 @@
 	</div>
 </div>
 
-
-
-
-<script>
-
-function onLoad() {
-	mbIsPC = !uaNotPC();
-	fillBook();
-}
-
-function fillBook(){
-	var arr = initUsedBook(); //傳回 類別
-	var s = '<select id="selBook" onchange="onBookChange(this);" style="width:10em;"> ';
-	
-	for(var b in arr){
-		s+= ' <option value="' + b + '">' + arr[b] + '</option>'
-	}
-	
-	s+=" </select>";
-	document.getElementById("dvBook").innerHTML = s;
-
-	onBookChange(document.getElementById('selBook'));
-}
-
-
-function onBookChange(e){
-	fillLecture(e.value);
-}
-
-
-function fillLecture(bkid){
-	var lecs=grabLecture(bkid);
-
-	var s='<select id="selLecture" style="width:14em;"> ';
-	for(var lecId in lecs) {
-		s+= ' <option value="' + lecId + '">' + lecs[lecId] + '</option>'
-	}
-	
-	s+=" </select>";
-	document.getElementById("dvLecture").innerHTML = s;
-		
-}
-
-function openBookWin() {
-	var fn = "ys_cell";
-	
-	var bkId = document.getElementById('selBook').value;
-	var lecId = document.getElementById('selLecture').value;
-	var sQry = {"bkId":bkId, "lecId":lecId};
-	var jsn = JSON.stringify(sQry);
-	window.open("./htm/" + fn + ".html?info=" + jsn);
-}
-</script>
-
 </body>
 </html>
-
-
-

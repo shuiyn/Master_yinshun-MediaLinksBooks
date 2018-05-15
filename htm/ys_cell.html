@@ -322,13 +322,13 @@ function onMenuClicked(ev) {
 </td>
 
 	<td>
-		<button id="toggleAux" onclick="toggleAux(this)" class="toggle">課</button>
-	</td>
-
-	<td>
 			<button onclick="rstContHandFontSize('-')" style="padding-right:4px;color:DodgerBlue;">─</button>
 			<span id="contFontSize" style="background-color:white;padding-left:3px;padding-right:3px;border:1px black solid;">96</span>
 			<button style="color:DodgerBlue;" onclick="rstContHandFontSize('+')">✚</button>
+	</td>
+
+	<td>
+		<button id="toggleAux" onclick="toggleAux(this)" class="toggle">課</button>
 	</td>
 
 	</tr></table>
@@ -343,10 +343,11 @@ function onMenuClicked(ev) {
 
 <!--文章顯示區-->
 
-<div id="content" onscroll="TryScroll(event);" class="essay"></div>
+<div id="esyPool" class="esyPool">
+	<div id="content" onscroll="TryScroll(event);" class="essay"></div>
 
-<div id="auxPanel" onscroll="TryScroll(event);" class="essay" style="display:none;"></div>
-
+	<div id="auxPanel" onscroll="TryScroll(event);" class="essay" style="display:none;"></div>
+</div>
 
 <dialog id="dlgCue">
 <button onclick="theAud.closeCue()" class="dlgCloser">✖</button>

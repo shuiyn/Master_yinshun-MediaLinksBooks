@@ -47,8 +47,7 @@ var mysBooks = function(bkId, lecId) {
 
 
 mysBooks.prototype.pairingIdCtrl=function(){
-	this.tblShowYin = document.getElementById("tblShowYin");
-	this.tblShowAux = document.getElementById("tblShowAux");
+	this.essayPool = document.getElementById("esyPool");
 	this.ctlShowYin = document.getElementById("content");
 	this.ctlShowAux = document.getElementById("auxPanel");
 	
