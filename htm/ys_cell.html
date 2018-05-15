@@ -179,6 +179,7 @@ function onMenuClicked(ev) {
 
 	var eTrigger = ev.target;
 //	document.getElementById("demo").innerHTML = eTrigger.nodeName
+//alert(eTrigger.nodeName);
 
 	if (eTrigger.nodeName == "A") {
 		theBook.mbJumpAnchor = true;
@@ -279,27 +280,16 @@ function onMenuClicked(ev) {
 <td>
 	<table style="padding:3px 5px;background-color:yellow;"><tr>
 
-	<td>
-			<button onclick="rstContHandFontSize('-')" style="padding-right:4px;color:DodgerBlue;">─</button>
-			<span id="contFontSize" style="background-color:white;padding-left:3px;padding-right:3px;border:1px black solid;">96</span>
-			<button style="color:DodgerBlue;" onclick="rstContHandFontSize('+')">✚</button>
-	</td>
-
-	<td>
-		<button id="toggleAux" onclick="toggleAux(this)" class="toggle">課</button>
-	</td>
-
-	
 <td style="position:relative;"><!--文檔工具區fixed-->
 	<button onclick="tglDropDown(this, 1)" class="dropbtn">章</button>
-	  <div id="dpdnChapterCm" class="dropdown-content" style="height:18em;width:17em;margin:0;padding:2px;left:-6em;"></div>
-	  <div id="dpdnChapterAux" class="dropdown-content" style="height:18em;width:17em;margin:0;padding:2px;left:-6em;"></div>
+	  <div id="dpdnChapterCm" class="dropdown-content" style="height:18em;width:15em;margin:0;padding:2px;"></div>
+	  <div id="dpdnChapterAux" class="dropdown-content" style="height:18em;width:15em;margin:0;padding:2px;"></div>
 	</td>
 	<td style="position:relative;">
 	<button onclick="tglDropDown(this,3)" class="dropbtn">目</button>
-	  <div id="dpdnMenuCm" class="dropdown-content" style="width:18em;margin:0;padding:2px;left:-7em;">
+	  <div id="dpdnMenuCm" class="dropdown-content" style="width:18em;margin:0;padding:2px;">
 <ul id="mnuRoot" class="menutree" onclick="onMenuClicked(event)" style="height:18em;overflow-y:scroll;margin-left:0;margin-top:0;padding-left:20px;padding-top:0"></ul></div>
-	  <div id="dpdnMenuAux" class="dropdown-content" style="width:18em;margin:0;padding:2px;left:-7em;">
+	  <div id="dpdnMenuAux" class="dropdown-content" style="width:18em;margin:0;padding:2px;">
 <ul id="mnuAux" class="menutree" onclick="onMenuClicked(event)" style="height:18em;overflow-y:scroll;margin-left:0;margin-top:0;padding-left:20px;padding-top:0"></ul></div>
 	</td>
 
@@ -330,6 +320,17 @@ function onMenuClicked(ev) {
 	<td>
 	<button onclick="toggleFullBookScreen()" class="dropbtn">全</button>
 </td>
+
+	<td>
+		<button id="toggleAux" onclick="toggleAux(this)" class="toggle">課</button>
+	</td>
+
+	<td>
+			<button onclick="rstContHandFontSize('-')" style="padding-right:4px;color:DodgerBlue;">─</button>
+			<span id="contFontSize" style="background-color:white;padding-left:3px;padding-right:3px;border:1px black solid;">96</span>
+			<button style="color:DodgerBlue;" onclick="rstContHandFontSize('+')">✚</button>
+	</td>
+
 	</tr></table>
 	
 </td><!--文檔操作區-->

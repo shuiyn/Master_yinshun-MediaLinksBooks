@@ -63,7 +63,11 @@ var fillDropdown=function(bCM, aItem) {
   	nWidth = Math.max(nWidth, aItem[i].length);
 	}
 	
-	ctl.style.width = (nWidth*16+16) + "px";
+	//+16 = padding
+  nWidth = Math.min(nWidth*16+16, window.innerWidth-32);
+//  console.log(nWidth);
+	ctl.style.width = nWidth + "px";
+//	ctl.style.width = (nWidth*16+16) + "px";
 }
 
 
