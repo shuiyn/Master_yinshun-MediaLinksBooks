@@ -41,6 +41,32 @@ window.onclick=function(event) {
 
 
 var fillDropdown=function(bCM, aItem) {
+	var id = "#" + (bCM ? "dpdnChapterCm" : "dpdnChapterAux");
+	
+	$(id).empty();
+
+	var nWidth = 0;
+	
+	for (var i=0; i < aItem.length; i++) {
+//		var h = "<p><a>" + aItem[i] + "</a></p>";
+		var h = "<a>" + aItem[i] + "</a>";
+		
+  	if (bCM)
+			$(h).appendTo(id).attr("onclick", 'openEssay(true,theBook.cm["' + aItem[i]+ '"])');
+		else
+			$(h).appendTo(id).attr("onclick", 'openEssay(false,theBook.aux["' + aItem[i]+ '"])');
+		
+		var nWid = $("#try").html("<a>" + aItem[i] + "</a>").innerWidth();
+  	nWidth = Math.max(nWidth, nWid);
+	}
+	
+	nWidth += 36;
+  nWidth = Math.min(nWidth, window.innerWidth-32);
+	$(id).width(nWidth);
+}
+	
+	/*
+var fillDropdown_Old=function(bCM, aItem) {
 	var ctl = (bCM ? theBook.dpdnChapterCm : theBook.dpdnChapterAux);
 	
 	while (ctl.length > 0) ctl.remove(0);
@@ -69,6 +95,8 @@ var fillDropdown=function(bCM, aItem) {
 	ctl.style.width = nWidth + "px";
 //	ctl.style.width = (nWidth*16+16) + "px";
 }
+	*/
+	
 
 
 
@@ -113,10 +141,10 @@ function rstContHandFontSize(sType){
 //重設文章、講義顯示區的高度
 function fitDevice() {
 	if (mbIsPC) {
-		document.getElementById("tit_booklecName").style.fontSize = "110%";
-		theBook.ctlShowYin.style.fontSize = "110%";
-		theBook.ctlShowAux.style.fontSize = "110%";
-		theBook.fontSizePan.innerHTML = "110";
+//		document.getElementById("tit_booklecName").style.fontSize = "110%";
+//		theBook.ctlShowYin.style.fontSize = "110%";
+//		theBook.ctlShowAux.style.fontSize = "110%";
+//		theBook.fontSizePan.innerHTML = "110";
 		
 //		theBook.dpdnMenuCm.style.left = "-4em";
 		theBook.dpdnMenuCm.style.width = "26em";

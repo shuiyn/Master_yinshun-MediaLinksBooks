@@ -3,7 +3,7 @@
 <head>
 	<title>印順導師著作聞思</title>
 	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="stylesheet" type="text/css" href="../css/common.css" />
 	<link rel="stylesheet" type="text/css" href="../css/menutree.css" />
 
@@ -207,8 +207,8 @@ function onMenuClicked(ev) {
 
 <body onload="onLoad()">
 <div  class="audioGroup">
-<span id="tit_booklecName" style="font-size:90%;font-family:標楷體;font-weight:bold;"></span><br/>
-<!--<span id="try" style="width:80%;"></span>-->
+<span id="tit_booklecName" style="font-size:105%;font-family:標楷體;font-weight:bold;"></span><br/>
+<span id="try" style="display:none;"></span>
 </div>
 
 <!--期別、著文、講義切換-->
@@ -282,7 +282,7 @@ function onMenuClicked(ev) {
 
 <td style="position:relative;"><!--文檔工具區fixed-->
 	<button onclick="tglDropDown(this, 1)" class="dropbtn">章</button>
-	  <div id="dpdnChapterCm" class="dropdown-content" style="height:18em;width:15em;margin:0;padding:2px;"></div>
+	  <div id="dpdnChapterCm" class="dropdown-content" style="height:18em;width:5em;margin:0;padding:2px;"></div>
 	  <div id="dpdnChapterAux" class="dropdown-content" style="height:18em;width:15em;margin:0;padding:2px;"></div>
 	</td>
 	<td style="position:relative;">
@@ -323,7 +323,7 @@ function onMenuClicked(ev) {
 
 	<td>
 			<button onclick="rstContHandFontSize('-')" style="padding-right:4px;color:DodgerBlue;">─</button>
-			<span id="contFontSize" style="background-color:white;padding-left:3px;padding-right:3px;border:1px black solid;">96</span>
+			<span id="contFontSize" style="background-color:white;padding-left:3px;padding-right:3px;border:1px black solid;">110</span>
 			<button style="color:DodgerBlue;" onclick="rstContHandFontSize('+')">✚</button>
 	</td>
 
