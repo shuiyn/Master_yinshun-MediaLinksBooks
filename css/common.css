@@ -37,10 +37,18 @@
 	}
 
 	.dropdown-content a {
-	    color: black;
-	    padding: 4px 8px;
-	    text-decoration: none;
-	    display: block;
+		color: black;
+		padding: 4px 8px;
+		text-decoration: none;
+		display: block;
+	}
+	
+	.dropdown-content li {
+		color: black;
+		padding-top: 5px;
+		padding-bottom: 0px;
+		cursor: pointer;
+/*	    display: block; 不可，圖示不見 */
 	}
 
 	.dropdown-content a:hover {

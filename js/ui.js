@@ -20,6 +20,11 @@ $(body).click(function(event){
 
 //◆ 彈出式選單必與 invoke button 同屬一個 parentNode
 window.onclick=function(event) {
+	// click menutree listItem img
+	if (event.target.matches(".__mnu_LI")) {
+		return;
+	}
+	
     var dropdowns = document.getElementsByClassName("dropdown-content");
     for (var nDrop=0; nDrop < dropdowns.length; nDrop++) {
 			var openDropdown = dropdowns[nDrop];
@@ -129,6 +134,7 @@ var TryScroll=function(ev) {
 //調整 文章區 字型大小
 function rstContHandFontSize(sType){
 	var ps = parseInt(theBook.fontSizePan.innerHTML);
+	
 	if (sType == "+") ps += 4;
 	else ps -= 4;
 	
@@ -142,9 +148,9 @@ function rstContHandFontSize(sType){
 function fitDevice() {
 	if (mbIsPC) {
 //		document.getElementById("tit_booklecName").style.fontSize = "110%";
-//		theBook.ctlShowYin.style.fontSize = "110%";
-//		theBook.ctlShowAux.style.fontSize = "110%";
-//		theBook.fontSizePan.innerHTML = "110";
+		theBook.ctlShowYin.style.fontSize = "100%";
+		theBook.ctlShowAux.style.fontSize = "100%";
+		theBook.fontSizePan.innerHTML = "100";
 		
 //		theBook.dpdnMenuCm.style.left = "-4em";
 		theBook.dpdnMenuCm.style.width = "26em";

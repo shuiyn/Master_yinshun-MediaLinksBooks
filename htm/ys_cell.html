@@ -55,7 +55,6 @@ else
 	theAud = new mysAud();
 	theBook = new mysBooks(q.bkId, q.lecId);
 	fitDevice();
-	theBook.fillBook();
 	
 	if (mbIsPC) {
 		if (window.addEventListener) {              
@@ -68,6 +67,7 @@ else
 	}
 	
 	rstPosition();
+	theBook.fillBook();
 }
 
 
@@ -102,6 +102,7 @@ var openEssay=function(bCM, jsnChapter) {
 	createCmMenu(esy.maToc, mnu);
 	
 	doToggleBR(divRoot);
+	divRoot.scrollTop = 0;
 }
 
 
@@ -118,12 +119,15 @@ function createCmMenu(aTocItem, mnu) {
 	
 	for (var i=0; i < aTocItem.length; i++) {
 	    var textnode = document.createTextNode(aTocItem[i].c);
-	    var ndAnchor = document.createElement("A");
+//	    var ndAnchor = document.createElement("A");
+	    var ndAnchor = document.createElement("SPAN");
+//    var ndSpan = document.createElement("SPAN");
 	    var nd = document.createElement("LI");
 		var nOffset = -1;
 
 	    ndAnchor.appendChild(textnode);
-	    ndAnchor.setAttribute("href", "#" + aTocItem[i].a);
+	    ndAnchor.setAttribute("id", "A_" + aTocItem[i].a);
+//	    ndAnchor.setAttribute("href", "#" + aTocItem[i].a);
 
 		if (aTocItem[i].lev == 0) {
     		ndUL = rtUL;
@@ -143,6 +147,7 @@ function createCmMenu(aTocItem, mnu) {
 	    	nd.style.listStyleImage = 'url("' + sPath + 'open_brk.png")';
 
 	    nd.appendChild(ndAnchor);
+	    nd.setAttribute("class", "__mnu_LI");
 		
 		if (nOffset == 0) {
 			ndUL.appendChild(nd);
@@ -178,16 +183,16 @@ function onMenuClicked(ev) {
 	var sPath = hostImgURL();
 
 	var eTrigger = ev.target;
-//	document.getElementById("demo").innerHTML = eTrigger.nodeName
-//alert(eTrigger.nodeName);
-
-	if (eTrigger.nodeName == "A") {
+//	if (eTrigger.nodeName == "A") {
+	if (eTrigger.nodeName == "SPAN") {
 		theBook.mbJumpAnchor = true;
-		//skip to html#id
+		location.href = "#" + eTrigger.id.slice(2); //A_xxxx
+			//skip to html#id
 	}
 	
 		//eTrigger.children.length > 1 沒有子 ul 者，只有 textnode/span 1 個 
-	if (eTrigger.nodeName == "LI" && eTrigger.children.length>1) {
+//	if (eTrigger.nodeName == "LI" && eTrigger.children.length>1) {
+	if (event.target.matches(".__mnu_LI")) {
 		var url = eTrigger.style.listStyleImage;
 		var bOpened = url.includes("open");
 		var disp = (bOpened ? "none" : "block");
@@ -318,14 +323,14 @@ function onMenuClicked(ev) {
 	</td>
 
 	<td>
-	<button onclick="toggleFullBookScreen()" class="dropbtn">全</button>
-</td>
-
-	<td>
 			<button onclick="rstContHandFontSize('-')" style="padding-right:4px;color:DodgerBlue;">─</button>
 			<span id="contFontSize" style="background-color:white;padding-left:3px;padding-right:3px;border:1px black solid;">110</span>
 			<button style="color:DodgerBlue;" onclick="rstContHandFontSize('+')">✚</button>
 	</td>
+
+	<td>
+	<button onclick="toggleFullBookScreen()" class="dropbtn">全</button>
+</td>
 
 	<td>
 		<button id="toggleAux" onclick="toggleAux(this)" class="toggle">課</button>
