@@ -18,29 +18,52 @@ $(body).click(function(event){
 */
 
 
-//◆ 彈出式選單必與 invoke button 同屬一個 parentNode
 window.onclick=function(event) {
 	// click menutree listItem img
-	if (event.target.matches(".__mnu_LI")) {
-		return;
+//	if (event.target.matches(".__mnu_LI")) {
+//		return;
+//	}
+//console.log(event.target.tagName);
+//HTMLCollection 不能用 for (i in lst)
+ /*
+	var lstMnu = document.getElementsByClassName("menutree");
+	for (var i=0; i<lstMnu.length; i++) {
+		if (lstMnu[i].contains(event.target)) {
+			// click on menutree li/li img/ul
+			if (event.target.nodeName != "SPAN")
+				return;
+			
+			break;
+		}
 	}
+$("span").parents(".demo")	*/
+	/*
+	var bMnuTreeNonHref = false;
+	//each(f(i, el)) => index, element
+	$(".menutree").each(function(i,el){
+		if (el.contains(event.target)) {
+			// click on menutree li/li img/ul
+			bMnuTreeNonHref = (event.target.nodeName != "SPAN");
+			return; // 不可用 break
+		}
+	});
 	
-    var dropdowns = document.getElementsByClassName("dropdown-content");
-    for (var nDrop=0; nDrop < dropdowns.length; nDrop++) {
-			var openDropdown = dropdowns[nDrop];
+	if (bMnuTreeNonHref)
+		return;*/
+		/*
+		//定位立現：page、chapter、section…
+	if ($(event.target).parents("#esyPool").get(0) != undefined)
+		alert("no");
+		*/
+		
+	$(".dropdown-content").each(function(i,el){
+   	if (event.target != theBook.currDropBtn || theBook.currDropDown != el) {
+      if (el.classList.contains('dropdownShow')) {
+        el.classList.remove('dropdownShow');
+      }
+  	}
+	});
 
-//    	if (event.target.parentNode != openDropdown.parentNode) {
-//	      if (openDropdown.classList.contains('dropdownShow')) {
-//	        openDropdown.classList.remove('dropdownShow');
-//	      }
-//    	}
- 
-     	if (event.target != theBook.currDropBtn || theBook.currDropDown != openDropdown) {
-	      if (openDropdown.classList.contains('dropdownShow')) {
-	        openDropdown.classList.remove('dropdownShow');
-	      }
-    	}
-   }
 }
 
 
@@ -182,43 +205,35 @@ function rstPosition() {
 }
 
 
-//文章顯示 切換
-function bookToggle(clsNameEle, clsNameTog, dv){
-	dv = dv || theBook.ctlShowYin;
-	var a = dv.getElementsByClassName(clsNameEle);
-	for(var i=0; i < a.length; i++) a[i].classList.toggle(clsNameTog);
+//當下文章顯示者
+function currEssayer() {
+	return (theBook.mbReadCm ? theBook.ctlShowYin : theBook.ctlShowAux);
 }
-
 
 //openEssay 呼叫時會傳入參數
 function doToggleBR(dv){
 	if (!dv)
-		dv = (theBook.mbReadCm ? theBook.ctlShowYin : theBook.ctlShowAux);
-		
-	bookToggle("falseBR", "Hider", dv);
+		dv = currEssayer();
+	
+	$("#" + dv.id + " .falseBR").toggle();
 }
 
-
 function toggleTocBold(){
-	var dv = (theBook.mbReadCm ? theBook.ctlShowYin : theBook.ctlShowAux);
-	bookToggle("tocTitle", "Bolder", dv);
+	$("#" + currEssayer().id + " .tocTitle").toggleClass("Bolder");
 }
 
 function togglePageNum(dv) {
-	var dv = (theBook.mbReadCm ? theBook.ctlShowYin : theBook.ctlShowAux);
-	bookToggle("__pageNumHrDiv", "Hider", dv);
+	$("#" + currEssayer().id + " .__pageNumHrDiv").toggle();
 }
 
 function toggleFullBookScreen(dv){
-	bookToggle("audioGroup", "Hider", document.body);
+	$(" .audioGroup").toggle();
 	rstPosition();
 }
 
-
 function toggleNA(dv){
-	var dv = (theBook.mbReadCm ? theBook.ctlShowYin : theBook.ctlShowAux);
 	var sName = (mbIsPC ? "notearea" :"notearea_m");
-	bookToggle(sName, "Hider", dv);
+	$("#" + currEssayer().id + " ." + sName).toggle();
 }
 
 
@@ -288,4 +303,67 @@ function toggleAux(btn){
 	theBook.mnuCm.style.display = (theBook.mbReadCm ? "block" : "none");
 	theBook.mnuAux.style.display = (theBook.mbReadCm ? "none" : "block");
 }
+
+
+
+
+function createEssayMenu(aTocItem, mnu) {
+	var sPath = hostImgURL();
+	var jqRtUL = $("#" + mnu.id);
+	jqRtUL.empty();
+
+	var jqUL;
+	
+	for (var i=0; i < aTocItem.length; i++) {
+		var jqLi = $("<li></li>");
+		var nOffset = -1;
+
+		if (aTocItem[i].lev == 0) {
+    	jqUL = jqRtUL;
+			nOffset = -1;
+		}
+		else
+			nOffset = (aTocItem[i-1].lev - aTocItem[i].lev);
+		
+		if (nOffset < -1) {
+			throw "Err of Toc.level: prev= " + aTocItem[i-1].lev + ", curr= " + aTocItem[i].lev;
+		}
+			
+  	if (i==aTocItem.length-1 || aTocItem[i+1].lev <= aTocItem[i].lev) {
+    	jqLi.css("listStyleImage", 'none');
+  	} else
+    	jqLi.css("listStyleImage", 'url("' + sPath + 'open_brk.png")');
+
+//	var jqHref = $("<span></span>").text(aTocItem[i].c).attr("id", "A_" + aTocItem[i].a);
+    jqLi.append($("<span></span>").text(aTocItem[i].c).attr("id", "A_" + aTocItem[i].a));
+		
+		if (nOffset == 0) {
+			jqUL.append(jqLi);
+
+			if (i<aTocItem.length-1 && aTocItem[i+1].lev > aTocItem[i].lev) {
+	  		jqUL = $("<ul></ul>");;
+				jqLi.append(jqUL);
+			}
+		} else if (nOffset < 0){
+			jqUL.append(jqLi);
+			if (i<aTocItem.length-1 && aTocItem[i+1].lev > aTocItem[i].lev) {
+	  		jqUL = $("<ul></ul>");;
+				jqLi.append(jqUL);
+			}
+		} else {
+			for (j=0; j<nOffset; j++) {
+				jqUL = jqUL.parent().parent();
+//✖		jqUL = jqUL.closest("ul").closest("ul");
+			}
+				
+			jqUL.append(jqLi);
+			
+			if (i<aTocItem.length-1 && aTocItem[i+1].lev > aTocItem[i].lev) {
+	  		jqUL = $("<ul></ul>");;
+				jqLi.append(jqUL);
+			}
+		}
+	}
+}
+
 

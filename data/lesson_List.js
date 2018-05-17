@@ -1509,6 +1509,14 @@ var lesson_List={
     {
      "d": "04-25: 2",
      "url": "http://220.130.244.41:8080/Study/DiamondSutra/1070425-2.mp3"
+    },
+    {
+     "d": "05-09: 1",
+     "url": "http://220.130.244.41:8080/Study/DiamondSutra/1070509-1.mp3"
+    },
+    {
+     "d": "05-09: 2",
+     "url": "http://220.130.244.41:8080/Study/DiamondSutra/1070509-2.mp3"
     }
    ]
   }

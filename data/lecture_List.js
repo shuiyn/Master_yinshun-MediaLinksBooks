@@ -113,7 +113,7 @@ var lecture_List={
  "0001": {
   "bkid": "pnj",
   "cm": "pnjjj_book",
-  "aux":"pnjjj_zh_aux",
+  "aux": "pnjjj_zh_aux",
   "master": "zh",
   "byear": "104",
   "croom": "pn",
@@ -504,12 +504,22 @@ var lecture_List={
     "url": "http://www.kyba.org.tw/board/upload/2017122809342193216-14817.jpg"
    },
    {
-    "t": "107-04-25",
-    "url": null
+    "t": "107-04-25"
    },
    {
     "t": "白板",
     "url": "http://220.130.244.41:8080/Study/DiamondSutra/1070425.jpg"
+   },
+   {
+    "t": "講義：八事四對之解說",
+    "url": "http://220.130.244.41:8080/Study/DiamondSutra/%E5%85%AB%E4%BA%8B%E5%9B%9B%E5%B0%8D%E8%A7%A3%E8%AA%AA.pdf"
+   },
+   {
+    "t": "107-05-09"
+   },
+   {
+    "t": "白板",
+    "url": "http://220.130.244.41:8080/Study/DiamondSutra/1070509.jpg"
    }
   ]
  },

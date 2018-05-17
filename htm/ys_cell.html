@@ -90,16 +90,14 @@ var openEssay=function(bCM, jsnChapter) {
 	var idTail = (bCM ? "" : "_H");
 
 	divRoot.innerHTML = "";
+	$("#" + selPageList.id).empty();
 	
-	while (selPageList.length > 0) selPageList.remove(0);
-	
-//	var esy = new kEssayNode(divRoot, jsnChapter, selPageList, idTail);
 	var esy = new kEssayNode(jsnChapter, idTail);
 	esy.transData();
 	
 	divRoot.innerHTML = esy.divRoot.innerHTML;
 	selPageList.innerHTML = esy.selPageList.innerHTML;
-	createCmMenu(esy.maToc, mnu);
+	createEssayMenu(esy.maToc, mnu);
 	
 	doToggleBR(divRoot);
 	divRoot.scrollTop = 0;
@@ -147,7 +145,7 @@ function createCmMenu(aTocItem, mnu) {
 	    	nd.style.listStyleImage = 'url("' + sPath + 'open_brk.png")';
 
 	    nd.appendChild(ndAnchor);
-	    nd.setAttribute("class", "__mnu_LI");
+//	    nd.setAttribute("class", "__mnu_LI");
 		
 		if (nOffset == 0) {
 			ndUL.appendChild(nd);
@@ -182,29 +180,24 @@ function createCmMenu(aTocItem, mnu) {
 function onMenuClicked(ev) {
 	var sPath = hostImgURL();
 
-	var eTrigger = ev.target;
-//	if (eTrigger.nodeName == "A") {
-	if (eTrigger.nodeName == "SPAN") {
+	var eTrigger = $(event.target); //ev.target;
+//	if (eTrigger.prop("tagName") == "SPAN") {
+	if (eTrigger.prop("id").indexOf("A_") == 0) {
 		theBook.mbJumpAnchor = true;
-		location.href = "#" + eTrigger.id.slice(2); //A_xxxx
-			//skip to html#id
+		location.href = "#" + eTrigger.prop("id").slice(2); //A_xxxx
+		return; //return 後，讓 win.click() 收束選單
 	}
 	
-		//eTrigger.children.length > 1 沒有子 ul 者，只有 textnode/span 1 個 
-//	if (eTrigger.nodeName == "LI" && eTrigger.children.length>1) {
-	if (event.target.matches(".__mnu_LI")) {
-		var url = eTrigger.style.listStyleImage;
-		var bOpened = url.includes("open");
-		var disp = (bOpened ? "none" : "block");
+	ev.stopPropagation(); //選單維持開啟狀態，不上傳 win.click()
+//	ev.cancelBubble = true;
+	
+	//eTrigger.children().length > 1 沒有子 ul 者，只有 span 1 個 
+	if (eTrigger.prop("tagName") == "LI" && eTrigger.children().length>1) {
+		var bOpened = eTrigger.css("listStyleImage").includes("open");
 		
-		eTrigger.style.listStyleImage = 'url("' + sPath + (bOpened ? "close_brk.png" : "open_brk.png") + '")';
+		eTrigger.css("listStyleImage", 'url("' + sPath + (bOpened ? "close_brk.png" : "open_brk.png") + '")');
 
-		for (var i=0; i<eTrigger.children.length; i++) {
-			if (eTrigger.children[i].nodeName == "UL") {
-				eTrigger.children[i].style.display = disp;
-				break;
-			}
-		}
+		eTrigger.children("ul:first").toggle();
 	}
 }
 	</script>
