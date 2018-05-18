@@ -201,7 +201,8 @@ function rstPosition() {
 
 	theBook.ctlShowYin.style.height = (nDiffH-10) + "px";
 	theBook.ctlShowAux.style.height = (nDiffH-10) + "px";
-
+	
+	$(".__pageNumHrDiv").width($(".essay").innerWidth()-20);
 }
 
 

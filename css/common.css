@@ -77,8 +77,8 @@
 		position:absolute;
 		top:-12px;
 		right:0px;
-		color:blue;
-		background-color:LightGray;/*rgb(244, 244, 244);*/
+		color:black;
+		background-color:#e5eecc;/*LightGray rgb(244, 244, 244);*/
 		padding:1px;
 	}
 

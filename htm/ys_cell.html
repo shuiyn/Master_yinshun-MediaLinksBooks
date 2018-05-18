@@ -18,18 +18,18 @@
 	<script src="../data/auxData_0002.js"></script>
 	<script src="../data/pnj_style.js"></script>
 	<script src="../data/pnj_book.js"></script>
--->	<script src="../data/ffgl_book.js"></script>
+-->
+	<script src="../data/ffgl_book.js"></script>
 	
 	<script src="../data/base_List.js"></script>
 	<script src="../data/lecture_List.js"></script>
 	<script src="../data/lesson_List.js"></script>
 	<script src="../data/cuePoint_List.js"></script>
 	
-	<script src="../js/kEssayNode.js"></script>
+	<script src="../js/kEssayJQ.js"></script>
 	<script src="../js/ui.js"></script>
 	<script src="../js/search.js"></script>
 	<script src="../js/mysBooks.js"></script>
-	<script src="../js/kEssay.js"></script>
 	
 	<script>
 var mbIsPC = false;
@@ -89,14 +89,18 @@ var openEssay=function(bCM, jsnChapter) {
 	var selPageList = (bCM ? theBook.selPageListYin : theBook.selPageListAux);
 	var idTail = (bCM ? "" : "_H");
 
-	divRoot.innerHTML = "";
-	$("#" + selPageList.id).empty();
+//	divRoot.innerHTML = "";
+//	$("#" + selPageList.id).empty();
 	
-	var esy = new kEssayNode(jsnChapter, idTail);
+	var esy = new kEssay($("#" + divRoot.id), $("#" + selPageList.id), jsnChapter, idTail);
+//	esy.jqDivRoot = $("#" + divRoot.id);
+//	esy.jqSelPageList = $("#" + selPageList.id);
+//	esy.jqDivRoot.empty();
+//	esy.jqSelPageList.empty();
 	esy.transData();
 	
-	divRoot.innerHTML = esy.divRoot.innerHTML;
-	selPageList.innerHTML = esy.selPageList.innerHTML;
+//	divRoot.innerHTML = esy.divRoot.innerHTML;
+//	selPageList.innerHTML = esy.selPageList.innerHTML;
 	createEssayMenu(esy.maToc, mnu);
 	
 	doToggleBR(divRoot);
