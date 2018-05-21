@@ -721,15 +721,23 @@ kEssay.prototype.settlePageNum=function() {
 		if (jqCurrP.text().trim() == "")
 			jqCurrP.css("textAlign","right");
 		
-//		dvHr.insertAfter(jqNum).css("left",-dvHr.offset().left + "px");
-		dvHr.insertAfter(jqNum).css("left",(-dvHr.offset().left + $(".essay").offset().left) + "px");
+//		dvHr.css("left",(-dvHr.offset().left) + "px");
+//console.log(sPgNum + ", " + jqNum.offset().left);
+
+		dvHr.insertAfter(jqNum);
+//		dvHr.css("right", "16px");
+//		dvHr.css("left",(-dvHr.offset().left) + "px");
+//		dvHr.insertAfter(jqNum).css("left",(-dvHr.offset().left - $(".essay").offset().left) + "px");
+//		dvHr.insertAfter(jqNum).css("left",(-dvHr.offset().left + $(".essay").offset().left) + "px");
 	});
 }
 
 
 var genPageNumHrDiv=function(sPg) {
-	var sWidth = $(".essay").innerWidth()-20;
-	var ndDiv = $("<div></div>").css({"position":"relative","width":sWidth}).attr("class", "__pageNumHrDiv");//span 非容器
+//	var sWidth = $(".essay").innerWidth()-20;
+	var sWidth = $(".essay").width()-20;
+	var ndDiv = $("<div></div>").css({"position":"relative","right":"8px"}).attr("class", "__pageNumHrDiv");//span 非容器
+//	var ndDiv = $("<div></div>").css({"position":"relative","width":sWidth}).attr("class", "__pageNumHrDiv");//span 非容器
 	var sHtm = $('<span class="__pageNumInDiv" >' + sPg + '</span>');
 	ndDiv.append($("<hr/>").css("width", "100%"));
 	ndDiv.append(sHtm);

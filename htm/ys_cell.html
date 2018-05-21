@@ -105,6 +105,13 @@ var openEssay=function(bCM, jsnChapter) {
 	
 	doToggleBR(divRoot);
 	divRoot.scrollTop = 0;
+	/*
+	$("#" + divRoot.id + " .__pageNumHrDiv").each(function() {
+	console.log($(this).children("span").text() + ", " +	$(this).prop("offsetLeft"));
+	$(this).css("left",-16);
+//	$(this).css("left",-$(this).offset().left);
+	});
+	*/
 }
 
 
@@ -276,10 +283,10 @@ function onMenuClicked(ev) {
 
 
 <!--cue、文檔操作區  width="99%" -->
-<table><tr>
+<!--<table><tr>-->
 
 <!--文檔操作區-->
-<td>
+<!--<td>-->
 	<table style="padding:3px 5px;background-color:yellow;"><tr>
 
 <td style="position:relative;"><!--文檔工具區fixed-->
@@ -321,13 +328,20 @@ function onMenuClicked(ev) {
 
 	<td>
 			<button onclick="rstContHandFontSize('-')" style="padding-right:4px;color:DodgerBlue;">─</button>
-			<span id="contFontSize" style="background-color:white;padding-left:3px;padding-right:3px;border:1px black solid;">110</span>
+			<span id="contFontSize" onclick="addCusPos()" style="background-color:white;padding-left:3px;padding-right:3px;border:1px black solid;">110</span>
 			<button style="color:DodgerBlue;" onclick="rstContHandFontSize('+')">✚</button>
 	</td>
-
+	
+<!--
 	<td>
 	<button onclick="toggleFullBookScreen()" class="dropbtn">全</button>
 </td>
+-->
+
+	<td>
+	<button onclick="tglDropDown(this, 4)" class="dropbtn">位</button>
+	  <div id="dpdnTurnPage" class="dropdown-content" style="margin:0;padding:2px;"></div>
+	</td>
 
 	<td>
 		<button id="toggleAux" onclick="toggleAux(this)" class="toggle">課</button>
@@ -335,9 +349,11 @@ function onMenuClicked(ev) {
 
 	</tr></table>
 	
-</td><!--文檔操作區-->
+<!--</td>-->
+<!--文檔操作區-->
 
-</tr></table><!--cue、文檔操作區-->
+<!--</tr></table>-->
+<!--cue、文檔操作區-->
 
 </div><!-- id="dvAudioLesson"-->
 

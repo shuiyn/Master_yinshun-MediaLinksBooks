@@ -9,6 +9,9 @@ var mysBooks = function(bkId, lecId) {
 	this.currDropBtn = null; ///章、目、進度 invoke btn
 	this.currDropDown = null; ///章、目、進度 drop
 	
+	this.maTurning = [];
+	this.mnTurningIdx = -1;
+	
 	this.cm; // course materials
 	if(lecture_List[lecId].cm != undefined) {
 		this.cm = eval(lecture_List[lecId].cm);
@@ -64,6 +67,8 @@ mysBooks.prototype.pairingIdCtrl=function(){
 	this.dpdnProcess = document.getElementById("dropdnProcess");
 	this.dpdnChapterCm = document.getElementById("dpdnChapterCm");
 	this.dpdnChapterAux = document.getElementById("dpdnChapterAux");
+	this.dpdnTurnPage = document.getElementById("dpdnTurnPage");
+	fillPageTurning();
 }
 
 

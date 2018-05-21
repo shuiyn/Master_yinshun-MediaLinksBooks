@@ -140,6 +140,8 @@ function tglDropDown(btn, nKind) {
 			theBook.currDropDown = theBook.dpdnMenuCm;
 		else
 			theBook.currDropDown = theBook.dpdnMenuAux;
+	} else if (nKind == 4) { //翻頁
+		theBook.currDropDown = theBook.dpdnTurnPage;
 	}
 	
 	theBook.currDropDown.classList.toggle("dropdownShow");
@@ -151,6 +153,79 @@ var TryScroll=function(ev) {
 		window.scrollTo(0, 0);
 		theBook.mbJumpAnchor = false;
 	}
+}
+
+
+
+var fillPageTurning=function() {
+	var aItem = ["<a>上 一個位置</a>", "<a>下 一個位置</a>", "<hr>", "<a>加入 這個位置</a>", "<a>移除 這個位置</a>", "<a>清空 所有位置</a>"];
+	
+	$(aItem[0]).appendTo("#dpdnTurnPage").attr("onclick", 'pageTurning(true)');
+	$(aItem[1]).appendTo("#dpdnTurnPage").attr("onclick", 'pageTurning(false)');
+	$(aItem[2]).appendTo("#dpdnTurnPage");
+	$(aItem[3]).appendTo("#dpdnTurnPage").attr("onclick", 'addTurning()');
+	$(aItem[4]).appendTo("#dpdnTurnPage").attr("onclick", 'rmvTurning()');
+	$(aItem[5]).appendTo("#dpdnTurnPage").attr("onclick", 'initPageTurning()');
+	$("<hr>").appendTo("#dpdnTurnPage");
+	$("<a style='background-color: DodgerBlue; color:white'>全螢幕</a>").appendTo("#dpdnTurnPage").attr("onclick", 'toggleFullBookScreen()');
+	
+}
+
+
+function initPageTurning() {
+	theBook.maTurning = [];
+	theBook.mnTurningIdx = -1;
+}
+
+function addTurning() {
+	theBook.maTurning.push({"bCM":theBook.mbReadCm, "t":currEssayer().scrollTop});
+	
+	theBook.mnTurningIdx = theBook.maTurning.length-1;
+}
+
+function rmvTurning() {
+	for (var i=0; i < theBook.maTurning.length; i++) {
+		var esyer = (theBook.maTurning[i].bCM ? theBook.ctlShowYin : theBook.ctlShowAux);
+		if (theBook.maTurning[i].t == esyer.scrollTop) {
+			for (var j=i; j < theBook.maTurning.length-1; j++) {
+				theBook.maTurning[j] = theBook.maTurning[j+1];
+			}
+			
+			theBook.maTurning.pop();
+			
+			if (theBook.maTurning.length > 0)
+				theBook.mnTurningIdx = 0;
+			else
+				theBook.mnTurningIdx = -1;
+			
+			break;
+		}
+	}
+}
+
+function pageTurning(bForward) {
+	if (theBook.maTurning.length == 0)
+		return;
+	
+	$(event.stopPropagation());
+	
+	if (bForward) {
+		if (theBook.mnTurningIdx >= theBook.maTurning.length-1)
+			theBook.mnTurningIdx = 0;
+		else
+			theBook.mnTurningIdx++;
+	} else {
+		if (theBook.mnTurningIdx <= 0)
+			theBook.mnTurningIdx = theBook.maTurning.length-1;
+		else
+			theBook.mnTurningIdx--;
+	}
+	
+	var btn = document.getElementById("toggleAux");
+	var sHtml = (theBook.maTurning[theBook.mnTurningIdx].bCM ? "課" : "輔");
+	toggleAux(btn, sHtml);
+		
+	currEssayer().scrollTop = theBook.maTurning[theBook.mnTurningIdx].t;
 }
 
 
@@ -202,7 +277,8 @@ function rstPosition() {
 	theBook.ctlShowYin.style.height = (nDiffH-10) + "px";
 	theBook.ctlShowAux.style.height = (nDiffH-10) + "px";
 	
-	$(".__pageNumHrDiv").width($(".essay").innerWidth()-20);
+//	$(".__pageNumHrDiv").width($("#content").innerWidth()-20);
+//	$(".__pageNumHrDiv").width($(".essay").width()-20);
 }
 
 
@@ -296,7 +372,10 @@ function toggleHandout(btn){
 }
 
 
-function toggleAux(btn){
+function toggleAux(btn, sToText){
+	if (sToText == btn.innerHTML)
+		return;
+	
 	doToggle(btn, ["課", "輔"], null, null,["content", "auxPanel", "pageList", "pageList_hand"]);
 	
 	theBook.mbReadCm = (btn.innerHTML == "課");
