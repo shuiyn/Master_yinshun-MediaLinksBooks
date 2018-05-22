@@ -25,27 +25,9 @@ var mysBooks = function(bkId, lecId) {
 		this.book = eval(this.bkId + "_book");
 	} catch(e) {}
 	
-	/*
-	this.bookStyle;// = eval(this.bkId + "_style");
-	try {
-		this.bookStyle = eval(this.bkId + "_style");
-	} catch(e) {}
-	
-	this.auxData = null;
-	try {
-		this.auxData = eval("auxData_" + this.lecId);
-	} catch(e) {}
-	
-	if (!this.auxData)
-		document.getElementById("btnOpenAux").disabled = true;
-		
-//	this.auxJSON = null;
-//	try {
-//		this.auxJSON = eval("auxJSON_" + this.lecId);
-//	} catch(e) {}
-*/
 	this.mbJumpAnchor = false;
 	this.pairingIdCtrl();
+	fillPageTurning();
 }
 
 
@@ -68,14 +50,13 @@ mysBooks.prototype.pairingIdCtrl=function(){
 	this.dpdnChapterCm = document.getElementById("dpdnChapterCm");
 	this.dpdnChapterAux = document.getElementById("dpdnChapterAux");
 	this.dpdnTurnPage = document.getElementById("dpdnTurnPage");
-	fillPageTurning();
+	this.dpdnChapterTabs = document.getElementById("dpdnChapterTabs");
 }
 
 
 mysBooks.prototype.onPageListChange=function(e){
 	this.mbJumpAnchor = true;
-	var idTail = (e.id == "pageList_hand"? "_H" : "");
-	location.href = "#" + base_List.htmlIdPrefix.page + "p" + e.options[e.selectedIndex].innerText + idTail;
+	location.href = "#" + base_List.htmlIdPrefix.page + "p" + e.options[e.selectedIndex].innerText + fetchEssayerIdTail();
 }
 
 
@@ -95,22 +76,25 @@ mysBooks.prototype.doFillBook=function(bCM) {
 		
 		fillDropdown(bCM, aChapter);
 		
-		openEssay(bCM, src[aChapter[0]]);
+		openEssay(bCM, src[aChapter[0]], aChapter[0]);
 	}
 }
 
 
 mysBooks.prototype.fillBook=function() {
-	this.doFillBook(false);
 	
-	if (this.cm)
+	if (this.cm) {
 		this.doFillBook(true);
+	}
 	else {
 	  this.ctlShowYin.innerHTML = "<p>本單元尚未建立 ePub 檔。</p><p>請點按左上角【<span style='font-weight:bold;color:brown;'>期別</span>】按鈕，切換到【<span style='font-weight:bold;color:brown;'>講義</span>】，開啟右側選單，點選所要參閱的章節，再點按【<span style='background-color:lightgreen;'>到網頁</span>】連結，即可前往該文件網址。</p>";
 	}
 	
   this.fillHandout();
   this.fillPhase();
+  
+	this.doFillBook(false);
+	showCM("content_0");
 }
 
 

@@ -1,16 +1,4 @@
 
-var uaNotPC=function() {
-	return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
-}
-
-//img 網站資料夾的路徑，供 menuTree 使用
-var hostImgURL=function(fdn) {
-	var sImgPath = location.pathname;
-	fdn = fdn || "img";
-	return ".".repeat(sImgPath.substr(sImgPath.lastIndexOf("Books/")).split("/").length-1) + "/" + fdn + "/";
-}
-
-
 //目前已建有 課程 的書目，非整個 books
 var initUsedBook=function(){
 	var out={}; //{bkid:bkName, ...}

@@ -1,21 +1,14 @@
- /*
-$(document).ready(function() {
 
-$(body).click(function(event){
-    var dropdowns = document.getElementsByClassName("dropdown-content");
-    for (var nDrop=0; nDrop < dropdowns.length; nDrop++) {
-			var openDropdown = dropdowns[nDrop];
-     	if (event.target != theBook.currDropBtn || theBook.currDropDown != openDropdown) {
-	      if (openDropdown.classList.contains('dropdownShow')) {
-	        openDropdown.classList.remove('dropdownShow');
-	      }
-    	}
-   }
+var uaNotPC=function() {
+	return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+}
 
-});
-
-});
-*/
+//img 網站資料夾的路徑，供 menuTree 使用
+var hostImgURL=function(fdn) {
+	var sImgPath = location.pathname;
+	fdn = fdn || "img";
+	return ".".repeat(sImgPath.substr(sImgPath.lastIndexOf("Books/")).split("/").length-1) + "/" + fdn + "/";
+}
 
 
 window.onclick=function(event) {
@@ -80,9 +73,9 @@ var fillDropdown=function(bCM, aItem) {
 		var h = "<a>" + aItem[i] + "</a>";
 		
   	if (bCM)
-			$(h).appendTo(id).attr("onclick", 'openEssay(true,theBook.cm["' + aItem[i]+ '"])');
+			$(h).appendTo(id).attr("onclick", 'openEssay(true,theBook.cm["' + aItem[i]+ '"],"' + aItem[i] + '", true)');
 		else
-			$(h).appendTo(id).attr("onclick", 'openEssay(false,theBook.aux["' + aItem[i]+ '"])');
+			$(h).appendTo(id).attr("onclick", 'openEssay(false,theBook.aux["' + aItem[i]+ '"],"' + aItem[i] + '", true)');
 		
 		var nWid = $("#try").html("<a>" + aItem[i] + "</a>").innerWidth();
   	nWidth = Math.max(nWidth, nWid);
@@ -136,12 +129,17 @@ function tglDropDown(btn, nKind) {
 	} else if (nKind == 2) { //進度
 		theBook.currDropDown = theBook.dpdnProcess;
 	} else if (nKind == 3) { //目次選單
-		if (theBook.mbReadCm)
-			theBook.currDropDown = theBook.dpdnMenuCm;
-		else
-			theBook.currDropDown = theBook.dpdnMenuAux;
+		//dpdnMenuCm
+	var idTail = fetchEssayerIdTail();
+			theBook.currDropDown = document.getElementById("dpdnMenuCm" + idTail);
+//		if (theBook.mbReadCm)
+//			theBook.currDropDown = theBook.dpdnMenuCm;
+//		else
+//			theBook.currDropDown = theBook.dpdnMenuAux;
 	} else if (nKind == 4) { //翻頁
 		theBook.currDropDown = theBook.dpdnTurnPage;
+	} else if (nKind == 5) { //chapter tabs
+		theBook.currDropDown = theBook.dpdnChapterTabs;
 	}
 	
 	theBook.currDropDown.classList.toggle("dropdownShow");
@@ -159,6 +157,8 @@ var TryScroll=function(ev) {
 
 var fillPageTurning=function() {
 	var aItem = ["<a>上 一個位置</a>", "<a>下 一個位置</a>", "<hr>", "<a>加入 這個位置</a>", "<a>移除 這個位置</a>", "<a>清空 所有位置</a>"];
+
+	$("#dpdnTurnPage").empty();
 	
 	$(aItem[0]).appendTo("#dpdnTurnPage").attr("onclick", 'pageTurning(true)');
 	$(aItem[1]).appendTo("#dpdnTurnPage").attr("onclick", 'pageTurning(false)');
@@ -237,8 +237,7 @@ function rstContHandFontSize(sType){
 	else ps -= 4;
 	
 	theBook.fontSizePan.innerHTML = ps;
-	theBook.ctlShowYin.style.fontSize = ps+"%";
-	theBook.ctlShowAux.style.fontSize = ps+"%";
+	$("#esyPool").children().css("fontSize", ps + "%");
 }
 
 
@@ -246,8 +245,9 @@ function rstContHandFontSize(sType){
 function fitDevice() {
 	if (mbIsPC) {
 //		document.getElementById("tit_booklecName").style.fontSize = "110%";
-		theBook.ctlShowYin.style.fontSize = "100%";
-		theBook.ctlShowAux.style.fontSize = "100%";
+	$("#esyPool").children().css("fontSize", "100%");
+//		theBook.ctlShowYin.style.fontSize = "100%";
+//		theBook.ctlShowAux.style.fontSize = "100%";
 		theBook.fontSizePan.innerHTML = "100";
 		
 //		theBook.dpdnMenuCm.style.left = "-4em";
@@ -270,12 +270,13 @@ function rstPosition() {
 
 	var nDiffH = (wInnerH - nTop - 10);
 
-	theBook.essayPool.style.height = (nDiffH-10) + "px";
+//	theBook.essayPool.style.height = (nDiffH-10) + "px";
+	$("#esyPool").css("height", (nDiffH-10)).children().css("height", (nDiffH-10));
 	
 //document.getElementById("try").innerHTML = wInnerH + ", t=" + nTop + ", h= " + nDiffH;
 
-	theBook.ctlShowYin.style.height = (nDiffH-10) + "px";
-	theBook.ctlShowAux.style.height = (nDiffH-10) + "px";
+//	theBook.ctlShowYin.style.height = (nDiffH-10) + "px";
+//	theBook.ctlShowAux.style.height = (nDiffH-10) + "px";
 	
 //	$(".__pageNumHrDiv").width($("#content").innerWidth()-20);
 //	$(".__pageNumHrDiv").width($(".essay").width()-20);
@@ -283,16 +284,19 @@ function rstPosition() {
 
 
 //當下文章顯示者
-function currEssayer() {
-	return (theBook.mbReadCm ? theBook.ctlShowYin : theBook.ctlShowAux);
+function currEssayer(bGetId) {
+	var id = $("#esyPool").attr("data-currEssayerId");
+	if (bGetId)
+		return id;
+	else
+		return document.getElementById(id);
 }
 
 //openEssay 呼叫時會傳入參數
-function doToggleBR(dv){
-	if (!dv)
-		dv = currEssayer();
+function doToggleBR(){
+//	var	dv = currEssayer();
 	
-	$("#" + dv.id + " .falseBR").toggle();
+	$("#" + currEssayer().id + " .falseBR").toggle();
 }
 
 function toggleTocBold(){
@@ -387,9 +391,9 @@ function toggleAux(btn, sToText){
 
 
 
-function createEssayMenu(aTocItem, mnu) {
+function createEssayMenu(aTocItem, mnuId) {
 	var sPath = hostImgURL();
-	var jqRtUL = $("#" + mnu.id);
+	var jqRtUL = $("#" + mnuId); //mnu.id);
 	jqRtUL.empty();
 
 	var jqUL;
@@ -447,3 +451,214 @@ function createEssayMenu(aTocItem, mnu) {
 }
 
 
+
+var fetchEssayerIdTail=function(id) {
+	if (!id)
+		id = currEssayer(true);
+	
+	var idTail = "";
+	if (id.indexOf("_") > -1)
+		idTail = id.slice(id.indexOf("_"));
+	
+	return idTail;
+}
+
+
+var showCM=function(id) {
+//	$("#" + $("#esyPool").attr("data-currEssayerId")).hide();
+	$("#esyPool").children().hide();
+	$("#esyPool").attr("data-currEssayerId",id);
+	$("#" + id).show();
+
+	$("#pageListPool").children().hide();
+	var idTail = fetchEssayerIdTail(id);
+//	if (id.indexOf("_") > -1)
+//		idTail = id.slice(id.indexOf("_"));
+	
+	$("#pageList" + idTail).show();
+
+//	$("#cmMenuPool").children().hide();
+//	$("#mnuRoot" + idTail).show();
+}
+
+
+//讀取書本的各「章」名稱，作為選單
+var grabEssayChapter=function(jsEsy) {
+	var aChapt = [];
+	for (s in jsEsy) {
+		aChapt.push(s);
+	}
+	
+	return aChapt;
+}
+
+
+var closeEssay=function() {
+	var idTail = fetchEssayerIdTail();
+	
+	$("#" + currEssayer(true)).remove();
+	$("#dpdnMenuCm" + idTail).remove();
+	$("#pageList" + idTail).remove();
+	$("#ShowCmList" + idTail).remove();
+	
+	var esyPool = $("#esyPool");
+	if (esyPool.children(".essay").length > 1) {
+//		alert(esyPool.children(".essay:first").attr("id"));
+		showCM(esyPool.children(".essay:last").attr("id"));
+	}
+}
+
+
+//將指定的「章」，填入展示的 divRoot
+var openEssay=function(bCM, jsnChapter, idChapter, bImmOpen) {
+	var idDivRoot = "content";
+	var idPageList = "pageList";
+	var idCmMenu = "dpdnMenuCm";
+	var idMenuRoot = "mnuRoot";
+	var idShowCM = "ShowCmList";
+	var idTail = "";
+	var esyPool = $("#esyPool");
+	var cmMenuPool = $("#cmMenuPool");
+	var pageListPool = $("#pageListPool");
+	var nNextCount = esyPool.attr("data-nextCountId"); //避免關閉後再開而重複 id
+
+	if (nNextCount == undefined)
+		nNextCount = 0;
+
+		idTail = "_" + nNextCount;
+		idShowCM += idTail;
+		idDivRoot += idTail;
+		idPageList += idTail;
+		idCmMenu += idTail;
+		idMenuRoot += idTail;
+		esyPool.append( $('#content').clone().attr("id", idDivRoot));
+		
+		var pnlMnu = $('#dpdnMenuCm').clone().attr("id", idCmMenu);
+		pnlMnu.children("ul:first").attr("id", idMenuRoot);
+		cmMenuPool.append(pnlMnu);
+		
+		pageListPool.append( $('#pageList').clone().attr("id", idPageList));
+		
+//		esyPool.append( $('<div onscroll="TryScroll(event);" class="essay"></div>').attr("id", idDivRoot).css("height", esyPool.css("height")));
+
+
+	esyPool.attr("data-currEssayerId", idDivRoot);
+	esyPool.children().hide();
+//	cmMenuPool.children(".dropdown-content").hide(); 不可 hide
+	pageListPool.children().hide();
+
+	var jqTab = $("<a></a>").text(idChapter).attr({"onclick":'showCM("' + idDivRoot + '")', "id":idShowCM});
+	$("#dpdnChapterTabs").append(jqTab);
+
+	var esy = new kEssay($("#" + idDivRoot), $("#" + idPageList), jsnChapter, idTail);
+	esy.transData();
+	
+	createEssayMenu(esy.maToc, idMenuRoot);
+	
+	doToggleBR();
+	$("#" + idDivRoot).css("scrollTop", 0);
+	
+	nNextCount++;
+	esyPool.attr("data-nextCountId", nNextCount);
+	
+	if (bImmOpen)
+		showCM(idDivRoot);
+}
+
+
+
+function createCmMenu(aTocItem, mnu) {
+	var sPath = hostImgURL();
+	var rtUL = mnu;
+	
+	while (rtUL.childNodes.length > 0){
+		rtUL.removeChild(rtUL.childNodes[0]);
+	}
+
+	var ndUL;
+	
+	for (var i=0; i < aTocItem.length; i++) {
+	    var textnode = document.createTextNode(aTocItem[i].c);
+//	    var ndAnchor = document.createElement("A");
+	    var ndAnchor = document.createElement("SPAN");
+//    var ndSpan = document.createElement("SPAN");
+	    var nd = document.createElement("LI");
+		var nOffset = -1;
+
+	    ndAnchor.appendChild(textnode);
+	    ndAnchor.setAttribute("id", "A_" + aTocItem[i].a);
+//	    ndAnchor.setAttribute("href", "#" + aTocItem[i].a);
+
+		if (aTocItem[i].lev == 0) {
+    		ndUL = rtUL;
+			nOffset = -1;
+		}
+		else
+			nOffset = (aTocItem[i-1].lev - aTocItem[i].lev);
+		
+		if (nOffset < -1) {
+			alert("Toc.level 錯誤；請檢視 console.log。");
+			console.log("Err of Toc.level: prev= ",aTocItem[i-1].lev,", curr= ", aTocItem[i].lev);
+		}
+			
+    	if (i==aTocItem.length-1 || aTocItem[i+1].lev <= aTocItem[i].lev) {
+	    	nd.style.listStyleImage = 'none';
+    	} else
+	    	nd.style.listStyleImage = 'url("' + sPath + 'open_brk.png")';
+
+	    nd.appendChild(ndAnchor);
+//	    nd.setAttribute("class", "__mnu_LI");
+		
+		if (nOffset == 0) {
+			ndUL.appendChild(nd);
+
+			if (i<aTocItem.length-1 && aTocItem[i+1].lev > aTocItem[i].lev) {
+	    		ndUL = document.createElement("UL");
+				nd.appendChild(ndUL);
+			}
+		} else if (nOffset < 0){
+			ndUL.appendChild(nd);
+			if (i<aTocItem.length-1 && aTocItem[i+1].lev > aTocItem[i].lev) {
+	    		ndUL = document.createElement("UL");
+				nd.appendChild(ndUL);
+			}
+		} else {
+			for (j=0; j<nOffset; j++) {
+				ndUL = ndUL.parentNode.parentNode;
+			}
+				
+			ndUL.appendChild(nd);
+			
+			if (i<aTocItem.length-1 && aTocItem[i+1].lev > aTocItem[i].lev) {
+	    		ndUL = document.createElement("UL");
+				nd.appendChild(ndUL);
+			}
+		}
+	}
+}
+
+
+
+function onMenuClicked(ev) {
+	var sPath = hostImgURL();
+
+	var eTrigger = $(event.target); //ev.target;
+//	if (eTrigger.prop("tagName") == "SPAN") {
+	if (eTrigger.prop("id").indexOf("A_") == 0) {
+		theBook.mbJumpAnchor = true;
+		location.href = "#" + eTrigger.prop("id").slice(2); //A_xxxx
+		return; //return 後，讓 win.click() 收束選單
+	}
+	
+	ev.stopPropagation(); //選單維持開啟狀態，不上傳 win.click()
+//	ev.cancelBubble = true;
+	
+	//eTrigger.children().length > 1 沒有子 ul 者，只有 span 1 個 
+	if (eTrigger.prop("tagName") == "LI" && eTrigger.children().length>1) {
+		var bOpened = eTrigger.css("listStyleImage").includes("open");
+		
+		eTrigger.css("listStyleImage", 'url("' + sPath + (bOpened ? "close_brk.png" : "open_brk.png") + '")');
+
+		eTrigger.children("ul:first").toggle();
+	}
+}

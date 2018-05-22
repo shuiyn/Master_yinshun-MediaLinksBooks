@@ -8,9 +8,12 @@
 var kEssay=function(jqRoot, jqPage, jsnChapter, idTail) {
 	jqRoot.empty();
 	jqPage.empty();
+	
 	this.jqDivRoot = jqRoot;
 	this.jqSelPageList = jqPage;
 	this.msIdTail = idTail || "";
+	
+	this.addChapTool();
 	
 	this.aLine = jsnChapter.c;
 	this.mnStartMarginLev = 3; // margin-left 開始設值的 level，1 是「節」
@@ -40,6 +43,17 @@ var kEssay=function(jqRoot, jqPage, jsnChapter, idTail) {
 	this.mbFitDevice = true; // Kag Line 是否適用裝置
 	this.moTable = null;
 //	this.nTry = 0;
+}
+
+
+kEssay.prototype.addChapTool=function() {
+	var jqChapTool = $("<div></div>").css({"position":"sticky", "top":0, "text-align":"right"});
+//	jqChapTool.append($('<button onclick="tglDropDown(this, 1)" class="dropbtn">目</button>'));
+//	jqChapTool.append('<div id="dpdnChapterCmxx" class="dropdown-content" style="height:18em;width:5em;margin:0;padding:2px;"></div>');
+//		jqChapTool.append('<select style="width:4em;font-size:95%;" id="pageListx" onchange="theBook.onPageListChange(this)"></select>');
+////		jqChapTool.append("<span>　</span>");
+		jqChapTool.append($('<button onclick="closeEssay()" class="dropbtn">✖</button>'));
+	this.jqDivRoot.append(jqChapTool);
 }
 
 
@@ -232,7 +246,7 @@ kEssay.prototype.processUnLined=function(jsn, nLnIdx) {
 				this.stuffPara(nLnIdx); //paraSty 插入 br
 				this.jqCurrPara.css({"marginTop":"0", "marginBottom":"0"});
 				this.NewPara();
-					
+				
 				this.jqCurrDiv = this.moTable.jqPrevDiv;
 			}
 			
@@ -709,39 +723,42 @@ kEssay.prototype.settlePageNum=function() {
 	if (!aPageNum)
 		return;
 	
-	var jqCurrP = this.jqCurrPara;
+//	var jqCurrP = this.jqCurrPara;
 	
 //	for (var i = 0; i < aPageNum.length; i++) {
 	aPageNum.each(function() {
-		var jqNum = $(this);//aPageNum[i];
-		var sPgNum = jqNum.attr("pgNum");
-		var dvHr = genPageNumHrDiv(sPgNum);
-		jqNum.html("");
+		genPageNumHrDiv($(this));
+//		var jqNum = $(this);//aPageNum[i];
+//		var sPgNum = jqNum.attr("pgNum");
+//		var dvHr = genPageNumHrDiv(sPgNum);
+//		jqNum.html("");
 		//全段只有頁碼
-		if (jqCurrP.text().trim() == "")
-			jqCurrP.css("textAlign","right");
-		
-//		dvHr.css("left",(-dvHr.offset().left) + "px");
+//		if (jqCurrP.text().trim() == "")
+//			jqCurrP.css("textAlign","right");
+//			dvHr.insertAfter(jqNum);
+	
+//		dvHr.css("left",(-dvHr.offset().left-14) + "px");
 //console.log(sPgNum + ", " + jqNum.offset().left);
 
-		dvHr.insertAfter(jqNum);
 //		dvHr.css("right", "16px");
-//		dvHr.css("left",(-dvHr.offset().left) + "px");
+//		dvHr.css("left",(-jqCurrP.offsetParent().offset().left) + "px");
 //		dvHr.insertAfter(jqNum).css("left",(-dvHr.offset().left - $(".essay").offset().left) + "px");
 //		dvHr.insertAfter(jqNum).css("left",(-dvHr.offset().left + $(".essay").offset().left) + "px");
 	});
 }
 
 
-var genPageNumHrDiv=function(sPg) {
-//	var sWidth = $(".essay").innerWidth()-20;
-	var sWidth = $(".essay").width()-20;
+var genPageNumHrDiv=function(jqNum) {
+//	var sWidth = $(".essay").width()-20;
+	jqNum.html("");
 	var ndDiv = $("<div></div>").css({"position":"relative","right":"8px"}).attr("class", "__pageNumHrDiv");//span 非容器
-//	var ndDiv = $("<div></div>").css({"position":"relative","width":sWidth}).attr("class", "__pageNumHrDiv");//span 非容器
-	var sHtm = $('<span class="__pageNumInDiv" >' + sPg + '</span>');
+
+	ndDiv.insertAfter(jqNum);
+//	ndDiv.css("left",-ndDiv.offset().left);
+
+	var jqNumInDiv = $('<span class="__pageNumInDiv" >' + jqNum.attr("pgNum") + '</span>');
 	ndDiv.append($("<hr/>").css("width", "100%"));
-	ndDiv.append(sHtm);
-	return ndDiv;
+	ndDiv.append(jqNumInDiv);
 }
 
 

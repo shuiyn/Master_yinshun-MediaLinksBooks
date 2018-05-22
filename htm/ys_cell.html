@@ -39,6 +39,21 @@ var mbIsPC = false;
 var theBook = null;
 var theAud = null;
 
+var showScreen = function() {
+	var txt = "";
+	txt += "Total width/height: " + screen.width + "*" + screen.height + "\n";
+	txt += "Available width/height: " + screen.availWidth + "*" + screen.availHeight + "\n";
+	txt += "Color depth: " + screen.colorDepth + "\n";
+	txt += "Color resolution: " + screen.pixelDepth;
+
+	var hid = $("<input type=text></input>").val(txt).appendTo("body");
+	hid.get(0).select();
+	document.execCommand("copy");;
+	alert(txt);
+	$(hid).remove();
+}
+
+
 var onLoad = function() {
 var sQry = decodeURIComponent(location.search);
 var q = null;
@@ -50,7 +65,9 @@ else
 	mbIsPC = !uaNotPC();
 	var lecs=grabLecture(q.bkId);
 
-	document.getElementById("tit_booklecName").innerHTML = base_List.books[q.bkId] + "：" + grabLecture(q.bkId)[q.lecId];
+	/*document.getElementById("tit_booklecName").innerHTML = base_List.books[q.bkId] + "：" + grabLecture(q.bkId)[q.lecId];*/
+	
+	document.getElementsByTagName("TITLE")[0].text = base_List.books[q.bkId] + "：" + grabLecture(q.bkId)[q.lecId] + "／印順導師著作聞思";
 
 	theAud = new mysAud();
 	theBook = new mysBooks(q.bkId, q.lecId);
@@ -70,155 +87,15 @@ else
 	theBook.fillBook();
 }
 
-
-
-//讀取書本的各「章」名稱，作為選單
-var grabEssayChapter=function(jsEsy) {
-	var aChapt = [];
-	for (s in jsEsy) {
-		aChapt.push(s);
-	}
-	
-	return aChapt;
-}
-
-//將指定的「章」，填入展示的 divRoot
-var openEssay=function(bCM, jsnChapter) {
-	var divRoot = (bCM ? theBook.ctlShowYin : theBook.ctlShowAux);
-	var mnu = (bCM ? theBook.mnuCm : theBook.mnuAux);
-	var selPageList = (bCM ? theBook.selPageListYin : theBook.selPageListAux);
-	var idTail = (bCM ? "" : "_H");
-
-//	divRoot.innerHTML = "";
-//	$("#" + selPageList.id).empty();
-	
-	var esy = new kEssay($("#" + divRoot.id), $("#" + selPageList.id), jsnChapter, idTail);
-//	esy.jqDivRoot = $("#" + divRoot.id);
-//	esy.jqSelPageList = $("#" + selPageList.id);
-//	esy.jqDivRoot.empty();
-//	esy.jqSelPageList.empty();
-	esy.transData();
-	
-//	divRoot.innerHTML = esy.divRoot.innerHTML;
-//	selPageList.innerHTML = esy.selPageList.innerHTML;
-	createEssayMenu(esy.maToc, mnu);
-	
-	doToggleBR(divRoot);
-	divRoot.scrollTop = 0;
-	/*
-	$("#" + divRoot.id + " .__pageNumHrDiv").each(function() {
-	console.log($(this).children("span").text() + ", " +	$(this).prop("offsetLeft"));
-	$(this).css("left",-16);
-//	$(this).css("left",-$(this).offset().left);
-	});
-	*/
-}
-
-
-
-function createCmMenu(aTocItem, mnu) {
-	var sPath = hostImgURL();
-	var rtUL = mnu;
-	
-	while (rtUL.childNodes.length > 0){
-		rtUL.removeChild(rtUL.childNodes[0]);
-	}
-
-	var ndUL;
-	
-	for (var i=0; i < aTocItem.length; i++) {
-	    var textnode = document.createTextNode(aTocItem[i].c);
-//	    var ndAnchor = document.createElement("A");
-	    var ndAnchor = document.createElement("SPAN");
-//    var ndSpan = document.createElement("SPAN");
-	    var nd = document.createElement("LI");
-		var nOffset = -1;
-
-	    ndAnchor.appendChild(textnode);
-	    ndAnchor.setAttribute("id", "A_" + aTocItem[i].a);
-//	    ndAnchor.setAttribute("href", "#" + aTocItem[i].a);
-
-		if (aTocItem[i].lev == 0) {
-    		ndUL = rtUL;
-			nOffset = -1;
-		}
-		else
-			nOffset = (aTocItem[i-1].lev - aTocItem[i].lev);
-		
-		if (nOffset < -1) {
-			alert("Toc.level 錯誤；請檢視 console.log。");
-			console.log("Err of Toc.level: prev= ",aTocItem[i-1].lev,", curr= ", aTocItem[i].lev);
-		}
-			
-    	if (i==aTocItem.length-1 || aTocItem[i+1].lev <= aTocItem[i].lev) {
-	    	nd.style.listStyleImage = 'none';
-    	} else
-	    	nd.style.listStyleImage = 'url("' + sPath + 'open_brk.png")';
-
-	    nd.appendChild(ndAnchor);
-//	    nd.setAttribute("class", "__mnu_LI");
-		
-		if (nOffset == 0) {
-			ndUL.appendChild(nd);
-
-			if (i<aTocItem.length-1 && aTocItem[i+1].lev > aTocItem[i].lev) {
-	    		ndUL = document.createElement("UL");
-				nd.appendChild(ndUL);
-			}
-		} else if (nOffset < 0){
-			ndUL.appendChild(nd);
-			if (i<aTocItem.length-1 && aTocItem[i+1].lev > aTocItem[i].lev) {
-	    		ndUL = document.createElement("UL");
-				nd.appendChild(ndUL);
-			}
-		} else {
-			for (j=0; j<nOffset; j++) {
-				ndUL = ndUL.parentNode.parentNode;
-			}
-				
-			ndUL.appendChild(nd);
-			
-			if (i<aTocItem.length-1 && aTocItem[i+1].lev > aTocItem[i].lev) {
-	    		ndUL = document.createElement("UL");
-				nd.appendChild(ndUL);
-			}
-		}
-	}
-}
-
-
-
-function onMenuClicked(ev) {
-	var sPath = hostImgURL();
-
-	var eTrigger = $(event.target); //ev.target;
-//	if (eTrigger.prop("tagName") == "SPAN") {
-	if (eTrigger.prop("id").indexOf("A_") == 0) {
-		theBook.mbJumpAnchor = true;
-		location.href = "#" + eTrigger.prop("id").slice(2); //A_xxxx
-		return; //return 後，讓 win.click() 收束選單
-	}
-	
-	ev.stopPropagation(); //選單維持開啟狀態，不上傳 win.click()
-//	ev.cancelBubble = true;
-	
-	//eTrigger.children().length > 1 沒有子 ul 者，只有 span 1 個 
-	if (eTrigger.prop("tagName") == "LI" && eTrigger.children().length>1) {
-		var bOpened = eTrigger.css("listStyleImage").includes("open");
-		
-		eTrigger.css("listStyleImage", 'url("' + sPath + (bOpened ? "close_brk.png" : "open_brk.png") + '")');
-
-		eTrigger.children("ul:first").toggle();
-	}
-}
 	</script>
 </head>
 
 <body onload="onLoad()">
-<div  class="audioGroup">
-<span id="tit_booklecName" style="font-size:105%;font-family:標楷體;font-weight:bold;"></span><br/>
+<!--<div  class="audioGroup">
+<span id="tit_booklecName" style="display:none;font-size:105%;font-family:標楷體;font-weight:bold;"></span><br/>
 <span id="try" style="display:none;"></span>
-</div>
+</div>-->
+<span id="try" style="display:none;"></span>
 
 <!--期別、著文、講義切換-->
 <table class="audioGroup" id="tblShowPhrase" style="visibility:visible;background-color:lightGray;margin-top:3px;"><tr>
@@ -259,6 +136,9 @@ function onMenuClicked(ev) {
 <!--Audio 面板操作區 width="99%" -->
 <table class="audioGroup" style="padding-top:0;margin-top:-5px;">
 <tr style="background-color:#EEFFFF;">
+<td>
+	<button onclick="showScreen();">S</button>
+</td>
 	<td>
 		<button onclick="theAud.cusPlay();">播於</button>
 	</td>
@@ -278,7 +158,6 @@ function onMenuClicked(ev) {
 	<button onclick="theAud.forbackward(0);" style="color:DodgerBlue;font-weight:bold;">&gt;&gt;</button>
 </td>
 
-
 </tr></table><!--Audio 面板操作區-->
 
 
@@ -294,16 +173,20 @@ function onMenuClicked(ev) {
 	  <div id="dpdnChapterCm" class="dropdown-content" style="height:18em;width:5em;margin:0;padding:2px;"></div>
 	  <div id="dpdnChapterAux" class="dropdown-content" style="height:18em;width:15em;margin:0;padding:2px;"></div>
 	</td>
-	<td style="position:relative;">
+	<td id="cmMenuPool" style="position:relative;">
 	<button onclick="tglDropDown(this,3)" class="dropbtn">目</button>
+<!--	<div id="cmMenuPool">-->
 	  <div id="dpdnMenuCm" class="dropdown-content" style="width:18em;margin:0;padding:2px;">
 <ul id="mnuRoot" class="menutree" onclick="onMenuClicked(event)" style="height:18em;overflow-y:scroll;margin-left:0;margin-top:0;padding-left:20px;padding-top:0"></ul></div>
+
+<!--</div>-->
+
 	  <div id="dpdnMenuAux" class="dropdown-content" style="width:18em;margin:0;padding:2px;">
 <ul id="mnuAux" class="menutree" onclick="onMenuClicked(event)" style="height:18em;overflow-y:scroll;margin-left:0;margin-top:0;padding-left:20px;padding-top:0"></ul></div>
 	</td>
 
 		
-	<td>
+	<td id="pageListPool">
 		<select style="width:4em;font-size:95%;" id="pageList" onchange="theBook.onPageListChange(this)"></select>
 	</td>
 
@@ -342,9 +225,14 @@ function onMenuClicked(ev) {
 	<button onclick="tglDropDown(this, 4)" class="dropbtn">位</button>
 	  <div id="dpdnTurnPage" class="dropdown-content" style="margin:0;padding:2px;"></div>
 	</td>
-
+<!--
 	<td>
 		<button id="toggleAux" onclick="toggleAux(this)" class="toggle">課</button>
+	</td>-->
+
+	<td>
+	<button onclick="tglDropDown(this, 5)" class="dropbtn">區</button>
+	  <div id="dpdnChapterTabs" class="dropdown-content" style="margin:0;padding:2px;"></div>
 	</td>
 
 	</tr></table>
@@ -363,8 +251,9 @@ function onMenuClicked(ev) {
 
 <div id="esyPool" class="esyPool">
 	<div id="content" onscroll="TryScroll(event);" class="essay"></div>
-
+<!--
 	<div id="auxPanel" onscroll="TryScroll(event);" class="essay" style="display:none;"></div>
+	-->
 </div>
 
 <dialog id="dlgCue">
