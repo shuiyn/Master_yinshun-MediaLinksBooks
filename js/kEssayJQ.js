@@ -5,15 +5,18 @@
 */
 
 //var kEssay=function(divRoot, jsnChapter, selPageList, idTail) {
-var kEssay=function(jqRoot, jqPage, jsnChapter, idTail) {
+var kEssay=function(jqRoot, jqPage, jsnChapter, idTail, idEsyerTitle) {
 	jqRoot.empty();
 	jqPage.empty();
 	
 	this.jqDivRoot = jqRoot;
 	this.jqSelPageList = jqPage;
 	this.msIdTail = idTail || "";
+	this.msIdEsyerTitle = idEsyerTitle;
+	this.mbSetEsyerTitle = false;
+	this.esyerTitlePrevDiv = null;
 	
-	this.addChapTool();
+//	this.addChapTool();
 	
 	this.aLine = jsnChapter.c;
 	this.mnStartMarginLev = 3; // margin-left 開始設值的 level，1 是「節」
@@ -47,13 +50,22 @@ var kEssay=function(jqRoot, jqPage, jsnChapter, idTail) {
 
 
 kEssay.prototype.addChapTool=function() {
-	var jqChapTool = $("<div></div>").css({"position":"sticky", "top":0, "text-align":"right"});
+//	var jqChapTool = $("<div></div>").css({"position":"sticky", "top":0, "text-align":"right"});
+	var jqChapTool = $("<div></div>").css({"position":"sticky", "top":0, "width":"100%", "margin":0, "padding":0});
+	jqChapTool.append($("<div></div>").css({"position":"relative", "text-align":"center", "margin":0, "padding":0}).attr("id", "esyerTitle" + this.msIdTail).text("some"));
+	//.text("some"));
+	
+	jqChapTool.append($("<div></div>").css({"position":"absolute", "top":"0", "right":"0"}).append($('<button onclick="closeEssay()" class="dropbtn">✖</button>')));
 //	jqChapTool.append($('<button onclick="tglDropDown(this, 1)" class="dropbtn">目</button>'));
 //	jqChapTool.append('<div id="dpdnChapterCmxx" class="dropdown-content" style="height:18em;width:5em;margin:0;padding:2px;"></div>');
 //		jqChapTool.append('<select style="width:4em;font-size:95%;" id="pageListx" onchange="theBook.onPageListChange(this)"></select>');
 ////		jqChapTool.append("<span>　</span>");
-		jqChapTool.append($('<button onclick="closeEssay()" class="dropbtn">✖</button>'));
-	this.jqDivRoot.append(jqChapTool);
+
+
+//		jqChapTool.append($('<button onclick="closeEssay()" class="dropbtn">✖</button>'));
+
+	$("#esyTitlePool").append(jqChapTool);
+//	this.jqDivRoot.append(jqChapTool);
 }
 
 
@@ -81,6 +93,12 @@ kEssay.prototype.transData=function() {
 				continue;
 			
 			this.stuffPara(nLnIdx);
+			
+			if (!this.mbSetEsyerTitle) {
+				this.mbSetEsyerTitle = true;
+				this.jqCurrPara.css({"margin":0,"padding-top":8,"padding-bottom":8}).appendTo($("#" + this.msIdEsyerTitle));
+			}
+			
 			this.NewPara();
 			
 			if (nLnIdx >= this.aLine.length)
@@ -334,17 +352,24 @@ kEssay.prototype.processUnLined=function(jsn, nLnIdx) {
 			nReadLines = 0;
 			
 			if (typeof jsn[itm] == "object") {
-				if (jsn[itm].cs != undefined && jsn[itm].cs.startsWith("notearea")) //mobil is notearea_m
-					this.jumbNAreaTocLevel(true, nLnIdx);
+				if (jsn[itm].cs == "ChapTitleID") {
+					this.mbSetEsyerTitle = true; //避免 transData 中誤設
+					this.esyerTitlePrevDiv = this.jqCurrDiv;
+					this.jqCurrDiv = $("#" + this.msIdEsyerTitle);
+				} else {
+					if (jsn[itm].cs != undefined && jsn[itm].cs.startsWith("notearea")) //mobil is notearea_m
+						this.jumbNAreaTocLevel(true, nLnIdx);
 
-				jqTmp = $(this.anaTagStyle(jsn[itm], "div"));
-				this.jqCurrDiv.append(jqTmp);
-				this.jqCurrDiv = jqTmp;
-				
+					jqTmp = $(this.anaTagStyle(jsn[itm], "div"));
+					this.jqCurrDiv.append(jqTmp);
+					this.jqCurrDiv = jqTmp;
+				}
 			} else {
 				if (jsn[itm] == "eoNA") {
 					this.closeCurrDiv(nLnIdx);
 					this.jumbNAreaTocLevel(false, nLnIdx);
+				} else if (jsn[itm] == "eoChapTitleID") {
+					this.jqCurrDiv = this.esyerTitlePrevDiv;
 				} else {
 					htm = this.anaDivValue(jsn[itm]);
 					if (htm == '</div>')

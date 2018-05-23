@@ -134,6 +134,15 @@
 	}
 
 
+	/*原文、講義 標題容器*/
+	div.esyTitlePool {
+		position:relative;
+		border-width:0px 1px 0px 1px;
+		border-style:solid;
+		margin:0;
+		padding-left:5px
+	}
+	
 	/*原文、講義內容*/
 	div.esyPool {
 		font-size:110%;

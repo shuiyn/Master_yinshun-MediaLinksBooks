@@ -183,15 +183,16 @@ function initPageTurning() {
 }
 
 function addTurning() {
-	theBook.maTurning.push({"bCM":theBook.mbReadCm, "t":currEssayer().scrollTop});
+	theBook.maTurning.push({"id":currEssayer(true), "t":currEssayer().scrollTop});
 	
 	theBook.mnTurningIdx = theBook.maTurning.length-1;
 }
 
 function rmvTurning() {
 	for (var i=0; i < theBook.maTurning.length; i++) {
-		var esyer = (theBook.maTurning[i].bCM ? theBook.ctlShowYin : theBook.ctlShowAux);
-		if (theBook.maTurning[i].t == esyer.scrollTop) {
+		var id = currEssayer(true);
+		var nSctTop = currEssayer().scrollTop;
+		if (theBook.maTurning[i].id == id && theBook.maTurning[i].t == nSctTop) {
 			for (var j=i; j < theBook.maTurning.length-1; j++) {
 				theBook.maTurning[j] = theBook.maTurning[j+1];
 			}
@@ -226,10 +227,7 @@ function pageTurning(bForward) {
 			theBook.mnTurningIdx--;
 	}
 	
-	var btn = document.getElementById("toggleAux");
-	var sHtml = (theBook.maTurning[theBook.mnTurningIdx].bCM ? "課" : "輔");
-	toggleAux(btn, sHtml);
-		
+	showCM(theBook.maTurning[theBook.mnTurningIdx].id, true);
 	currEssayer().scrollTop = theBook.maTurning[theBook.mnTurningIdx].t;
 }
 
@@ -278,19 +276,12 @@ function fitDevice() {
 
 function rstPosition() {
 	var wInnerH = window.innerHeight;
-	var nTop = theBook.essayPool.offsetTop;
+	var esyPool = 	$("#esyPool");
+	var nTop = esyPool.prop("offsetTop");
+	var nDiffH = (wInnerH - nTop);
 
-	var nDiffH = (wInnerH - nTop - 10);
-
-//	theBook.essayPool.style.height = (nDiffH-10) + "px";
-	$("#esyPool").css("height", (nDiffH-10)).children().css("height", (nDiffH-10));
+	esyPool.css("height", (nDiffH-8)).children().css("height", (nDiffH-12));
 	
-//document.getElementById("try").innerHTML = wInnerH + ", t=" + nTop + ", h= " + nDiffH;
-
-//	theBook.ctlShowYin.style.height = (nDiffH-10) + "px";
-//	theBook.ctlShowAux.style.height = (nDiffH-10) + "px";
-	
-//	$(".__pageNumHrDiv").width($("#content").innerWidth()-20);
 //	$(".__pageNumHrDiv").width($(".essay").width()-20);
 }
 
@@ -306,9 +297,8 @@ function currEssayer(bGetId) {
 
 //openEssay 呼叫時會傳入參數
 function doToggleBR(){
-//	var	dv = currEssayer();
-	
-	$("#" + currEssayer().id + " .falseBR").toggle();
+	$("#esyerTitle" + fetchEssayerIdTail() + " .falseBR").toggle();
+	$("#" + currEssayer(true) + " .falseBR").toggle();
 }
 
 function toggleTocBold(){
@@ -476,18 +466,22 @@ var fetchEssayerIdTail=function(id) {
 }
 
 
-var showCM=function(id) {
+var showCM=function(id, bCheckExisting) {
 //	$("#" + $("#esyPool").attr("data-currEssayerId")).hide();
+	if (bCheckExisting && $("#esyPool").attr("data-currEssayerId") == id)
+		return;
+	
 	$("#esyPool").children().hide();
 	$("#esyPool").attr("data-currEssayerId",id);
 	$("#" + id).show();
 
 	$("#pageListPool").children().hide();
 	var idTail = fetchEssayerIdTail(id);
-//	if (id.indexOf("_") > -1)
-//		idTail = id.slice(id.indexOf("_"));
 	
 	$("#pageList" + idTail).show();
+
+	$("#esyTitlePool").children().hide();
+	$("#pnlEsyerTitle" + idTail).show();
 
 //	$("#cmMenuPool").children().hide();
 //	$("#mnuRoot" + idTail).show();
@@ -512,10 +506,10 @@ var closeEssay=function() {
 	$("#dpdnMenuCm" + idTail).remove();
 	$("#pageList" + idTail).remove();
 	$("#ShowCmList" + idTail).remove();
+	$("#pnlEsyerTitle" + idTail).remove();
 	
 	var esyPool = $("#esyPool");
 	if (esyPool.children(".essay").length > 1) {
-//		alert(esyPool.children(".essay:first").attr("id"));
 		showCM(esyPool.children(".essay:last").attr("id"));
 	}
 }
@@ -540,7 +534,10 @@ var openEssay=function(bCM, jsnChapter, idChapter, bImmOpen) {
 	var idCmMenu = "dpdnMenuCm";
 	var idMenuRoot = "mnuRoot";
 	var idShowCM = "ShowCmList";
+	var idPnlEsyerTitle = "pnlEsyerTitle";
+	var idEsyerTitle = "esyerTitle";
 	var idTail = "";
+	var esyTitlePool = $("#esyTitlePool");
 	var esyPool = $("#esyPool");
 	var cmMenuPool = $("#cmMenuPool");
 	var pageListPool = $("#pageListPool");
@@ -555,6 +552,9 @@ var openEssay=function(bCM, jsnChapter, idChapter, bImmOpen) {
 		idPageList += idTail;
 		idCmMenu += idTail;
 		idMenuRoot += idTail;
+		idPnlEsyerTitle += idTail;
+		idEsyerTitle += idTail;
+		
 		esyPool.append( $('#content').clone().attr("id", idDivRoot));
 		
 		var pnlMnu = $('#dpdnMenuCm').clone().attr("id", idCmMenu);
@@ -570,11 +570,17 @@ var openEssay=function(bCM, jsnChapter, idChapter, bImmOpen) {
 	esyPool.children().hide();
 //	cmMenuPool.children(".dropdown-content").hide(); 不可 hide
 	pageListPool.children().hide();
+	
+	esyTitlePool.append(addPnlEsyerTitle(idPnlEsyerTitle, idEsyerTitle));
+	esyTitlePool.children().hide();
 
 	jqChapTabs.append($("<a></a>").text(idChapter).attr({"onclick":'showCM("' + idDivRoot + '")', "id":idShowCM}));
 
-	var esy = new kEssay($("#" + idDivRoot), $("#" + idPageList), jsnChapter, idTail);
+	var esy = new kEssay($("#" + idDivRoot), $("#" + idPageList), jsnChapter, idTail, idEsyerTitle);
 	esy.transData();
+	
+	//創建於 kEssayJQ 中
+//	$("#esyerTitle" + idTail).text(idChapter);
 	
 	createEssayMenu(esy.maToc, idMenuRoot);
 	
@@ -586,6 +592,17 @@ var openEssay=function(bCM, jsnChapter, idChapter, bImmOpen) {
 	
 	if (bImmOpen)
 		showCM(idDivRoot);
+}
+
+
+function addPnlEsyerTitle(sIdPnl, sIdTitle) {
+	var jqChapTool = $("<div></div>").css({"width":"100%", "margin":0, "padding":0}).attr("id", sIdPnl);
+	jqChapTool.append($("<div></div>").css({"position":"relative", "text-align":"center", "margin":0, "padding":0}).attr("id", sIdTitle));
+//	.text("some")
+	jqChapTool.append($("<div></div>").css({"position":"absolute", "top":"0", "right":"0"}).append($('<button onclick="closeEssay()" class="dropbtn">✖</button>')));
+	
+	return jqChapTool;
+//	$("#esyTitlePool").append(jqChapTool);
 }
 
 
