@@ -523,6 +523,18 @@ var closeEssay=function() {
 
 //將指定的「章」，填入展示的 divRoot
 var openEssay=function(bCM, jsnChapter, idChapter, bImmOpen) {
+	var jqChapTabs = $("#dpdnChapterTabs");
+	
+	if (bImmOpen) {
+		var aOpened = jqChapTabs.children("a:contains(" + idChapter + ")");
+		if (aOpened.length > 0) {
+			if (!confirm("此章已開啟中：\n【取消】→開啟原檔\n【確定】→另開一個")) {
+				eval(aOpened.attr("onclick")); //開啟第１個
+				return;
+			}
+		}
+	}
+	
 	var idDivRoot = "content";
 	var idPageList = "pageList";
 	var idCmMenu = "dpdnMenuCm";
@@ -559,8 +571,7 @@ var openEssay=function(bCM, jsnChapter, idChapter, bImmOpen) {
 //	cmMenuPool.children(".dropdown-content").hide(); 不可 hide
 	pageListPool.children().hide();
 
-	var jqTab = $("<a></a>").text(idChapter).attr({"onclick":'showCM("' + idDivRoot + '")', "id":idShowCM});
-	$("#dpdnChapterTabs").append(jqTab);
+	jqChapTabs.append($("<a></a>").text(idChapter).attr({"onclick":'showCM("' + idDivRoot + '")', "id":idShowCM}));
 
 	var esy = new kEssay($("#" + idDivRoot), $("#" + idPageList), jsnChapter, idTail);
 	esy.transData();

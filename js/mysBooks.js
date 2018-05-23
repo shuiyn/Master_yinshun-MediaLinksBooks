@@ -232,9 +232,10 @@ mysBooks.prototype.onLessonChange=function(e) {
 	document.getElementById("dropdnProcess").innerHTML = lpros;*/
 	
 	if(!e.value){
-		theAud.aud.src = "";
+		$("#myAudio").attr("src", "");
+//		theAud.aud.src = "";
 //		alert(aud.src);為本站址
-		this.ctlShowYin.innerHTML = "";
+//		this.ctlShowYin.innerHTML = "";
 		return;
 	}
 
@@ -243,12 +244,14 @@ mysBooks.prototype.onLessonChange=function(e) {
 		src = hostImgURL("mp3") + this.phId + "/" + src;
 	}
 		
-	theAud.aud.src = src; //.value;
+		$("#myAudio").attr("src", src);
+//	theAud.aud.src = src; //.value;
 	theAud.playStart = 0;
 //	theAud.playDuration = 0;
-
+ /*
 	var mbp = e.getAttribute("data-mbpId").split(",");
 	theAud.fillCue(mbp, e.value); // e.value == url
+	*/
 }
 
 
@@ -318,7 +321,7 @@ mysAud.prototype.showCue=function() {
 mysAud.prototype.closeCue=function() {
 	document.getElementById("dlgCue").close();
 }
-
+ /*
 mysAud.prototype.fillCue=function(mbp, url){
 	var eCue=document.getElementById("cueList");
 	var mp3Main = url.slice(url.lastIndexOf("/")+1, url.lastIndexOf("."));
@@ -332,10 +335,9 @@ mysAud.prototype.fillCue=function(mbp, url){
 			opt.text = x;
 			eCue.add(opt);
 		});
-	}/* else {
-		while (eCue.length > 0) eCue.remove(0);
-	}*/
+	}
 }
+*/
 
 
 mysAud.prototype.cuePointPlay=function(){
