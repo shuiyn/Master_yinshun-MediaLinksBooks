@@ -170,8 +170,14 @@ else
 
 <td style="position:relative;"><!--文檔工具區fixed-->
 	<button onclick="tglDropDown(this, 1)" class="dropbtn">章</button>
-	  <div id="dpdnChapterCm" class="dropdown-content" style="height:18em;width:5em;margin:0;padding:2px;"></div>
-	  <div id="dpdnChapterAux" class="dropdown-content" style="height:18em;width:15em;margin:0;padding:2px;"></div>
+	  <div id="dpdnCmChapterPool" class="dropdown-content" style="width:5em;margin:0;padding:2px;">
+	  <a onclick="tglDropDown(this, 11)">課堂教材</a>
+	  <hr>
+	  <a onclick="tglDropDown(this, 12)">補充講義</a>
+	  </div>
+	  
+	  <div id="dpdnChapterCm" class="dropdown-content" style="left:1em;height:18em;width:5em;margin:0;padding:2px;"></div>
+	  <div id="dpdnChapterAux" class="dropdown-content" style="left:1em;height:18em;width:15em;margin:0;padding:2px;"></div>
 	</td>
 	<td id="cmMenuPool" style="position:relative;">
 	<button onclick="tglDropDown(this,3)" class="dropbtn">目</button>
@@ -231,7 +237,7 @@ else
 	</td>-->
 
 	<td>
-	<button onclick="tglDropDown(this, 5)" class="dropbtn">區</button>
+	<button onclick="tglDropDown(this, 5)" class="dropbtn">啟</button>
 	  <div id="dpdnChapterTabs" class="dropdown-content" style="margin:0;padding:2px;"></div>
 	</td>
 

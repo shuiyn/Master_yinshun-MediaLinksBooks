@@ -125,7 +125,12 @@ var fillDropdown_Old=function(bCM, aItem) {
 function tglDropDown(btn, nKind) {
 	theBook.currDropBtn = btn;
 	if (nKind == 1) { //章
-		theBook.currDropDown = (theBook.mbReadCm ? theBook.dpdnChapterCm : theBook.dpdnChapterAux);
+		theBook.currDropDown = document.getElementById("dpdnCmChapterPool");
+//		(theBook.mbReadCm ? theBook.dpdnChapterCm : theBook.dpdnChapterAux);
+	} else if (nKind == 11) { //課堂教材
+		theBook.currDropDown = document.getElementById("dpdnChapterCm");
+	} else if (nKind == 12) { //補充講義
+		theBook.currDropDown = document.getElementById("dpdnChapterAux");
 	} else if (nKind == 2) { //進度
 		theBook.currDropDown = theBook.dpdnProcess;
 	} else if (nKind == 3) { //目次選單
@@ -260,6 +265,13 @@ function fitDevice() {
 		document.getElementById("palyStartM").style.width = "2.2em";
 		document.getElementById("palyStartS").style.width = "2.2em";
 		
+	} else {
+		if (screen.width < 470) {
+			$("#dpdnTurnPage").css("right", 0);
+		}
+		if (screen.width < 600) {
+			$("#dpdnChapterTabs").css("right", 0);
+		}
 	}
 }
 
