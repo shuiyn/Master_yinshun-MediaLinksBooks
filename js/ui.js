@@ -11,6 +11,46 @@ var hostImgURL=function(fdn) {
 }
 
 
+/*功能：
+	1 點擊文章區後的「頁次定位」
+	2 點擊文區註序時，如註區隱藏時，開顯之
+*/
+var onEssayerClicked=function(event) {
+	var et = $(event.target);
+
+	if (et.attr("href") && et.attr("href").startsWith("#ntd_")) {
+		if ($("#" + currEssayer(true) + " .notearea").css("display")=="none")
+			$("#" + currEssayer(true) + " .notearea").toggle();
+	}
+		
+	var res = upFindPg(et);
+	if (res) {
+		$("#pageList" + fetchEssayerIdTail()).val(res.attr("id").split("_")[1].substr(1));
+	}
+}
+
+
+var upFindPg=function(jBgn) {
+		if (jBgn.attr("class") == "essay")
+		return;
+	
+	var jpnFound = null;
+	
+	jBgn.prevAll().each(function() {
+		var pns = $(this).find("span[id^='Pg_']");
+		if (pns.length > 0) {
+			jpnFound = pns.last();
+			return false;
+		}
+	});
+	
+	if (!jpnFound)
+		return upFindPg(jBgn.parent())
+	else
+		return jpnFound;
+}
+
+
 window.onclick=function(event) {
 	// click menutree listItem img
 //	if (event.target.matches(".__mnu_LI")) {
@@ -302,11 +342,11 @@ function doToggleBR(){
 }
 
 function toggleTocBold(){
-	$("#" + currEssayer().id + " .tocTitle").toggleClass("Bolder");
+	$("#" + currEssayer(true) + " .tocTitle").toggleClass("Bolder");
 }
 
 function togglePageNum(dv) {
-	$("#" + currEssayer().id + " .__pageNumHrDiv").toggle();
+	$("#" + currEssayer(true) + " .__pageNumHrDiv").toggle();
 }
 
 function toggleFullBookScreen(dv){
@@ -316,7 +356,7 @@ function toggleFullBookScreen(dv){
 
 function toggleNA(dv){
 	var sName = (mbIsPC ? "notearea" :"notearea_m");
-	$("#" + currEssayer().id + " ." + sName).toggle();
+	$("#" + currEssayer(true) + " ." + sName).toggle();
 }
 
 
