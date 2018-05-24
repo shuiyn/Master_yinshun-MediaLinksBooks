@@ -660,21 +660,23 @@ kEssay.prototype.parseParaStyle=function() {
 				aHtmE[sEnd].push("<br/>"); //nStart 前已計實 + sLine.length
 
 			} else if (/^nti_\d+$/.test(jItm)) {
+				var floatId = jItm + this.msIdTail; //同時載入多章時，註序會衝突
 				if (mbIsPC) {
-					aHtmB[sStart].push('<sup id="' + jItm + '" class="noteNum"><a href="#ntd_' + jItm.substr(4) + '">');
+					aHtmB[sStart].push('<sup id="' + floatId + '" class="noteNum"><a href="#ntd_' + floatId.substr(4) + '">');
 				
 					aHtmE[sEnd].unshift('</a></sup>');
 
 				//◆ 註序前後各附加１個空白
 				} else {
-					aHtmB[sStart].push('<sup id="' + jItm + '" class="noteNum"><a href="#ntd_' + jItm.substr(4) + '"> ');
+					aHtmB[sStart].push('<sup id="' + floatId + '" class="noteNum"><a href="#ntd_' + floatId.substr(4) + '"> ');
 				
 					aHtmE[sEnd].unshift('&nbsp;</a></sup>'); //不能逕寫空白，無法顯示
 				}
 
 			} else if (/^ntd_\d+$/.test(jItm)) {
+				var floatId = jItm + this.msIdTail; //同時載入多章時，註序會衝突
 				bHasNTD = true;
-				aHtmB[sStart].push('<span id="' + jItm + '" class="noteNum"><a href="#nti_' + jItm.substr(4) + '">註 ');
+				aHtmB[sStart].push('<span id="' + floatId + '" class="noteNum"><a href="#nti_' + floatId.substr(4) + '">註 ');
 			//強制加上 <br/> 移除 class="noteDet"
 				aHtmE[sEnd].unshift('</a>〉</span><br/>');
 

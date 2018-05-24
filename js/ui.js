@@ -278,9 +278,9 @@ function rstPosition() {
 	var wInnerH = window.innerHeight;
 	var esyPool = 	$("#esyPool");
 	var nTop = esyPool.prop("offsetTop");
-	var nDiffH = (wInnerH - nTop);
+	var nDiffH = (wInnerH - nTop - 12);
 
-	esyPool.css("height", (nDiffH-8)).children().css("height", (nDiffH-12));
+	esyPool.css("height", (nDiffH)).children().css("height", (nDiffH-2));
 	
 //	$(".__pageNumHrDiv").width($(".essay").width()-20);
 }
