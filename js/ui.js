@@ -304,6 +304,9 @@ function fitDevice() {
 		document.getElementById("palyStartS").style.width = "2.2em";
 		
 	} else {
+		if (screen.width >= 800) {
+			$("body").css("font-size", "130%");
+		}
 		if (screen.width < 470) {
 			$("#dpdnTurnPage").css("right", 0);
 		}
