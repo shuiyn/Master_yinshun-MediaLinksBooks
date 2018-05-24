@@ -1186,7 +1186,8 @@ var lesson_List={
     },
     {
      "d": "12-23",
-     "url": "http://220.130.244.41:8080/Study/DiamondSutra/1041223.mp3"
+     "url": "http://220.130.244.41:8080/Study/DiamondSutra/1041223.mp3",
+     "p": "p1~p4"
     },
     {
      "d": "105 年",
@@ -1194,31 +1195,38 @@ var lesson_List={
     },
     {
      "d": "01-13: 1",
-     "url": "http://220.130.244.41:8080/Study/DiamondSutra/1050113-1.mp3"
+     "url": "http://220.130.244.41:8080/Study/DiamondSutra/1050113-1.mp3",
+     "p": "p4~p5"
     },
     {
      "d": "01-13: 2",
-     "url": "http://220.130.244.41:8080/Study/DiamondSutra/1050113-2.mp3"
+     "url": "http://220.130.244.41:8080/Study/DiamondSutra/1050113-2.mp3",
+     "p": "p5~p6"
     },
     {
      "d": "01-27: 1",
-     "url": "http://220.130.244.41:8080/Study/DiamondSutra/1050127-1.mp3"
+     "url": "http://220.130.244.41:8080/Study/DiamondSutra/1050127-1.mp3",
+     "p": "p6~p8"
     },
     {
      "d": "01-27: 2",
-     "url": "http://220.130.244.41:8080/Study/DiamondSutra/1050127-2.mp3"
+     "url": "http://220.130.244.41:8080/Study/DiamondSutra/1050127-2.mp3",
+     "p": "p8，〈增語〉"
     },
     {
      "d": "03-09: 1",
-     "url": "http://220.130.244.41:8080/Study/DiamondSutra/1050309-1.mp3"
+     "url": "http://220.130.244.41:8080/Study/DiamondSutra/1050309-1.mp3",
+     "p": "p8，〈增語〉"
     },
     {
      "d": "03-09: 2",
-     "url": "http://220.130.244.41:8080/Study/DiamondSutra/1050309-2.mp3"
+     "url": "http://220.130.244.41:8080/Study/DiamondSutra/1050309-2.mp3",
+     "p": "p8~p10"
     },
     {
      "d": "03-23: 1",
-     "url": "http://220.130.244.41:8080/Study/DiamondSutra/1050323-1.mp3"
+     "url": "http://220.130.244.41:8080/Study/DiamondSutra/1050323-1.mp3",
+     "p": "p10~"
     },
     {
      "d": "03-23: 2",
@@ -1517,6 +1525,14 @@ var lesson_List={
     {
      "d": "05-09: 2",
      "url": "http://220.130.244.41:8080/Study/DiamondSutra/1070509-2.mp3"
+    },
+    {
+     "d": "05-23: 1",
+     "url": "http://220.130.244.41:8080/Study/DiamondSutra/1070523-1.mp3"
+    },
+    {
+     "d": "05-23: 2",
+     "url": "http://220.130.244.41:8080/Study/DiamondSutra/1070523-2.mp3"
     }
    ]
   }

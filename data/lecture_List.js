@@ -511,7 +511,7 @@ var lecture_List={
     "url": "http://220.130.244.41:8080/Study/DiamondSutra/1070425.jpg"
    },
    {
-    "t": "講義：八事四對之解說",
+    "t": "補充：八事四對之解說",
     "url": "http://220.130.244.41:8080/Study/DiamondSutra/%E5%85%AB%E4%BA%8B%E5%9B%9B%E5%B0%8D%E8%A7%A3%E8%AA%AA.pdf"
    },
    {
@@ -520,6 +520,17 @@ var lecture_List={
    {
     "t": "白板",
     "url": "http://220.130.244.41:8080/Study/DiamondSutra/1070509.jpg"
+   },
+   {
+    "t": "107-05-23"
+   },
+   {
+    "t": "白板 1",
+    "url": "http://220.130.244.41:8080/Study/DiamondSutra/1070523-1.jpg"
+   },
+   {
+    "t": "白板 2",
+    "url": "http://220.130.244.41:8080/Study/DiamondSutra/1070523-2.jpg"
    }
   ]
  },

@@ -136,7 +136,8 @@ kEssay.prototype.transData=function() {
 			var jTmpLine = null;
 			
 			if (this.mbHasLineNum) {
-				if (!this.moTable) {
+				//文章標題不計入行號
+				if (!this.moTable && this.mbSetEsyerTitle) {
 					//一行只有一個 tagPageNum 時，才會有tagPageNum == sLine
 					if (tagPageNum != sLine && !this.mbPrevParaIsNTDno) {
 						jTmpLine = {"ln":[this.nIdxInPara, null, this.nRowCount]};
