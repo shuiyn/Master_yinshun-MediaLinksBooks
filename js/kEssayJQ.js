@@ -692,6 +692,8 @@ kEssay.prototype.parseParaStyle=function() {
 					sSty = "border-bottom:2px solid black";
 				else if (sSet == "U0") // 保留，在 text-border 中時用
 					sSty = "text-decoration:underline";
+				else //取代原 ST
+					sSty = sSet.replace(/;+$/,"");
 
 				aHtmB[sStart].push('<span style="' + sSty + ';">');
 				aHtmE[sEnd].unshift('</span>');
