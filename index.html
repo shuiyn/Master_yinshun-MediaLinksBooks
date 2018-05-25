@@ -63,6 +63,10 @@ $(document).ready(function(){
 	
 	$("#pnlBook").html(fillBook());
 	$("#selBook").val("ffgl").change(); //初始於 ffgl / kr，change 不可加 on
+	
+		if (!mbIsPC && screen.width >= 800) {
+			$("body").css("font-size", "130%");
+		}
 });
 
 </script>

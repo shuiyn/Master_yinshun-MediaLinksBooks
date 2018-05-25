@@ -23,25 +23,36 @@ var onEssayerClicked=function(event) {
 			$("#" + currEssayer(true) + " .notearea").toggle();
 	}
 		
-	var res = upFindPg(et);
+	var res = upFindPg(et, event);
+	
 	if (res) {
 		$("#pageList" + fetchEssayerIdTail()).val(res.attr("id").split("_")[1].substr(1));
 	}
 }
 
 
-var upFindPg=function(jBgn) {
+var upFindPg=function(jBgn, ev) {
 		if (jBgn.attr("class") == "essay")
 		return;
 	
+	var doFindPg=function(jq) {
+		var pns = jq.find("span[id^='Pg_']");
+		if (pns.length > 0)
+			return pns.last();
+	}
+	
 	var jpnFound = null;
+	//外部呼叫時傳入的 event
+	if (ev) {
+		jpnFound = doFindPg(jBgn);
+		if (jpnFound && (jpnFound.offset().top <= ev.clientY-20))
+			return jpnFound;
+	}
 	
 	jBgn.prevAll().each(function() {
-		var pns = $(this).find("span[id^='Pg_']");
-		if (pns.length > 0) {
-			jpnFound = pns.last();
+		jpnFound = doFindPg($(this));
+		if (jpnFound)
 			return false;
-		}
 	});
 	
 	if (!jpnFound)

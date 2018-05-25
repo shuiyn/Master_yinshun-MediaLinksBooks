@@ -71,7 +71,7 @@ else
 
 	theAud = new mysAud();
 	theBook = new mysBooks(q.bkId, q.lecId);
-	fitDevice();
+//	fitDevice();
 	
 	if (mbIsPC) {
 		if (window.addEventListener) {              
@@ -84,6 +84,7 @@ else
 	}
 	
 	theBook.fillBook();
+	fitDevice();
 	rstPosition();
 }
 
