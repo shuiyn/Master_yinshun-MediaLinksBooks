@@ -267,6 +267,7 @@ kEssay.prototype.processUnLined=function(jsn, nLnIdx) {
 				this.NewPara();
 				
 				this.jqCurrDiv = this.moTable.jqPrevDiv;
+				
 			}
 			
 			if (itm == "tr" && (jsn[itm] != undefined)) {
@@ -275,6 +276,9 @@ kEssay.prototype.processUnLined=function(jsn, nLnIdx) {
 			} else if (itm == "td" && (jsn[itm] != undefined)) {
 				this.genTData(nLnIdx, jsn["td"]);
 			} else if ("end_table" == itm) {
+				//所有 td 內的第１個 div 往上提 1em
+				this.moTable.jqTable.find("td").children("div:first-of-type").css("margin-top", "-1em");
+				
 				this.jqCurrDiv = this.moTable.jqPrevDiv
 				this.moTable = null;
 			}
@@ -426,6 +430,7 @@ kEssay.prototype.anaToc=function(jsn, nLnIdx) {
 			tocCsName = ""; //沒有外框
 
 	//if (/^CS_?\d{0,2}$/.test(i)) 所以 CS_99
+	if (tocCsName)
 		jsn["CS_99"] = [0, sTmpLine.length, tocCsName];//此為 jsn 非 jToc，供 transData() 處理
 	}
 }
@@ -509,9 +514,12 @@ kEssay.prototype.anaTagStyle=function(jTmp, sTagName) {
 //	if (sTagName == "p" || sTagName == "div") {
 	if (sTagName.search(/^(p|div|td|table|pre)$/i) > -1) {
 		if (typeof jTmp["ml"] != "undefined")
-				aPgSty.push("margin-left:" + this.anaUnits(jTmp["ml"]));
+			aPgSty.push("margin-left:" + this.anaUnits(jTmp["ml"]));
 		if (typeof jTmp["ti"] != "undefined")
-				aPgSty.push("text-indent:" + this.anaUnits(jTmp["ti"]));
+			aPgSty.push("text-indent:" + this.anaUnits(jTmp["ti"]));
+		
+		if (typeof jTmp["v-al"] != "undefined")
+			aPgSty.push(this.anaVerAlignment(jTmp["v-al"]));
 		
 		if (typeof jTmp["al"] != "undefined") {
 			if (sTagName.toLowerCase() != "table")
@@ -603,6 +611,21 @@ kEssay.prototype.anaAlignment=function(al, bTable) {
 	return sRet + (bTable ? "" : ";");
 }
 
+//尾均附加 ";"
+kEssay.prototype.anaVerAlignment=function(al) {
+	var sRet = "vertical-align:";
+	if (al == "m")
+		sRet += "middle";
+	else if (al == "t")
+		sRet += "top";
+	else if (al == "b")
+		sRet += "bottom";
+	else
+		sRet += al; //-20px、1cm、50%……
+	
+	return sRet + ";";
+}
+
 kEssay.prototype.parseParaStyle=function() {
 //	if (this.paraSty.length == 0)
 		
@@ -660,7 +683,8 @@ kEssay.prototype.parseParaStyle=function() {
 			} else if (jItm == "br") { // true br
 				aHtmE[sEnd].push("<br/>"); //nStart 前已計實 + sLine.length
 
-			} else if (/^nti_\d+$/.test(jItm)) {
+//			} else if (/^nti_\d+$/.test(jItm)) {
+			} else if (/^nti_.+$/.test(jItm)) {
 				var floatId = jItm + this.msIdTail; //同時載入多章時，註序會衝突
 				if (mbIsPC) {
 					aHtmB[sStart].push('<sup id="' + floatId + '" class="noteNum"><a href="#ntd_' + floatId.substr(4) + '">');
@@ -674,7 +698,8 @@ kEssay.prototype.parseParaStyle=function() {
 					aHtmE[sEnd].unshift('&nbsp;</a></sup>'); //不能逕寫空白，無法顯示
 				}
 
-			} else if (/^ntd_\d+$/.test(jItm)) {
+//			} else if (/^ntd_\d+$/.test(jItm)) {
+			} else if (/^ntd_.+$/.test(jItm)) {
 				var floatId = jItm + this.msIdTail; //同時載入多章時，註序會衝突
 				bHasNTD = true;
 				aHtmB[sStart].push('<span id="' + floatId + '" class="noteNum"><a href="#nti_' + floatId.substr(4) + '">註 ');
@@ -994,7 +1019,7 @@ kEssay.prototype.genTData =function(nLnIdx, jsn) {
 	if (!jsn["st"])
 		jsn["st"] = this.moTable.sTDcommonStyle;
 	else
-		jsn["st"] += ";" + this.moTable.sTDcommonStyle;
+		jsn["st"] = this.moTable.sTDcommonStyle.replace(/;+$/,"") + ";" + jsn["st"]; //置後可覆蓋共同屬性 sTDcommonStyle
 
 	var	jqTD = $(this.anaTagStyle(jsn, "td"));
 	this.moTable.jqCurrTRow.append(jqTD);

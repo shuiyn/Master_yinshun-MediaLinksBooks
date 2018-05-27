@@ -544,22 +544,27 @@ var lecture_List={
   "phase": [
    {
     "id": "kr_ffgl_pn1040321",
-    "t": "第 8 期 104 年",
+    "t": "第 6、7 期 104-03",
     "url": "http://www.kyba.org.tw/board/showcontent.asp?bd=11&id=687&totable=1"
    },
    {
+    "id": "kr_ffgl_pn1050227",
+    "t": "第 8 期 105-02",
+    "url": "http://www.kyba.org.tw/board/showcontent.asp?bd=11&id=705&totable=1"
+   },
+   {
     "id": "kr_ffgl_pn1050910",
-    "t": "第 9 期 105 年",
+    "t": "第 9 期 105-09",
     "url": "http://www.kyba.org.tw/board/showcontent.asp?bd=11&id=694&totable=1"
    },
    {
     "id": "kr_ffgl_pn1060318",
-    "t": "第 10 期 106 年",
+    "t": "第 10 期 106-03",
     "url": "http://www.kyba.org.tw/board/showcontent.asp?bd=11&id=710&totable=1"
    },
    {
     "id": "kr_ffgl_pn1060916",
-    "t": "第 11 期 106 年",
+    "t": "第 11 期 106-09",
     "url": "http://www.kyba.org.tw/board/showcontent.asp?bd=11&id=725&totable=1"
    }
   ],
