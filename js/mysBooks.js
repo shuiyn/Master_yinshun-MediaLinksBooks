@@ -240,13 +240,17 @@ mysBooks.prototype.onLessonChange=function(e) {
 	}
 
 	var src = e.value;
-	if (src.search(/https?:\/\//) != 0) {
-		src = hostImgURL("mp3") + this.phId + "/" + src;
-	}
-		
+	
+	if (src.search(/youtu\.be/) > -1) {
+		window.open(src);
+	} else {
+//		if (src.search(/https?:\/\//) != 0) {
+//			src = hostImgURL("mp3") + this.phId + "/" + src;
+//		}
+			
 		$("#myAudio").attr("src", src);
-//	theAud.aud.src = src; //.value;
-	theAud.playStart = 0;
+		theAud.playStart = 0;
+	}
 //	theAud.playDuration = 0;
  /*
 	var mbp = e.getAttribute("data-mbpId").split(",");

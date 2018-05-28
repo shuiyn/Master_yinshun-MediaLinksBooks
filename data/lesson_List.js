@@ -2017,6 +2017,73 @@ var lesson_List={
     {
      "d": "05-20: 3",
      "url": "http://220.130.244.41:8080/prajna/20170520-3.mp3"
+    },
+    {
+     "d": "VOD"
+    },
+    {
+     "d": "　vod 03-18: 1-1",
+     "url": "http://youtu.be/3LSIxYnsrhM"
+    },
+    {
+     "d": "　vod 03-18: 1-2",
+     "url": "http://youtu.be/ilvZrSBTS2Y"
+    },
+    {
+     "d": "　vod 03-18: 2-1",
+     "url": "http://youtu.be/UWlvan8pG08"
+    },
+    {
+     "d": "　vod 03-18: 2-2",
+     "url": "http://youtu.be/xC40l61tgBw"
+    },
+    {
+     "d": "　vod 03-18: 3-1",
+     "url": "http://youtu.be/85R_p_cG7wI"
+    },
+    {
+     "d": "　vod 03-18: 3-2",
+     "url": "http://youtu.be/S7nBh1Apb8I"
+    },
+    {
+     "d": "　vod 03-19: 1-1",
+     "url": "http://youtu.be/fKsCaSOIUHc"
+    },
+    {
+     "d": "　vod 03-19: 1-2",
+     "url": "http://youtu.be/SpiPDgcbNaw"
+    },
+    {
+     "d": "　vod 03-19: 2-1",
+     "url": "http://youtu.be/BkWLPAtf7zg"
+    },
+    {
+     "d": "　vod 03-19: 2-2",
+     "url": "http://youtu.be/aZ03lRuBsnA"
+    },
+    {
+     "d": "　vod 03-19: 3-1",
+     "url": "http://youtu.be/5LJACcHepkc"
+    },
+    {
+     "d": "　vod 03-19: 3-2",
+     "url": "http://youtu.be/W0RKka1OSHc"
+    },
+    {
+     "d": "　vod 04-15: 3",
+     "url": "http://youtu.be/CXg4JIoEBkQ"
+    },
+    {
+     "d": "　vod 04-16: 1",
+     "url": "http://youtu.be/bwFNgDlGxEI"
+    },
+    {
+     "d": "　vod 04-16: 2",
+     "url": "http://youtu.be/AjPcdG3-40M"
+    },
+    {
+     "d": "　vod 04-16: 3",
+     "url": "http://youtu.be/HxIoiPv9Bwk"
     }
    ],
    "kr_ffgl_pn1060916": [
