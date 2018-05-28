@@ -204,6 +204,7 @@ kEssay.prototype.settleTocLevel=function(nLev, bCloseToc, bOpenNA, nLnIdx) {
 		if (bCloseToc) jqTmpDiv = null;
 
 		if (nDiff < -1) {
+//		console.log("Level err:PrevLev= " + this.mnPrevLev + ", CurrLev= " + nLev);
 		throw ("Level err:PrevLev= " + this.mnPrevLev + ", CurrLev= " + nLev);
 		} 
 		
@@ -241,9 +242,9 @@ kEssay.prototype.closeCurrDiv=function(nLnIdx) {
 kEssay.prototype.gripPreLines=function(jsn, nLnIdx) {
 	var out = [];
 	var nRead = 0;
-	for (; idx < this.aLine.length; idx++) {
+	for (; nLnIdx < this.aLine.length; nLnIdx++) {
 		nRead++;
-		var sLine = this.aLine[idx];
+		var sLine = this.aLine[nLnIdx];
 		if (/^\^\^\{"end_PRE"/.test(sLine)) break;
 		out.push(sLine);
 	}
