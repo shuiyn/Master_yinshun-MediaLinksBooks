@@ -206,18 +206,17 @@ var TryScroll=function(ev) {
 
 
 var fillPageTurning=function() {
-	var aItem = ["<a>上 一個位置</a>", "<a>下 一個位置</a>", "<hr>", "<a>加入 這個位置</a>", "<a>移除 這個位置</a>", "<a>清空 所有位置</a>"];
-
 	$("#dpdnTurnPage").empty();
 	
-	$("<a>回原點</a>").appendTo("#dpdnTurnPage").attr("onclick", 'pageTurning(true, true)');
-	$(aItem[0]).appendTo("#dpdnTurnPage").attr("onclick", 'pageTurning(true)');
-	$(aItem[1]).appendTo("#dpdnTurnPage").attr("onclick", 'pageTurning(false)');
-	$(aItem[2]).appendTo("#dpdnTurnPage");
-	$(aItem[3]).appendTo("#dpdnTurnPage").attr("onclick", 'addTurning()');
+	$("<a>加入 這個位置</a>").appendTo("#dpdnTurnPage").attr("onclick", 'addTurning()');
 	$("<a>設為原點</a>").appendTo("#dpdnTurnPage").attr("onclick", 'addTurning(true)');
-	$(aItem[4]).appendTo("#dpdnTurnPage").attr("onclick", 'rmvTurning()');
-	$(aItem[5]).appendTo("#dpdnTurnPage").attr("onclick", 'initPageTurning()');
+	$("<hr>").appendTo("#dpdnTurnPage");
+	$("<a>上 一個位置</a>").appendTo("#dpdnTurnPage").attr("onclick", 'pageTurning(true)');
+	$("<a>下 一個位置</a>").appendTo("#dpdnTurnPage").attr("onclick", 'pageTurning(false)');
+	$("<a>回原點</a>").appendTo("#dpdnTurnPage").attr("onclick", 'pageTurning(true, true)');
+	$("<hr>").appendTo("#dpdnTurnPage");
+	$("<a>移除 這個位置</a>").appendTo("#dpdnTurnPage").attr("onclick", 'rmvTurning()');
+	$("<a>清空 所有位置</a>").appendTo("#dpdnTurnPage").attr("onclick", 'initPageTurning()');
 	$("<hr>").appendTo("#dpdnTurnPage");
 	$("<a style='background-color: DodgerBlue; color:white'>全螢幕</a>").appendTo("#dpdnTurnPage").attr("onclick", 'toggleFullBookScreen()');
 	

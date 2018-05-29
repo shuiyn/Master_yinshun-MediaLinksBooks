@@ -84,8 +84,8 @@ mysBooks.prototype.fillBook=function() {
 	  this.ctlShowYin.innerHTML = "<p>本單元尚未建立 ePub 檔。</p><p>請點按左上角【<span style='font-weight:bold;color:brown;'>期別</span>】按鈕，切換到【<span style='font-weight:bold;color:brown;'>講義</span>】，開啟右側選單，點選所要參閱的章節，再點按【<span style='background-color:lightgreen;'>到網頁</span>】連結，即可前往該文件網址。</p>";
 	}
 	
-  this.fillHandout();
-  this.fillPhase();
+//  this.fillHandout();
+//  this.fillPhase();
   
 	this.doFillBook(false);
 	showCM("content_0");
