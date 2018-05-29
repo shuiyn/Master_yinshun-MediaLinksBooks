@@ -63,7 +63,6 @@ else
 	q = {"bkId":"ffgl", "lecId":"0002"};
 
 	mbIsPC = !uaNotPC();
-	var lecs=grabLecture(q.bkId);
 
 	/*document.getElementById("tit_booklecName").innerHTML = base_List.books[q.bkId] + "：" + grabLecture(q.bkId)[q.lecId];*/
 	
@@ -154,6 +153,7 @@ else
 
 <td>
 	<button onclick="theAud.cusTime(1);">設起點</button>
+	<button onclick="theAud.cusTime(5);">C</button>
 	<button onclick="theAud.forbackward(1);" style="color:DodgerBlue;font-weight:bold;">&lt;&lt;</button>
 
 	<button onclick="theAud.forbackward(0);" style="color:DodgerBlue;font-weight:bold;">&gt;&gt;</button>
@@ -197,10 +197,10 @@ else
 		<select style="width:4em;font-size:95%;" id="pageList" onchange="theBook.onPageListChange(this)"></select>
 	</td>
 
-	<td>
+<!--	<td>
 		<select style="width:4em;font-size:95%;display:none" id="pageList_hand" onchange="theBook.onPageListChange(this)"></select>
 	</td>
-	
+-->	
 
 	<td>
 	<button onclick="togglePageNum()" class="dropbtn">頁</button>

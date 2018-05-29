@@ -4,8 +4,6 @@ var mysBooks = function(bkId, lecId) {
 	this.lecId = lecId;
 	this.phId = null;
 	
-	// book/cm Or aux Data
-	this.mbReadCm = true; //
 	this.currDropBtn = null; ///章、目、進度 invoke btn
 	this.currDropDown = null; ///章、目、進度 drop
 	
@@ -20,10 +18,6 @@ var mysBooks = function(bkId, lecId) {
 	if(lecture_List[lecId].aux != undefined) {
 		this.aux = eval(lecture_List[lecId].aux);
 	}
-	this.book;
-	try {
-		this.book = eval(this.bkId + "_book");
-	} catch(e) {}
 	
 	this.mbJumpAnchor = false;
 	this.pairingIdCtrl();
@@ -44,7 +38,7 @@ mysBooks.prototype.pairingIdCtrl=function(){
 	this.mnuAux = document.getElementById("mnuAux");
 	
 	this.selPageListYin = document.getElementById("pageList");
-	this.selPageListAux = document.getElementById("pageList_hand");
+//	this.selPageListAux = document.getElementById("pageList_hand");
 	
 	this.dpdnProcess = document.getElementById("dropdnProcess");
 	this.dpdnChapterCm = document.getElementById("dpdnChapterCm");
@@ -295,7 +289,20 @@ mysAud.prototype.cusTime=function(nType) {
 	var h = Math.floor(t/3600);
 	var m = Math.floor((t % 3600)/60);
 	var s = Math.floor(t % 60);
-
+	
+	var addZero=function(n) {
+		if (n < 10) return "0" + n;
+		else return n;
+	}
+	
+	if(nType == 5){ //copy
+		var txt = (h == 0 ? "" : h + ":") + addZero(m) + ":" + addZero(s);
+		var hid = $("<input type=text></input>").val(txt).appendTo("body");
+		hid.get(0).select();
+		document.execCommand("copy");;
+		$(hid).remove();
+	}
+	
 	if(nType == 1){ //start
 		this.playStart = t;
 		document.getElementById("palyStartH").value = h;

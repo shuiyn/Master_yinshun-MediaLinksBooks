@@ -177,7 +177,6 @@ function tglDropDown(btn, nKind) {
 	theBook.currDropBtn = btn;
 	if (nKind == 1) { //章
 		theBook.currDropDown = document.getElementById("dpdnCmChapterPool");
-//		(theBook.mbReadCm ? theBook.dpdnChapterCm : theBook.dpdnChapterAux);
 	} else if (nKind == 11) { //課堂教材
 		theBook.currDropDown = document.getElementById("dpdnChapterCm");
 	} else if (nKind == 12) { //補充講義
@@ -185,13 +184,8 @@ function tglDropDown(btn, nKind) {
 	} else if (nKind == 2) { //進度
 		theBook.currDropDown = theBook.dpdnProcess;
 	} else if (nKind == 3) { //目次選單
-		//dpdnMenuCm
 	var idTail = fetchEssayerIdTail();
 			theBook.currDropDown = document.getElementById("dpdnMenuCm" + idTail);
-//		if (theBook.mbReadCm)
-//			theBook.currDropDown = theBook.dpdnMenuCm;
-//		else
-//			theBook.currDropDown = theBook.dpdnMenuAux;
 	} else if (nKind == 4) { //翻頁
 		theBook.currDropDown = theBook.dpdnTurnPage;
 	} else if (nKind == 5) { //chapter tabs
@@ -216,10 +210,12 @@ var fillPageTurning=function() {
 
 	$("#dpdnTurnPage").empty();
 	
+	$("<a>回原點</a>").appendTo("#dpdnTurnPage").attr("onclick", 'pageTurning(true, true)');
 	$(aItem[0]).appendTo("#dpdnTurnPage").attr("onclick", 'pageTurning(true)');
 	$(aItem[1]).appendTo("#dpdnTurnPage").attr("onclick", 'pageTurning(false)');
 	$(aItem[2]).appendTo("#dpdnTurnPage");
 	$(aItem[3]).appendTo("#dpdnTurnPage").attr("onclick", 'addTurning()');
+	$("<a>設為原點</a>").appendTo("#dpdnTurnPage").attr("onclick", 'addTurning(true)');
 	$(aItem[4]).appendTo("#dpdnTurnPage").attr("onclick", 'rmvTurning()');
 	$(aItem[5]).appendTo("#dpdnTurnPage").attr("onclick", 'initPageTurning()');
 	$("<hr>").appendTo("#dpdnTurnPage");
@@ -233,10 +229,15 @@ function initPageTurning() {
 	theBook.mnTurningIdx = -1;
 }
 
-function addTurning() {
-	theBook.maTurning.push({"id":currEssayer(true), "t":currEssayer().scrollTop});
-	
-	theBook.mnTurningIdx = theBook.maTurning.length-1;
+function addTurning(bAsHome) {
+	if (bAsHome) {
+		theBook.maTurning.unshift({"id":currEssayer(true), "t":currEssayer().scrollTop});
+		theBook.mnTurningIdx = 0;
+	} else {
+		theBook.maTurning.push({"id":currEssayer(true), "t":currEssayer().scrollTop});
+		
+		theBook.mnTurningIdx = theBook.maTurning.length-1;
+	}
 }
 
 function rmvTurning() {
@@ -260,22 +261,26 @@ function rmvTurning() {
 	}
 }
 
-function pageTurning(bForward) {
+function pageTurning(bForward, bGoHome) {
 	if (theBook.maTurning.length == 0)
 		return;
 	
 	$(event.stopPropagation());
 	
-	if (bForward) {
-		if (theBook.mnTurningIdx >= theBook.maTurning.length-1)
-			theBook.mnTurningIdx = 0;
-		else
-			theBook.mnTurningIdx++;
+	if (bGoHome) {
+		theBook.mnTurningIdx = 0;
 	} else {
-		if (theBook.mnTurningIdx <= 0)
-			theBook.mnTurningIdx = theBook.maTurning.length-1;
-		else
-			theBook.mnTurningIdx--;
+		if (bForward) {
+			if (theBook.mnTurningIdx >= theBook.maTurning.length-1)
+				theBook.mnTurningIdx = 0;
+			else
+				theBook.mnTurningIdx++;
+		} else {
+			if (theBook.mnTurningIdx <= 0)
+				theBook.mnTurningIdx = theBook.maTurning.length-1;
+			else
+				theBook.mnTurningIdx--;
+		}
 	}
 	
 	showCM(theBook.maTurning[theBook.mnTurningIdx].id, true);
@@ -429,19 +434,6 @@ function doToggle(btn, aInner, aTbl, aOwner, aDvText) {
 
 function toggleHandout(btn){
   doToggle(btn, ["期別", "講義"], ["tblShowPhrase", "tblShowHandout"], ["tdPhrase", "tdHandout"]);
-}
-
-
-function toggleAux(btn, sToText){
-	if (sToText == btn.innerHTML)
-		return;
-	
-	doToggle(btn, ["課", "輔"], null, null,["content", "auxPanel", "pageList", "pageList_hand"]);
-	
-	theBook.mbReadCm = (btn.innerHTML == "課");
-	
-	theBook.mnuCm.style.display = (theBook.mbReadCm ? "block" : "none");
-	theBook.mnuAux.style.display = (theBook.mbReadCm ? "none" : "block");
 }
 
 
