@@ -218,6 +218,7 @@ var fillPageTurning=function() {
 	$("<a>移除 這個位置</a>").appendTo("#dpdnTurnPage").attr("onclick", 'rmvTurning()');
 	$("<a>清空 所有位置</a>").appendTo("#dpdnTurnPage").attr("onclick", 'initPageTurning()');
 	$("<hr>").appendTo("#dpdnTurnPage");
+	$("<a>裝置</a>").appendTo("#dpdnTurnPage").attr("onclick", 'showScreen()');
 	$("<a style='background-color: DodgerBlue; color:white'>全螢幕</a>").appendTo("#dpdnTurnPage").attr("onclick", 'toggleFullBookScreen()');
 	
 }
