@@ -295,9 +295,19 @@ mysAud.prototype.cusTime=function(nType) {
 		else return n;
 	}
 	
-	if(nType == 5){ //copy
-		var txt = (h == 0 ? "" : h + ":") + addZero(m) + ":" + addZero(s);
-		var hid = $("<input type=text></input>").val(txt).appendTo("body");
+	if (nType == 5 || nType == 6){ //copy
+		var txt = $("title:first").text();
+		//全複製
+		if (nType == 5) {
+			//般若經講記：宗恆法師 104 般若精舍→12-23
+			txt = txt.substr(0, txt.indexOf("／")) + "→"+ $("#selLesson :selected").text() + "\n" ;
+			
+			txt += '"p":"p' + $("#pageList" + fetchEssayerIdTail() + " :selected").text() + '","cue":[{"t":"' + (h == 0 ? "" : h + ":") + addZero(m) + ":" + addZero(s) + '","c":"' + getSelection().toString() + '"}]';
+		} else { //只複製 cue node {"t":"", "c":""}
+			txt = '{"t":"' + (h == 0 ? "" : h + ":") + addZero(m) + ":" + addZero(s) + '","c":"' + getSelection().toString() + '"}';
+		}
+		
+		var hid = $("<textarea></textarea>").val(txt).appendTo("body");
 		hid.get(0).select();
 		document.execCommand("copy");;
 		$(hid).remove();

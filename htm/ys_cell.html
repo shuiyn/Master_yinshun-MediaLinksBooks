@@ -64,9 +64,7 @@ else
 
 	mbIsPC = !uaNotPC();
 
-	/*document.getElementById("tit_booklecName").innerHTML = base_List.books[q.bkId] + "：" + grabLecture(q.bkId)[q.lecId];*/
-	
-	document.getElementsByTagName("TITLE")[0].text = base_List.books[q.bkId] + "：" + grabLecture(q.bkId)[q.lecId] + "／印順導師著作聞思";
+	$("title:first").text(base_List.books[q.bkId] + "：" + grabLecture(q.bkId)[q.lecId] + "／印順導師著作聞思");
 
 	theAud = new mysAud();
 	theBook = new mysBooks(q.bkId, q.lecId);
@@ -153,10 +151,11 @@ else
 
 <td>
 	<button onclick="theAud.cusTime(1);">設起點</button>
-	<button onclick="theAud.cusTime(5);">C</button>
 	<button onclick="theAud.forbackward(1);" style="color:DodgerBlue;font-weight:bold;">&lt;&lt;</button>
 
 	<button onclick="theAud.forbackward(0);" style="color:DodgerBlue;font-weight:bold;">&gt;&gt;</button>
+	<button onclick="theAud.cusTime(5);">cA</button>
+	<button onclick="theAud.cusTime(6);">cC</button>
 </td>
 
 </tr></table><!--Audio 面板操作區-->
