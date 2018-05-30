@@ -166,8 +166,23 @@ kEssay.prototype.transData=function() {
 					this.nRowCount = 0; //新段開始，下面 ++ 重設行號 1 起計
 				else
 					this.bOverParaTag = true;
+
+//						jTmpLine = {"ln":[this.nIdxInPara, null, this.nRowCount]};
 			}
-				
+			
+			//頁次所在行之後的 行號移為次頁的第 1 行，如 jgj
+			// 12 …不能摧
+			// 13
+			//		hr [p3]
+			// 壞他 --->
+			//		hr [p3]
+			// 1 壞他
+			if (tagPageNum && jTmpLine) {
+				jTmpLine.ln[0] += tagPageNum.length;
+				this.nRowCount = 1;
+				jTmpLine.ln[2] = 1;
+			}
+			
 			this.nIdxInPara += sLine.length;
 			
 			if (jTmpLine || this.nRowCount == 0)
@@ -315,14 +330,11 @@ kEssay.prototype.processUnLined=function(jsn, nLnIdx) {
 			
 		} else if (itm == "img" && (jsn[itm] != undefined)) {
 			nReadLines = 0;
-			var wInnerW = window.innerWidth;
+			
 			var jTmp = jsn[itm];
-			var nWid = jTmp.t*16;
-			if (nWid > wInnerW)
-				nWid = wInnerW;
-				
-			var nHei = Math.floor(nWid * (jTmp.h / jTmp.w));
-			htm = '<img src="' + hostImgURL() + jTmp.s + '" width="' + nWid + 'px" height="' + nHei + 'px" />';
+
+			htm = '<img src="' + hostImgURL() + jTmp.s + '" data-widthOfCharCount=' +  jTmp.t + ' />';
+//✖ err			$(htm).attr("data-widthOfCharCount", jTmp.t);
 			
 			var sStyMisc = "";
 			
@@ -339,6 +351,7 @@ kEssay.prototype.processUnLined=function(jsn, nLnIdx) {
 				sStyMisc = 'style="' + sStyMisc;
 				htm = '<p ' + sStyMisc + '">' + htm + "</p>";
 			}
+			
 			this.jqCurrDiv.append(htm);
 				
 			jsn[itm] = undefined;

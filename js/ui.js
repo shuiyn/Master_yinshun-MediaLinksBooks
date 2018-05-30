@@ -11,6 +11,19 @@ var hostImgURL=function(fdn) {
 }
 
 
+var onImageLoaded=function(el) {
+		var wInnerW = window.innerWidth;
+		var nWid = el.attr("data-widthOfCharCount")*16;
+		if (nWid > wInnerW)
+			nWid = wInnerW;
+
+		var nHei = Math.floor(nWid * (el.prop("naturalHeight") / el.prop("naturalWidth")));
+		
+		el.attr({"width":nWid, "height":nHei});
+//		console.log(el.attr("data-widthOfCharCount"), nWid, nHei);
+}
+
+
 /*功能：
 	1 點擊文章區後的「頁次定位」
 	2 點擊文區註序時，如註區隱藏時，開顯之

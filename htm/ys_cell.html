@@ -82,6 +82,13 @@ else
 	}
 	
 	theBook.fillBook();
+
+	$("img").each(function(){
+		$(this).on("load", function(){
+			onImageLoaded($(this));
+		});		
+	});
+	
 	fitDevice();
 	rstPosition();
 }
