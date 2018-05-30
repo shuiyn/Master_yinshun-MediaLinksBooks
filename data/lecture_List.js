@@ -1815,5 +1815,58 @@ var lecture_List={
     "url": "http://video.lwdh.org.tw/download/lwdh/pdf/hyjxd/hyjxd_19.pdf"
    }
   ]
+ },
+ "0012": {
+  "bkid": "pnj",
+  "cm": "pnjjj_book",
+  "aux": "pnjjj_ja_aux",
+  "master": "ja",
+  "byear": "101",
+  "croom": "pn",
+  "phase": [
+   {
+    "id": "ja_pnj_1010913",
+    "t": "101-09",
+    "url": "http://www.kyba.org.tw/board/showbbs.asp?bd=11&id=550&totable=1"
+   }
+  ],
+  "handout": [
+   {
+    "t": "金剛經概介",
+    "url": "http://www.kyba.org.tw/board/upload/2012091318211872282-14817.doc"
+   },
+   {
+    "t": "101-10-18-補充講義 1022更新",
+    "url": "http://www.kyba.org.tw/board/upload/2012102214282739889-14817.doc"
+   },
+   {
+    "t": "101-10-18-懸論表解",
+    "url": "http://www.kyba.org.tw/board/upload/2012102316092775226-14817.doc"
+   },
+   {
+    "t": "101-11-01-白板",
+    "url": "http://www.kyba.org.tw/board/upload/2012110318411426764-14817.jpg"
+   },
+   {
+    "t": "101-11-15-白板",
+    "url": "http://www.kyba.org.tw/board/upload/2012111708003855277-14817.jpg"
+   },
+   {
+    "t": "102-04-18-般若經補充講義（完整版）",
+    "url": "http://www.kyba.org.tw/board/upload/2013051807183040267-14817.pdf"
+   },
+   {
+    "t": "102-05-02-白板",
+    "url": "http://www.kyba.org.tw/board/upload/2013050309573459333-14817.jpg"
+   },
+   {
+    "t": "102-05-16-(補充講義--關於佛塔)",
+    "url": "http://www.kyba.org.tw/board/upload/2013051713053985474-14817.doc"
+   },
+   {
+    "t": "102-06-13-白板",
+    "url": "http://www.kyba.org.tw/board/upload/2013061409341198340-14817.jpg"
+   }
+  ]
  }
 }

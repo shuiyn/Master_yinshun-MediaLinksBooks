@@ -57,10 +57,8 @@
 	}
 
 	.dropdownShow {display:block;}
-/*	.Hider { display:none;}*/
-	.Bolder { font-weight:bold;}
-	
 
+	.Bolder {font-weight:bold;}
 
 	.paraIndent {
 		margin-left:0;

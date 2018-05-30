@@ -304,7 +304,7 @@ mysAud.prototype.cusTime=function(nType) {
 			
 			txt += '"p":"p' + $("#pageList" + fetchEssayerIdTail() + " :selected").text() + '","cue":[{"t":"' + (h == 0 ? "" : h + ":") + addZero(m) + ":" + addZero(s) + '","c":"' + getSelection().toString() + '"}]';
 		} else { //只複製 cue node {"t":"", "c":""}
-			txt = '{"t":"' + (h == 0 ? "" : h + ":") + addZero(m) + ":" + addZero(s) + '","c":"' + getSelection().toString() + '"}';
+			txt = ', {"t":"' + (h == 0 ? "" : h + ":") + addZero(m) + ":" + addZero(s) + '","c":"' + getSelection().toString() + '"}';
 		}
 		
 		var hid = $("<textarea></textarea>").val(txt).appendTo("body");
