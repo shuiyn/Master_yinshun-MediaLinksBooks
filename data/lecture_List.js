@@ -1868,5 +1868,50 @@ var lecture_List={
     "url": "http://www.kyba.org.tw/board/upload/2013061409341198340-14817.jpg"
    }
   ]
+ },
+ "0013": {
+  "bkid": "ffgl",
+  "cm": "ffgl_book",
+  "aux": "",
+  "master": "ja",
+  "byear": "102",
+  "croom": "pn",
+  "phase": [
+   {
+    "id": "ja_ffgl_1020905",
+    "t": "102-09",
+    "url": "http://www.kyba.org.tw/board/showcontent.asp?bd=11&id=618&totable=1"
+   },
+   {
+    "id": "ja_ffgl_1030320",
+    "t": "103-03",
+    "url": "http://www.kyba.org.tw/board/showcontent.asp?bd=11&id=618&totable=1"
+   },
+   {
+    "id": "ja_ffgl_1030925",
+    "t": "103-09",
+    "url": "http://www.kyba.org.tw/board/showcontent.asp?bd=11&id=618&totable=1"
+   },
+   {
+    "id": "ja_ffgl_1040319",
+    "t": "104-03",
+    "url": "http://www.kyba.org.tw/board/showcontent.asp?bd=11&id=618&totable=1"
+   },
+   {
+    "id": "ja_ffgl_1040903",
+    "t": "104-09",
+    "url": "http://www.kyba.org.tw/board/showcontent.asp?bd=11&id=684&totable=1"
+   }
+  ],
+  "handout": [
+   {
+    "t": "102-09-05-白板",
+    "url": ""
+   },
+   {
+    "t": "102-09-05-補充講義(1~2)",
+    "url": "http://www.kyba.org.tw/board/upload/2013090523062688701-14817.pdf"
+   }
+  ]
  }
 }
