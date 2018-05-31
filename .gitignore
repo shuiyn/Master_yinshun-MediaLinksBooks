@@ -1,5 +1,20 @@
 /text
 /mp3
-/htm/test.html
+/htm/cueSelect.htm
 /htm/mys_Book.html
 /htm/pnj.html
+/htm/test.html
+/data/auxData_0001.js
+/data/auxData_0002.js
+/data/auxData_List.js
+/data/auxJSON_List.js
+/data/book_List.js
+/data/bookFmt_List.js
+/data/cuePoint_List.js
+/data/pnj_book.js
+/data/pnj_style.js
+/js/base_List.js
+/js/cuePoint_List.js
+/js/lecture_List.js
+/js/lesson_List.js
+/js/mysBooks - 複製.js

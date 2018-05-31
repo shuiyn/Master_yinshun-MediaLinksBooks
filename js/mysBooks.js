@@ -89,6 +89,7 @@ mysBooks.prototype.fillBook=function() {
   
 	this.doFillBook(false);
 	showCM("content_0");
+	doToggleBR();
 }
 
 
@@ -257,13 +258,28 @@ mysBooks.prototype.onLessonChange=function(e) {
 	
 	if (aCue) {
 		for (var i=0; i < aCue.length; i++) {
-			dpdn.append($("<a></a>").html("<span style='color:blue'>" + aCue[i].t + "</span> " + aCue[i].c).attr("onclick", 'theAud.cuePointPlay("' + aCue[i].t + '")'));
+			dpdn.append($("<a></a>").html("<span style='color:blue'>" + aCue[i].t + "</span> " + aCue[i].c).attr("onclick", 'onCuePointClicked($(this), "' + aCue[i].t + '")'));
+//			dpdn.append($("<a></a>").html("<span style='color:blue'>" + aCue[i].t + "</span> " + aCue[i].c).attr("onclick", 'theAud.cuePointPlay("' + aCue[i].t + '")'));
 		}
-//		btnDrop.attr("disabled", false);
 	}
-//	 else {
-//		btnDrop.attr("disabled", true);
-//	}
+}
+
+var onCuePointClicked=function(el, t) {
+	var dpdn = $("#dropdnCue");
+	dpdn.children("a").each(function() {
+//		console.log($(this).children("span:first").css("color"));
+		
+		//只能以 rgb(255, 0, 0) 形式判斷，red #ff0000 都錯
+		if ($(this).children("span:first").css("color") == "rgb(255, 0, 0)") {
+			console.log($(this).children("span:first").text());
+			$(this).children("span:first").css("color", "blue");
+			return false;
+		}
+	});
+	
+	el.children("span:first").css("color", "red");
+	theAud.cuePointPlay(t);
+//	console.log(el.children("span:first").css("color"));
 }
 
 
@@ -313,9 +329,10 @@ mysAud.prototype.cusTime=function(nType) {
 		var txt = $("title:first").text();
 		var sCurrPgNum = $("#pageList" + fetchEssayerIdTail() + " :selected").text();
 		var sSel = getSelection().toString();
-		var lnNo = /^\d+/.exec(sSel);
+		var lnNo = sSel.match(/^\d+/);
+
 		if (lnNo)
-			sSel = "p" + sCurrPgNum + "L" + lnNo + " " + sSel.substr(lnNo.length);
+			sSel = "p" + sCurrPgNum + "L" + lnNo[0] + " " + sSel.substr(lnNo[0].length);
 		else
 			sSel = "p" + sCurrPgNum + " " + sSel;
 		//全複製
