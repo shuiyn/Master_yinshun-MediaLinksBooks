@@ -645,7 +645,7 @@ var openEssay=function(bCM, jsnChapter, idChapter, bImmOpen) {
 	
 	createEssayMenu(esy.maToc, idMenuRoot);
 	
-	doToggleBR();
+//	doToggleBR();
 	$("#" + idDivRoot).css("scrollTop", 0);
 	
 	nNextCount++;

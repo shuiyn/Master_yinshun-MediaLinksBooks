@@ -88,7 +88,6 @@ mysBooks.prototype.fillBook=function() {
   this.fillPhase();
   
 	this.doFillBook(false);
-	showCM("content_1");
 	showCM("content_0");
 }
 
@@ -312,14 +311,21 @@ mysAud.prototype.cusTime=function(nType) {
 	
 	if (nType == 5 || nType == 6){ //copy
 		var txt = $("title:first").text();
+		var sCurrPgNum = $("#pageList" + fetchEssayerIdTail() + " :selected").text();
+		var sSel = getSelection().toString();
+		var lnNo = /^\d+/.exec(sSel);
+		if (lnNo)
+			sSel = "p" + sCurrPgNum + "L" + lnNo + " " + sSel.substr(lnNo.length);
+		else
+			sSel = "p" + sCurrPgNum + " " + sSel;
 		//全複製
 		if (nType == 5) {
 			//般若經講記：宗恆法師 104 般若精舍→12-23
 			txt = txt.substr(0, txt.indexOf("／")) + "→"+ $("#selLesson :selected").text() + "\n" ;
 			
-			txt += '"p":"p' + $("#pageList" + fetchEssayerIdTail() + " :selected").text() + '","cue":[{"t":"' + (h == 0 ? "" : h + ":") + addZero(m) + ":" + addZero(s) + '","c":"' + getSelection().toString() + '"}]';
+			txt += '"p":"p' + sCurrPgNum + '","cue":[{"t":"' + (h == 0 ? "" : h + ":") + addZero(m) + ":" + addZero(s) + '","c":"' + sSel + '"}]';
 		} else { //只複製 cue node {"t":"", "c":""}
-			txt = ', {"t":"' + (h == 0 ? "" : h + ":") + addZero(m) + ":" + addZero(s) + '","c":"' + getSelection().toString() + '"}';
+			txt = ', {"t":"' + (h == 0 ? "" : h + ":") + addZero(m) + ":" + addZero(s) + '","c":"' + sSel + '"}';
 		}
 		
 		var hid = $("<textarea></textarea>").val(txt).appendTo("body");
