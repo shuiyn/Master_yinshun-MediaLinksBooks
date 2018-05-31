@@ -89,7 +89,7 @@ mysBooks.prototype.fillBook=function() {
   
 	this.doFillBook(false);
 	showCM("content_1");
-//	showCM("content_0");
+	showCM("content_0");
 }
 
 
