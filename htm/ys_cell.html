@@ -83,11 +83,15 @@ else
 	
 	theBook.fillBook();
 
+	$("img").attr("onload", "onImageLoaded($(this))");
+	
+ /*
 	$("img").each(function(){
 		$(this).on("load", function(){
 			onImageLoaded($(this));
 		});		
 	});
+	*/
 	
 	fitDevice();
 	rstPosition();
@@ -142,6 +146,10 @@ else
 <!--Audio 面板操作區 width="99%" -->
 <table class="audioGroup" style="padding-top:0;margin-top:-5px;">
 <tr style="background-color:#EEFFFF;">
+
+	<td style="position:relative;">
+		<button id="btnDropdnCue" onclick="tglDropDown(this,21)" class="dropbtn">C</button>
+		  <div id="dropdnCue" class="dropdown-content" style="width:20em;height:22em;"> </div></td>
 <!--
 <td>
 	<button onclick="showScreen();">S</button>
@@ -270,25 +278,6 @@ else
 
 <div id="esyPool" class="esyPool">
 	<div id="content" onclick="onEssayerClicked(event)" onscroll="TryScroll(event)" class="essay"></div>
-<!--
-	<div id="auxPanel" onscroll="TryScroll(event);" class="essay" style="display:none;"></div>
-	-->
-</div>
-
-<!--
-<dialog id="dlgCue">
-<button onclick="theAud.closeCue()" class="dlgCloser">✖</button>
-<p class="dlgTitle">法師授課主題時點表</p>
-
-<select id="cueList" style="width:16em;">
-</select>
-
-<div style="text-align:right;margin-top:2em;">
-	<input type="checkbox" id="bookTo" checked>書本定位</input>　
-	<button onclick="theAud.cuePointPlay()">播放</button>
-</div>
-</dialog>
--->
 
 <script>
 

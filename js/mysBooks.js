@@ -88,7 +88,8 @@ mysBooks.prototype.fillBook=function() {
   this.fillPhase();
   
 	this.doFillBook(false);
-	showCM("content_0");
+	showCM("content_1");
+//	showCM("content_0");
 }
 
 
@@ -246,10 +247,24 @@ mysBooks.prototype.onLessonChange=function(e) {
 		theAud.playStart = 0;
 	}
 //	theAud.playDuration = 0;
- /*
 	var mbp = e.getAttribute("data-mbpId").split(",");
-	theAud.fillCue(mbp, e.value); // e.value == url
-	*/
+	var aCue = grabCue(mbp[0], mbp[1], mbp[2], src);
+//	var btnDrop = $("#btnDropdnCue");
+	var dpdn = $("#dropdnCue");
+	
+	$("#btnDropdnCue").attr("disabled", !aCue);
+	
+	dpdn.empty();
+	
+	if (aCue) {
+		for (var i=0; i < aCue.length; i++) {
+			dpdn.append($("<a></a>").html("<span style='color:blue'>" + aCue[i].t + "</span> " + aCue[i].c).attr("onclick", 'theAud.cuePointPlay("' + aCue[i].t + '")'));
+		}
+//		btnDrop.attr("disabled", false);
+	}
+//	 else {
+//		btnDrop.attr("disabled", true);
+//	}
 }
 
 
@@ -336,40 +351,15 @@ mysAud.prototype.cusPlay=function() {
 	this.aud.play();
 }
 
-mysAud.prototype.showCue=function() {
-	document.getElementById("dlgCue").showModal();
-}
-mysAud.prototype.closeCue=function() {
-	document.getElementById("dlgCue").close();
-}
- /*
-mysAud.prototype.fillCue=function(mbp, url){
-	var eCue=document.getElementById("cueList");
-	var mp3Main = url.slice(url.lastIndexOf("/")+1, url.lastIndexOf("."));
-	var aCuePoint = grabCue(mbp[0], mbp[1], mbp[2], mp3Main);
-	
-	while (eCue.length > 0) eCue.remove(0);
-	
-	if (aCuePoint) {
-		aCuePoint.map(function(x){
-			var opt = document.createElement("option");
-			opt.text = x;
-			eCue.add(opt);
-		});
-	}
-}
-*/
 
 
-mysAud.prototype.cuePointPlay=function(){
+mysAud.prototype.cuePointPlay=function(t){
 	if(this.aud.networkState == 3){
 		alert("沒有指定音檔");
 		return;
 	}
-	var ctl = document.getElementById("cueList");
-	if(ctl.options.length == 0) return;
 	
-	var aHms = ctl.options[ctl.selectedIndex].text.split(" ")[0].split(":");
+	var aHms = t.split(":");
 	if(aHms.length < 3) aHms.unshift("0");
 
 	var ct = 0;

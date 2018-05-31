@@ -83,10 +83,19 @@ var grabYbkCont=function(bkId, lineScope){
 
 
 
-var grabCue=function(masterId, bkId, phId, mp3Id){
-//	console.log(masterId, bkId, phId, mp3Id);
-	if (cuePoint_List[masterId])
-		if (cuePoint_List[masterId][bkId])
-			if (cuePoint_List[masterId][bkId][phId])
-				return cuePoint_List[masterId][bkId][phId][mp3Id];
+var grabCue=function(masterId, bkId, phId, mp3url){
+	var aCue = null;
+	
+	if (lesson_List[masterId])
+		if (lesson_List[masterId][bkId])
+			if (lesson_List[masterId][bkId][phId])
+				aCue = lesson_List[masterId][bkId][phId];
+	
+	if (aCue) {
+		for (var i=0; i < aCue.length; i++) {
+			if (aCue[i].url == mp3url) {
+				return (aCue[i].cue);
+			}
+		}
+	}
 }

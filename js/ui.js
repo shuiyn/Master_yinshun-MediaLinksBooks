@@ -196,9 +196,11 @@ function tglDropDown(btn, nKind) {
 		theBook.currDropDown = document.getElementById("dpdnChapterAux");
 	} else if (nKind == 2) { //進度
 		theBook.currDropDown = theBook.dpdnProcess;
+	} else if (nKind == 21) { //cue
+		theBook.currDropDown = document.getElementById("dropdnCue");
 	} else if (nKind == 3) { //目次選單
-	var idTail = fetchEssayerIdTail();
-			theBook.currDropDown = document.getElementById("dpdnMenuCm" + idTail);
+		var idTail = fetchEssayerIdTail();
+		theBook.currDropDown = document.getElementById("dpdnMenuCm" + idTail);
 	} else if (nKind == 4) { //翻頁
 		theBook.currDropDown = theBook.dpdnTurnPage;
 	} else if (nKind == 5) { //chapter tabs
