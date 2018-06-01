@@ -371,6 +371,7 @@ mysAud.prototype.cusTime=function(nType) {
 
 mysAud.prototype.cusPlay=function(nType) {
 	if (nType == 1) {
+		/*
 		 $.getScript({url:"../js/try_List.js", success:function(response,status){
 				 alert(response);
 				 var s = "books\n";
@@ -386,7 +387,7 @@ mysAud.prototype.cusPlay=function(nType) {
 
 			 }
 		 });
-		 
+		 */
 
 //$.ajax({async:false, url: "demo_ajax_script.js", dataType: "script"});
 
