@@ -28,9 +28,8 @@ function fillBook(){
 	return s;
 }
 
-
 function onBookChange(){
-	var lecs = grabLecture($("#selBook").val());
+	var lecs = grabLecturesInBook($("#selBook").val());
 
 	var s = '<select id="selLecture" style="width:14em;"> ';
 	for(var lecId in lecs) {

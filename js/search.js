@@ -38,6 +38,19 @@ var initUsedBook=function(){
 }
 
 
+//for index.html
+var grabLecturesInBook=function(bkid){
+	var lst={}; //id:0001, 開仁法師 104 般若精舍
+	for (var id in lecture_List) {
+		var lec=lecture_List[id];
+		if (lec.bkid == bkid) {
+			lst[id] = [base_List.masters[lec.master], lec.byear, base_List.crooms[lec.croom]].join(" ");
+		}
+	}
+	return lst;
+}
+
+
 //網頁標題
 var grabLecTitle=function(lecId){
 	var lec = lecture_List[lecId];
