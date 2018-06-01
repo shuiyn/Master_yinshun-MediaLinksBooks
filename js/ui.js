@@ -98,13 +98,18 @@ var upFindPg=function(jBgn, ev) {
 
 
 var sJustTemp = "";
+
 function funnyOnKeyPressed(event) {
 	var sTmp = grabIdPrefix("funny");
+//	alert(event.keyCode);
 	
 	if (sJustTemp == sTmp) {
 		$(".forMySelf").toggle();
 		alert(sJustTemp);
-		window.removeEventListener("keypress", funnyOnKeyPressed);
+		
+		event.target.removeEventListener("keypress", funnyOnKeyPressed);
+		event.target.select();
+		event.target.value = "0";
 		sJustTemp = "";
 	} else {
 		var v = String.fromCharCode(event.keyCode);

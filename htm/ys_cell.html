@@ -67,6 +67,7 @@ else
 	$("title:first").text(grabLecTitle(q.lecId) + "／印順導師著作聞思");
 	
 	$(".forMySelf").toggle();
+	var hCtrl=$("#palyStartH").get(0);
 	theAud = new mysAud();
 	theBook = new mysBooks(q.bkId, q.lecId);
 //	fitDevice();
@@ -74,7 +75,8 @@ else
 	if (mbIsPC) {
 		if (window.addEventListener) {              
 		    window.addEventListener("resize", rstPosition);
-		    window.addEventListener("keypress", funnyOnKeyPressed);
+		    hCtrl.addEventListener("keypress", funnyOnKeyPressed);
+//		    window.addEventListener("keypress", funnyOnKeyPressed);
 //		    window.addEventListener("onclick", winOnClick);
 		} else if (window.attachEvent) {                 
 		    window.attachEvent("onresize", rstPosition);
@@ -85,7 +87,7 @@ else
 	theBook.fillBook();
 
 	$("img").attr("onload", "onImageLoaded($(this))");
-	setTimeout(function(){ window.removeEventListener("keypress", funnyOnKeyPressed); }, 30000);
+	setTimeout(function(){ hCtrl.removeEventListener("keypress", funnyOnKeyPressed); }, 30000);
  /*
 	$("img").each(function(){
 		$(this).on("load", function(){
@@ -162,7 +164,7 @@ else
 
 	<td><!--起播 時分秒-->
 		<table id="tblPlayStart"><tr><td>
-	<input id="palyStartH" type="text" value="0"  min="0" max="5" style="width:1em;"></input>時
+	<input id="palyStartH" type="number" value="0"  min="0" max="5" style="width:1em;"></input>時
 	<input id="palyStartM" type="number" value="0" min="0" max="59" style="width:1.5em;"></input>分
 	<input id="palyStartS" type="number" value="0" min="0" max="59" style="width:1.5em;"></input>秒
 		</td></tr></table>

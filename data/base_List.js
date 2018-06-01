@@ -50,7 +50,7 @@ var base_List = {
 	"toc":"Toc_",
 	"page":"Pg_",
 	"para":"pr_",
-	"funny":"Lmk"
+	"funny":"19060405"
 }
 
 }
