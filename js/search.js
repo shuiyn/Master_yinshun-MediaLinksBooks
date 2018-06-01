@@ -38,18 +38,19 @@ var initUsedBook=function(){
 }
 
 
-
-var grabLecture=function(bkid){
-	var lst={}; //id:0001, 開仁法師 104 般若精舍
-	for (var id in lecture_List) {
-		var lec=lecture_List[id];
-		if (lec.bkid == bkid) {
-			lst[id] = [base_List.masters[lec.master], lec.byear, base_List.crooms[lec.croom]].join(" ");
-		}
-	}
-	return lst;
+//網頁標題
+var grabLecTitle=function(lecId){
+	var lec = lecture_List[lecId];
+	
+	return base_List.books[lec.bkid] + "：" + [base_List.masters[lec.master], lec.byear, base_List.crooms[lec.croom]].join(" ");
 }
 
+var grabLecture=function(lecId, which){
+	if (which)
+		return lecture_List[lecId][which];
+	else
+		return lecture_List[lecId];
+}
 
 
 var grabPhase=function(lecId){
@@ -60,6 +61,15 @@ var grabPhase=function(lecId){
 
 var grabLesson=function(masterId, bkId, phId){
 	return lesson_List[masterId][bkId][phId];
+}
+
+
+var grabBookName=function(which){
+	return base_List.books[which];
+}
+
+var grabIdPrefix=function(which){
+	return base_List.htmlIdPrefix[which];
 }
 
 

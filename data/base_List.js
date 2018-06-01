@@ -49,7 +49,8 @@ var base_List = {
 "htmlIdPrefix": {
 	"toc":"Toc_",
 	"page":"Pg_",
-	"para":"pr_"
+	"para":"pr_",
+	"funny":"Lmk"
 }
 
 }

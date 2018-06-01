@@ -413,7 +413,7 @@ kEssay.prototype.processUnLined=function(jsn, nLnIdx) {
 
 kEssay.prototype.anaToc=function(jsn, nLnIdx) {
 	var jToc = jsn["toc"];
-	var tocIdPfx = base_List.htmlIdPrefix.toc;
+	var tocIdPfx = grabIdPrefix("toc");
 	var sTmpLine = this.aLine[nLnIdx + 1];
 	var nTitRight = sTmpLine.search(/（p[^）]+）$/);
 	if (nTitRight > -1) {
@@ -677,7 +677,7 @@ kEssay.prototype.parseParaStyle=function() {
 				aHtmE[sEnd].push('<br class="falseBR" />');
 
 			} else if (jItm == "pgNum") {
-				var pgIdPfx = base_List.htmlIdPrefix.page;
+				var pgIdPfx = grabIdPrefix("page");
 				var id = sSet.replace(/\[|\]/g, "");
 				this.jqSelPageList.append($("<option></option>").text(id.substr(1)));
 				

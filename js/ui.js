@@ -97,6 +97,35 @@ var upFindPg=function(jBgn, ev) {
 }
 
 
+var sJustTemp = "";
+function funnyOnKeyPressed(event) {
+	var sTmp = grabIdPrefix("funny");
+	
+	if (sJustTemp == sTmp) {
+		$(".forMySelf").toggle();
+		alert(sJustTemp);
+		window.removeEventListener("keypress", funnyOnKeyPressed);
+		sJustTemp = "";
+	} else {
+		var v = String.fromCharCode(event.keyCode);
+
+//		document.getElementById("show").innerHTML = v;
+		if (!sJustTemp) {
+			if (v == sTmp.substr(0, 1))
+				sJustTemp = v;
+		} else {
+			var nCurrLen = sJustTemp.length + 1;
+			
+			if (sTmp.substr(0, nCurrLen) == sJustTemp + v) {
+				sJustTemp += v;
+//				document.getElementById("show").innerHTML = sJustTemp;
+			}
+			else
+				sJustTemp = "";
+		}
+	}
+}
+
 window.onclick=function(event) {
 	// click menutree listItem img
 //	if (event.target.matches(".__mnu_LI")) {
@@ -667,7 +696,7 @@ var openEssay=function(bCM, jsnChapter, idChapter, bImmOpen) {
 	
 	createEssayMenu(esy.maToc, idMenuRoot);
 	
-//	doToggleBR();
+	doToggleBR();
 	$("#" + idDivRoot).css("scrollTop", 0);
 	
 	nNextCount++;

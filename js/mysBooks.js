@@ -11,12 +11,13 @@ var mysBooks = function(bkId, lecId) {
 	this.mnTurningIdx = -1;
 	
 	this.cm; // course materials
-	if(lecture_List[lecId].cm != undefined) {
-		this.cm = eval(lecture_List[lecId].cm);
+	if(grabLecture(lecId,"cm") != undefined) {
+		this.cm = eval(grabLecture(lecId,"cm"));
 	}
+
 	this.aux; // aux course materials
-	if(lecture_List[lecId].aux != undefined) {
-		this.aux = eval(lecture_List[lecId].aux);
+	if(grabLecture(lecId,"aux") != undefined) {
+		this.aux = eval(grabLecture(lecId,"aux"));
 	}
 	
 	this.mbJumpAnchor = false;
@@ -50,7 +51,7 @@ mysBooks.prototype.pairingIdCtrl=function(){
 
 mysBooks.prototype.onPageListChange=function(e){
 	this.mbJumpAnchor = true;
-	location.href = "#" + base_List.htmlIdPrefix.page + "p" + e.options[e.selectedIndex].innerText + fetchEssayerIdTail();
+	location.href = "#" + grabIdPrefix("page") + "p" + e.options[e.selectedIndex].innerText + fetchEssayerIdTail();
 }
 
 
@@ -90,11 +91,12 @@ mysBooks.prototype.fillBook=function() {
 	this.doFillBook(false);
 	showCM("content_0");
 	doToggleBR();
+	doToggleBR();
 }
 
 
 mysBooks.prototype.fillHandout=function() {
-	var ht = lecture_List[this.lecId].handout;
+	var ht = grabLecture(this.lecId, "handout");
 	var pnl = document.getElementById("pnlHandout");
 	var s='<select style="width:7em;" id="selHandout" onchange="theBook.onHandoutChange(this)">';
 	if (ht) {

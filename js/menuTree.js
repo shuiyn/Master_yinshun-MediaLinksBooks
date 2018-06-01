@@ -72,7 +72,7 @@ function createCmMenu(aTocItem) {
 function createMenu(aItem) {
 	var sPath = hostImgURL();
 	
-	var tocIdPfx = base_List.htmlIdPrefix.toc;
+	var tocIdPfx = grabIdPrefix("toc");
 	
 	var rtUL = document.getElementById("mnuRoot");
 	
