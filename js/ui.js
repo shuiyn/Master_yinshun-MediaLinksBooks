@@ -101,15 +101,12 @@ var sJustTemp = "";
 
 function funnyOnKeyPressed(event) {
 	var sTmp = grabIdPrefix("funny");
-	alert(event.keyCode);
 	
 	if (sJustTemp == sTmp) {
 		$(".forMySelf").toggle();
 		alert(sJustTemp);
 		
-		event.target.removeEventListener("keypress", funnyOnKeyPressed);
-		event.target.select();
-		event.target.value = "0";
+		window.removeEventListener("keypress", funnyOnKeyPressed);
 		sJustTemp = "";
 	} else {
 		var v = String.fromCharCode(event.keyCode);
@@ -392,7 +389,7 @@ function fitDevice() {
 		
 	} else {
 		if (screen.width >= 800) {
-			$("body").css("font-size", "130%");
+			$("body").css("font-size", "150%");
 		}
 		if (screen.width < 470) {
 			$("#dpdnTurnPage").css("right", 0);

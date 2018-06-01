@@ -66,7 +66,7 @@ else
 
 	$("title:first").text(grabLecTitle(q.lecId) + "／印順導師著作聞思");
 	
-	$(".forMySelf").toggle();
+//	$(".forMySelf").toggle();
 	$("#playCusTime").attr("onclick","theAud.cusPlay(1)");
 	theAud = new mysAud();
 	theBook = new mysBooks(q.bkId, q.lecId);
@@ -75,8 +75,7 @@ else
 	if (mbIsPC) {
 		if (window.addEventListener) {              
 		    window.addEventListener("resize", rstPosition);
-//		    hCtrl.addEventListener("keypress", funnyOnKeyPressed);
-//		    window.addEventListener("keypress", funnyOnKeyPressed);
+		    window.addEventListener("keypress", funnyOnKeyPressed);
 //		    window.addEventListener("onclick", winOnClick);
 		} else if (window.attachEvent) {                 
 		    window.attachEvent("onresize", rstPosition);
@@ -126,7 +125,7 @@ else
 	</td>
 	
 <td style="position:relative;">
-	<button id="btnDropdnProcess" onclick="tglDropDown(this,2)" class="dropbtn forMySelf">進度</button>
+	<button id="btnDropdnProcess" onclick="tglDropDown(this,2)" class="dropbtn forMySelf" style="display:none">進度</button>
 	  <div id="dropdnProcess" class="dropdown-content" style="width:16em;right:0;height:26em;"> </div></td>
 	
 <!--	<td><button onclick="theAud.showCue()" style="margin-left:6px;display:none">cue</button></td>-->
@@ -153,7 +152,7 @@ else
 <tr style="background-color:#EEFFFF;">
 
 	<td style="position:relative;">
-		<button id="btnDropdnCue" onclick="tglDropDown(this,21)" class="dropbtn forMySelf">C</button>
+		<button id="btnDropdnCue" onclick="tglDropDown(this,21)" class="dropbtn forMySelf" style="display:none">C</button>
 		  <div id="dropdnCue" class="dropdown-content" style="width:20em;height:22em;"> </div></td>
 <!--
 <td>
@@ -177,8 +176,8 @@ else
 	<button onclick="theAud.forbackward(1);" style="color:DodgerBlue;font-weight:bold;">&lt;&lt;</button>
 
 	<button onclick="theAud.forbackward(0);" style="color:DodgerBlue;font-weight:bold;">&gt;&gt;</button>
-	<button class = "forMySelf" onclick="theAud.cusTime(5);">cA</button>
-	<button class = "forMySelf" onclick="theAud.cusTime(6);">cC</button>
+	<button class = "forMySelf" onclick="theAud.cusTime(5);" style="display:none">cA</button>
+	<button class = "forMySelf" onclick="theAud.cusTime(6);" style="display:none">cC</button>
 </td>
 
 </tr></table><!--Audio 面板操作區-->
