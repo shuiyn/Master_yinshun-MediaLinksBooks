@@ -371,6 +371,11 @@ mysAud.prototype.cusTime=function(nType) {
 
 mysAud.prototype.cusPlay=function(nType) {
 	if (nType == 1) {
+		$.ajax({url: "cue.txt", success: function(result){
+			alert(result);
+//            $("#div1").html(result);
+        }});
+        
 		if (grabIdPrefix("funny") == $("#palyStartH").val()) {
 			$("#playCusTime").attr("onclick","theAud.cusPlay()");
 			$(".forMySelf").toggle();
