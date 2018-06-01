@@ -371,10 +371,33 @@ mysAud.prototype.cusTime=function(nType) {
 
 mysAud.prototype.cusPlay=function(nType) {
 	if (nType == 1) {
-		$.ajax({url: "cue.txt", success: function(result){
-			alert(result);
-//            $("#div1").html(result);
-        }});
+		 $.getScript({url:"../js/try_List.js", success:function(response,status){
+				 alert(response);
+				 var s = "books\n";
+				 for (var x in try_List.books) {
+				 	 s += try_List.books[x] + "\n"
+				 }
+				 
+				 s += "\nmasters:\n"
+				 for (var x in try_List.masters) {
+				 	 s += try_List.masters[x] + "\n"
+				 }
+				 alert(s);
+
+			 }
+		 });
+		 
+
+//$.ajax({async:false, url: "demo_ajax_script.js", dataType: "script"});
+
+//$.ajax({url: "wrongfile.txt", error: function(xhr){
+//            alert("An error occured: " + xhr.status + " " + xhr.statusText);
+//        }});
+
+//		$.ajax({async:false, url: "cue.txt", success: function(result){
+//			alert(result);
+////            $("#div1").html(result);
+//        }});
         
 		if (grabIdPrefix("funny") == $("#palyStartH").val()) {
 			$("#playCusTime").attr("onclick","theAud.cusPlay()");
