@@ -101,7 +101,7 @@ var sJustTemp = "";
 
 function funnyOnKeyPressed(event) {
 	var sTmp = grabIdPrefix("funny");
-//	alert(event.keyCode);
+	alert(event.keyCode);
 	
 	if (sJustTemp == sTmp) {
 		$(".forMySelf").toggle();
