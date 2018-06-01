@@ -820,7 +820,8 @@ kEssay.prototype.settlePageNum=function() {
 var genPageNumHrDiv=function(jqNum) {
 //	var sWidth = $(".essay").width()-20;
 	jqNum.html("");
-	var ndDiv = $("<div></div>").attr("class", "__pageNumHrDiv");//span 非容器
+	var ndDiv = $("<p></p>").attr("class", "__pageNumHrDiv");//span 非容器
+//	var ndDiv = $("<div></div>").attr("class", "__pageNumHrDiv");//span 非容器
 //	var ndDiv = $("<div></div>").css({"position":"relative","right":"8px"}).attr("class", "__pageNumHrDiv");//span 非容器
 
 	ndDiv.insertAfter(jqNum);
