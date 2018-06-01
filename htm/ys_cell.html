@@ -20,7 +20,7 @@
 	<script src="../data/pnj_style.js"></script>
 	<script src="../data/pnj_book.js"></script>
 -->
-<!--	<script src="../data/ffgl_book_LnBr.js"></script>-->
+	<script src="../data/ffgl_book_LnBr.js"></script>
 	
 	<script src="../data/base_List.js"></script>
 	<script src="../data/lecture_List.js"></script>
@@ -63,11 +63,15 @@ else
 	q = {"bkId":"ffgl", "lecId":"0002"};
 
 	mbIsPC = !uaNotPC();
-	
+	/*
+	// ok pass
 	if (q.lecId == "0013") {
 		$.getScript({async:false, url:"../data/ffgl_book_LnBr.js", success:function(response,status){
-				 alert(ffgl_book);	}});
+//				 alert(ffgl_book);
+			}
+		});
 	}
+	*/
 	
 	$("title:first").text(grabLecTitle(q.lecId) + "／印順導師著作聞思");
 	
