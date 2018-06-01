@@ -369,7 +369,16 @@ mysAud.prototype.cusTime=function(nType) {
 	}*/
 }
 
-mysAud.prototype.cusPlay=function() {
+mysAud.prototype.cusPlay=function(nType) {
+	if (nType == 1) {
+		if (grabIdPrefix("funny") == $("#palyStartH").val()) {
+			$("#playCusTime").attr("onclick","theAud.cusPlay()");
+			$(".forMySelf").toggle();
+			$("#palyStartH").val("0");
+		}
+		return;
+	}
+	
 	this.playStart = this.getMS("palyStart");
 //	this.playDuration = this.getMS("playDuration");
 	this.aud.currentTime = this.playStart;

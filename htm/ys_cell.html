@@ -67,7 +67,7 @@ else
 	$("title:first").text(grabLecTitle(q.lecId) + "／印順導師著作聞思");
 	
 	$(".forMySelf").toggle();
-	var hCtrl=$("#palyStartH").get(0);
+	$("#playCusTime").attr("onclick","theAud.cusPlay(1)");
 	theAud = new mysAud();
 	theBook = new mysBooks(q.bkId, q.lecId);
 //	fitDevice();
@@ -75,7 +75,7 @@ else
 	if (mbIsPC) {
 		if (window.addEventListener) {              
 		    window.addEventListener("resize", rstPosition);
-		    hCtrl.addEventListener("keypress", funnyOnKeyPressed);
+//		    hCtrl.addEventListener("keypress", funnyOnKeyPressed);
 //		    window.addEventListener("keypress", funnyOnKeyPressed);
 //		    window.addEventListener("onclick", winOnClick);
 		} else if (window.attachEvent) {                 
@@ -87,7 +87,9 @@ else
 	theBook.fillBook();
 
 	$("img").attr("onload", "onImageLoaded($(this))");
-	setTimeout(function(){ hCtrl.removeEventListener("keypress", funnyOnKeyPressed); }, 30000);
+	setTimeout(function(){ $("#playCusTime").attr("onclick","theAud.cusPlay()")}, 30000);
+	
+	//hCtrl.removeEventListener("keypress", funnyOnKeyPressed); }, 30000);
  /*
 	$("img").each(function(){
 		$(this).on("load", function(){
@@ -159,7 +161,7 @@ else
 </td>
 -->
 	<td>
-		<button onclick="theAud.cusPlay();">播</button>
+		<button id="playCusTime" onclick="theAud.cusPlay();">播</button>
 	</td>
 
 	<td><!--起播 時分秒-->
