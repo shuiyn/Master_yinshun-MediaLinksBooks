@@ -130,14 +130,12 @@
 
 	.srcwords {
 		font-family:標楷體;
-		font-size:103%;
+		font-size:102%;
 /*		font-weight:bold;*/
 	}
 
 /*	行動裝置無「標楷體」，以色標之*/
 	.srcwords_m {
-		font-family:標楷體;
-/*		font-size:103%;*/
 		color:MidnightBlue; /* Sienna */
 	}
 
