@@ -90,8 +90,6 @@ mysBooks.prototype.fillBook=function() {
   
 	this.doFillBook(false);
 	showCM("content_0");
-	doToggleBR();
-	doToggleBR();
 }
 
 
