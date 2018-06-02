@@ -22,7 +22,7 @@ var kEssay=function(jqRoot, jqPage, jsnChapter, idTail, idEsyerTitle) {
 	this.mnStartMarginLev = 3; // margin-left 開始設值的 level，1 是「節」
 	if (jsnChapter.mlStartLev != undefined)
 		this.mnStartMarginLev = jsnChapter.mlStartLev;
-	// pgNum -> [p[a-z]?\d+]
+	// data-pgnum -> [p[a-z]?\d+]
 	
 	this.mbHasLineNum = true;
 	if (jsnChapter.lnNo != undefined)
@@ -681,7 +681,7 @@ kEssay.prototype.parseParaStyle=function() {
 				var id = sSet.replace(/\[|\]/g, "");
 				this.jqSelPageList.append($("<option></option>").text(id.substr(1)));
 				
-				aHtmB[sStart].push('<span ' + 'id="' + pgIdPfx + id + this.msIdTail + '" class="__pageNum" pgNum="' + sSet + '">');
+				aHtmB[sStart].push('<span ' + 'id="' + pgIdPfx + id + this.msIdTail + '" class="__pageNum" data-pgnum="' + sSet + '">');
 				aHtmE[sEnd].unshift('</span>');
 
 			} else if (/^CS_?\d{0,2}$/.test(jItm)) {
@@ -782,7 +782,7 @@ kEssay.prototype.parseParaStyle=function() {
 } //eof parseParaStyle
 
 
-//設兩個 pgnum span，隱顯用：只顯 p、顯 hr 及 p、全隱
+//設兩個 data-pgnum span，隱顯用：只顯 p、顯 hr 及 p、全隱
 //<span>[p12]</span> <div><hr/><span>[p12]</span></div>
 //第１個頁碼先隱藏，不顯示
 kEssay.prototype.settlePageNum=function() {
@@ -798,7 +798,7 @@ kEssay.prototype.settlePageNum=function() {
 	aPageNum.each(function() {
 		genPageNumHrDiv($(this));
 //		var jqNum = $(this);//aPageNum[i];
-//		var sPgNum = jqNum.attr("pgNum");
+//		var sPgNum = jqNum.attr("data-pgnum");
 //		var dvHr = genPageNumHrDiv(sPgNum);
 //		jqNum.html("");
 		//全段只有頁碼
@@ -827,7 +827,7 @@ var genPageNumHrDiv=function(jqNum) {
 	ndDiv.insertAfter(jqNum);
 //	ndDiv.css("left",-ndDiv.offset().left);
 
-	var jqNumInDiv = $('<span class="__pageNumInDiv" >' + jqNum.attr("pgNum") + '</span>');
+	var jqNumInDiv = $('<span class="__pageNumInDiv" >' + jqNum.attr("data-pgnum") + '</span>');
 //	ndDiv.append($("<hr/>").css("width", "100%"));
 	ndDiv.append(jqNumInDiv);
 }

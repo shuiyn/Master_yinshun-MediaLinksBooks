@@ -264,6 +264,7 @@ mysBooks.prototype.onLessonChange=function(e) {
 	}
 }
 
+
 var onCuePointClicked=function(el, t) {
 	var dpdn = $("#dropdnCue");
 	dpdn.children("a").each(function() {
@@ -431,8 +432,6 @@ mysAud.prototype.cuePointPlay=function(t){
 	}
 	this.aud.currentTime = ct;
 	this.aud.play();
-	
-	this.closeCue();
 }
 
 

@@ -12,6 +12,7 @@
 	<script src="../data/pnjjj_book.js"></script>
 	<script src="../data/pnjjj_zh_aux.js"></script>
 	<script src="../data/pnjjj_ja_aux.js"></script>
+	<script src="../dataSrc/localId.js"></script>
 	<script src="../data/ffgl_kr_2014.js"></script>
 	<script src="../data/ffgl_kr_2014_aux.js"></script>
 	<script src="../data/fzrj_kr_2015.js"></script>
@@ -75,7 +76,6 @@ else
 	
 	$("title:first").text(grabLecTitle(q.lecId) + "／印順導師著作聞思");
 	
-//	$(".forMySelf").toggle();
 	$("#playCusTime").attr("onclick","theAud.cusPlay(1)");
 	theAud = new mysAud();
 	theBook = new mysBooks(q.bkId, q.lecId);
@@ -137,6 +137,9 @@ else
 	<button id="btnDropdnProcess" onclick="tglDropDown(this,2)" class="dropbtn forMySelf" style="display:none">進度</button>
 	  <div id="dropdnProcess" class="dropdown-content" style="width:16em;right:0;height:26em;"> </div></td>
 	
+	<td>
+<button id="toggleDSrc" onclick="toggleDSrc()" class="toggle dsrc" style="display:none">D</button>
+	</td>
 <!--	<td><button onclick="theAud.showCue()" style="margin-left:6px;display:none">cue</button></td>-->
 </tr></table>
 
