@@ -138,7 +138,11 @@ else
 	  <div id="dropdnProcess" class="dropdown-content" style="width:16em;right:0;height:26em;"> </div></td>
 	
 	<td>
-<button id="toggleDSrc" onclick="toggleDSrc()" class="toggle dsrc" style="display:none">D</button>
+<button onclick="toggleDSrc(this)" class="toggle dsrc" style="display:none">D</button>
+	</td>
+	
+	<td>
+<button onclick="toggleDSrc(this, 1)" class="toggle dsrc" style="display:none">R</button>
 	</td>
 <!--	<td><button onclick="theAud.showCue()" style="margin-left:6px;display:none">cue</button></td>-->
 </tr></table>

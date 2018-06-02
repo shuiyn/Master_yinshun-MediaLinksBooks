@@ -119,12 +119,12 @@ var lecture_List={
   "croom": "pn",
   "phase": [
    {
-    "id": "pn1041223",
+    "id": "zh_pnjjj_pn1041223",
     "t": "第 1 期 104 年",
     "url": "http://www.kyba.org.tw/board/showcontent.asp?bd=11&id=690&totable=1"
    },
    {
-    "id": "pn1060913",
+    "id": "zh_pnjjj_pn1060913",
     "t": "第 2 期 106 年",
     "url": "http://www.kyba.org.tw/board/showcontent.asp?bd=11&id=724&totable=1"
    }

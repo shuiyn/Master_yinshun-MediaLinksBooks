@@ -248,8 +248,12 @@ mysBooks.prototype.onLessonChange=function(e) {
 	}
 //	theAud.playDuration = 0;
 	var mbp = e.getAttribute("data-mbpId").split(",");
-	var aCue = grabCue(mbp[0], mbp[1], mbp[2], src);
-//	var btnDrop = $("#btnDropdnCue");
+	fillCues(grabCue(mbp[0], mbp[1], mbp[2], src));
+
+}
+
+
+var fillCues=function(aCue) {
 	var dpdn = $("#dropdnCue");
 	
 	$("#btnDropdnCue").attr("disabled", !aCue);
@@ -259,6 +263,7 @@ mysBooks.prototype.onLessonChange=function(e) {
 	if (aCue) {
 		for (var i=0; i < aCue.length; i++) {
 			dpdn.append($("<a></a>").html("<span style='color:blue'>" + aCue[i].t + "</span> " + aCue[i].c).attr("onclick", 'onCuePointClicked($(this), "' + aCue[i].t + '")'));
+
 //			dpdn.append($("<a></a>").html("<span style='color:blue'>" + aCue[i].t + "</span> " + aCue[i].c).attr("onclick", 'theAud.cuePointPlay("' + aCue[i].t + '")'));
 		}
 	}
