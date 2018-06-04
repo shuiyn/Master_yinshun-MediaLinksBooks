@@ -93,18 +93,10 @@ else
 	}
 	
 	theBook.fillBook();
-
-	$("img").attr("onload", "onImageLoaded($(this))");
+	
 	setTimeout(function(){ $("#playCusTime").attr("onclick","theAud.cusPlay()")}, 30000);
 	
 	//hCtrl.removeEventListener("keypress", funnyOnKeyPressed); }, 30000);
- /*
-	$("img").each(function(){
-		$(this).on("load", function(){
-			onImageLoaded($(this));
-		});		
-	});
-	*/
 	
 	fitDevice();
 	rstPosition();

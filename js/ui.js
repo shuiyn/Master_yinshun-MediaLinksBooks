@@ -31,7 +31,7 @@ var onImageLoaded=function(el) {
 var onEssayerClicked=function(event) {
 	var et = $(event.target);
 
-	if (et.attr("href") && et.attr("href").startsWith("#ntd_")) {
+	if (et.is("[href^='#ntd_']")) {
 		if ($("#" + currEssayer(true) + " .notearea").css("display")=="none")
 			$("#" + currEssayer(true) + " .notearea").toggle();
 	}
@@ -43,13 +43,6 @@ var onEssayerClicked=function(event) {
 	}
 }
 
-
-function gTop(e) {
-	if (e.offsetParent)
-    	return e.offsetTop + gTop(e.offsetParent);
-    else 
-     return e.offsetTop;
-}
 
 var upFindPg=function(jBgn, ev) {
 		if (jBgn.attr("class") == "essay")
@@ -64,25 +57,16 @@ var upFindPg=function(jBgn, ev) {
 	var jpnFound = null;
 	//外部呼叫時傳入的 event
 	if (ev) {
+		if (jBgn.is(".__pageNumHrDiv"))
+			return jBgn.prev();
+		else if (jBgn.is(".__pageNumInDiv"))
+			return jBgn.parent().prev();
+
 		jpnFound = doFindPg(jBgn);
-//		console.log(gTop($(event.target).get(0)), gTop(jpnFound.get(0)));
-		if (jpnFound && (jpnFound.offset().top < ev.offsetY)) {
-//			var y = (ev.pageY - jpnFound.offset().top) ;		console.log(jpnFound.attr("id"), Math.ceil(y), Math.ceil(y+$("#content_0").scrollTop()), ev.offsetY, Math.ceil(jpnFound.offset().top), jpnFound.get(0).offsetTop , ev.clientY, ev.pageY);
+		if (jpnFound && ev.clientY > jpnFound.next().offset().top) {
 			return jpnFound;
 		}
 	}
-		/*
-//		if (jpnFound && (jpnFound.offset().top <= ev.clientY-20)) {
-		if (jpnFound){ // && (jpnFound.offset().top < ev.clientY- ev.offsetY)) {
-			var y = Math.ceil(ev.pageY - jpnFound.offset().top) ;//+ $(window).scrollTop();
-			var y1 = Math.ceil(ev.pageY - jBgn.parent().offset().top) ;//+ $(window).scrollTop();
-			var y2 = Math.ceil(jBgn.offset().top) ;//+ $(window).scrollTop();
-			console.log(jBgn.text().slice(0,4), jpnFound.attr("id"), "pn.offset.top=", Math.ceil(jBgn.parent().offset().top),Math.ceil(jpnFound.offset().top), "e.pageY-pn.offset.top=", y2, y, y1, "ev.clientY=", ev.clientY, "ev.offsetY=", ev.offsetY,"ev.pageY=", ev.pageY);
-//			console.log(jpnFound.offset().top, y, ev.clientY, ev.offsetY, ev.pageY);
-//			return jpnFound;
-		}
-	}
-	*/
 	
 	jBgn.prevAll().each(function() {
 		jpnFound = doFindPg($(this));

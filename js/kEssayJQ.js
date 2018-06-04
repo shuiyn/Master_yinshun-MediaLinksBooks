@@ -107,7 +107,7 @@ kEssay.prototype.transData=function() {
 				continue;
 		}
 
-		//轉換 圖檔 在 host 的路徑
+		//轉換 圖檔 在 host 的路徑，待加/除 onImageLoaded
 		if (/@@\{img\/\}/.test(sLine)) {
 			sLine = sLine.replace(/@@\{img\/\}/g, hostImgURL());
 		}
@@ -124,7 +124,7 @@ kEssay.prototype.transData=function() {
 			
 		} //eof if (/^\^\^\{.*?\}$/.test(sLine))
 		else if (sLine.startsWith("<img ")){
-			this.jqCurrDiv.append(sLine);
+			this.jqCurrDiv.append(sLine); //?待加 onImageLoaded
 		}
 		else { //非標記行、即實體文字行
 			var aPageNumTag = sLine.match(/\[p[a-z]?\d+\]/g);
@@ -333,7 +333,9 @@ kEssay.prototype.processUnLined=function(jsn, nLnIdx) {
 			
 			var jTmp = jsn[itm];
 
-			htm = '<img src="' + hostImgURL() + jTmp.s + '" data-widthOfCharCount=' +  jTmp.t + ' />';
+//onImageLoaded in ui.js
+			htm = '<img src="' + hostImgURL() + jTmp.s + '" onload="onImageLoaded($(this))" data-widthOfCharCount=' +  jTmp.t + ' />';
+			
 //✖ err			$(htm).attr("data-widthOfCharCount", jTmp.t);
 			
 			var sStyMisc = "";
