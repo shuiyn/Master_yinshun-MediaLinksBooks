@@ -427,7 +427,7 @@ mysAud.prototype.cusTime=function(nType) {
 		var lnNo = sSel.match(/^(\d+)(.*)/);
 //console.log(lnNo, lnNo[0]);
 		if (lnNo)
-			sSel = "p" + sCurrPgNum + "L" + lnNo[1] + " " + lnNo[2]);
+			sSel = "p" + sCurrPgNum + "L" + lnNo[1] + " " + lnNo[2];
 		else
 			sSel = "p" + sCurrPgNum + " " + sSel;
 		//全複製
