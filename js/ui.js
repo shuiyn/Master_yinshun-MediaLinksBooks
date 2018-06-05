@@ -169,16 +169,21 @@ var fillDropdown=function(bCM, aItem) {
 
 	var nWidth = 0;
 	
+	//JSON 未依排序列出
+	aItem.sort(function(a,b) {
+		return (a[0] > b[0] ? 1 : -1);
+	});
+	
 	for (var i=0; i < aItem.length; i++) {
 //		var h = "<p><a>" + aItem[i] + "</a></p>";
-		var h = "<a>" + aItem[i] + "</a>";
+		var h = "<a>" + aItem[i][1] + "</a>";
 		
   	if (bCM)
-			$(h).appendTo(id).attr("onclick", 'openEssay(true,theBook.cm["' + aItem[i]+ '"],"' + aItem[i] + '", true)');
+			$(h).appendTo(id).attr("onclick", 'openEssay(true,theBook.cm["' + aItem[i][0]+ '"],"' + aItem[i][0] + '", true)');
 		else
-			$(h).appendTo(id).attr("onclick", 'openEssay(false,theBook.aux["' + aItem[i]+ '"],"' + aItem[i] + '", true)');
+			$(h).appendTo(id).attr("onclick", 'openEssay(false,theBook.aux["' + aItem[i][0]+ '"],"' + aItem[i][0] + '", true)');
 		
-		var nWid = $("#try").html("<a>" + aItem[i] + "</a>").innerWidth();
+		var nWid = $("#try").html("<a>" + aItem[i][1] + "</a>").innerWidth();
   	nWidth = Math.max(nWidth, nWid);
 	}
 	
@@ -355,13 +360,9 @@ function rstContHandFontSize(sType){
 //重設文章、講義顯示區的高度
 function fitDevice() {
 	if (mbIsPC) {
-//		document.getElementById("tit_booklecName").style.fontSize = "110%";
 	$("#esyPool").children().css("fontSize", "100%");
-//		theBook.ctlShowYin.style.fontSize = "100%";
-//		theBook.ctlShowAux.style.fontSize = "100%";
 		theBook.fontSizePan.innerHTML = "100";
 		
-//		theBook.dpdnMenuCm.style.left = "-4em";
 		theBook.dpdnMenuCm.style.width = "26em";
 		theBook.dpdnMenuAux.style.width = "26em";
 		theBook.dpdnChapterCm.style.width = "26em";
@@ -669,10 +670,10 @@ var openEssay=function(bCM, jsnChapter, idChapter, bImmOpen) {
 //	cmMenuPool.children(".dropdown-content").hide(); 不可 hide
 	pageListPool.children().hide();
 	
-	esyTitlePool.append(addPnlEsyerTitle(idPnlEsyerTitle, idEsyerTitle));
+	esyTitlePool.append(addPnlEsyerTitle(idPnlEsyerTitle, idEsyerTitle).attr("data-chapId", idChapter));
 	esyTitlePool.children().hide();
 
-	jqChapTabs.append($("<a></a>").text(idChapter).attr({"onclick":'showCM("' + idDivRoot + '")', "id":idShowCM}));
+	jqChapTabs.append($("<a></a>").text(jsnChapter.listT).attr({"onclick":'showCM("' + idDivRoot + '")', "id":idShowCM}));
 
 	var esy = new kEssay($("#" + idDivRoot), $("#" + idPageList), jsnChapter, idTail, idEsyerTitle);
 	esy.transData();

@@ -57,6 +57,7 @@ mysBooks.prototype.onPageListChange=function(e){
 
 mysBooks.prototype.doFillBook=function(bCM) {
 	var src = (bCM ? this.cm : this.aux);
+	var lstTitle = "";
 	
 	if (src) {
 		var aChapter = [];
@@ -65,13 +66,18 @@ mysBooks.prototype.doFillBook=function(bCM) {
 //					document.getElementById("toggleNote").disabled = (!this.cm[ch]["note"]);
 //					document.getElementById("toggleLineNo").disabled = (!this.cm[ch]["lnNo"]);
 			} else {
-				aChapter.push(ch);
+				if (src[ch].listT)
+					lstTitle = src[ch].listT;
+				else
+					lstTitle = ch;
+				
+				aChapter.push([ch, lstTitle]);
 			}
 		}
 		
 		fillDropdown(bCM, aChapter);
 		
-		openEssay(bCM, src[aChapter[0]], aChapter[0]);
+		openEssay(bCM, src[aChapter[0][0]], aChapter[0][0]);
 	}
 }
 
@@ -178,7 +184,7 @@ mysBooks.prototype.onPhaseChange=function(e) {
 }
 
 
-var lessonProcessOnClick=function(selectedIndex) {
+var onLessonProcessClick=function(selectedIndex) {
 	var e = document.getElementById("selLesson");
 	e.selectedIndex = selectedIndex;
 	theBook.onLessonChange(e);
@@ -192,14 +198,15 @@ mysBooks.prototype.fillLesson=function(out, masterId, phId){
 	var s='<select id="selLesson" onchange="theBook.onLessonChange(this)" style="width:6em;"'+ 'data-mbpId="' + [masterId, this.bkId, phId].join(",") + '"> ';
 	for(var i=0; i< out.length; i++) {
 		var lpros=(out[i].p ? out[i].p : "");
+		var cid = out[i].cid || "";
 	 	var sLiText = (out[i].sno ? out[i].sno : out[i].d);
  	
 
 		if (out[i].url) {
-			s+= '<option value="' + out[i].url + '" data-lpros="' +lpros+ '">' + sLiText + '</option>';
+			s+= '<option value="' + out[i].url + '" data-lpros="' +lpros+ '"' + ' data-cid="' + cid + '">' + sLiText + '</option>';
 
 		if (lpros)
-			aProcess.push('<p><a onclick=lessonProcessOnClick(' + nNonGroupIdx + ')><span style="color:blue;">' + sLiText + "</span>：" + lpros + "</a></p>");
+			aProcess.push('<p><a onclick=onLessonProcessClick(' + nNonGroupIdx + ')><span style="color:blue;">' + sLiText + "</span>：" + lpros + "</a></p>");
 		
 			nNonGroupIdx++;
 		} else {
@@ -248,7 +255,8 @@ mysBooks.prototype.onLessonChange=function(e) {
 	}
 //	theAud.playDuration = 0;
 	var mbp = e.getAttribute("data-mbpId").split(",");
-	fillCues(grabCue(mbp[0], mbp[1], mbp[2], src));
+	
+	fillCues(grabCue(mbp[0], mbp[1], mbp[2], src), e.getAttribute("data-cid"));
 
 }
 
@@ -260,9 +268,33 @@ var fillCues=function(aCue) {
 	
 	dpdn.empty();
 	
+	var cid = $("#selLesson :selected").attr("data-cid");
+	var aCid = [];
+	if (cid) {
+		cid.split(",").map(function(t) {
+			aCid.push(t.trim());
+		});
+	}
+	
 	if (aCue) {
+		var nCurrCidPos = 0;
+		
 		for (var i=0; i < aCue.length; i++) {
-			dpdn.append($("<a></a>").html("<span style='color:blue'>" + aCue[i].t + "</span> " + aCue[i].c).attr("onclick", 'onCuePointClicked($(this), "' + aCue[i].t + '")'));
+			var elCuePoint = $("<a></a>").html("<span style='color:blue'>" + aCue[i].t + "</span> " + aCue[i].c);
+
+			
+			if (aCid.length > 0) {
+				//此行之後，如不同 cid 需重新設入
+				if (aCue[i].o) {
+					nCurrCidPos = aCue[i].o;
+				}
+				
+				elCuePoint.attr("onclick", 'onCuePointClicked($(this), "' + aCue[i].t + '","' + aCid[nCurrCidPos] + '")')
+			} else {
+				elCuePoint.attr("onclick", 'onCuePointClicked($(this), "' + aCue[i].t + '")')
+			}
+			
+			dpdn.append(elCuePoint);
 
 //			dpdn.append($("<a></a>").html("<span style='color:blue'>" + aCue[i].t + "</span> " + aCue[i].c).attr("onclick", 'theAud.cuePointPlay("' + aCue[i].t + '")'));
 		}
@@ -270,20 +302,77 @@ var fillCues=function(aCue) {
 }
 
 
-var onCuePointClicked=function(el, t) {
+var onCuePointClicked=function(el, t, cid) {
 	var dpdn = $("#dropdnCue");
 	dpdn.children("a").each(function() {
 //		console.log($(this).children("span:first").css("color"));
 		
 		//只能以 rgb(255, 0, 0) 形式判斷，red #ff0000 都錯
 		if ($(this).children("span:first").css("color") == "rgb(255, 0, 0)") {
-			console.log($(this).children("span:first").text());
+//			console.log($(this).children("span:first").text());
 			$(this).children("span:first").css("color", "blue");
 			return false;
 		}
 	});
 	
+	if (cid) {
+		var jqTmp = $('#esyTitlePool').children('[data-chapid="' + cid + '"]');
+//			jqTmp 是 DOM.element，不是 jq element ?
+		//"ht-" 在 rawBookTo.parseChapter() 中加入的 
+		var bCM = (cid.substr(0,2)=="h-" ? false : true);
+		if (!bCM)
+			cid = cid.substr(2);
+		
+		var dsrc = (bCM ? theBook.cm : theBook.aux);
+		if (jqTmp.length == 0) {
+			openEssay(bCM, dsrc[cid], cid, true);
+		}
+		else {
+			showCM("content" + fetchEssayerIdTail(jqTmp[0].id), true);
+//			showCM("content" + fetchEssayerIdTail(jqTmp[0].attr("id")), true);
+		}
+	}
+	
 	el.children("span:first").css("color", "red");
+	var ma = el.text().match(/^(\s*\d+:\d+[ ]+)(p\d+)(L\d+)/);
+
+	if (ma) {
+		var bFrom = false;
+		var sPgId = grabIdPrefix("page") + ma[2] + fetchEssayerIdTail();
+		var sLnNo = ma[3].substr(1);
+		var bHidden = false;
+//		console.log("|" + sPgId + "|" + sLnNo + "|");
+//		console.log($("#" + currEssayer(true)).find(".__pageNum,sup.falseBR"));
+
+	if (ma[3]) {
+//		console.log(ma[3], currEssayer(true));
+		
+		$("#" + currEssayer(true)).find(".__pageNum,sup.falseBR").each(function(i,e) {
+			if (bFrom) {
+				if (e.innerText == sLnNo) {
+					if ($(this).css("display")=="none") {
+						bHidden = true;
+						$(this).toggle();
+					}
+					e.scrollIntoView();
+					if (bHidden)
+						$(this).toggle();
+
+					return false;
+				}
+			} else {
+				if ($(this).attr("id") == sPgId) {
+					bFrom = true;
+				}
+			}
+		});
+	} //if (ma[3])
+	else {
+		location.href = "#" + grabIdPrefix("page") + ma[2] + fetchEssayerIdTail();
+		
+	}
+} // //if (ma)
+	
 	theAud.cuePointPlay(t);
 //	console.log(el.children("span:first").css("color"));
 }
@@ -335,10 +424,10 @@ mysAud.prototype.cusTime=function(nType) {
 		var txt = $("title:first").text();
 		var sCurrPgNum = $("#pageList" + fetchEssayerIdTail() + " :selected").text();
 		var sSel = getSelection().toString();
-		var lnNo = sSel.match(/^\d+/);
-
+		var lnNo = sSel.match(/^(\d+)(.*)/);
+//console.log(lnNo, lnNo[0]);
 		if (lnNo)
-			sSel = "p" + sCurrPgNum + "L" + lnNo[0] + " " + sSel.substr(lnNo[0].length);
+			sSel = "p" + sCurrPgNum + "L" + lnNo[1] + " " + lnNo[2]);
 		else
 			sSel = "p" + sCurrPgNum + " " + sSel;
 		//全複製
