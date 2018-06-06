@@ -235,6 +235,7 @@ mysBooks.prototype.onLessonChange=function(e) {
 	
 	if(!e.value){
 		$("#myAudio").attr("src", "");
+		
 //		theAud.aud.src = "";
 //		alert(aud.src);為本站址
 //		this.ctlShowYin.innerHTML = "";
@@ -317,7 +318,6 @@ var onCuePointClicked=function(el, t, cid) {
 	
 	if (cid) {
 		var jqTmp = $('#esyTitlePool').children('[data-chapid="' + cid + '"]');
-//			jqTmp 是 DOM.element，不是 jq element ?
 		//"ht-" 在 rawBookTo.parseChapter() 中加入的 
 		var bCM = (cid.substr(0,2)=="h-" ? false : true);
 		if (!bCM)
@@ -328,8 +328,10 @@ var onCuePointClicked=function(el, t, cid) {
 			openEssay(bCM, dsrc[cid], cid, true);
 		}
 		else {
-			showCM("content" + fetchEssayerIdTail(jqTmp[0].id), true);
-//			showCM("content" + fetchEssayerIdTail(jqTmp[0].attr("id")), true);
+	//使用 first() 傳回 jq element
+			showCM("content" + fetchEssayerIdTail(jqTmp.first().attr("id")), true);
+	//使用 陣列[0] 傳回 DOM element
+//			showCM("content" + fetchEssayerIdTail(jqTmp[0].id), true);
 		}
 	}
 	
