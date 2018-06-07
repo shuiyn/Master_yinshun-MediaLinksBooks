@@ -257,7 +257,7 @@ mysBooks.prototype.onLessonChange=function(e) {
 //	theAud.playDuration = 0;
 	var mbp = e.getAttribute("data-mbpId").split(",");
 	
-	fillCues(grabCue(mbp[0], mbp[1], mbp[2], src), e.getAttribute("data-cid"));
+	fillCues(grabCue(mbp[0], mbp[1], mbp[2], src));
 
 }
 
@@ -286,7 +286,7 @@ var fillCues=function(aCue) {
 			
 			if (aCid.length > 0) {
 				//此行之後，如不同 cid 需重新設入
-				if (aCue[i].o) {
+				if (aCue[i].o != undefined) {
 					nCurrCidPos = aCue[i].o;
 				}
 				
@@ -425,11 +425,16 @@ mysAud.prototype.cusTime=function(nType) {
 	if (nType == 5 || nType == 6){ //copy
 		var txt = $("title:first").text();
 		var sCurrPgNum = $("#pageList" + fetchEssayerIdTail() + " :selected").text();
-		var sSel = getSelection().toString();
-		var lnNo = sSel.match(/^(\d+)(.*)/);
-//console.log(lnNo, lnNo[0]);
+		var oSel = getSelection();
+		var sSel = oSel.toString();
+		var lnNo = ""; //sSel.match(/^(\d+)(.*)/);
+		//標示區首個 node 是 Line Num <sup>
+		if (oSel && oSel.getRangeAt(0).startContainer.parentNode.matches("sup.falseBR")) {
+			lnNo = oSel.getRangeAt(0).startContainer.nodeValue;
+			sSel = sSel.substr(lnNo.length);
+		}
 		if (lnNo)
-			sSel = "p" + sCurrPgNum + "L" + lnNo[1] + " " + lnNo[2];
+			sSel = "p" + sCurrPgNum + "L" + lnNo + " " + sSel;
 		else
 			sSel = "p" + sCurrPgNum + " " + sSel;
 		//全複製
@@ -437,9 +442,9 @@ mysAud.prototype.cusTime=function(nType) {
 			//般若經講記：宗恆法師 104 般若精舍→12-23
 			txt = txt.substr(0, txt.indexOf("／")) + "→"+ $("#selLesson :selected").text() + "\n" ;
 			
-			txt += '"p":"p' + sCurrPgNum + '","cue":[{"t":"' + (h == 0 ? "" : h + ":") + addZero(m) + ":" + addZero(s) + '","c":"' + sSel + '"}]';
+			txt += '"p":"p' + sCurrPgNum + '","cue":[\n\t{"t":"' + (h == 0 ? "" : h + ":") + addZero(m) + ":" + addZero(s) + '","c":"' + sSel + '"}]';
 		} else { //只複製 cue node {"t":"", "c":""}
-			txt = ', {"t":"' + (h == 0 ? "" : h + ":") + addZero(m) + ":" + addZero(s) + '","c":"' + sSel + '"}';
+			txt = ',\n\t{"t":"' + (h == 0 ? "" : h + ":") + addZero(m) + ":" + addZero(s) + '","c":"' + sSel + '"}';
 		}
 		
 		var hid = $("<textarea></textarea>").val(txt).appendTo("body");

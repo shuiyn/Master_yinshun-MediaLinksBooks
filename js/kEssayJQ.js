@@ -332,9 +332,13 @@ kEssay.prototype.processUnLined=function(jsn, nLnIdx) {
 			nReadLines = 0;
 			
 			var jTmp = jsn[itm];
+			var pw = "";
+			//percent width 80%...
+			if (jTmp.pw)
+				pw = ' width="' + jTmp.pw + '"';
 
 //onImageLoaded in ui.js
-			htm = '<img src="' + hostImgURL() + jTmp.s + '" onload="onImageLoaded($(this))" data-widthOfCharCount=' +  jTmp.t + ' />';
+			htm = '<img src="' + hostImgURL() + jTmp.s + '" onload="onImageLoaded($(this))" data-widthOfCharCount=' +  jTmp.t + pw + ' />';
 			
 //✖ err			$(htm).attr("data-widthOfCharCount", jTmp.t);
 			

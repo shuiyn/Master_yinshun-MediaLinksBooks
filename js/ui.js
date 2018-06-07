@@ -12,6 +12,10 @@ var hostImgURL=function(fdn) {
 
 
 var onImageLoaded=function(el) {
+	//已設 % 者不處理
+	if (el.attr("width") && el.attr("width").search(/\d+\%/) > -1)
+		return;
+	
 		var wInnerW = window.innerWidth;
 		var nWid = el.attr("data-widthOfCharCount")*16;
 		if (nWid > wInnerW)
