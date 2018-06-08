@@ -623,7 +623,8 @@ var openEssay=function(bCM, jsnChapter, idChapter, bImmOpen) {
 	var jqChapTabs = $("#dpdnChapterTabs");
 	
 	if (bImmOpen) {
-		var aOpened = jqChapTabs.children("a:contains(" + idChapter + ")");
+//		var aOpened = jqChapTabs.children("a:contains(" + idChapter + ")");
+		var aOpened = $("#esyTitlePool").children('[data-chapid="' + idChapter + '"]');
 		if (aOpened.length > 0) {
 			if (!confirm("此章已開啟中：\n【取消】→開啟原檔\n【確定】→另開一個")) {
 				eval(aOpened.attr("onclick")); //開啟第１個
