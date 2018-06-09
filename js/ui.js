@@ -348,13 +348,40 @@ function pageTurning(bForward, bGoHome) {
 	currEssayer().scrollTop = theBook.maTurning[theBook.mnTurningIdx].t;
 }
 
+//
+////[{"t":nn, "cid":1, "aPL":"[p1L3"},...]
+//function initPageFollow() {
+//	theBook.maPageFollow = [];
+//}
 
-//[{"t":nn, "cid":1, "aPL":"[p1L3"},...]
-function initPageFollow() {
-	theBook.maPageFollow = [];
-}
 
 function followingPage() {
+	var nLen = $("#dropdnCue").children("a").length;
+
+	if (nLen.length == 0)
+	return;
+
+	var ct = theAud.aud.currentTime;
+	
+	//-1 because get next item
+	for (var i=0; i < nLen-1; i++) {
+		var elThis = $("#dropdnCue a:eq(" + (i) + ")");
+		var maThis = elThis.text().match(/^(\s*\d+:\d+[ ]+)(p\d+)(L\d+)/);
+		if (!maThis)
+			maThis = elThis.text().match(/^(\s*\d+:\d+[ ]+)(p\d+)/);
+		
+		var ma = $("#dropdnCue a:eq(" + (i+1) + ")").text().match(/^(\s*\d+:\d+[ ]+)/);
+		
+		if (maThis && ma && getCustomTime(ma[1].trim()) >= ct) {
+			openshowCMbyCID(elThis.attr("data-cid"), maThis[2], maThis[3]);
+			
+			break;
+		}
+	}
+}
+
+
+function followingPage_xx() {
 	var aPageFollow = theBook.maPageFollow;
 	
 	if (aPageFollow.length == 0)

@@ -8,8 +8,8 @@ var mysBooks = function(bkId, lecId) {
 	this.currDropDown = null; ///章、目、進度 drop
 	
 	this.maTurning = [];
-	this.maPageFollow = [];
 	this.mnTurningIdx = -1;
+//	this.maPageFollow = [];
 	
 	this.cm; // course materials
 	if(grabLecture(lecId,"cm") != undefined) {
@@ -264,11 +264,12 @@ mysBooks.prototype.onLessonChange=function(e) {
 
 
 var fillCues=function(aCue) {
-	initPageFollow();
-	var bHasPgFollow = false;
+//	initPageFollow();
+//	var bHasPgFollow = false;
 	
 	var dpdn = $("#dropdnCue");
 	
+	$("#btnPgFollow").attr("disabled", !aCue);
 	$("#btnDropdnCue").attr("disabled", !aCue);
 	
 	dpdn.empty();
@@ -287,6 +288,7 @@ var fillCues=function(aCue) {
 		for (var i=0; i < aCue.length; i++) {
 			var elCuePoint = $("<a></a>").html("<span style='color:blue'>" + aCue[i].t + "</span> " + aCue[i].c);
 
+			elCuePoint.attr("onclick", "onCuePointClicked($(this))");
 			
 			if (aCid.length > 0) {
 				//此行之後，如不同 cid 需重新設入
@@ -294,8 +296,9 @@ var fillCues=function(aCue) {
 					nCurrCidPos = aCue[i].o;
 				}
 				
-				elCuePoint.attr("onclick", 'onCuePointClicked($(this), "' + aCue[i].t + '","' + aCid[nCurrCidPos] + '")')
-				
+				elCuePoint.attr("data-cid", aCid[nCurrCidPos]);
+//				elCuePoint.attr("onclick", 'onCuePointClicked($(this), "' + aCue[i].t + '","' + aCid[nCurrCidPos] + '")').attr("data-cid", aCid[nCurrCidPos]);
+				/*
 	var pgNum = "", lineNum = "";
 	var ma = elCuePoint.text().match(/^(\s*\d+:\d+[ ]+)(p\d+)(L\d+)/);
 	if (ma) {
@@ -309,10 +312,12 @@ var fillCues=function(aCue) {
 					"pgNum":pgNum,
 					"lineNum":lineNum
 				});
-				
-			} else {
+				*/
+			} 
+			/*else {
 				elCuePoint.attr("onclick", 'onCuePointClicked($(this), "' + aCue[i].t + '")')
 			}
+			*/
 			
 			dpdn.append(elCuePoint);
 
@@ -320,11 +325,11 @@ var fillCues=function(aCue) {
 		}
 	}
 	
-	$("#btnPgFollow").attr("disabled", !bHasPgFollow);
+//	$("#btnPgFollow").attr("disabled", !bHasPgFollow);
 }
 
 
-var onCuePointClicked=function(el, t, cid) {
+var onCuePointClicked=function(el) { //, t, cid) {
 	var dpdn = $("#dropdnCue");
 	dpdn.children("a").each(function() {
 //		console.log($(this).children("span:first").css("color"));
@@ -340,9 +345,21 @@ var onCuePointClicked=function(el, t, cid) {
 	el.children("span:first").css("color", "red");
 	
 	var ma = el.text().match(/^(\s*\d+:\d+[ ]+)(p\d+)(L\d+)/);
+	if (!ma) {
+		ma = el.text().match(/^(\s*\d+:\d+[ ]+)(p\d+)/);
+		
+		if (!ma)
+			ma = el.text().match(/^(\s*\d+:\d+[ ]+)/);
+	}
 	
-	openshowCMbyCID(cid, ma[2], ma[3]);
-	theAud.cuePointPlay(t);
+	if (ma)
+		openshowCMbyCID(el.attr("data-cid"), ma[2], ma[3]);
+	else
+		openshowCMbyCID(el.attr("data-cid"));
+	
+//	openshowCMbyCID(cid, ma[2], ma[3]);
+	theAud.cuePointPlay(ma[1]);
+//	theAud.cuePointPlay(t);
 	
 	/*
 	if (cid) {
