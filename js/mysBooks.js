@@ -8,6 +8,7 @@ var mysBooks = function(bkId, lecId) {
 	this.currDropDown = null; ///章、目、進度 drop
 	
 	this.maTurning = [];
+	this.maPageFollow = [];
 	this.mnTurningIdx = -1;
 	
 	this.cm; // course materials
@@ -94,7 +95,7 @@ mysBooks.prototype.fillBook=function() {
   this.fillHandout();
   this.fillPhase();
   
-	this.doFillBook(false);
+//	this.doFillBook(false);
 	showCM("content_0");
 }
 
@@ -263,6 +264,9 @@ mysBooks.prototype.onLessonChange=function(e) {
 
 
 var fillCues=function(aCue) {
+	initPageFollow();
+	var bHasPgFollow = false;
+	
 	var dpdn = $("#dropdnCue");
 	
 	$("#btnDropdnCue").attr("disabled", !aCue);
@@ -291,6 +295,21 @@ var fillCues=function(aCue) {
 				}
 				
 				elCuePoint.attr("onclick", 'onCuePointClicked($(this), "' + aCue[i].t + '","' + aCid[nCurrCidPos] + '")')
+				
+	var pgNum = "", lineNum = "";
+	var ma = elCuePoint.text().match(/^(\s*\d+:\d+[ ]+)(p\d+)(L\d+)/);
+	if (ma) {
+		pgNum = ma[2];
+		lineNum = ma[3];
+	}
+				bHasPgFollow = true;
+				theBook.maPageFollow.push({
+					"t":getCustomTime(aCue[i].t.trim()),
+					"cid":aCid[nCurrCidPos],
+					"pgNum":pgNum,
+					"lineNum":lineNum
+				});
+				
 			} else {
 				elCuePoint.attr("onclick", 'onCuePointClicked($(this), "' + aCue[i].t + '")')
 			}
@@ -300,6 +319,8 @@ var fillCues=function(aCue) {
 //			dpdn.append($("<a></a>").html("<span style='color:blue'>" + aCue[i].t + "</span> " + aCue[i].c).attr("onclick", 'theAud.cuePointPlay("' + aCue[i].t + '")'));
 		}
 	}
+	
+	$("#btnPgFollow").attr("disabled", !bHasPgFollow);
 }
 
 
@@ -316,9 +337,17 @@ var onCuePointClicked=function(el, t, cid) {
 		}
 	});
 	
+	el.children("span:first").css("color", "red");
+	
+	var ma = el.text().match(/^(\s*\d+:\d+[ ]+)(p\d+)(L\d+)/);
+	
+	openshowCMbyCID(cid, ma[2], ma[3]);
+	theAud.cuePointPlay(t);
+	
+	/*
 	if (cid) {
 		var jqTmp = $('#esyTitlePool').children('[data-chapid="' + cid + '"]');
-		//"ht-" 在 rawBookTo.parseChapter() 中加入的 
+		//"h-" 在筆記 .js 中加入的 
 		var bCM = (cid.substr(0,2)=="h-" ? false : true);
 		if (!bCM)
 			cid = cid.substr(2);
@@ -336,6 +365,7 @@ var onCuePointClicked=function(el, t, cid) {
 	}
 	
 	el.children("span:first").css("color", "red");
+	
 	var ma = el.text().match(/^(\s*\d+:\d+[ ]+)(p\d+)(L\d+)/);
 
 	if (ma) {
@@ -376,8 +406,24 @@ var onCuePointClicked=function(el, t, cid) {
 } // //if (ma)
 	
 	theAud.cuePointPlay(t);
-//	console.log(el.children("span:first").css("color"));
+	*/
 }
+
+
+var getCustomTime=function(sTime) {
+	var aHms = sTime.split(":");
+	
+	if(aHms.length < 3) aHms.unshift("0");
+	
+	var h=0, m=0, s=0;
+
+	h=parseInt(aHms[0]);
+	m=parseInt(aHms[1]);
+	s=parseInt(aHms[2]);
+	
+	return (h*3600)+(m*60)+s;
+}
+
 
 
 var mysAud=function() {
@@ -396,6 +442,7 @@ mysAud.prototype.onTimeUpdate=function() {
 	if(this.aud.currentTime > (this.playStart + this.playDuration))
 		this.aud.pause();
 }*/
+
 
 mysAud.prototype.getMS=function(sId) {
 	var m=0, s=0;

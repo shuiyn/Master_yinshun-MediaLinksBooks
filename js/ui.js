@@ -349,6 +349,93 @@ function pageTurning(bForward, bGoHome) {
 }
 
 
+//[{"t":nn, "cid":1, "aPL":"[p1L3"},...]
+function initPageFollow() {
+	theBook.maPageFollow = [];
+}
+
+function followingPage() {
+	var aPageFollow = theBook.maPageFollow;
+	
+	if (aPageFollow.length == 0)
+		return;
+	
+	var ct = theAud.aud.currentTime;
+	
+	//-1 because get next item
+	for (var i=0; i < aPageFollow.length-1; i++) {
+		if (aPageFollow[i+1].t >= ct) {
+			openshowCMbyCID(aPageFollow[i].cid, aPageFollow[i].pgNum, aPageFollow[i].lineNum)
+			
+			break;
+		}
+	}
+}
+
+
+function openshowCMbyCID(cid, sPgNum, sLineNum) {
+	if (!cid)
+		return;
+
+	var jqTmp = $('#esyTitlePool').children('[data-chapid="' + cid + '"]');
+	//"h-" 在筆記 .js 中加入的 
+	var bCM = (cid.substr(0,2)=="h-" ? false : true);
+	if (!bCM)
+		cid = cid.substr(2);
+	
+	var dsrc = (bCM ? theBook.cm : theBook.aux);
+	if (jqTmp.length == 0) {
+		openEssay(bCM, dsrc[cid], cid, true);
+	}
+	else {
+//使用 first() 傳回 jq element
+		showCM("content" + fetchEssayerIdTail(jqTmp.first().attr("id")), true);
+//使用 陣列[0] 傳回 DOM element
+//			showCM("content" + fetchEssayerIdTail(jqTmp[0].id), true);
+	}
+
+	if (sPgNum) {
+		var bFrom = false;
+		var sPgId = grabIdPrefix("page") + sPgNum + fetchEssayerIdTail();
+		var sLnNo = "";
+		if (sLineNum)
+			sLnNo = sLineNum.substr(1);
+		
+		var bHidden = false;
+//		console.log("|" + sPgId + "|" + sLnNo + "|");
+//		console.log($("#" + currEssayer(true)).find(".__pageNum,sup.falseBR"));
+
+		if (sLnNo) {
+	//		console.log(sLineNum, currEssayer(true));
+			
+			$("#" + currEssayer(true)).find(".__pageNum,sup.falseBR").each(function(i,e) {
+				if (bFrom) {
+					if (e.innerText == sLnNo) {
+						if ($(this).css("display")=="none") {
+							bHidden = true;
+							$(this).toggle();
+						}
+						e.scrollIntoView();
+						if (bHidden)
+							$(this).toggle();
+
+						return false;
+					}
+				} else {
+					if ($(this).attr("id") == sPgId) {
+						bFrom = true;
+					}
+				}
+			});
+		} //if (sLnNo)
+		else {
+			location.href = "#" + grabIdPrefix("page") + sPgNum + fetchEssayerIdTail();
+			
+		}
+	} // //if (sPgNum)
+}
+
+
 //調整 文章區 字型大小
 function rstContHandFontSize(sType){
 	var ps = parseInt(theBook.fontSizePan.innerHTML);
