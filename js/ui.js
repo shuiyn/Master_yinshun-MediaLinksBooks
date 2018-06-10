@@ -36,10 +36,12 @@ var onEssayerClicked=function(event) {
 	var et = $(event.target);
 
 	if (et.is("[href^='#ntd_']")) {
-		alert($("#" + currEssayer(true) + " .notearea").css("display"));
+		var sName = (mbIsPC ? " .notearea" : " .notearea_m");//要空１格
 		
-		if ($("#" + currEssayer(true) + " .notearea").css("display")=="none")
-			$("#" + currEssayer(true) + " .notearea").toggle();
+//		alert($("#" + currEssayer(true) + sName).css("display"));
+		
+		if ($("#" + currEssayer(true) + sName).css("display")=="none")
+			$("#" + currEssayer(true) + sName).toggle();
 	}
 		
 	var res = upFindPg(et, event);
