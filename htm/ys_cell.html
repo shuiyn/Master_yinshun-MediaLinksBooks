@@ -93,6 +93,14 @@ else
 		}
 	}
 	
+	fitDevice();
+	rstPosition();
+	
+	theBook.ctlShowYin.innerHTML = "<p style='text-align:center;font-weight:bold;'>" + $("title:first").text() + "</p>";
+	  
+	setTimeout(startPage, 3000);
+
+	  /*
 	theBook.fillBook();
 	
 	setTimeout(function(){ $("#playCusTime").attr("onclick","theAud.cusPlay()")}, 30000);
@@ -101,8 +109,20 @@ else
 	
 	fitDevice();
 	rstPosition();
+	*/
 }
 
+var startPage=function() {
+	theBook.fillBook();
+	
+	setTimeout(function(){ $("#playCusTime").attr("onclick","theAud.cusPlay()")}, 30000);
+	
+	//hCtrl.removeEventListener("keypress", funnyOnKeyPressed); }, 30000);
+	
+//	fitDevice();
+//	rstPosition();
+
+}
 	</script>
 </head>
 
