@@ -260,8 +260,16 @@ kEssay.prototype.gripPreLines=function(jsn, nLnIdx) {
 	for (; nLnIdx < this.aLine.length; nLnIdx++) {
 		nRead++;
 		var sLine = this.aLine[nLnIdx];
+		var jsn = this.isKagLine(sLine, nLnIdx);
+		if (!this.mbFitDevice) {
+			nLnIdx++;
+			nRead++;
+			continue;
+		}
 		if (/^\^\^\{"end_PRE"/.test(sLine)) break;
-		out.push(sLine);
+		
+		if (!jsn)
+			out.push(sLine);
 	}
 	
 	return [nRead, out.join("\n")];
