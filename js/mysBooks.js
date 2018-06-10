@@ -252,9 +252,9 @@ mysBooks.prototype.onLessonChange=function(e) {
 	if (src.search(/youtu\.be/) > -1) {
 		window.open(src);
 	} else {
-//		if (src.search(/https?:\/\//) != 0) {
-//			src = hostImgURL("mp3") + this.phId + "/" + src;
-//		}
+		if (src.search(/https?:\/\//) != 0) {
+			src = hostImgURL("mp3") + this.phId + "/" + src;
+		}
 			
 		$("#myAudio").attr("src", src);
 		theAud.playStart = 0;
@@ -569,11 +569,15 @@ mysAud.prototype.cusPlay=function(nType) {
 //			alert(result);
 ////            $("#div1").html(result);
 //        }});
-        
 		if (grabIdPrefix("funny") == $("#palyStartH").val()) {
 			$("#playCusTime").attr("onclick","theAud.cusPlay()");
 			$(".forMySelf").toggle();
 			$("#palyStartH").val("0");
+		} else if (grabIdPrefix("funny") == ((parseInt($("#palyStartH").val().substr(0,2))+1911).toString()+$("#palyStartH").val().substr(2)) ) {
+
+var sQry = {"bkId":"dsgwyl", "lecId":"0501"};
+	var jsn = JSON.stringify({"bkId":"dsgwyl", "lecId":"0501"});
+	location.replace("ys_cell.html?info=" + jsn);
 		}
 		return;
 	}

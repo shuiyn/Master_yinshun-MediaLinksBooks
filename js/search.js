@@ -9,7 +9,7 @@ var initUsedBook=function(){
 		
 //只取 pn
 //		if (!out[bkid]) {
-		if (!out[bkid] && lecture_List[id].croom == "pn") {
+		if (!out[bkid] && ("pn".indexOf(lecture_List[id].croom) > -1 )) {
 		//取得中文書名
 			out[bkid] = 1;
 			aRet.push([bkid, base_List.books[bkid]]);
@@ -47,7 +47,7 @@ var grabLecturesInBook=function(bkid){
 		var lec=lecture_List[id];
 //		if (lec.bkid == bkid) {
 //只取 pn
-		if (lec.bkid == bkid && lec.croom == "pn") {
+		if (lec.bkid == bkid && ("pn".indexOf(lec.croom) > -1)) {
 			lst[id] = [base_List.masters[lec.master], lec.byear, base_List.crooms[lec.croom]].join(" ");
 		}
 	}

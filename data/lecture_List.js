@@ -2030,5 +2030,34 @@ var lecture_List={
     "url": "http://220.130.244.41:8080/Study/oneroad/1060518-4.jpg"
    }
   ]
+ },
+ "0501": {
+  "bkid": "dsgwyl",
+  "cm": "",
+  "aux": "",
+  "master": "kq",
+  "byear": "106",
+  "croom": "cf",
+  "phase": [
+   {
+    "id": "dsgwyl_kq_18",
+    "t": "精華版",
+    "url": "http://www.chuefeng.org.tw/vod/44bGDATffhCScDELJ"
+   }
+  ],
+  "handout": [
+   {
+    "t": "十法界",
+    "url": "https://www.chuefeng.org.tw/cdn/storage/Files/GYbtJMKJiZqdQL68T/original/GYbtJMKJiZqdQL68T.pdf"
+   },
+   {
+    "t": "五位百法與處界之關係表 (更正版)",
+    "url": "https://www.chuefeng.org.tw/cdn/storage/Files/TzZbYdoWLYpeQzstF/original/TzZbYdoWLYpeQzstF.pdf"
+   },
+   {
+    "t": "《大乘廣五蘊論》內文與科判",
+    "url": "https://www.chuefeng.org.tw/cdn/storage/Files/Xb7DRWmd5WQLKyL9b/original/Xb7DRWmd5WQLKyL9b.pdf"
+   }
+  ]
  }
 }
