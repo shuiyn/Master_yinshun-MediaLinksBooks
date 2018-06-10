@@ -7,7 +7,9 @@ var initUsedBook=function(){
 	for(var id in lecture_List){
 		var bkid = lecture_List[id].bkid;
 		
-		if (!out[bkid]) {
+//只取 pn
+//		if (!out[bkid]) {
+		if (!out[bkid] && lecture_List[id].croom == "pn") {
 		//取得中文書名
 			out[bkid] = 1;
 			aRet.push([bkid, base_List.books[bkid]]);
@@ -43,7 +45,9 @@ var grabLecturesInBook=function(bkid){
 	var lst={}; //id:0001, 開仁法師 104 般若精舍
 	for (var id in lecture_List) {
 		var lec=lecture_List[id];
-		if (lec.bkid == bkid) {
+//		if (lec.bkid == bkid) {
+//只取 pn
+		if (lec.bkid == bkid && lec.croom == "pn") {
 			lst[id] = [base_List.masters[lec.master], lec.byear, base_List.crooms[lec.croom]].join(" ");
 		}
 	}
