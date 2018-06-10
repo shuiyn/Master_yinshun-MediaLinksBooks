@@ -1913,5 +1913,122 @@ var lecture_List={
     "url": "http://www.kyba.org.tw/board/upload/2013090523062688701-14817.pdf"
    }
   ]
+ },
+ "0014": {
+  "bkid": "cfzd",
+  "cm": "cfzd_yz_2017",
+  "aux": "",
+  "master": "yz",
+  "byear": "106",
+  "croom": "pn",
+  "phase": [
+   {
+    "id": "yz_cfzd_1060302",
+    "t": "106-03",
+    "url": "http://www.kyba.org.tw/board/showcontent.asp?bd=11&id=709&totable=1"
+   },
+   {
+    "id": "yz_cfzd_1060907",
+    "t": "106-09",
+    "url": "http://www.kyba.org.tw/board/showcontent.asp?bd=11&id=709&totable=1"
+   },
+   {
+    "id": "yz_cfzd_1070329",
+    "t": "107-03",
+    "url": "http://www.kyba.org.tw/board/showcontent.asp?bd=11&id=733&totable=1"
+   }
+  ],
+  "handout": [
+   {
+    "t": "106-03-02"
+   },
+   {
+    "t": "00.導師自序",
+    "url": "http://220.130.244.41:8080/Study/oneroad/1060302.pdf"
+   },
+   {
+    "t": "白板 1",
+    "url": "http://220.130.244.41:8080/Study/oneroad/1060302-1.jpg"
+   },
+   {
+    "t": "白板 2",
+    "url": "http://220.130.244.41:8080/Study/oneroad/1060302-2.jpg"
+   },
+   {
+    "t": "106-03-16"
+   },
+   {
+    "t": "第一章 歸敬三寶",
+    "url": "http://220.130.244.41:8080/Study/oneroad/01.pdf"
+   },
+   {
+    "t": "第一章 歸敬三寶(心智圖)",
+    "url": "http://220.130.244.41:8080/Study/oneroad/01-1.pdf"
+   },
+   {
+    "t": "白板 1",
+    "url": "http://220.130.244.41:8080/Study/oneroad/1060316-1.jpg"
+   },
+   {
+    "t": "白板 2",
+    "url": "http://220.130.244.41:8080/Study/oneroad/1060316-2.jpg"
+   },
+   {
+    "t": "106-04-06"
+   },
+   {
+    "t": "白板 1",
+    "url": "http://220.130.244.41:8080/Study/oneroad/1060406-1.jpg"
+   },
+   {
+    "t": "白板 2",
+    "url": "http://220.130.244.41:8080/Study/oneroad/1060406-2.jpg"
+   },
+   {
+    "t": "106-04-20"
+   },
+   {
+    "t": "白板",
+    "url": "http://220.130.244.41:8080/Study/oneroad/1060420-1.jpg"
+   },
+   {
+    "t": "106-05-04"
+   },
+   {
+    "t": "白板 1",
+    "url": "http://220.130.244.41:8080/Study/oneroad/1060504-1.jpg"
+   },
+   {
+    "t": "白板 2",
+    "url": "http://220.130.244.41:8080/Study/oneroad/1060504-2.jpg"
+   },
+   {
+    "t": "白板 3",
+    "url": "http://220.130.244.41:8080/Study/oneroad/1060504-3.jpg"
+   },
+   {
+    "t": "白板 4",
+    "url": "http://220.130.244.41:8080/Study/oneroad/1060504-4.jpg"
+   },
+   {
+    "t": "106-05-18"
+   },
+   {
+    "t": "白板 1",
+    "url": "http://220.130.244.41:8080/Study/oneroad/1060518-1.jpg"
+   },
+   {
+    "t": "白板 2",
+    "url": "http://220.130.244.41:8080/Study/oneroad/1060518-2.jpg"
+   },
+   {
+    "t": "白板 3",
+    "url": "http://220.130.244.41:8080/Study/oneroad/1060518-3.jpg"
+   },
+   {
+    "t": "白板 4",
+    "url": "http://220.130.244.41:8080/Study/oneroad/1060518-4.jpg"
+   }
+  ]
  }
 }

@@ -38,8 +38,6 @@ var onEssayerClicked=function(event) {
 	if (et.is("[href^='#ntd_']")) {
 		var sName = (mbIsPC ? " .notearea" : " .notearea_m");//要空１格
 		
-//		alert($("#" + currEssayer(true) + sName).css("display"));
-		
 		if ($("#" + currEssayer(true) + sName).css("display")=="none")
 			$("#" + currEssayer(true) + sName).toggle();
 	}
@@ -358,8 +356,8 @@ function pageTurning(bForward, bGoHome) {
 //	theBook.maPageFollow = [];
 //}
 
-
-function followingPage() {
+//參照目前 aud.currentTime 搜尋 aCue 中相應位置的 cid、page、line Num，並移往該處
+function followingCidPageLine() {
 	var nLen = $("#dropdnCue").children("a").length;
 
 	if (nLen.length == 0)
@@ -402,25 +400,6 @@ function followingPage() {
 	
 	if (maThis)
 		openshowCMbyCID(elThis.attr("data-cid"), maThis[2], maThis[3]);
-}
-
-
-function followingPage_xx() {
-	var aPageFollow = theBook.maPageFollow;
-	
-	if (aPageFollow.length == 0)
-		return;
-	
-	var ct = theAud.aud.currentTime;
-	
-	//-1 because get next item
-	for (var i=0; i < aPageFollow.length-1; i++) {
-		if (aPageFollow[i+1].t >= ct) {
-			openshowCMbyCID(aPageFollow[i].cid, aPageFollow[i].pgNum, aPageFollow[i].lineNum)
-			
-			break;
-		}
-	}
 }
 
 
