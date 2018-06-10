@@ -56,7 +56,7 @@ mysBooks.prototype.onPageListChange=function(e){
 }
 
 
-mysBooks.prototype.doFillBook=function(bCM) {
+mysBooks.prototype.doFillBook=function(bCM, bOPenFirstChap) {
 	var src = (bCM ? this.cm : this.aux);
 	var lstTitle = "";
 	
@@ -78,7 +78,8 @@ mysBooks.prototype.doFillBook=function(bCM) {
 		
 		fillDropdown(bCM, aChapter);
 		
-		openEssay(bCM, src[aChapter[0][0]], aChapter[0][0]);
+		if (bOPenFirstChap)
+			openEssay(bCM, src[aChapter[0][0]], aChapter[0][0]);
 	}
 }
 
@@ -86,7 +87,7 @@ mysBooks.prototype.doFillBook=function(bCM) {
 mysBooks.prototype.fillBook=function() {
 	
 	if (this.cm) {
-		this.doFillBook(true);
+		this.doFillBook(true, true);
 	}
 	else {
 	  this.ctlShowYin.innerHTML = "<p>本單元尚未建立 ePub 檔。</p><p>請點按左上角【<span style='font-weight:bold;color:brown;'>期別</span>】按鈕，切換到【<span style='font-weight:bold;color:brown;'>講義</span>】，開啟右側選單，點選所要參閱的章節，再點按【<span style='background-color:lightgreen;'>到網頁</span>】連結，即可前往該文件網址。</p>";
@@ -95,7 +96,7 @@ mysBooks.prototype.fillBook=function() {
   this.fillHandout();
   this.fillPhase();
   
-//	this.doFillBook(false);
+	this.doFillBook(false, false);
 	showCM("content_0");
 }
 
