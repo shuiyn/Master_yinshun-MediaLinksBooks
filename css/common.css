@@ -199,8 +199,13 @@
   }
     
 	
-	// 佛經原文樣式；原為 p_sutratext
-	.sutratext {font-size:110%; font-weight:bold;}
+	/*佛經原文樣式；原為 p_sutratext*/
+	.sutratext {
+		font-size:110%;
+		font-family:標楷體;
+		color:#99860B;
+/*		color:#B8860B;*/
+	}
 	
 	.textborder {
 		border-style:solid;

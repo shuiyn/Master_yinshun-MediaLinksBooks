@@ -2033,7 +2033,7 @@ var lecture_List={
  },
  "0501": {
   "bkid": "dsgwyl",
-  "cm": "",
+  "cm": "dsgwyl_book",
   "aux": "",
   "master": "kq",
   "byear": "106",

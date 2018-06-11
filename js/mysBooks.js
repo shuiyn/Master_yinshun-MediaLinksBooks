@@ -273,8 +273,8 @@ var fillCues=function(aCue) {
 	
 	var dpdn = $("#dropdnCue");
 	
-	$("#btnPgFollow").attr("disabled", !aCue);
-	$("#btnDropdnCue").attr("disabled", !aCue);
+	$("#btnPgFollow").attr("disabled", !(aCue && aCue.length > 0));
+	$("#btnDropdnCue").attr("disabled", !(aCue && aCue.length > 0));
 	
 	dpdn.empty();
 	
