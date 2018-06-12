@@ -561,7 +561,7 @@ kEssay.prototype.anaTagStyle=function(jTmp, sTagName) {
 		if (jTmp["pbrF"] != undefined)
 			aPgSty.push("margin-bottom:0");
 		if (jTmp["pbrM"] != undefined)
-			aPgSty.push("margin-top:0;margin-bottom:0");
+			aPgSty.push("margin-top:4px;margin-bottom:4px");
 		if (jTmp["pbrL"] != undefined)
 			aPgSty.push("margin-top:0");
 	}

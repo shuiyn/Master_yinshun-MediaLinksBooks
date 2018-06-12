@@ -2034,7 +2034,7 @@ var lecture_List={
  "0501": {
   "bkid": "dsgwyl",
   "cm": "dsgwyl_book",
-  "aux": "",
+  "aux": "dsgwyl_kq_18_aux",
   "master": "kq",
   "byear": "106",
   "croom": "cf",

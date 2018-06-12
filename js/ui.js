@@ -820,7 +820,8 @@ function addPnlEsyerTitle(sIdPnl, sIdTitle) {
 	var jqChapTool = $("<div></div>").css({"width":"100%", "margin":0, "padding":0}).attr("id", sIdPnl);
 	jqChapTool.append($("<div></div>").css({"position":"relative", "text-align":"center", "margin":0, "padding":0}).attr("id", sIdTitle));
 //	.text("some")
-	jqChapTool.append($("<div></div>").css({"position":"absolute", "top":"0", "right":"0"}).append($('<button onclick="closeEssay()" class="dropbtn">✖</button>')));
+	var sTop = (screen.width >= 800 ? "0" : "10px");
+	jqChapTool.append($("<div></div>").css({"position":"absolute", "top":sTop, "right":"0"}).append($('<button onclick="closeEssay()" class="dropbtn">✖</button>')));
 	
 	return jqChapTool;
 //	$("#esyTitlePool").append(jqChapTool);

@@ -121,13 +121,20 @@
 	
 /*	Toc 標題*/
 	.tocTitle {
-/*		color:DarkBlue;*/
+		border-style:solid;
+		border-width:1px;
+		padding: 1px;
+	}
+
+/*	成佛之道 科序 標題 span*/
+	.grayTocTitle {
+		background-color:lightgray;
 		border-style:solid;
 		border-width:1px;
 		padding: 1px;
 	}
 	
-	.noteNum { font-size:100%;}
+	.noteNum { font-size:16px;font-weight:normal;font-family:arial}
 
 	.srcwords {
 		font-family:標楷體;
