@@ -248,22 +248,22 @@ mysBooks.prototype.onLessonChange=function(e) {
 	}
 
 	var src = e.value;
+	var fullSrc = e.value; //localhost Src
 	
 	if (src.search(/youtu\.be/) > -1) {
 		window.open(src);
 	} else {
-		if (src.search(/https?:\/\//) != 0) {
-			src = hostImgURL("mp3") + this.phId + "/" + src;
+		if (src.search(/https?:\/\//) != 0) { //localhost Src
+			fullSrc = hostImgURL("mp3") + this.phId + "/" + src;
 		}
 			
-		$("#myAudio").attr("src", src);
+		$("#myAudio").attr("src", fullSrc);
 		theAud.playStart = 0;
 	}
 //	theAud.playDuration = 0;
 	var mbp = e.getAttribute("data-mbpId").split(",");
 	
 	fillCues(grabCue(mbp[0], mbp[1], mbp[2], src));
-
 }
 
 

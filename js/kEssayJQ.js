@@ -760,6 +760,10 @@ kEssay.prototype.parseParaStyle=function() {
 				var sSty = "";
 				if (sSet == "B")
 					sSty = "font-weight:bold";
+				else if (sSet == "I")
+					sSty = "font-style: italic;";
+				else if (sSet == "BI")
+					sSty = "font-weight:bold;font-style: italic;";
 				else if (sSet == "U")
 					sSty = "border-bottom:1px solid black";
 				else if (sSet == "U2")
