@@ -15,7 +15,9 @@ var kEssay=function(jqRoot, jqPage, jsnChapter, idTail, idEsyerTitle) {
 	this.msIdEsyerTitle = idEsyerTitle;
 	this.mbSetEsyerTitle = false;
 	this.esyerTitlePrevDiv = null;
-	
+	//「示現」時要增減的 levNo，不改變原 tocLevel 層次
+	this.mnOffsetLevOnDisp = 0;
+	this.mnBaseLevOnDisp = -1;
 //	this.addChapTool();
 	
 	this.aLine = jsnChapter.c;
@@ -117,6 +119,18 @@ kEssay.prototype.transData=function() {
 			continue;
 		
 		if (jsn) {
+			if (jsn.ReDispLev != undefined) {
+				if (jsn.ReDispLev.end) {
+					this.mnOffsetLevOnDisp = 0;
+					this.mnBaseLevOnDisp = -1;
+				}
+				else if (jsn.ReDispLev.start) {
+					this.mnOffsetLevOnDisp = jsn.ReDispLev.offset;
+					this.mnBaseLevOnDisp = jsn.ReDispLev.base;
+				}
+				continue;
+			}
+			
 			this.processUnLined(jsn, nLnIdx);
 			nLnIdx += this.mnReadExtra;
 			
@@ -211,6 +225,10 @@ kEssay.prototype.settleTocLevel=function(nLev, bCloseToc, bOpenNA, nLnIdx) {
 	
 	if (nLev < this.mnStartMarginLev)
 		sDist = "0";
+	
+	if (nLev == this.mnBaseLevOnDisp)
+		sDist = (this.mnOffsetLevOnDisp * 0.5) + "em";
+
 	
 	var jqTmpDiv = $("<div></div>").css({"margin-left":sDist, "text-indent":"0"});
 	
@@ -561,7 +579,10 @@ kEssay.prototype.anaTagStyle=function(jTmp, sTagName) {
 		if (jTmp["pbrF"] != undefined)
 			aPgSty.push("margin-bottom:0");
 		if (jTmp["pbrM"] != undefined)
-			aPgSty.push("margin-top:4px;margin-bottom:4px");
+			if (mbIsPC)
+				aPgSty.push("margin-top:4px;margin-bottom:4px");
+			else
+				aPgSty.push("margin-top:8px;margin-bottom:8px");
 		if (jTmp["pbrL"] != undefined)
 			aPgSty.push("margin-top:0");
 	}
