@@ -944,28 +944,22 @@ kEssay.prototype.readMenu=function(idx) {
 
 //aItem = [{"c":"", "lev":0}, ...]
 kEssay.prototype.createReadMenu=function(aItem, jqSet) {
-//	var currNodeLI = null;
-//	var aExtraText = [];
+// >= nCollapse 者均收束，即顯示到 nCollapse 層
+	var nCollapse = null;
 	var sDAstyle = "";
 	if (typeof jqSet == "object") {
 		sDAstyle = jqSet.st;
+		
+		if (jqSet.collapse != undefined)
+			nCollapse = jqSet.collapse;
 	}
 	var sPath = hostImgURL();
-	var rtUL = document.createElement("UL");
+	var jqrtUL = $("<ul></ul>");
+	var rtUL = jqrtUL.get(0);//document.createElement("UL");
 	rtUL.setAttribute("class", "menutree");
 	rtUL.setAttribute("onclick", "onMenuClicked(event)");
 	
 	for (var i=0; i < aItem.length; i++) {
-//		if (aItem[i].c.substr(0,2) == "^^") {
-//			aExtraText.push(aItem[i].c.substr(2));
-//			continue;
-//		} else {
-//			if (ndSpan && aExtraText.length > 0) {
-//				ndSpan.insertAdjacentHTML("afterend","<p>" + aExtraText.join("<br/>") + "</p>")
-//				aExtraText = [];
-//			}
-//		}
-		
     var textnode = document.createTextNode(aItem[i].c);
     var ndSpan = document.createElement("SPAN");
     var nd = document.createElement("LI");
@@ -987,15 +981,14 @@ kEssay.prototype.createReadMenu=function(aItem, jqSet) {
 			
   	if (i==aItem.length-1 || aItem[i+1].lev <= aItem[i].lev) {
     	nd.style.listStyleImage = 'none';
-  	} else
-	    nd.style.listStyleImage = 'url("' + sPath + 'open_brk.png")';
-  		/*
-    if (aItem[i].lev > 2) {
-    	nd.style.listStyleImage = 'url("' + sPath + 'close_brk.png")';
-	 	  nd.style.display = "none";
-	 	 } else {
-	    nd.style.listStyleImage = 'url("' + sPath + 'open_brk.png")';
-    }*/
+  	} else {
+			nd.style.listStyleImage = 'url("' + sPath + 'open_brk.png")';
+		if (nCollapse != null) {
+	// >= nCollapse 者均收束，即顯示到 nCollapse 層
+			if (aItem[i].lev >= nCollapse)
+				nd.setAttribute("data-lev", nCollapse);
+			}
+		}
 
     nd.appendChild(ndSpan);
 		if (aItem[i].da && aItem[i].da.length > 0) {
@@ -1028,6 +1021,12 @@ kEssay.prototype.createReadMenu=function(aItem, jqSet) {
 				nd.appendChild(ndUL);
 			}
 		}
+	}
+	
+	if (nCollapse != null) {
+		jqrtUL.find('[data-lev='+ nCollapse + ']').each(function(){
+			$(this).css("listStyleImage",'url("' + sPath + 'close_brk.png")').children("ul").toggle();
+		});
 	}
 	
 	return rtUL.outerHTML;
