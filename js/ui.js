@@ -3,6 +3,16 @@ var uaNotPC=function() {
 	return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
 }
 
+	/*
+var calRest=function(a, n, r) {
+	var tot = 0, aRest = [];
+	for (var i=0; i < 60; i++) {
+		aRest.push((600000-(i*10000)) * 0.006);
+		tot += (600000-(i*10000)) * 0.006 + 10000;
+	}
+	console.log(tot, aRest);
+}*/
+
 //img 網站資料夾的路徑，供 menuTree 使用
 var hostImgURL=function(fdn) {
 	var sImgPath = location.pathname;
@@ -794,7 +804,8 @@ var openEssay=function(bCM, jsnChapter, idChapter, bImmOpen) {
 	
 	esyTitlePool.append(addPnlEsyerTitle(idPnlEsyerTitle, idEsyerTitle).attr("data-chapId", idChapter));
 	esyTitlePool.children().hide();
-
+	
+	//移除格式化文字 .replace(/(&nbsp;)/g, "")
 	jqChapTabs.append($("<a></a>").text(jsnChapter.listT).attr({"onclick":'showCM("' + idDivRoot + '")', "id":idShowCM}));
 
 	var esy = new kEssay($("#" + idDivRoot), $("#" + idPageList), jsnChapter, idTail, idEsyerTitle);

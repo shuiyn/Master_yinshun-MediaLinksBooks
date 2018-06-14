@@ -1025,7 +1025,7 @@ kEssay.prototype.createReadMenu=function(aItem, jqSet) {
 	
 	if (nCollapse != null) {
 		jqrtUL.find('[data-lev='+ nCollapse + ']').each(function(){
-			$(this).css("listStyleImage",'url("' + sPath + 'close_brk.png")').children("ul").toggle();
+			$(this).css("listStyleImage",'url("' + sPath + 'close_brk.png")').removeAttr("data-lev").children("ul").toggle();
 		});
 	}
 	
