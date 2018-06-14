@@ -335,10 +335,13 @@ kEssay.prototype.processUnLined=function(jsn, nLnIdx) {
 		}
 		else if (itm == "MENU" && (jsn[itm] != undefined)) {
 			aRslt = this.readMenu(nLnIdx+1);
-			
+//			jqTmp = jsn[itm];
+//			if () {
+//				
+//			}
 			if (aRslt) {
 				nReadLines = aRslt[0];
-				this.jqCurrDiv.append(this.createReadMenu(aRslt[1]));
+				this.jqCurrDiv.append(this.createReadMenu(aRslt[1], jsn[itm]));
 			}
 			jsn[itm] = undefined;
 			
@@ -911,10 +914,21 @@ kEssay.prototype.parseJSON=function(jsn, nLnIdx) {
 kEssay.prototype.readMenu=function(idx) {
 	var aItem = [];
 	var nRead = 0;
-	
+	var aExtraText = [];
+
 	for (; idx < this.aLine.length; idx++) {
 		nRead++;
 		var sLine = this.aLine[idx];
+		
+		if (sLine.search(/\^\^[^{]/) == 0) {
+			aExtraText.push(sLine.substr(2));
+			continue;
+		} else if (aExtraText.length > 0){
+			aItem[aItem.length-1].da = aExtraText;
+			aExtraText = [];
+		}
+		
+		//置於此方能讀入最後的 da
 		if (/^\^\^\{"end_MENU"/.test(sLine)) break;
 		
 		var nCount = sLine.lastIndexOf("\t");
@@ -924,25 +938,41 @@ kEssay.prototype.readMenu=function(idx) {
 		itm.lev = nCount;
 		aItem.push(itm);
 	}
-
+	
 	return [nRead, aItem];
 }
 
 //aItem = [{"c":"", "lev":0}, ...]
-kEssay.prototype.createReadMenu=function(aItem) {
+kEssay.prototype.createReadMenu=function(aItem, jqSet) {
+//	var currNodeLI = null;
+//	var aExtraText = [];
+	var sDAstyle = "";
+	if (typeof jqSet == "object") {
+		sDAstyle = jqSet.st;
+	}
 	var sPath = hostImgURL();
 	var rtUL = document.createElement("UL");
 	rtUL.setAttribute("class", "menutree");
 	rtUL.setAttribute("onclick", "onMenuClicked(event)");
 	
 	for (var i=0; i < aItem.length; i++) {
+//		if (aItem[i].c.substr(0,2) == "^^") {
+//			aExtraText.push(aItem[i].c.substr(2));
+//			continue;
+//		} else {
+//			if (ndSpan && aExtraText.length > 0) {
+//				ndSpan.insertAdjacentHTML("afterend","<p>" + aExtraText.join("<br/>") + "</p>")
+//				aExtraText = [];
+//			}
+//		}
+		
     var textnode = document.createTextNode(aItem[i].c);
     var ndSpan = document.createElement("SPAN");
     var nd = document.createElement("LI");
 		var nOffset = -1;
 
 		ndSpan.appendChild(textnode);
-
+		
 		if (aItem[i].lev == 0) {
     	ndUL = rtUL;
 			nOffset = -1;
@@ -968,6 +998,10 @@ kEssay.prototype.createReadMenu=function(aItem) {
     }*/
 
     nd.appendChild(ndSpan);
+		if (aItem[i].da && aItem[i].da.length > 0) {
+				nd.insertAdjacentHTML("beforeend",'<br/><span style="margin-left:1em;margin-bottom:1em;display:block;' + sDAstyle + '">' + aItem[i].da.join("<br/>") + "</span>")
+		}
+		
 		
 		if (nOffset == 0) {
 			ndUL.appendChild(nd);

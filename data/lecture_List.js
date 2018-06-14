@@ -1917,7 +1917,7 @@ var lecture_List={
  "0014": {
   "bkid": "cfzd",
   "cm": "cfzd_yz_2017",
-  "aux": "",
+  "aux": "cfzd_yz_2017_aux",
   "master": "yz",
   "byear": "106",
   "croom": "pn",
