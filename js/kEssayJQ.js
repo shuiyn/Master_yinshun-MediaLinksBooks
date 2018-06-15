@@ -158,13 +158,28 @@ kEssay.prototype.transData=function() {
 						this.paraSty.push(jTmpLine); //✖unshift 置首，以免被其他 tag <span> 等包住而誤顯，parseParaStyle() 已有相應作為
 					}
 					
+					//2018-06-15 21:40
 					//全段的末行、或同一行已含 true br 者，不另加 false br
-					if (!this.paraSty.find(function(s){return (s["br"])})) {
-						if (nLnIdx < this.aLine.length-1 && this.aLine[nLnIdx+1]) {
-							var jTmpF_Br = {"f_br":[null, this.nIdxInPara + sLine.length]};
-							this.paraSty.push(jTmpF_Br);
+					var aTrueBrStart = [];
+					
+					this.paraSty.find(function(s){
+						if (s["br"]) {
+							aTrueBrStart.push(s["br"][1]);
 						}
-					}
+						return false;
+						});
+						
+//					if (!this.paraSty.find(function(s){return (s["br"])})) {
+						if (nLnIdx < this.aLine.length-1 && this.aLine[nLnIdx+1]) {
+							var nFalseBrStart = this.nIdxInPara + sLine.length;
+							
+							if (aTrueBrStart.indexOf(nFalseBrStart) == -1) {
+//								var jTmpF_Br = {"f_br":[null, nFalseBrStart]};
+								this.paraSty.push({"f_br":[null, nFalseBrStart]});
+							}
+						}
+						
+//					}
 				}
 			}
 				
@@ -558,7 +573,7 @@ kEssay.prototype.anaTagStyle=function(jTmp, sTagName) {
 	var aPgSty = [];
 	
 	if (jTmp["st"])
-		aPgSty.push(jTmp["st"]); //.replace(/[;]+$/, "");
+		aPgSty.push(jTmp["st"].replace(/[;]+$/, ""));
 	
 //	if (sTagName == "p" || sTagName == "div") {
 	if (sTagName.search(/^(p|div|td|table|pre)$/i) > -1) {
