@@ -5,6 +5,7 @@ var base_List = {
 "books":{
 	"ffgl":"佛法概論",
 	"pnj":"般若經講記",
+	"mhpnj":"摩訶般若波羅蜜經",
 	"dsgwyl":"大乘廣五蘊論",
 	"cfzd":"成佛之道",
 	"dzdl":"大智度論",
