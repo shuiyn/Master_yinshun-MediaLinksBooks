@@ -2140,6 +2140,68 @@ var lecture_List={
    }
   ]
  },
+ "0016": {
+  "bkid": "xfsy",
+  "cm": "",
+  "aux": "",
+  "master": "zh",
+  "byear": "100",
+  "croom": "pn",
+  "phase": [
+   {
+    "id": "zh_xfsy_20110309",
+    "t": "100-03",
+    "url": "http://www.kyba.org.tw/board/showbbs.asp?bd=11&id=477&totable=1"
+   },
+   {
+    "id": "zh_xfsy_20120111",
+    "t": "101-01",
+    "url": "http://www.kyba.org.tw/board/showbbs.asp?bd=11&id=477&totable=1"
+   },
+   {
+    "id": "zh_xfsy_20130911",
+    "t": "102-09",
+    "url": "http://www.kyba.org.tw/board/showcontent.asp?bd=11&id=620&totable=1"
+   },
+   {
+    "id": "zh_xfsy_20140122",
+    "t": "103-01",
+    "url": "http://www.kyba.org.tw/board/showcontent.asp?bd=11&id=620&totable=1"
+   },
+   {
+    "id": "zh_xfsy_20150114",
+    "t": "104-01",
+    "url": "http://www.kyba.org.tw/board/showcontent.asp?bd=11&id=620&totable=1"
+   },
+   {
+    "id": "zh_xfsy_20150513",
+    "t": "104-01",
+    "url": "http://www.kyba.org.tw/board/showcontent.asp?bd=11&id=671&totable=1"
+   }
+  ],
+  "handout": [
+   {
+    "t": "補充講義 P44-P46",
+    "url": "http://www.kyba.org.tw/board/upload/2011122914221975618-14817.doc"
+   },
+   {
+    "t": "死的定義",
+    "url": "http://www.kyba.org.tw/board/upload/2011122914224438148-14817.doc"
+   },
+   {
+    "t": "真善美(3/28)",
+    "url": "http://www.kyba.org.tw/board/upload/2012040217340356169-14817.doc"
+   },
+   {
+    "t": "補充講義 p67",
+    "url": "http://www.kyba.org.tw/board/upload/2012041214084371494-14817.doc"
+   },
+   {
+    "t": "六合釋",
+    "url": "http://www.kyba.org.tw/board/upload/2012053017570023408-14817.doc"
+   }
+  ]
+ },
  "0501": {
   "bkid": "dsgwyl",
   "cm": "dsgwyl_book",
