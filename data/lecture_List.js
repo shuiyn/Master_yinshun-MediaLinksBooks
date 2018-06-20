@@ -2142,7 +2142,7 @@ var lecture_List={
  },
  "0016": {
   "bkid": "xfsy",
-  "cm": "",
+  "cm": "xfsy_book",
   "aux": "",
   "master": "zh",
   "byear": "100",
