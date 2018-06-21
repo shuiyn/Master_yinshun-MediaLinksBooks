@@ -51,7 +51,9 @@ var onEssayerClicked=function(event) {
 		if ($("#" + currEssayer(true) + sName).css("display")=="none")
 			$("#" + currEssayer(true) + sName).toggle();
 	}
-		
+	
+//	console.log(et.text().substr(0,4), et.get(0));
+	
 	var res = upFindPg(et, event);
 	
 	if (res) {
@@ -60,11 +62,55 @@ var onEssayerClicked=function(event) {
 }
 
 
+
+var doFindPgNumSpan=function(jq, clientY) {
+	var eLastFit = null;
+	
+	jq.find("span[id^='Pg_']").each(function() {
+		if (clientY > $(this).next().offset().top) {
+			eLastFit = $(this);
+//遍歷所有 lnNo，取最接近 mouseClick 處，故不可 return false
+		}
+	
+	});
+
+	return eLastFit;
+}
+
+var upFindPg=function(jBgn, ev) {
+	if (jBgn.attr("class") == "essay")
+	return;
+	
+	var jpnFound = null;
+
+	if (jBgn.is(".__pageNumHrDiv"))
+		return jBgn.prev();
+	else if (jBgn.is(".__pageNumInDiv"))
+		return jBgn.parent().prev();
+
+	jpnFound = doFindPgNumSpan(jBgn, ev.clientY);
+	
+	if (jpnFound)
+		return jpnFound;
+	
+	jBgn.prevAll().each(function() {
+		jpnFound = doFindPgNumSpan($(this), ev.clientY);
+		if (jpnFound)
+			return false;
+	});
+	
+	if (!jpnFound)
+		return upFindPg(jBgn.parent(), ev)
+	else
+		return jpnFound;
+}
+
+ /*
 var upFindPg=function(jBgn, ev) {
 		if (jBgn.attr("class") == "essay")
 		return;
 	
-	var doFindPg=function(jq) {
+	var doFindPgNumSpan=function(jq) {
 		var pns = jq.find("span[id^='Pg_']");
 		if (pns.length > 0)
 			return pns.last();
@@ -78,14 +124,25 @@ var upFindPg=function(jBgn, ev) {
 		else if (jBgn.is(".__pageNumInDiv"))
 			return jBgn.parent().prev();
 
-		jpnFound = doFindPg(jBgn);
-		if (jpnFound && ev.clientY > jpnFound.next().offset().top) {
+//		jpnFound = doFindPgNumSpan(jBgn);
+//		if (jpnFound && ev.clientY > jpnFound.next().offset().top) {
+//			return jpnFound;
+//		}
+		//遍歷所有 lnNo，不像 doFindPgNumSpan 只取最後一個
+		jBgn.find("span[id^='Pg_']").each(function(){
+			if (ev.clientY > $(this).next().offset().top) {
+				jpnFound = $(this);
+//遍歷所有 lnNo，取最接近 mouseClick 處，故不可 return false
+//				return false;
+			}
+		});
+		
+		if (jpnFound)
 			return jpnFound;
-		}
 	}
 	
 	jBgn.prevAll().each(function() {
-		jpnFound = doFindPg($(this));
+		jpnFound = doFindPgNumSpan($(this));
 		if (jpnFound)
 			return false;
 	});
@@ -95,7 +152,8 @@ var upFindPg=function(jBgn, ev) {
 	else
 		return jpnFound;
 }
-
+*/
+	
 
 var sJustTemp = "";
 
@@ -472,6 +530,9 @@ function openshowCMbyCID(cid, sPgNum, sLineNum) {
 			location.href = "#" + grabIdPrefix("page") + sPgNum + fetchEssayerIdTail();
 			
 		}
+
+		$("#pageList" + fetchEssayerIdTail()).val(sPgNum.substr(1));
+		
 	} // //if (sPgNum)
 }
 

@@ -347,7 +347,7 @@ var onCuePointClicked=function(el) { //, t, cid) {
 	});
 	
 	el.children("span:first").css("color", "red");
-	
+	/*
 	var ma = el.text().match(/^(\s*\d+:\d+[ ]+)(p\d+)(L\d+)/);
 	if (!ma) {
 		ma = el.text().match(/^(\s*\d+:\d+[ ]+)(p\d+)/);
@@ -355,6 +355,11 @@ var onCuePointClicked=function(el) { //, t, cid) {
 		if (!ma)
 			ma = el.text().match(/^(\s*\d+:\d+[ ]+)/);
 	}
+	*/
+	
+	var ma = el.text().match(/^(\s*\d+:[^ ]+)[ ]+(p\d+)(L\d+)/);
+	if (!ma)
+		ma = el.text().match(/^(\s*\d+:[^ ]+)/);
 	
 	if (ma)
 		openshowCMbyCID(el.attr("data-cid"), ma[2], ma[3]);
@@ -434,6 +439,7 @@ var onCuePointClicked=function(el) { //, t, cid) {
 var getCustomTime=function(sTime) {
 	var aHms = sTime.split(":");
 	
+	if(aHms.length < 2) aHms.unshift("0");
 	if(aHms.length < 3) aHms.unshift("0");
 	
 	var h=0, m=0, s=0;
@@ -466,8 +472,9 @@ mysAud.prototype.onTimeUpdate=function() {
 
 
 mysAud.prototype.getMS=function(sId) {
-	var m=0, s=0;
+	var h=0, m=0, s=0;
 	if(sId=="palyStart") {
+		h=parseInt(document.getElementById("palyStartH").value);
 		m=parseInt(document.getElementById("palyStartM").value);
 		s=parseInt(document.getElementById("palyStartS").value);
 	}
@@ -476,7 +483,7 @@ mysAud.prototype.getMS=function(sId) {
 		m=parseInt(document.getElementById("playLengthM").value);
 		s=parseInt(document.getElementById("playLengthS").value);
 	}*/
-	return (m*60)+s;
+	return (h*3600)+(m*60)+s;
 }
 
 mysAud.prototype.cusTime=function(nType) {
@@ -523,9 +530,14 @@ mysAud.prototype.cusTime=function(nType) {
 	
 	if(nType == 1){ //start
 		this.playStart = t;
+		$("#palyStartH").val(h);
+		$("#palyStartM").val(m);
+		$("#palyStartS").val(s);
+		/*
 		document.getElementById("palyStartH").value = h;
 		document.getElementById("palyStartM").value = m;
 		document.getElementById("palyStartS").value = s;
+		*/
 	}
 	/* 終點已移除
 	else{
@@ -595,20 +607,23 @@ mysAud.prototype.cuePointPlay=function(t){
 		alert("沒有指定音檔");
 		return;
 	}
-	
+	/*
 	var aHms = t.split(":");
+	if(aHms.length < 2) aHms.unshift("0");
 	if(aHms.length < 3) aHms.unshift("0");
-
 	var ct = 0;
 	for(var i=0; i<aHms.length; i++){
 		ct += parseInt(aHms[i])*[3600,60,1][i];
 	}
 	this.aud.currentTime = ct;
+*/
+	this.aud.currentTime = getCustomTime(t);
 	this.aud.play();
 }
 
 
 mysAud.prototype.dotPlay=function(hms) {
+	/*
 	var a = hms.split(":");
 	var h = 0,m = 0;
 	var s = parseInt(a[a.length-1]);
@@ -616,6 +631,8 @@ mysAud.prototype.dotPlay=function(hms) {
 	if(a.length>1) m = parseInt(a[a.length-2]);
 
 	this.aud.currentTime = (h*3600)+(m*60)+s;
+	*/
+	this.aud.currentTime = getCustomTime(hms);
 	this.aud.play();
 }
 
