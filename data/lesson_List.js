@@ -8975,6 +8975,22 @@ var lesson_List={
      "sno": "04"
     }
    ]
+  },
+  "jsl": {
+   "ry_jsl_2011": [
+    {
+     "d": "2011 年"
+    },
+    {
+     "d": "01",
+     "url": "https://www.dropbox.com/s/yqp65deqxg3m5zu/01-%E4%BF%B1%E8%88%8D%E8%AB%96_ry.mp3?dl=1",
+     "p": "序言，p.1"
+    },
+    {
+     "d": "02",
+     "url": "https://www.dropbox.com/s/u5gbmiq0f559rph/02-%E4%BF%B1%E8%88%8D%E8%AB%96_ry.mp3?dl=1"
+    }
+   ]
   }
  }
 }

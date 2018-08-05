@@ -2202,6 +2202,27 @@ var lecture_List={
    }
   ]
  },
+ "0031": {
+  "bkid": "jsl",
+  "cm_K": "jsl_ry_2011",
+  "aux": "",
+  "master": "ry",
+  "byear": "2011",
+  "croom": "mp",
+  "phase": [
+   {
+    "id": "ry_jsl_2011",
+    "t": "2011",
+    "url": "https://www.youtube.com/playlist?list=PLvfhHoqQgPBCb4ZDYAJONPE61ZWU8BGFV"
+   }
+  ],
+  "handout": [
+   {
+    "t": "xx序言",
+    "url": "http://middlepath.ca/images/middle_path/classroom/pdf/SheDaShengLun/1-xy.pdf"
+   }
+  ]
+ },
  "0032": {
   "bkid": "sdsl",
   "cm_K": "sdsl_ry_2015",
