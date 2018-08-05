@@ -2202,6 +2202,47 @@ var lecture_List={
    }
   ]
  },
+ "0032": {
+  "bkid": "sdsl",
+  "cm_K": "sdsl_ry_2015",
+  "aux": "",
+  "master": "ry",
+  "byear": "2015",
+  "croom": "mp",
+  "phase": [
+   {
+    "id": "ry_sdsl_20150918",
+    "t": "第 1 期 2015-09",
+    "url": "https://www.youtube.com/playlist?list=PLkIvopvExDJqQIcEeVYDMdigYL2FN6U1a"
+   }
+  ],
+  "handout": [
+   {
+    "t": "序言",
+    "url": "http://middlepath.ca/images/middle_path/classroom/pdf/SheDaShengLun/1-xy.pdf"
+   },
+   {
+    "t": "所知依",
+    "url": "http://middlepath.ca/images/middle_path/classroom/pdf/SheDaShengLun/2-szy.pdf"
+   },
+   {
+    "t": "所知相",
+    "url": "http://middlepath.ca/images/middle_path/classroom/pdf/SheDaShengLun/3-szx.pdf"
+   },
+   {
+    "t": "入所知相",
+    "url": "http://middlepath.ca/images/middle_path/classroom/pdf/SheDaShengLun/4-rszx.pdf"
+   },
+   {
+    "t": "彼入因果",
+    "url": "http://middlepath.ca/images/middle_path/classroom/pdf/SheDaShengLun/5-Causality.pdf"
+   },
+   {
+    "t": "攝大乘論講記",
+    "url": "http://middlepath.ca/images/middle_path/classroom/pdf/SheDaShengLun/sdcljj.pdf"
+   }
+  ]
+ },
  "0501": {
   "bkid": "dsgwyl",
   "cm": "dsgwyl_book",

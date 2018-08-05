@@ -8946,5 +8946,35 @@ var lesson_List={
     }
    ]
   }
+ },
+ "ry": {
+  "sdsl": {
+   "ry_sdsl_20150918": [
+    {
+     "d": "2015 年"
+    },
+    {
+     "d": "2015.09.18",
+     "url": "https://www.dropbox.com/s/w24lthmg4x7y4qu/01-%E6%94%9D%E5%A4%A7%E4%B9%98%E8%AB%96_2015.mp3?dl=1",
+     "sno": "01",
+     "p": "序言，p.1"
+    },
+    {
+     "d": "2015.09.25",
+     "url": "https://www.dropbox.com/s/7s9a33ma2amfaj5/02-%E6%94%9D%E5%A4%A7%E4%B9%98%E8%AB%96_2015.mp3?dl=1",
+     "sno": "02"
+    },
+    {
+     "d": "2015.10.02",
+     "url": "https://www.dropbox.com/s/m25dbpyh0l5t3lk/03-%E6%94%9D%E5%A4%A7%E4%B9%98%E8%AB%96_2015.mp3?dl=1",
+     "sno": "03"
+    },
+    {
+     "d": "2015.10.16",
+     "url": "https://www.dropbox.com/s/yvpauxiq23092oy/04-%E6%94%9D%E5%A4%A7%E4%B9%98%E8%AB%96_2015.mp3?dl=1",
+     "sno": "04"
+    }
+   ]
+  }
  }
 }
