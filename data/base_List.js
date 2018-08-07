@@ -1,10 +1,14 @@
 
 //{"books":[], "master":[], "croom":[]}
+//	"pnj":"般若經講記" →含金剛經、心經
+//	"diamond":"金剛經"
 
 var base_List = {
 "books":{
 	"ffgl":"佛法概論",
 	"pnj":"般若經講記",
+	"diamond":"金剛經",
+	"heart":"般若心經",
 	"mhpnj":"摩訶般若波羅蜜經",
 	"dsgwyl":"大乘廣五蘊論",
 	"cfzd":"成佛之道",

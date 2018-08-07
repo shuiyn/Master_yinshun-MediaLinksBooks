@@ -2264,6 +2264,38 @@ var lecture_List={
    }
   ]
  },
+ "0033": {
+  "bkid": "diamond",
+  "cm_K": "diamond_ry_2010",
+  "aux": "",
+  "master": "ry",
+  "byear": "2010",
+  "croom": "mp",
+  "phase": [
+   {
+    "id": "ry_diamond_20100226",
+    "t": "2010",
+    "url": "https://www.youtube.com/playlist?list=PLOtgRu_n7-DMMTyd-LbM4GEiJCWLiglhX"
+   }
+  ],
+  "handout": ""
+ },
+ "0034": {
+  "bkid": "heart",
+  "cm_K": "heart_ry_2011",
+  "aux": "",
+  "master": "ry",
+  "byear": "2011",
+  "croom": "mp",
+  "phase": [
+   {
+    "id": "ry_heart_20110415",
+    "t": "2011",
+    "url": "https://www.youtube.com/playlist?list=PLOtgRu_n7-DM7nbm5MS3Bpca_T6MvOCtn"
+   }
+  ],
+  "handout": ""
+ },
  "0501": {
   "bkid": "dsgwyl",
   "cm": "dsgwyl_book",
