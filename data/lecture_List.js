@@ -2218,8 +2218,8 @@ var lecture_List={
   ],
   "handout": [
    {
-    "t": "xx序言",
-    "url": "http://middlepath.ca/images/middle_path/classroom/pdf/SheDaShengLun/1-xy.pdf"
+    "t": "俱舍論講義（第 2 版）",
+    "url": "https://drive.google.com/file/d/1tXMPBxVif025Az8la3QYEG8W-pE1m95L/view?usp=sharing"
    }
   ]
  },
@@ -2240,27 +2240,27 @@ var lecture_List={
   "handout": [
    {
     "t": "序言",
-    "url": "http://middlepath.ca/images/middle_path/classroom/pdf/SheDaShengLun/1-xy.pdf"
+    "url": "https://drive.google.com/file/d/1gB3eKR7a9HcjtDtIQJpZpnO2zg6SzQTx/view?usp=sharing"
    },
    {
     "t": "所知依",
-    "url": "http://middlepath.ca/images/middle_path/classroom/pdf/SheDaShengLun/2-szy.pdf"
+    "url": "https://drive.google.com/file/d/1YGH7MErFdo52P4GpMTlvez2UBiJY-ZwN/view?usp=sharing"
    },
    {
     "t": "所知相",
-    "url": "http://middlepath.ca/images/middle_path/classroom/pdf/SheDaShengLun/3-szx.pdf"
+    "url": "https://drive.google.com/file/d/1SwhyWdgwl9ACJ_C5TIUWhHzjcBUJP6Ud/view?usp=sharing"
    },
    {
     "t": "入所知相",
-    "url": "http://middlepath.ca/images/middle_path/classroom/pdf/SheDaShengLun/4-rszx.pdf"
+    "url": "https://drive.google.com/file/d/1C6A1NRKVJrFd08k9tz6oJ3o5ixc4LLRj/view?usp=sharing"
    },
    {
     "t": "彼入因果",
-    "url": "http://middlepath.ca/images/middle_path/classroom/pdf/SheDaShengLun/5-Causality.pdf"
+    "url": "https://drive.google.com/file/d/1QTHR3oTD32KvgYDDggjwFkl2PYpKD9hJ/view?usp=sharing"
    },
    {
     "t": "攝大乘論講記",
-    "url": "http://middlepath.ca/images/middle_path/classroom/pdf/SheDaShengLun/sdcljj.pdf"
+    "url": "https://drive.google.com/file/d/1sBdiXA4LRZGx8safnJmQRs7p9R768vlC/view?usp=sharing"
    }
   ]
  },
@@ -2295,6 +2295,159 @@ var lecture_List={
    }
   ],
   "handout": ""
+ },
+ "0035": {
+  "bkid": "jsmj",
+  "cm_K": "jsmj_ry_2014",
+  "aux": "",
+  "master": "ry",
+  "byear": "2014",
+  "croom": "mp",
+  "phase": [
+   {
+    "id": "ry_jsmj_20141205",
+    "t": "解深密經-2014",
+    "url": "https://www.youtube.com/playlist?list=PLvfhHoqQgPBA5ReytEmVVzCI5CMWl8hzF"
+   },
+   {
+    "id": "ry_wsxjj_20160509",
+    "t": "唯識學簡介-2016",
+    "url": "https://www.youtube.com/playlist?list=PLvfhHoqQgPBCPYoLybsD37gu3YTuZRgPc"
+   }
+  ],
+  "handout": [
+   {
+    "t": "解深密經 1",
+    "url": "https://drive.google.com/file/d/1H8AjEOrqpGC4_c2cKELXmDXQtzXDwHwF/view?usp=sharing"
+   },
+   {
+    "t": "解深密經 2",
+    "url": "https://drive.google.com/file/d/1ra3HfgcTpnH-06wa4kPEZ4PuEJBWZRQY/view?usp=sharing"
+   }
+  ]
+ },
+ "0036": {
+  "bkid": "ydfjs",
+  "cm_K": "ydfjs_ry_2016",
+  "aux": "",
+  "master": "ry",
+  "byear": "2016",
+  "croom": "mp",
+  "phase": [
+   {
+    "id": "ry_ydfjs_20160327",
+    "t": "2016",
+    "url": "https://www.youtube.com/playlist?list=PLvfhHoqQgPBDz5DwLj6l9tALnG8MUicxA"
+   }
+  ],
+  "handout": [
+   {
+    "t": "原始佛教",
+    "url": "https://drive.google.com/file/d/1XwoZ2o-2zbyFcDlZlrrxLjcyB0grybSi/view?usp=sharing"
+   },
+   {
+    "t": "部派佛教",
+    "url": "https://drive.google.com/file/d/1RC_iRdmPfpvQim5TXpntNl432hnYWAPr/view?usp=sharing"
+   },
+   {
+    "t": "初期大乘",
+    "url": "https://drive.google.com/file/d/10CI09B8tAVw7tVCLfcJOO6hzLsmzJfwB/view?usp=sharing"
+   },
+   {
+    "t": "中觀學系",
+    "url": "https://drive.google.com/file/d/1beu94y7DN6ZBhNTUhzIhd9B67-dykj-o/view?usp=sharing"
+   },
+   {
+    "t": "唯識學系",
+    "url": "https://drive.google.com/file/d/1n-Yzqpuy8yDbtZlhkIZwNzs6Ik9TDJad/view?usp=sharing"
+   },
+   {
+    "t": "真常學系",
+    "url": "https://drive.google.com/file/d/1QvjJw5jB47HJ7cPI7KzSaoEsCPIP1ETO/view?usp=sharing"
+   },
+   {
+    "t": "后中觀與唯識",
+    "url": "https://drive.google.com/file/d/176Lo8-3RBMIUJVGkW5E4pMSakaNv4bE4/view?usp=sharing"
+   }
+  ]
+ },
+ "0037": {
+  "bkid": "xfsy",
+  "cm_K": "xfsy_ry_2014",
+  "aux": "",
+  "master": "ry",
+  "byear": "2014",
+  "croom": "mp",
+  "phase": [
+   {
+    "id": "ry_xfsy_20140307",
+    "t": "2014",
+    "url": "https://www.youtube.com/playlist?list=PLvfhHoqQgPBB1XMj5Ld-dgBVbx3KA88iN"
+   }
+  ],
+  "handout": [
+   {
+    "t": "學佛三要-1",
+    "url": "https://drive.google.com/file/d/16aQZDaHZlqNSJqMhxHOtBQtZ7pGyfAAG/view?usp=sharing"
+   },
+   {
+    "t": "學佛三要-2",
+    "url": "https://drive.google.com/file/d/1DFjFdwTQFyN2xf5fBB-ttlZGE4F96iHN/view?usp=sharing"
+   },
+   {
+    "t": "學佛三要-3",
+    "url": "https://drive.google.com/file/d/1ep5VbCfG_swP9ZmdQ0KusewqSc4qfzJ4/view?usp=sharing"
+   },
+   {
+    "t": "學佛三要-4",
+    "url": "https://drive.google.com/file/d/1_PS5CGT5r8t2iyCPMG4t9ASzYhJpr4LR/view?usp=sharing"
+   },
+   {
+    "t": "學佛三要-5",
+    "url": "https://drive.google.com/file/d/1bpx0g8A_Dfa28RlU7_D4k5FghZTlE2uo/view?usp=sharing"
+   }
+  ]
+ },
+ "0038": {
+  "bkid": "cfzd",
+  "cm_K": "cfzd_ry_2012",
+  "aux": "",
+  "master": "ry",
+  "byear": "2012",
+  "croom": "mp",
+  "phase": [
+   {
+    "id": "ry_cfzd_2012",
+    "t": "2012",
+    "url": "https://www.youtube.com/playlist?list=PLkIvopvExDJqmBPakhFaBevxPGmavEwe3"
+   }
+  ],
+  "handout": [
+   {
+    "t": "成佛之道自序",
+    "url": "https://drive.google.com/file/d/1xiNXheJext1NwQiv-rTNztGsD8QFmsO9/view?usp=sharing"
+   },
+   {
+    "t": "歸敬三寶",
+    "url": "https://drive.google.com/file/d/1pLjLReNYoQxbaOUve8mO3qCMGTOuuen0/view?usp=sharing"
+   },
+   {
+    "t": "聞法趣入",
+    "url": "https://drive.google.com/file/d/1dnk6jbnqHxb8xBrKdkm8tGhQe7QE8YkK/view?usp=sharing"
+   },
+   {
+    "t": "五乘共法",
+    "url": "https://drive.google.com/file/d/1R0fveE3jxdKUHtk-GXR2DBJECFYKaKxa/view?usp=sharing"
+   },
+   {
+    "t": "三乘共法",
+    "url": "https://drive.google.com/file/d/1Ta94JdmOMnCCSDFEifztmOLpqV5ulBmL/view?usp=sharing"
+   },
+   {
+    "t": "大乘不共法",
+    "url": "https://drive.google.com/file/d/1pKuYjmcwknI2bV9TllMBrdQDo13VCadt/view?usp=sharing"
+   }
+  ]
  },
  "0501": {
   "bkid": "dsgwyl",

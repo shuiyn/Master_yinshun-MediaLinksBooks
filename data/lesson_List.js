@@ -9676,6 +9676,641 @@ var lesson_List={
      "url": "https://www.dropbox.com/s/vno354r4xb2l5sv/10-%E5%BF%83%E7%B6%93_ry.mp3?dl=1"
     }
    ]
+  },
+  "ydfjs": {
+   "ry_ydfjs_20160327": [
+    {
+     "d": "印度佛教思想史"
+    },
+    {
+     "d": "01",
+     "url": "https://www.dropbox.com/s/6rvn3vnttqe8kzi/01-%E5%8D%B0%E5%BA%A6%E4%BD%9B%E6%95%99%E6%80%9D%E6%83%B3%E5%8F%B2_ry.mp3?dl=1"
+    },
+    {
+     "d": "02",
+     "url": "https://www.dropbox.com/s/mtgs0v8u26m5eot/02-%E5%8D%B0%E5%BA%A6%E4%BD%9B%E6%95%99%E6%80%9D%E6%83%B3%E5%8F%B2_ry.mp3?dl=1"
+    },
+    {
+     "d": "03",
+     "url": "https://www.dropbox.com/s/4j4b61lzw9srylc/03-%E5%8D%B0%E5%BA%A6%E4%BD%9B%E6%95%99%E6%80%9D%E6%83%B3%E5%8F%B2_ry.mp3?dl=1"
+    },
+    {
+     "d": "04",
+     "url": "https://www.dropbox.com/s/3jrn3opcbedatb3/04-%E5%8D%B0%E5%BA%A6%E4%BD%9B%E6%95%99%E6%80%9D%E6%83%B3%E5%8F%B2_ry.mp3?dl=1"
+    },
+    {
+     "d": "05",
+     "url": "https://www.dropbox.com/s/znl9obw6k3s3ce2/05-%E5%8D%B0%E5%BA%A6%E4%BD%9B%E6%95%99%E6%80%9D%E6%83%B3%E5%8F%B2_ry.mp3?dl=1"
+    },
+    {
+     "d": "06",
+     "url": "https://www.dropbox.com/s/wy6hs248r1ko8or/06-%E5%8D%B0%E5%BA%A6%E4%BD%9B%E6%95%99%E6%80%9D%E6%83%B3%E5%8F%B2_ry.mp3?dl=1"
+    },
+    {
+     "d": "07",
+     "url": "https://www.dropbox.com/s/e9dtsvlfbp1u0rk/07-%E5%8D%B0%E5%BA%A6%E4%BD%9B%E6%95%99%E6%80%9D%E6%83%B3%E5%8F%B2_ry.mp3?dl=1"
+    },
+    {
+     "d": "08",
+     "url": "https://www.dropbox.com/s/v3vzj3aujat6h3p/08-%E5%8D%B0%E5%BA%A6%E4%BD%9B%E6%95%99%E6%80%9D%E6%83%B3%E5%8F%B2_ry.mp3?dl=1"
+    },
+    {
+     "d": "09",
+     "url": "https://www.dropbox.com/s/9nkd3rtk7kx7v2v/09-%E5%8D%B0%E5%BA%A6%E4%BD%9B%E6%95%99%E6%80%9D%E6%83%B3%E5%8F%B2_ry.mp3?dl=1"
+    },
+    {
+     "d": "10",
+     "url": "https://www.dropbox.com/s/6sg1zauwhzoj4x2/10-%E5%8D%B0%E5%BA%A6%E4%BD%9B%E6%95%99%E6%80%9D%E6%83%B3%E5%8F%B2_ry.mp3?dl=1"
+    },
+    {
+     "d": "11",
+     "url": "https://www.dropbox.com/s/wgldvi3n0v5hdmj/11-%E5%8D%B0%E5%BA%A6%E4%BD%9B%E6%95%99%E6%80%9D%E6%83%B3%E5%8F%B2_ry.mp3?dl=1"
+    },
+    {
+     "d": "12",
+     "url": "https://www.dropbox.com/s/gczhd3clgfd78is/12-%E5%8D%B0%E5%BA%A6%E4%BD%9B%E6%95%99%E6%80%9D%E6%83%B3%E5%8F%B2_ry.mp3?dl=1"
+    },
+    {
+     "d": "13",
+     "url": "https://www.dropbox.com/s/b81nvvwkxutlw3c/13-%E5%8D%B0%E5%BA%A6%E4%BD%9B%E6%95%99%E6%80%9D%E6%83%B3%E5%8F%B2_ry.mp3?dl=1"
+    },
+    {
+     "d": "14",
+     "url": "https://www.dropbox.com/s/g2l8w4hf5rk2omm/14-%E5%8D%B0%E5%BA%A6%E4%BD%9B%E6%95%99%E6%80%9D%E6%83%B3%E5%8F%B2_ry.mp3?dl=1"
+    }
+   ]
+  },
+  "xfsy": {
+   "ry_xfsy_20140307": [
+    {
+     "d": "01",
+     "url": "https://www.dropbox.com/s/i4yn6gdtuo6n3rg/01-%E5%AD%B8%E4%BD%9B%E4%B8%89%E8%A6%81_ry.mp3?dl=1"
+    },
+    {
+     "d": "02",
+     "url": "https://www.dropbox.com/s/j0i4j7nl8oy5955/02-%E5%AD%B8%E4%BD%9B%E4%B8%89%E8%A6%81_ry.mp3?dl=1"
+    },
+    {
+     "d": "03",
+     "url": "https://www.dropbox.com/s/j5oqh2jysic536m/03-%E5%AD%B8%E4%BD%9B%E4%B8%89%E8%A6%81_ry.mp3?dl=1"
+    },
+    {
+     "d": "04",
+     "url": "https://www.dropbox.com/s/wtxlnl5tclag5og/04-%E5%AD%B8%E4%BD%9B%E4%B8%89%E8%A6%81_ry.mp3?dl=1"
+    },
+    {
+     "d": "05",
+     "url": "https://www.dropbox.com/s/5s99318omtk5r4b/05-%E5%AD%B8%E4%BD%9B%E4%B8%89%E8%A6%81_ry.mp3?dl=1"
+    },
+    {
+     "d": "06",
+     "url": "https://www.dropbox.com/s/uhea6rsy1cj7f1d/06-%E5%AD%B8%E4%BD%9B%E4%B8%89%E8%A6%81_ry.mp3?dl=1"
+    },
+    {
+     "d": "07",
+     "url": "https://www.dropbox.com/s/0af9cx5ea18z56w/07-%E5%AD%B8%E4%BD%9B%E4%B8%89%E8%A6%81_ry.mp3?dl=1"
+    },
+    {
+     "d": "08",
+     "url": "https://www.dropbox.com/s/p614gb1hy4ksoco/08-%E5%AD%B8%E4%BD%9B%E4%B8%89%E8%A6%81_ry.mp3?dl=1"
+    },
+    {
+     "d": "09",
+     "url": "https://www.dropbox.com/s/uula8pn5ndz1qcm/09-%E5%AD%B8%E4%BD%9B%E4%B8%89%E8%A6%81_ry.mp3?dl=1"
+    },
+    {
+     "d": "10",
+     "url": "https://www.dropbox.com/s/rtc0mmqwpw0m116/10-%E5%AD%B8%E4%BD%9B%E4%B8%89%E8%A6%81_ry.mp3?dl=1"
+    },
+    {
+     "d": "11",
+     "url": "https://www.dropbox.com/s/gq9odkc16zqui6g/11-%E5%AD%B8%E4%BD%9B%E4%B8%89%E8%A6%81_ry.mp3?dl=1"
+    },
+    {
+     "d": "12",
+     "url": "https://www.dropbox.com/s/qfbaugc9ma4t1l5/12-%E5%AD%B8%E4%BD%9B%E4%B8%89%E8%A6%81_ry.mp3?dl=1"
+    },
+    {
+     "d": "13",
+     "url": "https://www.dropbox.com/s/2hiku9mdmvpxvyq/13-%E5%AD%B8%E4%BD%9B%E4%B8%89%E8%A6%81_ry.mp3?dl=1"
+    },
+    {
+     "d": "14",
+     "url": "https://www.dropbox.com/s/qbeqrmm3glevp1k/14-%E5%AD%B8%E4%BD%9B%E4%B8%89%E8%A6%81_ry.mp3?dl=1"
+    },
+    {
+     "d": "15",
+     "url": "https://www.dropbox.com/s/oombfhuavyb2dr3/15-%E5%AD%B8%E4%BD%9B%E4%B8%89%E8%A6%81_ry.mp3?dl=1"
+    }
+   ]
+  },
+  "cfzd": {
+   "ry_cfzd_2012": [
+    {
+     "d": "001",
+     "url": "https://www.dropbox.com/s/nyvxfjz7ze0dyjj/001-%E6%88%90%E4%BD%9B%E4%B9%8B%E9%81%93_ry.mp3?dl=1"
+    },
+    {
+     "d": "002",
+     "url": "https://www.dropbox.com/s/wq1ftgg0ofwaa4q/002-%E6%88%90%E4%BD%9B%E4%B9%8B%E9%81%93_ry.mp3?dl=1"
+    },
+    {
+     "d": "003",
+     "url": "https://www.dropbox.com/s/lk67295dt4i784w/003-%E6%88%90%E4%BD%9B%E4%B9%8B%E9%81%93_ry.mp3?dl=1"
+    },
+    {
+     "d": "004",
+     "url": "https://www.dropbox.com/s/f9xfn05u5w18scy/004-%E6%88%90%E4%BD%9B%E4%B9%8B%E9%81%93_ry.mp3?dl=1"
+    },
+    {
+     "d": "005",
+     "url": "https://www.dropbox.com/s/9w64jsd4v4ohfvc/005-%E6%88%90%E4%BD%9B%E4%B9%8B%E9%81%93_ry.mp3?dl=1"
+    },
+    {
+     "d": "006",
+     "url": "https://www.dropbox.com/s/hn39lhagt26a01o/006-%E6%88%90%E4%BD%9B%E4%B9%8B%E9%81%93_ry.mp3?dl=1"
+    },
+    {
+     "d": "007",
+     "url": "https://www.dropbox.com/s/0srj7pxp9jzf1dm/007-%E6%88%90%E4%BD%9B%E4%B9%8B%E9%81%93_ry.mp3?dl=1"
+    },
+    {
+     "d": "008",
+     "url": "https://www.dropbox.com/s/98142vaazrafhqj/008-%E6%88%90%E4%BD%9B%E4%B9%8B%E9%81%93_ry.mp3?dl=1"
+    },
+    {
+     "d": "009",
+     "url": "https://www.dropbox.com/s/rivo6p63j5vzgeq/009-%E6%88%90%E4%BD%9B%E4%B9%8B%E9%81%93_ry.mp3?dl=1"
+    },
+    {
+     "d": "010",
+     "url": "https://www.dropbox.com/s/vwo0k9ze9qd33kl/010-%E6%88%90%E4%BD%9B%E4%B9%8B%E9%81%93_ry.mp3?dl=1"
+    },
+    {
+     "d": "011",
+     "url": "https://www.dropbox.com/s/28053jzcan2sbdi/011-%E6%88%90%E4%BD%9B%E4%B9%8B%E9%81%93_ry.mp3?dl=1"
+    },
+    {
+     "d": "012",
+     "url": "https://www.dropbox.com/s/7d2bxw4wbsabtpy/012-%E6%88%90%E4%BD%9B%E4%B9%8B%E9%81%93_ry.mp3?dl=1"
+    },
+    {
+     "d": "013",
+     "url": "https://www.dropbox.com/s/ce10qpldm9nj04e/013-%E6%88%90%E4%BD%9B%E4%B9%8B%E9%81%93_ry.mp3?dl=1"
+    },
+    {
+     "d": "014",
+     "url": "https://www.dropbox.com/s/fzmqsf387wa8y9w/014-%E6%88%90%E4%BD%9B%E4%B9%8B%E9%81%93_ry.mp3?dl=1"
+    },
+    {
+     "d": "015",
+     "url": "https://www.dropbox.com/s/ie8gkvkbtpexal0/015-%E6%88%90%E4%BD%9B%E4%B9%8B%E9%81%93_ry.mp3?dl=1"
+    },
+    {
+     "d": "016",
+     "url": "https://www.dropbox.com/s/5qzm2tkqmlnt952/016-%E6%88%90%E4%BD%9B%E4%B9%8B%E9%81%93_ry.mp3?dl=1"
+    },
+    {
+     "d": "017",
+     "url": "https://www.dropbox.com/s/6oa4ot6w6dhh69o/017-%E6%88%90%E4%BD%9B%E4%B9%8B%E9%81%93_ry.mp3?dl=1"
+    },
+    {
+     "d": "018",
+     "url": "https://www.dropbox.com/s/xziaq8xkbdcwn8u/018-%E6%88%90%E4%BD%9B%E4%B9%8B%E9%81%93_ry.mp3?dl=1"
+    },
+    {
+     "d": "019",
+     "url": "https://www.dropbox.com/s/aakig2xc8zoqizr/019-%E6%88%90%E4%BD%9B%E4%B9%8B%E9%81%93_ry.mp3?dl=1"
+    },
+    {
+     "d": "020",
+     "url": "https://www.dropbox.com/s/r8th96juxwau7fw/020-%E6%88%90%E4%BD%9B%E4%B9%8B%E9%81%93_ry.mp3?dl=1"
+    },
+    {
+     "d": "021",
+     "url": "https://www.dropbox.com/s/o487pxpyg8hg1x5/021-%E6%88%90%E4%BD%9B%E4%B9%8B%E9%81%93_ry.mp3?dl=1"
+    },
+    {
+     "d": "022",
+     "url": "https://www.dropbox.com/s/mnwqagv4iluq44d/022-%E6%88%90%E4%BD%9B%E4%B9%8B%E9%81%93_ry.mp3?dl=1"
+    },
+    {
+     "d": "023",
+     "url": "https://www.dropbox.com/s/ly90o2roa43d2i8/023-%E6%88%90%E4%BD%9B%E4%B9%8B%E9%81%93_ry.mp3?dl=1"
+    },
+    {
+     "d": "024",
+     "url": "https://www.dropbox.com/s/a8yypsfcz6kbmw0/024-%E6%88%90%E4%BD%9B%E4%B9%8B%E9%81%93_ry.mp3?dl=1"
+    },
+    {
+     "d": "025",
+     "url": "https://www.dropbox.com/s/jch1cw6dq85gu0t/025-%E6%88%90%E4%BD%9B%E4%B9%8B%E9%81%93_ry.mp3?dl=1"
+    },
+    {
+     "d": "026",
+     "url": "https://www.dropbox.com/s/my7e7ud1hng736z/026-%E6%88%90%E4%BD%9B%E4%B9%8B%E9%81%93_ry.mp3?dl=1"
+    },
+    {
+     "d": "027",
+     "url": "https://www.dropbox.com/s/gr6ayea5v40590u/027-%E6%88%90%E4%BD%9B%E4%B9%8B%E9%81%93_ry.mp3?dl=1"
+    },
+    {
+     "d": "028",
+     "url": "https://www.dropbox.com/s/a6rtvbatexhfsey/028-%E6%88%90%E4%BD%9B%E4%B9%8B%E9%81%93_ry.mp3?dl=1"
+    },
+    {
+     "d": "029",
+     "url": "https://www.dropbox.com/s/7vi4bf7ast2c284/029-%E6%88%90%E4%BD%9B%E4%B9%8B%E9%81%93_ry.mp3?dl=1"
+    },
+    {
+     "d": "030",
+     "url": "https://www.dropbox.com/s/crhi4pdcxbvfd4w/030-%E6%88%90%E4%BD%9B%E4%B9%8B%E9%81%93_ry.mp3?dl=1"
+    },
+    {
+     "d": "031",
+     "url": "https://www.dropbox.com/s/cwluij4quqqnm7k/031-%E6%88%90%E4%BD%9B%E4%B9%8B%E9%81%93_ry.mp3?dl=1"
+    },
+    {
+     "d": "032",
+     "url": "https://www.dropbox.com/s/v68iu0zhlr4bf9l/032-%E6%88%90%E4%BD%9B%E4%B9%8B%E9%81%93_ry.mp3?dl=1"
+    },
+    {
+     "d": "033",
+     "url": "https://www.dropbox.com/s/1uopu37c1nt9odn/033-%E6%88%90%E4%BD%9B%E4%B9%8B%E9%81%93_ry.mp3?dl=1"
+    },
+    {
+     "d": "034",
+     "url": "https://www.dropbox.com/s/frntb0rv8564yj9/034-%E6%88%90%E4%BD%9B%E4%B9%8B%E9%81%93_ry.mp3?dl=1"
+    },
+    {
+     "d": "035",
+     "url": "https://www.dropbox.com/s/diepcm80a0hn51h/035-%E6%88%90%E4%BD%9B%E4%B9%8B%E9%81%93_ry.mp3?dl=1"
+    },
+    {
+     "d": "036",
+     "url": "https://www.dropbox.com/s/7sjrtv9ycffw1yc/036-%E6%88%90%E4%BD%9B%E4%B9%8B%E9%81%93_ry.mp3?dl=1"
+    },
+    {
+     "d": "037",
+     "url": "https://www.dropbox.com/s/p6t7c1hea8esomu/037-%E6%88%90%E4%BD%9B%E4%B9%8B%E9%81%93_ry.mp3?dl=1"
+    },
+    {
+     "d": "038",
+     "url": "https://www.dropbox.com/s/eeg4xnxwajzbhbf/038-%E6%88%90%E4%BD%9B%E4%B9%8B%E9%81%93_ry.mp3?dl=1"
+    },
+    {
+     "d": "039",
+     "url": "https://www.dropbox.com/s/9unuu0928llqj8u/039-%E6%88%90%E4%BD%9B%E4%B9%8B%E9%81%93_ry.mp3?dl=1"
+    },
+    {
+     "d": "040",
+     "url": "https://www.dropbox.com/s/9xjonitlx2jtof2/040-%E6%88%90%E4%BD%9B%E4%B9%8B%E9%81%93_ry.mp3?dl=1"
+    },
+    {
+     "d": "041",
+     "url": "https://www.dropbox.com/s/h828cg78xlek8to/041-%E6%88%90%E4%BD%9B%E4%B9%8B%E9%81%93_ry.mp3?dl=1"
+    },
+    {
+     "d": "042",
+     "url": "https://www.dropbox.com/s/onbnzq4ops3c1w8/042-%E6%88%90%E4%BD%9B%E4%B9%8B%E9%81%93_ry.mp3?dl=1"
+    },
+    {
+     "d": "043",
+     "url": "https://www.dropbox.com/s/gu2tdp333tfalw7/043-%E6%88%90%E4%BD%9B%E4%B9%8B%E9%81%93_ry.mp3?dl=1"
+    },
+    {
+     "d": "044",
+     "url": "https://www.dropbox.com/s/yt002axbvckujp5/044-%E6%88%90%E4%BD%9B%E4%B9%8B%E9%81%93_ry.mp3?dl=1"
+    },
+    {
+     "d": "045",
+     "url": "https://www.dropbox.com/s/6m604t6rzs5ja83/045-%E6%88%90%E4%BD%9B%E4%B9%8B%E9%81%93_ry.mp3?dl=1"
+    },
+    {
+     "d": "046",
+     "url": "https://www.dropbox.com/s/p37qcmg4i1j39uj/046-%E6%88%90%E4%BD%9B%E4%B9%8B%E9%81%93_ry.mp3?dl=1"
+    },
+    {
+     "d": "047",
+     "url": "https://www.dropbox.com/s/dvmtxtls1ikbzrw/047-%E6%88%90%E4%BD%9B%E4%B9%8B%E9%81%93_ry.mp3?dl=1"
+    },
+    {
+     "d": "048",
+     "url": "https://www.dropbox.com/s/iin5kllwkzg1b44/048-%E6%88%90%E4%BD%9B%E4%B9%8B%E9%81%93_ry.mp3?dl=1"
+    },
+    {
+     "d": "049",
+     "url": "https://www.dropbox.com/s/4y8inwj3znws86o/049-%E6%88%90%E4%BD%9B%E4%B9%8B%E9%81%93_ry.mp3?dl=1"
+    },
+    {
+     "d": "050",
+     "url": "https://www.dropbox.com/s/xv732kk5mdrjzsz/050-%E6%88%90%E4%BD%9B%E4%B9%8B%E9%81%93_ry.mp3?dl=1"
+    },
+    {
+     "d": "051",
+     "url": "https://www.dropbox.com/s/3jz3j74xn2rjcvp/051-%E6%88%90%E4%BD%9B%E4%B9%8B%E9%81%93_ry.mp3?dl=1"
+    },
+    {
+     "d": "052",
+     "url": "https://www.dropbox.com/s/hf0xdg9xyiv8lir/052-%E6%88%90%E4%BD%9B%E4%B9%8B%E9%81%93_ry.mp3?dl=1"
+    },
+    {
+     "d": "053",
+     "url": "https://www.dropbox.com/s/gkk3wz18rfoigli/053-%E6%88%90%E4%BD%9B%E4%B9%8B%E9%81%93_ry.mp3?dl=1"
+    },
+    {
+     "d": "054",
+     "url": "https://www.dropbox.com/s/hsvv657dc3qthj2/054-%E6%88%90%E4%BD%9B%E4%B9%8B%E9%81%93_ry.mp3?dl=1"
+    },
+    {
+     "d": "055",
+     "url": "https://www.dropbox.com/s/5agsye3kyisbshu/055-%E6%88%90%E4%BD%9B%E4%B9%8B%E9%81%93_ry.mp3?dl=1"
+    },
+    {
+     "d": "056",
+     "url": "https://www.dropbox.com/s/1p8pq00d7h956gh/056-%E6%88%90%E4%BD%9B%E4%B9%8B%E9%81%93_ry.mp3?dl=1"
+    },
+    {
+     "d": "057",
+     "url": "https://www.dropbox.com/s/m69g1s6ub2cbjqp/057-%E6%88%90%E4%BD%9B%E4%B9%8B%E9%81%93_ry.mp3?dl=1"
+    },
+    {
+     "d": "058",
+     "url": "https://www.dropbox.com/s/d43p4xi3b846pnh/058-%E6%88%90%E4%BD%9B%E4%B9%8B%E9%81%93_ry.mp3?dl=1"
+    },
+    {
+     "d": "059",
+     "url": "https://www.dropbox.com/s/g0hannjmoeqsqe1/059-%E6%88%90%E4%BD%9B%E4%B9%8B%E9%81%93_ry.mp3?dl=1"
+    },
+    {
+     "d": "060",
+     "url": "https://www.dropbox.com/s/rttnfij5urudzg2/060-%E6%88%90%E4%BD%9B%E4%B9%8B%E9%81%93_ry.mp3?dl=1"
+    },
+    {
+     "d": "061",
+     "url": "https://www.dropbox.com/s/dinamyc00q4sqyr/061-%E6%88%90%E4%BD%9B%E4%B9%8B%E9%81%93_ry.mp3?dl=1"
+    },
+    {
+     "d": "062",
+     "url": "https://www.dropbox.com/s/hi59hi78zij7m4n/062-%E6%88%90%E4%BD%9B%E4%B9%8B%E9%81%93_ry.mp3?dl=1"
+    },
+    {
+     "d": "063",
+     "url": "https://www.dropbox.com/s/9anir88vphr5c7e/063-%E6%88%90%E4%BD%9B%E4%B9%8B%E9%81%93_ry.mp3?dl=1"
+    },
+    {
+     "d": "064",
+     "url": "https://www.dropbox.com/s/hgm244qjuyarlbr/064-%E6%88%90%E4%BD%9B%E4%B9%8B%E9%81%93_ry.mp3?dl=1"
+    },
+    {
+     "d": "065",
+     "url": "https://www.dropbox.com/s/l24p4fc0knxabyi/065-%E6%88%90%E4%BD%9B%E4%B9%8B%E9%81%93_ry.mp3?dl=1"
+    },
+    {
+     "d": "066",
+     "url": "https://www.dropbox.com/s/23ppazt0tvoj7gr/066-%E6%88%90%E4%BD%9B%E4%B9%8B%E9%81%93_ry.mp3?dl=1"
+    },
+    {
+     "d": "067",
+     "url": "https://www.dropbox.com/s/hrdl2sk0f76qmcs/067-%E6%88%90%E4%BD%9B%E4%B9%8B%E9%81%93_ry.mp3?dl=1"
+    },
+    {
+     "d": "068",
+     "url": "https://www.dropbox.com/s/l60ez3skn5n97h3/068-%E6%88%90%E4%BD%9B%E4%B9%8B%E9%81%93_ry.mp3?dl=1"
+    },
+    {
+     "d": "069",
+     "url": "https://www.dropbox.com/s/l60ez3skn5n97h3/068-%E6%88%90%E4%BD%9B%E4%B9%8B%E9%81%93_ry.mp3?dl=1"
+    },
+    {
+     "d": "070",
+     "url": "https://www.dropbox.com/s/m6ecvz21up2d9t1/070-%E6%88%90%E4%BD%9B%E4%B9%8B%E9%81%93_ry.mp3?dl=1"
+    },
+    {
+     "d": "071",
+     "url": "https://www.dropbox.com/s/tqzzri3i5vcd99m/071-%E6%88%90%E4%BD%9B%E4%B9%8B%E9%81%93_ry.mp3?dl=1"
+    },
+    {
+     "d": "072",
+     "url": "https://www.dropbox.com/s/sofxw8sc7v85ed9/072-%E6%88%90%E4%BD%9B%E4%B9%8B%E9%81%93_ry.mp3?dl=1"
+    },
+    {
+     "d": "073",
+     "url": "https://www.dropbox.com/s/wxvpq4clazj43rp/073-%E6%88%90%E4%BD%9B%E4%B9%8B%E9%81%93_ry.mp3?dl=1"
+    },
+    {
+     "d": "074",
+     "url": "https://www.dropbox.com/s/5vqtecogfts8ras/074-%E6%88%90%E4%BD%9B%E4%B9%8B%E9%81%93_ry.mp3?dl=1"
+    },
+    {
+     "d": "075",
+     "url": "https://www.dropbox.com/s/nit9ojax6yvapdb/075-%E6%88%90%E4%BD%9B%E4%B9%8B%E9%81%93_ry.mp3?dl=1"
+    },
+    {
+     "d": "076",
+     "url": "https://www.dropbox.com/s/lm0i2u9b2m4p17e/076-%E6%88%90%E4%BD%9B%E4%B9%8B%E9%81%93_ry.mp3?dl=1"
+    },
+    {
+     "d": "077",
+     "url": "https://www.dropbox.com/s/xmbpov8puk79zk7/077-%E6%88%90%E4%BD%9B%E4%B9%8B%E9%81%93_ry.mp3?dl=1"
+    },
+    {
+     "d": "078",
+     "url": "https://www.dropbox.com/s/q6f8dcc6yz2t2eg/078-%E6%88%90%E4%BD%9B%E4%B9%8B%E9%81%93_ry.mp3?dl=1"
+    },
+    {
+     "d": "079",
+     "url": "https://www.dropbox.com/s/0eo0qtr6ci61t7f/079-%E6%88%90%E4%BD%9B%E4%B9%8B%E9%81%93_ry.mp3?dl=1"
+    },
+    {
+     "d": "080",
+     "url": "https://www.dropbox.com/s/i68qx8b1ss4c5oz/080-%E6%88%90%E4%BD%9B%E4%B9%8B%E9%81%93_ry.mp3?dl=1"
+    },
+    {
+     "d": "081",
+     "url": "https://www.dropbox.com/s/vh9x2f5tfprlrq6/081-%E6%88%90%E4%BD%9B%E4%B9%8B%E9%81%93_ry.mp3?dl=1"
+    },
+    {
+     "d": "082",
+     "url": "https://www.dropbox.com/s/3d5nzubfjen019x/082-%E6%88%90%E4%BD%9B%E4%B9%8B%E9%81%93_ry.mp3?dl=1"
+    },
+    {
+     "d": "083",
+     "url": "https://www.dropbox.com/s/4kvhdpgmdzy11pt/083-%E6%88%90%E4%BD%9B%E4%B9%8B%E9%81%93_ry.mp3?dl=1"
+    },
+    {
+     "d": "084",
+     "url": "https://www.dropbox.com/s/nz3v95vmmjs35s1/084-%E6%88%90%E4%BD%9B%E4%B9%8B%E9%81%93_ry.mp3?dl=1"
+    },
+    {
+     "d": "085",
+     "url": "https://www.dropbox.com/s/7gumaigx3wsikbk/085-%E6%88%90%E4%BD%9B%E4%B9%8B%E9%81%93_ry.mp3?dl=1"
+    },
+    {
+     "d": "086",
+     "url": "https://www.dropbox.com/s/168hy3mi0wtie7x/086-%E6%88%90%E4%BD%9B%E4%B9%8B%E9%81%93_ry.mp3?dl=1"
+    },
+    {
+     "d": "087",
+     "url": "https://www.dropbox.com/s/i6umdjxfjdz6oet/087-%E6%88%90%E4%BD%9B%E4%B9%8B%E9%81%93_ry.mp3?dl=1"
+    },
+    {
+     "d": "088",
+     "url": "https://www.dropbox.com/s/07jitogtv316wbl/088-%E6%88%90%E4%BD%9B%E4%B9%8B%E9%81%93_ry.mp3?dl=1"
+    },
+    {
+     "d": "089",
+     "url": "https://www.dropbox.com/s/oi2k1ksnck9lwfm/089-%E6%88%90%E4%BD%9B%E4%B9%8B%E9%81%93_ry.mp3?dl=1"
+    },
+    {
+     "d": "090",
+     "url": "https://www.dropbox.com/s/tu2riuy181wq61l/090-%E6%88%90%E4%BD%9B%E4%B9%8B%E9%81%93_ry.mp3?dl=1"
+    },
+    {
+     "d": "091",
+     "url": "https://www.dropbox.com/s/7pa9c2k7dlt4s6s/091-%E6%88%90%E4%BD%9B%E4%B9%8B%E9%81%93_ry.mp3?dl=1"
+    },
+    {
+     "d": "092",
+     "url": "https://www.dropbox.com/s/gj3022bu4qzklz6/092-%E6%88%90%E4%BD%9B%E4%B9%8B%E9%81%93_ry.mp3?dl=1"
+    },
+    {
+     "d": "093",
+     "url": "https://www.dropbox.com/s/jyaszrk2utkqjdd/093-%E6%88%90%E4%BD%9B%E4%B9%8B%E9%81%93_ry.mp3?dl=1"
+    },
+    {
+     "d": "094",
+     "url": "https://www.dropbox.com/s/58wb2v3nf4tciar/094-%E6%88%90%E4%BD%9B%E4%B9%8B%E9%81%93_ry.mp3?dl=1"
+    },
+    {
+     "d": "095",
+     "url": "https://www.dropbox.com/s/p3wd7y8eypkhe75/095-%E6%88%90%E4%BD%9B%E4%B9%8B%E9%81%93_ry.mp3?dl=1"
+    },
+    {
+     "d": "096",
+     "url": "https://www.dropbox.com/s/d936ce38n5i1d5g/096-%E6%88%90%E4%BD%9B%E4%B9%8B%E9%81%93_ry.mp3?dl=1"
+    },
+    {
+     "d": "097",
+     "url": "https://www.dropbox.com/s/88pmxpht43y2363/097-%E6%88%90%E4%BD%9B%E4%B9%8B%E9%81%93_ry.mp3?dl=1"
+    },
+    {
+     "d": "098",
+     "url": "https://www.dropbox.com/s/6moee84c0ev0gyp/098-%E6%88%90%E4%BD%9B%E4%B9%8B%E9%81%93_ry.mp3?dl=1"
+    },
+    {
+     "d": "099",
+     "url": "https://www.dropbox.com/s/9n86ovx4tv3co9y/099-%E6%88%90%E4%BD%9B%E4%B9%8B%E9%81%93_ry.mp3?dl=1"
+    },
+    {
+     "d": "100",
+     "url": "https://www.dropbox.com/s/a8jh0ob1rkhsleq/100-%E6%88%90%E4%BD%9B%E4%B9%8B%E9%81%93_ry.mp3?dl=1"
+    },
+    {
+     "d": "101",
+     "url": "https://www.dropbox.com/s/jont8v2e11cjhfy/101-%E6%88%90%E4%BD%9B%E4%B9%8B%E9%81%93_ry.mp3?dl=1"
+    },
+    {
+     "d": "102",
+     "url": "https://www.dropbox.com/s/oyu147u3l2u4llx/102-%E6%88%90%E4%BD%9B%E4%B9%8B%E9%81%93_ry.mp3?dl=1"
+    }
+   ]
+  },
+  "jsmj": {
+   "ry_jsmj_20141205": [
+    {
+     "d": "解深密經"
+    },
+    {
+     "d": "01",
+     "url": "https://www.dropbox.com/s/quyzlxn2ct2hav1/01-%E8%A7%A3%E6%B7%B1%E5%AF%86%E7%B6%93_ry.mp3?dl=1"
+    },
+    {
+     "d": "02",
+     "url": "https://www.dropbox.com/s/8y5f5zhvz9mrq5u/02-%E8%A7%A3%E6%B7%B1%E5%AF%86%E7%B6%93_ry.mp3?dl=1"
+    },
+    {
+     "d": "03",
+     "url": "https://www.dropbox.com/s/jso5vtmzfo0mzxr/03-%E8%A7%A3%E6%B7%B1%E5%AF%86%E7%B6%93_ry.mp3?dl=1"
+    },
+    {
+     "d": "04",
+     "url": "https://www.dropbox.com/s/8153xj0t2aj31m7/04-%E8%A7%A3%E6%B7%B1%E5%AF%86%E7%B6%93_ry.mp3?dl=1"
+    },
+    {
+     "d": "05",
+     "url": "https://www.dropbox.com/s/wvk49kzyr2q0cs1/05-%E8%A7%A3%E6%B7%B1%E5%AF%86%E7%B6%93_ry.mp3?dl=1"
+    },
+    {
+     "d": "06",
+     "url": "https://www.dropbox.com/s/uahyr531r3nd8ue/06-%E8%A7%A3%E6%B7%B1%E5%AF%86%E7%B6%93_ry.mp3?dl=1"
+    },
+    {
+     "d": "07",
+     "url": "https://www.dropbox.com/s/e9ka4teh1r1mlyq/07-%E8%A7%A3%E6%B7%B1%E5%AF%86%E7%B6%93_ry.mp3?dl=1"
+    },
+    {
+     "d": "08",
+     "url": "https://www.dropbox.com/s/tkdp6ep3omdxeuu/08-%E8%A7%A3%E6%B7%B1%E5%AF%86%E7%B6%93_ry.mp3?dl=1"
+    },
+    {
+     "d": "09",
+     "url": "https://www.dropbox.com/s/b27emm7szi77gou/09-%E8%A7%A3%E6%B7%B1%E5%AF%86%E7%B6%93_ry.mp3?dl=1"
+    },
+    {
+     "d": "10",
+     "url": "https://www.dropbox.com/s/o4qlqiuqmqwvcd7/10-%E8%A7%A3%E6%B7%B1%E5%AF%86%E7%B6%93_ry.mp3?dl=1"
+    },
+    {
+     "d": "11",
+     "url": "https://www.dropbox.com/s/pw5it9ee174wg26/11-%E8%A7%A3%E6%B7%B1%E5%AF%86%E7%B6%93_ry.mp3?dl=1"
+    },
+    {
+     "d": "12",
+     "url": "https://www.dropbox.com/s/7hih7v8s0yyh8il/12-%E8%A7%A3%E6%B7%B1%E5%AF%86%E7%B6%93_ry.mp3?dl=1"
+    },
+    {
+     "d": "13",
+     "url": "https://www.dropbox.com/s/vqayj1g8t8a6b0e/13-%E8%A7%A3%E6%B7%B1%E5%AF%86%E7%B6%93_ry.mp3?dl=1"
+    },
+    {
+     "d": "14",
+     "url": "https://www.dropbox.com/s/xobdsfbglwcd2i4/14-%E8%A7%A3%E6%B7%B1%E5%AF%86%E7%B6%93_ry.mp3?dl=1"
+    },
+    {
+     "d": "15",
+     "url": "https://www.dropbox.com/s/awnlji497e3bclw/15-%E8%A7%A3%E6%B7%B1%E5%AF%86%E7%B6%93_ry.mp3?dl=1"
+    },
+    {
+     "d": "16",
+     "url": "https://www.dropbox.com/s/718tzhd7q90dh56/16-%E8%A7%A3%E6%B7%B1%E5%AF%86%E7%B6%93_ry.mp3?dl=1"
+    },
+    {
+     "d": "17",
+     "url": "https://www.dropbox.com/s/y5n0ice9zdx6lqx/17-%E8%A7%A3%E6%B7%B1%E5%AF%86%E7%B6%93_ry.mp3?dl=1"
+    },
+    {
+     "d": "18",
+     "url": "https://www.dropbox.com/s/7gxbd5an82mr7vj/18-%E8%A7%A3%E6%B7%B1%E5%AF%86%E7%B6%93_ry.mp3?dl=1"
+    }
+   ],
+   "ry_wsxjj_20160509": [
+    {
+     "d": "唯識學簡介"
+    },
+    {
+     "d": "1",
+     "url": "https://www.dropbox.com/s/2t3y2ic450szzdv/1-%E5%94%AF%E8%AD%98%E5%AD%B8%E7%B0%A1%E4%BB%8B_ry.mp3?dl=1"
+    },
+    {
+     "d": "2",
+     "url": "https://www.dropbox.com/s/7uouzgt0ih12x7v/2-%E5%94%AF%E8%AD%98%E5%AD%B8%E7%B0%A1%E4%BB%8B_ry.mp3?dl=1"
+    },
+    {
+     "d": "3",
+     "url": "https://www.dropbox.com/s/x02tv9qh5aesukl/3-%E5%94%AF%E8%AD%98%E5%AD%B8%E7%B0%A1%E4%BB%8B_ry.mp3?dl=1"
+    }
+   ]
   }
  }
 }
