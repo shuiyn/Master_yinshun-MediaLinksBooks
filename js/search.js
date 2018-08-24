@@ -41,10 +41,11 @@ var initUsedBook=function(){
 
 
 var gBookScope=function(){
+	//reside in dataSrc/localHome.js
 	if (typeof grabBookScope != "undefined")
 		return grabBookScope();
 	else
-		return "pn mp";
+		return "pn mp xf";
 }
 
 

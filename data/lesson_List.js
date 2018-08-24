@@ -8947,6 +8947,35 @@ var lesson_List={
    ]
   }
  },
+ "gd": {
+  "wsxty": {
+   "gd_wsxty_20150401": [
+    {
+     "d": "2015 年"
+    },
+    {
+     "d": "01-0401",
+     "url": "https://www.dropbox.com/s/xqe3d8169k4gywx/01-%E5%94%AF%E8%AD%98%E5%AD%B8%E6%8E%A2%E6%BA%90_GD-20150401.mp3?dl=1"
+    },
+    {
+     "d": "02-0408",
+     "url": "https://www.dropbox.com/s/7tc65cuk1uch3fq/02-%E5%94%AF%E8%AD%98%E5%AD%B8%E6%8E%A2%E6%BA%90_GD-20150408.mp3?dl=1"
+    },
+    {
+     "d": "03-0415",
+     "url": "https://www.dropbox.com/s/ecxs9tnwf1zb7ip/03-%E5%94%AF%E8%AD%98%E5%AD%B8%E6%8E%A2%E6%BA%90_GD-20150415.mp3?dl=1"
+    },
+    {
+     "d": "04-0422",
+     "url": "https://www.dropbox.com/s/41bqxcbfix9use7/04-%E5%94%AF%E8%AD%98%E5%AD%B8%E6%8E%A2%E6%BA%90_GD-20150422.mp3?dl=1"
+    },
+    {
+     "d": "05-0429",
+     "url": "https://www.dropbox.com/s/y32zyn7sfms1jp3/05-%E5%94%AF%E8%AD%98%E5%AD%B8%E6%8E%A2%E6%BA%90_GD-20150429.mp3?dl=1"
+    }
+   ]
+  }
+ },
  "ry": {
   "sdsl": {
    "ry_sdsl_20150918": [

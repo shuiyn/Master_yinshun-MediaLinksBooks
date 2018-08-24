@@ -2449,6 +2449,22 @@ var lecture_List={
    }
   ]
  },
+ "0061": {
+  "bkid": "wsxty",
+  "cm_K": "wsxty_gd_20150401",
+  "aux": "",
+  "master": "gd",
+  "byear": "2015",
+  "croom": "xf",
+  "phase": [
+   {
+    "id": "gd_wsxty_20150401",
+    "t": "2015",
+    "url": "https://www.youtube.com/playlist?list=PLegSGjhlVwI-nEDI9C7PcRSTjlN6H_3wI&disable_polymer=true"
+   }
+  ],
+  "handout": ""
+ },
  "0501": {
   "bkid": "dsgwyl",
   "cm": "dsgwyl_book",
