@@ -8954,6 +8954,10 @@ var lesson_List={
      "d": "2015 年"
     },
     {
+     "d": "01-96K-0401",
+     "url": "https://www.dropbox.com/s/ov63rgcrem4xrr7/01-%E5%94%AF%E8%AD%98%E5%AD%B8%E6%8E%A2%E6%BA%90_GD-20150401_96K.mp3?dl=1"
+    },
+    {
      "d": "01-0401",
      "url": "https://www.dropbox.com/s/xqe3d8169k4gywx/01-%E5%94%AF%E8%AD%98%E5%AD%B8%E6%8E%A2%E6%BA%90_GD-20150401.mp3?dl=1"
     },
